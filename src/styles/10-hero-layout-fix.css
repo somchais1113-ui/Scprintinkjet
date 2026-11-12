@@ -1,0 +1,149 @@
+/* V2.5.4 — Stable Hero Grid / no layout collisions
+   Loaded LAST. Specific Hero-only rules prevent previous versions
+   from leaving .hero__inner as a horizontal flex container. */
+.hero {
+  height: auto;
+  min-height: 585px;
+  overflow: hidden;
+}
+.hero__media, .hero__slides {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+.hero__slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.hero .hero__inner {
+  position: relative;
+  z-index: 2;
+  min-height: 585px;
+  height: auto;
+  padding-block: 72px;
+  display: grid;
+  grid-template-columns: minmax(0, 715px) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  align-content: center;
+  justify-content: stretch;
+  align-items: start;
+  row-gap: 34px;
+}
+.hero .hero__content {
+  grid-column: 1 / -1;
+  grid-row: 1;
+  width: min(715px, 100%);
+  max-width: 715px;
+  min-width: 0;
+  position: relative;
+}
+.hero .hero__description {
+  margin-bottom: 0;
+}
+.hero .hero__actions {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+}
+.hero .hero__actions .button-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex: 0 1 auto;
+  min-width: 0;
+  gap: 26px;
+}
+.hero .hero__carousel-controls {
+  flex: 0 0 auto;
+  margin: 0 0 0 auto;
+  align-self: center;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+}
+.hero .hero__dots {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1px;
+  margin: 0;
+}
+.hero .hero__dot {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  width: 22px;
+  height: 30px;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.hero .hero__dot::before {
+  width: 6px;
+  height: 6px;
+  background: rgba(45,74,53,.32);
+  box-shadow: none;
+  transform: none;
+}
+.hero .hero__dot.is-active::before {
+  background: #2eb66b;
+  transform: scale(1.08);
+}
+.hero .hero__dot:hover::before {
+  background: #2eb66b;
+}
+@media(max-width:1100px) {
+  .hero .hero__inner {grid-template-columns: minmax(0, 600px) minmax(0, 1fr)}
+  .hero .hero__content {width:min(600px, 100%)}
+}
+@media(max-width:780px) {
+  .hero {min-height: 625px}
+  .hero .hero__inner {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 625px;
+    padding-block: 70px 235px;
+    align-content: start;
+    row-gap: 22px;
+  }
+  .hero .hero__content {grid-column:1; width:100%;max-width:570px}
+  .hero .hero__actions {grid-column:1; flex-wrap: wrap; gap: 12px 10px}
+  .hero .hero__actions .button-group {gap:12px; flex-wrap:wrap}
+  .hero .hero__carousel-controls {margin-left:auto}
+}
+@media(max-width:520px) {
+  .hero {min-height: 680px}
+  .hero .hero__inner {min-height: 680px;padding-block: 60px 240px; row-gap:18px}
+  .hero .hero__actions {margin-top:0;gap:8px}
+  .hero .hero__actions .button-group {gap:8px;flex-shrink:1;min-width:0}
+  .hero .hero__actions .button {min-height:46px;padding:10px;font-size:12px}
+  .hero .hero__dots {gap:0}
+  .hero .hero__dot {width:20px;height:28px}
+}
+@media(max-width:370px) {
+  .hero .hero__actions .button-group {flex-wrap:wrap}
+  .hero .hero__carousel-controls {margin-left:auto}
+}

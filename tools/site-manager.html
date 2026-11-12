@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>SCWork Studio · Unified Website Manager v2.5.6</title>
+  <link rel="stylesheet" href="./site-manager.css" />
+  <script src="../data/site-data.js" defer></script>
+  <script src="../assets/images/manifest.js" defer></script>
+  <script src="./zip-store.js" defer></script>
+  <script src="../src/scripts/i18n.js" defer></script>
+  <script src="./site-manager.js" defer></script>
+</head>
+<body>
+  <a href="#workspace" class="skip">ข้ามไปยังพื้นที่แก้ไข</a>
+  <header class="topbar">
+    <div class="topbar__identity"><div class="logo">S<span>·</span></div><div><p class="eyebrow">SCWork / Studio Tools</p><h1>Unified Website Manager <span class="version">v2.5.6</span></h1></div></div>
+    <div class="topbar__actions"><span class="save-status" id="saveStatus" role="status">พร้อมแก้ไข</span><div class="editor-language" role="group" aria-label="ภาษาเนื้อหาที่กำลังแก้ไข"><button type="button" data-edit-lang="th" aria-pressed="false">TH</button><button type="button" data-edit-lang="en" class="is-active" aria-pressed="true">EN</button></div><a class="button button--ghost" href="./index.html">Admin Home ↗</a><a class="button button--ghost" href="../index.html" target="_blank" rel="noopener">เปิดหน้าเว็บ ↗</a><button id="exportPatchTop" class="button button--green" type="button">ดาวน์โหลดไฟล์แก้ไข ZIP ↓</button></div>
+  </header>
+  <div class="tipline"><strong>ขั้นตอน:</strong> เลือกภาษา TH / EN → เลือกหมวด → แก้ข้อความ/ราคา/ภาพ/ดีไซน์ → ดูตัวอย่างทันที → กด Export ZIP → แตกไฟล์ทับโฟลเดอร์โปรเจกต์เดิม <span>·</span> <strong>ไม่มีการส่งข้อมูลขึ้น Server</strong></div>
+  <main id="workspace" class="workspace">
+    <aside class="sidebar" aria-label="หมวดการตั้งค่า">
+      <div class="sidebar__heading">WORKSPACE <span class="sidebar__dot"></span></div>
+      <nav id="editorNav" class="editor-nav" aria-label="Editor sections">
+        <button class="nav-item is-active" type="button" data-tab="general"><span>◈</span> Brand & Navigation</button>
+        <button class="nav-item" type="button" data-tab="content"><span>✎</span> Page Text & CTA</button>
+        <button class="nav-item" type="button" data-tab="services"><span>▤</span> Services</button>
+        <button class="nav-item" type="button" data-tab="pricing"><span>＄</span> Pricing</button>
+        <button class="nav-item" type="button" data-tab="team"><span>♧</span> Team & Features</button>
+        <button class="nav-item" type="button" data-tab="reviews"><span>☆</span> Testimonials</button>
+        <button class="nav-item" type="button" data-tab="blog"><span>▧</span> Blog</button>
+        <button class="nav-item" type="button" data-tab="images"><span>▧</span> Image Assets <small>18</small></button>
+        <button class="nav-item" type="button" data-tab="design"><span>◉</span> Design Tokens</button>
+        <button class="nav-item" type="button" data-tab="export"><span>⇩</span> Import / Export</button>
+      </nav>
+      <div class="sidebar__footer"><div class="mini-card"><strong>Local-first workflow</strong><p>ข้อความ TH/EN บันทึกร่างใน Browser ของเครื่องนี้ ภาพที่อัปโหลดจะอยู่ใน Session จนกว่าจะ Export ZIP</p></div><a href="../docs/08-CONTENT-WORKFLOW.md" target="_blank">คู่มือแก้เว็บไซต์ · V2.2 ↗</a></div>
+    </aside>
+    <section class="editing-area" aria-label="Edit content">
+      <div class="panel-title"><div><p class="eyebrow dark" id="panelEyebrow">CONTENT SETTINGS</p><h2 id="panelTitle">Brand & Navigation</h2><p id="panelDescription">แก้ชื่อแบรนด์ ข้อความในเมนู และข้อมูลติดต่อหลัก</p></div><div class="count" id="fieldCount">Editable</div></div>
+      <div id="editorForm" class="edit-form"></div>
+    </section>
+    <aside class="preview-area" aria-label="Live website preview">
+      <div class="preview-top"><div><strong><span class="live-dot"></span> Live Website Preview</strong><small>สลับภาษาใน Editor เพื่อดู Preview แต่ละภาษา</small></div><div class="view-switch" role="group" aria-label="Preview viewport"><button class="is-selected" data-viewport="desktop" type="button" aria-pressed="true">Desktop</button><button data-viewport="tablet" type="button" aria-pressed="false">Tablet</button><button data-viewport="mobile" type="button" aria-pressed="false">Mobile</button></div></div>
+      <div id="previewStage" class="preview-stage"><div class="browser-frame" id="browserFrame"><div class="browser-bar"><div class="dots"><i></i><i></i><i></i></div><div class="address">scwork.local / preview</div><button type="button" id="reloadPreview" class="reload" title="Reload preview">↻</button></div><div id="iframeStage" class="iframe-stage"><iframe title="Preview of live SCWork website" id="sitePreview" src="../index.html?editorPreview=1"></iframe></div></div></div>
+      <div class="preview-footer"><span>Reference layout: Desktop 1440px · Responsive tablet/mobile</span><span id="previewSize">1440px</span></div>
+    </aside>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

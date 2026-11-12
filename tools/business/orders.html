@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Order Pipeline · SCWork Business Studio v2.4</title>
+<link rel="stylesheet" href="./admin.css">
+<script src="../../data/demo/seed-data.js" defer></script><script src="./quotation-engine.js" defer></script><script src="./admin-data.js" defer></script><script src="./admin.js" defer></script>
+</head>
+<body data-page="orders">
+<a href="#page-main" class="skip-link">ข้ามไปยังเนื้อหาหลัก</a>
+<div class="admin-layout">
+<aside class="admin-sidebar">
+  <a class="brand" href="../index.html"><span class="brand-mark">S<span>·</span></span><span><strong>SCWork</strong><small>BUSINESS STUDIO / v2.4</small></span></a>
+  <div class="nav-caption">OVERVIEW</div><nav class="side-nav" aria-label="Business navigation"><a class="side-link " href="dashboard.html" ><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12" y="8" width="3" height="10" rx="1"/><rect x="17" y="5" width="3" height="13" rx="1"/></svg><span>Dashboard</span></a><a class="side-link " href="customers.html" ><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>Customers</span></a><a class="side-link " href="quotations.html" ><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8"/></svg><span>RFQ & Quotations</span></a><a class="side-link active" href="orders.html" aria-current=page><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8 4-8 4-8-4 8-4ZM4 10l8 4 8-4M4 14l8 4 8-4M4 6v12l8 4 8-4V6M12 10v12"/></svg><span>Orders</span></a><a class="side-link" href="quote-builder.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM8 8h8M8 12h8M8 16h4"/></svg><span>Quote Builder</span></a><a class="side-link" href="live-inbox.html"><span>▣</span><span>Live RFQ Inbox (V2.5)</span></a></nav>
+  <div class="nav-caption second">WEBSITE & TOOLS</div><nav class="side-nav" aria-label="Website tools">
+    <a class="side-link" href="../site-manager.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg><span>Website Manager</span></a>
+    <a class="side-link" href="../image-manager.html"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="m21 15-5-5L5 21"/></svg><span>Image Manager</span></a>
+    <a class="side-link" href="../../index.html" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg><span>Public Website</span></a>
+  </nav>
+  <div class="side-bottom"><span class="pulse-dot"></span><div><strong>Demo environment</strong><small>ไม่เชื่อมลูกค้า / ออร์เดอร์จริง</small></div></div>
+</aside>
+<main id="page-main" class="admin-main">
+  <header class="admin-topbar"><div class="top-breadcrumb">WORKSPACE <span>/</span> BUSINESS <span>/</span> ORDER PIPELINE</div><div class="top-actions"><a class="text-link" href="../index.html">All tools <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a><span class="top-avatar">SC</span></div></header>
+  <section class="page-content"><div class="page-heading"><div><div class="mini-eyebrow">BUSINESS INTELLIGENCE <span class="eyebrow-rule"></span> PROTOTYPE</div><h1>Order Pipeline<span class="header-dot">.</span></h1><p>ติดตามสถานะงานและต้นทุนประมาณการของแต่ละคำสั่งซื้อ</p></div><div class="heading-action" id="headingAction"></div></div>
+  <div class="notice" role="note"><span class="notice-pill">DEMO DATA</span> ตัวเลขและรายชื่อทั้งหมดเป็นข้อมูลจำลอง · จัดเก็บการแก้ไขเฉพาะใน Browser เครื่องนี้ · ไม่ใช่ระบบรับลูกค้าหรือออร์เดอร์จริง <a href="../../docs/13-BUSINESS-DASHBOARD-V2.3.md">อ่านขอบเขตระบบ</a></div>
+  <div id="pageContent" aria-live="polite"></div></section>
+</main></div>
+<dialog class="form-dialog" id="recordDialog" aria-labelledby="dialogTitle"><form method="dialog" id="recordForm"><div class="dialog-head"><div><span class="mini-eyebrow">LOCAL DEMO RECORD</span><h2 id="dialogTitle">เพิ่มข้อมูล</h2></div><button class="icon-close" type="button" data-action="close-modal" aria-label="ปิด">×</button></div><div class="dialog-body" id="dialogFields"></div><div class="dialog-actions"><button type="button" class="btn btn-outline" data-action="close-modal">ยกเลิก</button><button type="submit" class="btn btn-primary">บันทึกข้อมูล</button></div></form></dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body></html>

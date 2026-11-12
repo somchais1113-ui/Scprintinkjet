@@ -1,0 +1,7 @@
+# Public API performs its own input validation, bot verification and auth-free intake.
+[functions.submit-rfq]
+verify_jwt = false
+
+# Cron/manual worker MUST validate EMAIL_WORKER_SECRET header.
+[functions.dispatch-emails]
+verify_jwt = false

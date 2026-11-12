@@ -1,0 +1,9 @@
+ProCleaning V2.2 — HOW TO INSTALL
+
+1. Extract ALL files from this ZIP into your existing website project ROOT.
+2. Overwrite data/site-data.js (BOTH languages) and any assets/images/*.webp inside this ZIP.
+3. Open index.html (or reload server) to check.
+4. Commit and push the changes to GitHub; this tool does not publish online.
+
+NOTICE: Image edits are included only if you pressed Apply Image in the editor.
+The project root is the folder that contains index.html, data/, assets/, src/.

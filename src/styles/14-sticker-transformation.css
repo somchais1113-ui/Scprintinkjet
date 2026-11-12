@@ -1,0 +1,19 @@
+/* SCWork Inkjet Sticker Transformation — same base layout, colors and motion as V2.5.7 */
+.hero__slide figure,.hero__slide{margin:0}
+.hero__slide img{object-fit:cover;object-position:center}
+/* With pre-blended artwork, retain original hero gradients and original CTA positioning. */
+.price-card--sticker{gap:20px;min-height:480px}
+.price-card__amount--quote{font-size:18px;min-height:68px;letter-spacing:0;padding:14px;white-space:normal;text-align:center}
+.price-card__features{line-height:1.65;display:grid;gap:16px;padding-left:22px}
+.price-card__features li{padding-left:3px}
+.price-card--sticker .button{margin-top:auto;background:var(--color-primary);color:#fff;border-color:var(--color-primary)}
+.team-process-tag{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:#268d50;font-weight:700;border-top:1px solid #e6ede7;padding-top:15px}
+.team-card__body{display:flex;flex-direction:column;gap:8px;min-height:210px}
+.team-card__body p{margin-bottom:8px}
+.team-card__image img{object-fit:cover;object-position:center}
+.testimonial-card__quote{font-style:normal}
+.testimonial-card__role{color:#28955b;font-weight:700}
+#footerContactHint{font-size:13px;color:#aebdb2;display:block;margin-top:8px}
+.footer-social{display:none}
+.pricing-note{max-width:690px;margin:18px auto 0;text-align:center}
+@media(max-width:780px){.price-card--sticker{min-height:425px}.price-card__features{gap:11px}}

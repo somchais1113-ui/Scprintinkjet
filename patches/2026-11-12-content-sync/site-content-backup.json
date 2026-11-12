@@ -1,0 +1,510 @@
+{
+  "format": "procleaning-v22-backup",
+  "exportedAt": "2026-11-11T23:32:08.343Z",
+  "site": {
+    "schemaVersion": 2,
+    "i18n": {
+      "defaultLanguage": "en",
+      "th": {
+        "brand": {
+          "tagline": "บริษัทบริการทำความสะอาด",
+          "pageTitle": "ProCleaning — บริการทำความสะอาดมืออาชีพ",
+          "metaDescription": "บริการทำความสะอาดบ้านและสำนักงาน พร้อมดูแลพื้นที่ของคุณอย่างใส่ใจ"
+        },
+        "navigation": {
+          "home": "หน้าแรก",
+          "about": "เกี่ยวกับเรา",
+          "services": "บริการ",
+          "blog": "บทความ",
+          "contact": "ติดต่อเรา",
+          "quote": "ขอใบเสนอราคา"
+        },
+        "hero": {
+          "eyebrow": "บริการทำความสะอาดคุณภาพ ในราคาที่เหมาะสม",
+          "title": "บริการทำความสะอาดครบวงจร ใส่ใจทุกรายละเอียด",
+          "description": "ดูแลความสะอาดทั้งบ้านและสำนักงานอย่างมีประสิทธิภาพ เพื่อให้คุณมีเวลาไปกับสิ่งสำคัญ",
+          "ctaPrimary": "ปรึกษาเราเลย",
+          "ctaSecondary": "ดูบริการทั้งหมด"
+        },
+        "headings": {
+          "servicesTitle": "บริการทำความสะอาด\nที่ตอบโจทย์ทุกพื้นที่",
+          "servicesEyebrow": "บริการของเรา",
+          "servicesDescription": "เลือกบริการให้เหมาะกับพื้นที่ของคุณ พร้อมปรับรูปแบบการดูแลตามความต้องการ",
+          "quoteEyebrow": "โซลูชันความสะอาดในราคาที่คุ้มค่า",
+          "quoteTitle": "บริการที่ใส่ใจคุณภาพ พร้อมราคาที่เหมาะสม",
+          "quoteDescription": "เราให้บริการทำความสะอาดสำหรับบ้าน ที่พักอาศัย และพื้นที่ธุรกิจ โดยปรับรูปแบบให้เหมาะกับคุณ",
+          "quoteButton": "ขอใบเสนอราคา",
+          "teamTitle": "ทีมงานมืออาชีพ\nเพื่อพื้นที่ที่สะอาดกว่า",
+          "teamEyebrow": "ทีมของเรา",
+          "teamDescription": "ทีมงานที่ตั้งใจดูแลความสะอาดและสุขอนามัยในทุกพื้นที่ของคุณ",
+          "aboutTitle": "ยินดีต้อนรับสู่\nProCleaning",
+          "aboutDescription": "เรามุ่งมั่นให้บริการทำความสะอาดบ้านและธุรกิจอย่างใส่ใจ เพื่อให้ทุกพื้นที่น่าอยู่และพร้อมใช้งาน",
+          "aboutPrimary": "จองบริการ",
+          "aboutSecondary": "ดูรายละเอียด",
+          "pricingEyebrow": "แพ็กเกจราคา",
+          "pricingTitle": "เลือกแพ็กเกจที่เหมาะกับคุณ",
+          "testimonialsTitle": "เสียงตอบรับจากผู้ใช้บริการ",
+          "testimonialsDescription": "อ่านความคิดเห็นตัวอย่างเกี่ยวกับบริการของเรา โดยเนื้อหารีวิวต้องได้รับการตรวจสอบก่อนเผยแพร่",
+          "blogTitle": "เคล็ดลับการดูแลบ้าน และข่าวสารบริการ",
+          "blogEyebrow": "บทความ",
+          "blogDescription": "รวมแนวคิดและคำแนะนำเพื่อให้คุณดูแลพื้นที่ให้สะอาดอยู่เสมอ",
+          "contactEyebrow": "ติดต่อเรา",
+          "contactTitle": "ช่องทางติดต่อ",
+          "contactDescription": "บอกความต้องการของคุณให้เราทราบ เราจะช่วยแนะนำบริการและแนวทางที่เหมาะสม",
+          "formEyebrow": "ส่งข้อความถึงเรา",
+          "formTitle": "ขอรับใบเสนอราคา"
+        },
+        "labels": {
+          "book": "จองบริการ",
+          "readMore": "อ่านเพิ่มเติม",
+          "viewMoreArticles": "ดูบทความเพิ่มเติม",
+          "showLessArticles": "แสดงน้อยลง",
+          "monthly": "รายเดือน",
+          "yearly": "รายปี",
+          "fullName": "ชื่อ–นามสกุล",
+          "email": "อีเมล",
+          "service": "เลือกบริการ",
+          "message": "รายละเอียดเพิ่มเติม",
+          "submit": "ส่งคำขอ →",
+          "servicePlaceholder": "กรุณาเลือกบริการ",
+          "otherService": "บริการอื่น ๆ",
+          "namePlaceholder": "กรอกชื่อของคุณ",
+          "emailPlaceholder": "you@example.com",
+          "messagePlaceholder": "แจ้งรายละเอียดพื้นที่และวันที่ที่ต้องการ",
+          "formNote": "แบบฟอร์มตัวอย่าง: ระบบจะเปิดแอปอีเมล ยังไม่ได้เชื่อมต่อฐานข้อมูล",
+          "pricingDemoNote": "ราคาสมาชิกรายปีเป็นเพียงตัวอย่าง โปรดตรวจสอบราคาจริงก่อนเผยแพร่",
+          "contactCall": "โทรศัพท์",
+          "contactEmail": "อีเมล",
+          "contactAddress": "ที่อยู่",
+          "formError": "กรุณากรอกข้อมูลให้ครบและตรวจสอบรูปแบบอีเมล",
+          "formSuccess": "ระบบกำลังเปิดแอปอีเมล กรุณาตรวจสอบและกดส่งในแอป",
+          "skipLink": "ข้ามไปยังเนื้อหาหลัก",
+          "openNav": "เปิดเมนูนำทาง",
+          "closeNav": "ปิดเมนูนำทาง",
+          "navAria": "เมนูหลัก",
+          "nextServices": "บริการถัดไป",
+          "previousTestimonial": "รีวิวก่อนหน้า",
+          "nextTestimonial": "รีวิวถัดไป",
+          "billingAria": "รอบการชำระเงิน",
+          "heroImageAlt": "ทีมทำความสะอาดในห้องนั่งเล่นที่สว่างสะอาด",
+          "quoteMainAlt": "พนักงานกำลังถูพื้น",
+          "quoteSmallAlt": "พนักงานกำลังเช็ดพื้นผิว",
+          "aboutMainAlt": "ทีมงานทำความสะอาดมืออาชีพ",
+          "aboutSmallAlt": "พนักงานทำความสะอาดเคาน์เตอร์",
+          "emptyServices": "ยังไม่มีรายการบริการ",
+          "emptyPricing": "ยังไม่มีแพ็กเกจราคา",
+          "emptyTestimonials": "ยังไม่มีรีวิว",
+          "ratingLabel": "คะแนน 5 จาก 5 ดาว",
+          "blogAskPrefix": "สอบถามเกี่ยวกับ",
+          "portraitAlt": "ภาพของ",
+          "socialPlaceholder": "ช่องทางโซเชียลมีเดียตัวอย่าง"
+        },
+        "footer": {
+          "description": "ติดตามข่าวสาร เคล็ดลับการทำความสะอาด และข้อมูลบริการของเรา",
+          "quickTitle": "ลิงก์ด่วน",
+          "servicesTitle": "บริการ",
+          "contactTitle": "ติดต่อเรา",
+          "contactQuestion": "มีคำถามหรือต้องการปรึกษางาน?",
+          "copyright": "สงวนลิขสิทธิ์",
+          "disclaimer": "เว็บไซต์ตัวอย่างที่พัฒนาจากแรงบันดาลใจใน Figma · ไม่ใช่เว็บไซต์ทางการของ ProCleaning"
+        },
+        "contact": {
+          "address": "ที่ตั้งธุรกิจของคุณ เมือง ประเทศ",
+          "bookingSubject": "สอบถามบริการทำความสะอาด"
+        },
+        "features": [
+          "ทีมงานผ่านการคัดเลือก",
+          "ราคาที่เหมาะสม",
+          "นัดหมายได้สะดวก",
+          "ใส่ใจคุณภาพ",
+          "บริการตามความต้องการ",
+          "บริการคุ้มค่า"
+        ]
+      }
+    },
+    "brand": {
+      "prefix": "SC",
+      "name": "Design",
+      "tagline": "Design & Production Consultant",
+      "pageTitle": "SCWork | Design & Production Consultant",
+      "metaDescription": "SCWork provides brand identity, packaging and product design, with production consulting and supplier coordination to turn creative ideas into real outcomes."
+    },
+    "navigation": {
+      "home": "Home",
+      "about": "About us",
+      "services": "Service",
+      "blog": "Blog",
+      "contact": "Contact",
+      "quote": "Get a quote"
+    },
+    "hero": {
+      "eyebrow": "SCWork · Design & Production Consultant",
+      "title": "From Ideas to Design That Works.",
+      "description": "We help businesses shape ideas, build brand identities, and develop packaging and product designs. From creative direction to materials, suppliers, and production coordination, we connect great design with real-world execution.",
+      "ctaPrimary": "Get Start Now",
+      "ctaSecondary": "View all Services"
+    },
+    "headings": {
+      "servicesTitle": "Our Expertise, From Concept to Production.",
+      "servicesEyebrow": "WHAT WE DO",
+      "servicesDescription": "We combine strategic thinking, creative design, product development, and production knowledge to deliver practical solutions for brands and businesses.",
+      "quoteEyebrow": "LET'S WORK TOGETHER",
+      "quoteTitle": "Have a Project in Mind? Let's Make It Work.",
+      "quoteDescription": "Whether you're building a brand, developing packaging, refining a product, or planning production, we're here to help. Share your ideas and challenges with us.",
+      "quoteButton": "Get a quote",
+      "teamTitle": "Creative Thinking Meets Production Know-How.",
+      "teamEyebrow": "OUR EXPERTISE",
+      "teamDescription": "SCWork is an independent design practice combining creative direction, brand and product design.",
+      "aboutTitle": "Welcome To Our\nPro-cleaning Company!",
+      "aboutDescription": "We make your space shine! Professional and reliable cleaning service company providing top-notch solutions for homes and businesses. Satisfaction guaranteed!",
+      "aboutPrimary": "Book Now",
+      "aboutSecondary": "Know More",
+      "pricingEyebrow": "Our Pricing",
+      "pricingTitle": "Choose From Our Lowest Plans and Prices",
+      "testimonialsTitle": "Feedback About Their Experience With Us",
+      "testimonialsDescription": "Read testimonials from our satisfied clients. See how our cleaning services have made a difference in their lives and homes",
+      "blogTitle": "Stay Updated with Our Tips & Service News!",
+      "blogEyebrow": "Our Blog",
+      "blogDescription": "Stay informed with our latest cleaning tips, service updates, expert advice on maintaining an immaculate home",
+      "contactEyebrow": "Contact Us",
+      "contactTitle": "Find us",
+      "contactDescription": "We are here to help. Tell us about your cleaning requirements and we will get back to you.",
+      "formEyebrow": "Get in touch",
+      "formTitle": "Request a free quote"
+    },
+    "labels": {
+      "book": "Book Now",
+      "readMore": "Read More",
+      "viewMoreArticles": "View more articles",
+      "showLessArticles": "Show fewer articles",
+      "monthly": "Monthly",
+      "yearly": "Yearly",
+      "fullName": "Full Name",
+      "email": "Email Address",
+      "service": "Choose a service",
+      "message": "Message",
+      "submit": "Send Inquiry →",
+      "servicePlaceholder": "Select a service",
+      "otherService": "Other Service",
+      "namePlaceholder": "Your name",
+      "emailPlaceholder": "you@example.com",
+      "messagePlaceholder": "Tell us about your space and preferred date",
+      "formNote": "Demo form: opens your email app; no backend is connected.",
+      "pricingDemoNote": "Yearly pricing is illustrative for this frontend demo; confirm your actual price policy before publishing.",
+      "contactCall": "Call Us",
+      "contactEmail": "Email Now",
+      "contactAddress": "Address",
+      "formError": "Please complete all fields and enter a valid email address.",
+      "formSuccess": "Your email app will open with the inquiry. Please review and send it there.",
+      "skipLink": "Skip to content",
+      "openNav": "Open navigation",
+      "closeNav": "Close navigation",
+      "navAria": "Main navigation",
+      "nextServices": "Next services",
+      "previousTestimonial": "Previous testimonial",
+      "nextTestimonial": "Next testimonial",
+      "billingAria": "Billing interval",
+      "heroImageAlt": "A professional cleaning team in a bright, modern living room",
+      "quoteMainAlt": "Cleaner mopping floor in bright home",
+      "quoteSmallAlt": "Cleaner wiping a surface",
+      "aboutMainAlt": "Team of professional cleaners",
+      "aboutSmallAlt": "Gloved cleaner wiping a countertop",
+      "emptyServices": "No services configured.",
+      "emptyPricing": "No packages configured.",
+      "emptyTestimonials": "No testimonials configured.",
+      "ratingLabel": "5 out of 5 stars",
+      "blogAskPrefix": "Ask us about",
+      "portraitAlt": "Portrait of",
+      "socialPlaceholder": "Social media placeholders"
+    },
+    "footer": {
+      "description": "Stay updated with our latest cleaning tips, service updates, and helpful articles on maintaining a spotless home.",
+      "quickTitle": "Quick Links",
+      "servicesTitle": "Services",
+      "contactTitle": "Contact",
+      "contactQuestion": "Questions or a new project?",
+      "copyright": "All rights reserved.",
+      "disclaimer": "Figma design-inspired development starter · Not an official ProCleaning website"
+    },
+    "contact": {
+      "email": "hello@example.com",
+      "phone": "+1 (555) 010-2050",
+      "address": "Your business address, City, Country",
+      "bookingSubject": "New cleaning service inquiry"
+    },
+    "settings": {
+      "currency": "USD",
+      "yearlyDiscount": 15
+    },
+    "design": {
+      "primary": "#36b864",
+      "primaryHover": "#2da458",
+      "ink": "#111d15",
+      "body": "#666666",
+      "border": "#aac5b1",
+      "footer": "#0e2015",
+      "font": "Be Vietnam Pro",
+      "headingScale": 100,
+      "sectionSpacing": 95,
+      "containerWidth": 1170,
+      "cardRadius": 20,
+      "imageRadius": 30
+    },
+    "services": [
+      {
+        "title": "Office Cleaning",
+        "image": "./assets/images/services/office.webp",
+        "description": "While we can customize your cleaning plan to suit your needs, most clients schedule regular cleaning services:",
+        "translations": {
+          "th": {
+            "title": "ทำความสะอาดสำนักงาน",
+            "description": "ดูแลสำนักงานและพื้นที่ทำงานให้สะอาดพร้อมใช้งาน เพื่อบรรยากาศที่ดีในการทำงาน"
+          }
+        }
+      },
+      {
+        "title": "Spring Cleaning",
+        "image": "./assets/images/services/spring.webp",
+        "description": "While we can customize your cleaning plan to suit your needs, most clients schedule regular cleaning services:",
+        "translations": {
+          "th": {
+            "title": "ทำความสะอาดครั้งใหญ่",
+            "description": "ดูแลทำความสะอาดอย่างละเอียด เหมาะกับการปรับพื้นที่หรือเตรียมรับโอกาสสำคัญ"
+          }
+        }
+      },
+      {
+        "title": "House Cleaning",
+        "image": "./assets/images/services/house.webp",
+        "description": "While we can customize your cleaning plan to suit your needs, most clients schedule regular cleaning services:",
+        "translations": {
+          "th": {
+            "title": "ทำความสะอาดบ้าน",
+            "description": "ดูแลบ้านและที่พักอาศัยให้สะอาดเป็นระเบียบ เพื่อทุกวันสบายขึ้น"
+          }
+        }
+      }
+    ],
+    "team": [
+      {
+        "name": "Erick Reynolds",
+        "image": "./assets/images/team/person-01.webp",
+        "description": "He is an expert cleaning staff member who provides thorough cleaning with precision.",
+        "translations": {
+          "th": {
+            "name": "Erick Reynolds",
+            "description": "สมาชิกทีมงานผู้ดูแลความสะอาดด้วยความใส่ใจในรายละเอียด"
+          }
+        }
+      },
+      {
+        "name": "Erick Reynolds",
+        "image": "./assets/images/team/person-02.webp",
+        "description": "He is an expert cleaning staff member who provides thorough cleaning with precision.",
+        "translations": {
+          "th": {
+            "name": "Erick Reynolds",
+            "description": "สมาชิกทีมงานผู้ดูแลความสะอาดด้วยความใส่ใจในรายละเอียด"
+          }
+        }
+      },
+      {
+        "name": "Erick Reynolds",
+        "image": "./assets/images/team/person-03.webp",
+        "description": "He is an expert cleaning staff member who provides thorough cleaning with precision.",
+        "translations": {
+          "th": {
+            "name": "Erick Reynolds",
+            "description": "สมาชิกทีมงานผู้ดูแลความสะอาดด้วยความใส่ใจในรายละเอียด"
+          }
+        }
+      }
+    ],
+    "features": [
+      "Vetted professionals",
+      "Affordable Prices",
+      "Next day availability",
+      "Best Quality",
+      "Standard cleaning tasks",
+      "Affordable Prices"
+    ],
+    "photos": {
+      "quoteMain": "./assets/images/quote/main.webp",
+      "quoteSmall": "./assets/images/quote/detail.webp",
+      "aboutMain": "./assets/images/about/main.webp",
+      "aboutSmall": "./assets/images/about/detail.webp"
+    },
+    "pricing": [
+      {
+        "name": "Basic Package",
+        "monthly": 59,
+        "featured": false,
+        "features": [
+          "Dusting of all surfaces",
+          "Sweeping and mopping floors",
+          "Vacuuming carpets and rugs",
+          "Cleaning of kitchen surfaces",
+          "Cleaning of bathroom surfaces",
+          "Emptying trash bins"
+        ],
+        "translations": {
+          "th": {
+            "name": "แพ็กเกจพื้นฐาน",
+            "features": [
+              "ปัดฝุ่นทุกพื้นผิว",
+              "กวาดและถูพื้น",
+              "ดูดฝุ่นพรม",
+              "ทำความสะอาดบริเวณครัว",
+              "ทำความสะอาดห้องน้ำ",
+              "นำขยะออกทิ้ง"
+            ]
+          }
+        }
+      },
+      {
+        "name": "Enterprise Package",
+        "monthly": 69,
+        "featured": true,
+        "features": [
+          "All services in the Basic Plan",
+          "Detailed dusting",
+          "Wiping down of kitchen appt",
+          "Cleaning inside the microwave",
+          "Changing bed linens",
+          "Spot cleaning walls and doors"
+        ],
+        "translations": {
+          "th": {
+            "name": "แพ็กเกจสำหรับธุรกิจ",
+            "features": [
+              "รวมบริการพื้นฐาน",
+              "ปัดฝุ่นอย่างละเอียด",
+              "เช็ดทำความสะอาดอุปกรณ์ในครัว",
+              "ทำความสะอาดภายในไมโครเวฟ",
+              "เปลี่ยนผ้าปูที่นอน",
+              "เช็ดคราบที่ผนังและประตู"
+            ]
+          }
+        }
+      },
+      {
+        "name": "Premium Package",
+        "monthly": 99,
+        "featured": false,
+        "features": [
+          "All services in the Clean Plan",
+          "Deep cleaning of kitchen appt",
+          "Baseboards, door frames, & vents",
+          "Organization of closets pantries",
+          "Carpet, upholstery spot cleaning",
+          "Detailed bathroom cleaning"
+        ],
+        "translations": {
+          "th": {
+            "name": "แพ็กเกจพรีเมียม",
+            "features": [
+              "รวมบริการทำความสะอาดทั่วไป",
+              "ทำความสะอาดครัวอย่างละเอียด",
+              "ทำความสะอาดบัวพื้น วงกบ และช่องระบายอากาศ",
+              "จัดระเบียบตู้เก็บของ",
+              "ดูแลคราบบนพรมและเบาะ",
+              "ทำความสะอาดห้องน้ำอย่างละเอียด"
+            ]
+          }
+        }
+      }
+    ],
+    "testimonials": [
+      {
+        "name": "Robert Fox",
+        "role": "Business Man",
+        "image": "./assets/images/testimonials/customer-01.webp",
+        "quote": "Excellent service! The team was punctual, thorough, and left my home sparkling clean. Highly recommend for anyone needing a reliable and detailed cleaning service.",
+        "translations": {
+          "th": {
+            "name": "Robert Fox",
+            "role": "นักธุรกิจ",
+            "quote": "บริการดีมาก ทีมงานตรงต่อเวลาและทำความสะอาดอย่างละเอียด บ้านสะอาดน่าอยู่ ขอแนะนำสำหรับผู้ที่กำลังมองหาบริการดูแลบ้านที่ไว้วางใจได้ (ข้อความตัวอย่าง)"
+          }
+        }
+      },
+      {
+        "name": "Sarah Johnson",
+        "role": "Homeowner · Demo",
+        "image": "./assets/images/testimonials/customer-02.webp",
+        "quote": "Example testimonial content for your preview. Replace this with a real customer review before you publish the website.",
+        "translations": {
+          "th": {
+            "name": "Sarah Johnson",
+            "role": "เจ้าของบ้าน · ตัวอย่าง",
+            "quote": "ตัวอย่างรีวิวสำหรับทดสอบหน้าเว็บ กรุณาเปลี่ยนเป็นความคิดเห็นจริงก่อนเผยแพร่"
+          }
+        }
+      },
+      {
+        "name": "Alex Carter",
+        "role": "Business Owner · Demo",
+        "image": "./assets/images/testimonials/customer-03.webp",
+        "quote": "Example testimonial content for your preview. Only publish customer endorsements with permission and accurate attribution.",
+        "translations": {
+          "th": {
+            "name": "Alex Carter",
+            "role": "เจ้าของธุรกิจ · ตัวอย่าง",
+            "quote": "เนื้อหาตัวอย่างสำหรับการแสดงผล ควรเผยแพร่รีวิวจากลูกค้าจริงพร้อมได้รับอนุญาตแล้วเท่านั้น"
+          }
+        }
+      }
+    ],
+    "blogs": [
+      {
+        "id": "eco-friendly-cleaning",
+        "title": "Eco-Friendly Cleaning: How We Keep Your Home Green",
+        "meta": "JOHN HELTON · JAN 6, 2025",
+        "text": "Learn about our commitment to eco-friendly practices. We share the eco-conscious products...",
+        "body": "Start with reusable microfiber cloths and only the amount of cleaner needed for the surface. Follow each product label, and avoid mixing different cleaning chemicals.\n\nWork from high surfaces down to the floor, separating kitchen and bathroom cloths to reduce cross-contamination. Regular ventilation and responsible product storage help make a cleaning routine more practical.\n\nThis is sample educational content for the website template. Replace it with verified information about your company before publishing.",
+        "image": "./assets/images/blog/article-01.webp",
+        "translations": {
+          "th": {
+            "title": "ทำความสะอาดอย่างรักษ์โลก เพื่อบ้านที่น่าอยู่",
+            "meta": "JOHN HELTON · 6 ม.ค. 2025",
+            "text": "แนวทางการเลือกผลิตภัณฑ์และวิธีทำความสะอาดที่ใส่ใจสิ่งแวดล้อม...",
+            "body": "เริ่มจากใช้ผ้าไมโครไฟเบอร์ที่นำกลับมาใช้ซ้ำได้ และใช้น้ำยาทำความสะอาดในปริมาณที่เหมาะกับพื้นผิว อ่านฉลากของผลิตภัณฑ์ทุกครั้ง และไม่ผสมน้ำยาทำความสะอาดต่างชนิดเข้าด้วยกัน\n\nควรทำความสะอาดจากที่สูงลงสู่พื้น แยกผ้าสำหรับครัวและห้องน้ำ และจัดเก็บผลิตภัณฑ์ให้ปลอดภัย\n\nเนื้อหานี้เป็นตัวอย่างสำหรับทดสอบระบบบทความ กรุณาตรวจสอบและแก้ไขให้ตรงกับบริการจริงก่อนเผยแพร่"
+          }
+        }
+      },
+      {
+        "id": "cleaning-between-visits",
+        "title": "How to Maintain a Clean Home Between Professional Visits",
+        "meta": "JOHN HELTON · JAN 6, 2025",
+        "text": "Get practical advice on maintaining cleanliness between our scheduled visits. These easy-to-follow tips...",
+        "body": "A short daily routine can make a significant difference between deep-cleaning sessions. Wipe high-touch surfaces, clear clutter and address spills when they occur.\n\nCreate a weekly checklist for floors, kitchen appliances and bathrooms. Keep cleaning tools clean and dry, and use products according to manufacturer instructions.\n\nThis is sample educational content for the website template. Adapt the recommendations to your actual services.",
+        "image": "./assets/images/blog/article-02.webp",
+        "translations": {
+          "th": {
+            "title": "ดูแลบ้านอย่างไร ระหว่างรอบบริการมืออาชีพ",
+            "meta": "JOHN HELTON · 6 ม.ค. 2025",
+            "text": "เคล็ดลับง่าย ๆ ช่วยรักษาความสะอาดระหว่างรอบนัดหมายบริการ...",
+            "body": "การดูแลบ้านระหว่างรอบบริการไม่จำเป็นต้องใช้เวลามาก ลองเช็ดพื้นผิวที่สัมผัสบ่อย เก็บของให้เป็นระเบียบ และจัดการคราบทันทีเมื่อพบ\n\nทำเช็กลิสต์รายสัปดาห์สำหรับพื้น ห้องครัว และห้องน้ำ พร้อมดูแลอุปกรณ์ทำความสะอาดให้สะอาดและแห้งหลังใช้งาน\n\nบทความนี้เป็นเนื้อหาตัวอย่าง ควรปรับให้สอดคล้องกับบริการและคำแนะนำที่ตรวจสอบแล้วก่อนเผยแพร่"
+          }
+        }
+      },
+      {
+        "id": "five-simple-cleaning-habits",
+        "title": "5 Simple Ways to Keep Your Home Fresh Every Day",
+        "meta": "JOHN HELTON · JAN 6, 2025",
+        "text": "A few simple habits can keep your space brighter and cleaner between professional appointments.",
+        "body": "Small habits can help a space feel more comfortable: make the bed, wipe kitchen counters, put items back after use, air out rooms when appropriate and handle minor spills promptly.\n\nChoose simple tasks you can sustain, rather than trying to clean everything in one session. A quick daily reset complements periodic professional cleaning.\n\nThis is sample educational content. Replace or expand it with expert-reviewed advice before publication.",
+        "image": "./assets/images/blog/article-03.webp",
+        "translations": {
+          "th": {
+            "title": "5 วิธีง่าย ๆ ให้บ้านสะอาดสดชื่นทุกวัน",
+            "meta": "JOHN HELTON · 6 ม.ค. 2025",
+            "text": "ปรับนิสัยเล็กน้อยในแต่ละวัน เพื่อพื้นที่ที่สะอาดและน่าอยู่ขึ้น...",
+            "body": "นิสัยเล็ก ๆ ช่วยให้บ้านน่าอยู่ได้ เช่น เก็บที่นอน เช็ดเคาน์เตอร์ครัว เก็บของเข้าที่ เปิดระบายอากาศตามความเหมาะสม และจัดการคราบเล็ก ๆ ทันที\n\nเลือกกิจวัตรที่ทำได้ต่อเนื่อง แทนการเก็บงานทั้งหมดไว้ทำครั้งเดียว การดูแลสั้น ๆ ทุกวันสามารถช่วยเสริมการทำความสะอาดครั้งใหญ่ได้\n\nนี่เป็นบทความตัวอย่างสำหรับระบบเว็บไซต์ โปรดตรวจสอบเนื้อหาให้ถูกต้องก่อนเผยแพร่"
+          }
+        }
+      }
+    ]
+  },
+  "imagesNotIncluded": []
+}

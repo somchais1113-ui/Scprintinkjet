@@ -1,0 +1,17 @@
+{
+  "name": "scwork-inkjet-sticker-storefront",
+  "private": true,
+  "version": "1.0.0",
+  "description": "SCWork inkjet sticker storefront TH/EN + retained unified Admin, website manager, image manager and RFQ demo foundation",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "check": "node qa/validate-scwork.mjs",
+    "check:v25": "node qa/validate-v25.mjs",
+    "check:v253": "node qa/validate-v253.mjs",
+    "check:legacy": "node qa/validate.mjs && node qa/validate-v21.mjs && node qa/validate-v22.mjs && node qa/validate-v23.mjs && node qa/validate-v24.mjs && node qa/validate-v25.mjs",
+    "check:v254": "node qa/validate-v254.mjs",
+    "check:v255": "node qa/validate-v255.mjs",
+    "check:v256": "node qa/validate-v256.mjs && node qa/validate-v257.mjs"
+  },
+  "license": "UNLICENSED"
+}

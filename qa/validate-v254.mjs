@@ -1,0 +1,17 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const html=fs.readFileSync('index.html','utf8');
+const css=fs.readFileSync('src/styles/10-hero-layout-fix.css','utf8');
+const main=fs.readFileSync('src/scripts/main.js','utf8');
+assert.match(html,/10-hero-layout-fix\.css\?v=2\.5\.(?:5|6|7)/);
+assert.match(html,/04-sections\.css\?v=2\.5\.(?:5|6|7)/);
+assert.match(html,/05-responsive\.css\?v=2\.5\.(?:5|6|7)/);
+assert.match(html,/main\.js\?v=2\.5\.(?:5|6|7)/);
+assert.match(css,/display:\s*grid/);
+assert.match(css,/grid-row:\s*2/);
+assert.match(css,/grid-column:\s*1 \/ -1/);
+assert.match(css,/margin:\s*0/);
+assert.equal((html.match(/data-hero-dot="\d"/g)||[]).length,4);
+assert.doesNotMatch(html,/id="heroPrev"|id="heroNext"/);
+assert.match(main,/function initHeroCarousel/);
+console.log('PASS v2.5.4: stable two-row grid, four compact right dots, versioned assets, full-bleed figures');

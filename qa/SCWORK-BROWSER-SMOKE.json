@@ -1,0 +1,25 @@
+[
+  {
+    "width": 1440,
+    "lang": "th",
+    "headline": "สติกเกอร์คุณภาพ เพื่อแบรนด์ที่โดดเด่น",
+    "services": 3,
+    "pricing": 3,
+    "case_studies": 1,
+    "blog": 3,
+    "overflow": false,
+    "errors": [],
+    "dots_work": true
+  },
+  {
+    "width": 390,
+    "lang": "en",
+    "headline": "Stickers That Make Your Brand Stand Out.",
+    "services": 3,
+    "pricing": 3,
+    "case_studies": 1,
+    "blog": 3,
+    "overflow": false,
+    "errors": []
+  }
+]

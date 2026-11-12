@@ -1,0 +1,40 @@
+/* ProCleaning v2.5.6 — service CTA + editorial blog cards.
+   Kept separate so earlier Figma styles and motion geometry remain intact. */
+.services .service-card .button {
+  background:var(--color-primary);color:#fff;border-color:var(--color-primary);
+  transition:background .22s ease,box-shadow .25s ease,transform .25s ease;
+}
+.services .service-card .button:hover {background:var(--color-primary-hover);color:#fff;border-color:var(--color-primary-hover)}
+.services .service-card .button:focus-visible {outline:3px solid #7fe0a2;outline-offset:3px}
+
+.blog-grid {align-items:stretch}
+.blog-grid .blog-card {display:flex;flex-direction:column;min-width:0}
+.blog-card__image {flex-shrink:0}
+.blog-grid .blog-card__body {
+  display:flex;flex:1;flex-direction:column;gap:11px;padding:24px 25px 23px;
+}
+.blog-grid .blog-card__meta {margin:0;line-height:1.5}
+.blog-grid .blog-card h3 {min-height:0;margin:0;line-height:1.34;font-size:21px;letter-spacing:-.015em}
+.blog-grid .blog-card p {min-height:0;margin:0 0 12px;line-height:1.6;font-size:14px}
+.blog-grid .blog-card__more {
+  display:flex;justify-content:center;align-items:center;gap:9px;
+  margin-top:auto;margin-bottom:0;padding:16px 8px 0;
+  border-top:1px solid #d7e4da;font-size:14px;font-weight:600;text-decoration:none;
+  transition:color .2s ease;
+}
+.blog-card__more span {transition:transform .22s ease}
+.blog-card__more:hover span {transform:translate(3px,-3px)}
+.blog-card__more:focus-visible {outline:3px solid #7fe0a2;outline-offset:2px}
+.blog-more-wrap {display:flex;justify-content:center;margin-top:38px}
+.blog-more-button {
+  background:var(--color-primary);color:#fff;border:1px solid var(--color-primary);
+  padding:14px 28px;min-height:52px;min-width:200px;
+  border-radius:7px;font-weight:700;font-size:15px;
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  transition:background .2s ease,transform .3s ease,box-shadow .3s ease;
+}
+.blog-more-button:hover {background:var(--color-primary-hover);transform:translateY(-2px);box-shadow:0 10px 22px rgba(18,59,41,.12)}
+.blog-more-button:focus-visible {outline:3px solid #7fe0a2;outline-offset:3px}
+.blog-more-button[hidden],.blog-more-wrap[hidden]{display:none!important}
+@media(max-width:780px){.blog-grid .blog-card__body {padding:19px 20px 21px}.blog-grid .blog-card h3{font-size:19px}.blog-more-wrap{margin-top:28px}}
+@media(prefers-reduced-motion:reduce){.blog-more-button,.blog-card__more span{transition:none!important;transform:none!important}}

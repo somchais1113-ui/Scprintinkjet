@@ -1,0 +1,62 @@
+[
+  {
+    "width": 1440,
+    "language": "en",
+    "heroTitleBottom": 396,
+    "actionsTop": 507,
+    "dotsCenter": 536,
+    "buttonsCenter": 536,
+    "reveals": 41,
+    "errors": 0
+  },
+  {
+    "width": 1440,
+    "language": "th",
+    "heroTitleBottom": 415,
+    "actionsTop": 497,
+    "dotsCenter": 525,
+    "buttonsCenter": 525,
+    "reveals": 32,
+    "errors": 0
+  },
+  {
+    "width": 390,
+    "language": "en",
+    "heroTitleBottom": 302,
+    "actionsTop": 388,
+    "dotsCenter": 411,
+    "buttonsCenter": 411,
+    "reveals": 41,
+    "errors": 0
+  },
+  {
+    "width": 390,
+    "language": "th",
+    "heroTitleBottom": 311,
+    "actionsTop": 396,
+    "dotsCenter": 419,
+    "buttonsCenter": 419,
+    "reveals": 32,
+    "errors": 0
+  },
+  {
+    "width": 768,
+    "language": "en",
+    "heroTitleBottom": 386,
+    "actionsTop": 478,
+    "dotsCenter": 507,
+    "buttonsCenter": 507,
+    "reveals": 41,
+    "errors": 0
+  },
+  {
+    "width": 320,
+    "language": "th",
+    "heroTitleBottom": 339,
+    "actionsTop": 424,
+    "dotsCenter": 447,
+    "buttonsCenter": 447,
+    "reveals": 32,
+    "errors": 0
+  }
+]

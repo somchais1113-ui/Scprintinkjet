@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Article — SCWork Stickers</title>
+  <meta name="description" content="SCWork articles about stickers, materials and digital printing" />
+  <link rel="icon" href="./assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./src/styles/12-article.css?v=sticker-1.0" />
+  <script src="./data/site-data.js?v=sticker-1.0" defer></script>
+  <script src="./src/scripts/i18n.js?v=sticker-1.0" defer></script>
+  <script src="./src/scripts/article-page.js?v=sticker-1.0" defer></script>
+</head>
+<body>
+  <a class="skip" href="#articleMain">Skip to content</a>
+  <header class="article-header">
+    <div class="article-shell article-header__inner">
+      <a href="./index.html" class="article-brand" id="articleBrand">SC<span>Work</span></a>
+      <div class="article-header__right">
+        <nav class="article-switch" aria-label="Article language">
+          <button type="button" data-lang="th" aria-pressed="false">TH</button>
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        </nav>
+        <a id="backHeader" class="back-link" href="./index.html#blog">← Back to articles</a>
+      </div>
+    </div>
+  </header>
+  <main id="articleMain" class="article-shell article-main">
+    <div id="articleContent" hidden>
+      <p class="article-eyebrow" id="articleKicker">STORIES & INSIGHTS</p>
+      <p class="article-meta" id="articleMeta"></p>
+      <h1 id="articleTitle"></h1>
+      <p class="article-lead" id="articleLead"></p>
+      <div class="article-image"><img id="articleCover" alt="" /></div>
+      <div class="article-body" id="articleBody"></div>
+      <div class="article-end">
+        <a class="article-button" id="backFooter" href="./index.html#blog">← All articles</a>
+        <a class="article-button article-button--primary" id="articleQuote" href="./request-quote.html?type=general">Get a quote →</a>
+      </div>
+    </div>
+    <div class="article-error" id="articleError" hidden>
+      <h1 id="articleErrorTitle">Article not found</h1>
+      <p id="articleErrorText">This article may have been moved or removed.</p>
+      <a href="./index.html#blog" id="articleErrorBack" class="article-button article-button--primary">Back to articles</a>
+    </div>
+  </main>
+  <footer class="article-footer">
+    <div class="article-shell"><span id="articleCopyright">© SCWork.</span><span id="articleDisclaimer">Website demonstration — article content should be verified before publishing.</span></div>
+  </footer>
+</body>
+</html>

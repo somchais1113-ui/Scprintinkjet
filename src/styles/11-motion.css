@@ -1,0 +1,69 @@
+/* ProCleaning v2.5.5 — Motion Design Layer
+   Safe layering: never changes Hero Grid columns/rows, CTA alignment,
+   existing image positions, or section geometry.
+   The HTML remains visible without JavaScript; motion classes are opt-in.
+*/
+:root{--pc-motion-ease:cubic-bezier(.19,1,.22,1);--pc-motion-time:780ms}
+
+@media (prefers-reduced-motion:no-preference){
+  /* First impression: the existing Hero layout stays fixed while its content arrives. */
+  html.pc-motion-ready .hero__eyebrow{animation:pc-enter-up 820ms var(--pc-motion-ease) 100ms both}
+  html.pc-motion-ready .hero h1{animation:pc-enter-up 900ms var(--pc-motion-ease) 230ms both}
+  html.pc-motion-ready .hero__description{animation:pc-enter-up 930ms var(--pc-motion-ease) 390ms both}
+  html.pc-motion-ready .hero__actions{animation:pc-enter-up 950ms var(--pc-motion-ease) 540ms both}
+  html.pc-motion-ready .site-header .brand{animation:pc-enter-up 750ms var(--pc-motion-ease) 80ms both}
+  html.pc-motion-ready .site-header .main-nav{animation:pc-fade-in 750ms ease 220ms both}
+  html.pc-motion-ready .site-header .header-cta{animation:pc-fade-in 750ms ease 270ms both}
+  html.pc-motion-ready .site-header .language-switch{animation:pc-fade-in 750ms ease 270ms both}
+
+  /* Crossfade is owned by the original carousel. Only animate image pixels, not frame. */
+  html.pc-motion-ready .hero__slide{transition:opacity 950ms cubic-bezier(.45,0,.2,1)}
+  html.pc-motion-ready .hero__slide.is-active img{animation:pc-photo-breathe 6100ms ease-out both}
+  html.pc-motion-ready .hero__slide img{backface-visibility:hidden}
+  html.pc-motion-ready .hero__dot::before{transition:background 260ms ease,transform 360ms var(--pc-motion-ease),box-shadow 260ms ease}
+  html.pc-motion-ready .hero__dot.is-active::before{box-shadow:0 0 0 3px rgba(45,182,107,.13);transform:scale(1.13)}
+  html.pc-motion-ready .hero__dot:hover::before{transform:scale(1.25)}
+
+  /* IntersectionObserver gates only content reveal, preserving each section's size. */
+  html.pc-motion-ready .pc-reveal{opacity:0;transform:translate3d(0,22px,0);transition:opacity var(--pc-motion-time) ease,transform var(--pc-motion-time) var(--pc-motion-ease);transition-delay:var(--pc-reveal-delay,0ms)}
+  html.pc-motion-ready .pc-reveal.pc-reveal--quiet{transform:none}
+  html.pc-motion-ready .pc-reveal.is-visible{opacity:1;transform:translate3d(0,0,0)}
+  html.pc-motion-ready .pc-reveal.pc-reveal--quiet.is-visible{transform:none}
+
+  /* Hover details: restrained and GPU-friendly, never affect document flow. */
+  html.pc-motion-ready .button{transition:background .24s ease,color .24s ease,transform .32s var(--pc-motion-ease),box-shadow .32s ease,border-color .24s ease}
+  html.pc-motion-ready .button:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(18,59,41,.12)}
+  html.pc-motion-ready .button:active{transform:translateY(-1px) scale(.985);box-shadow:none}
+  html.pc-motion-ready .service-card,
+  html.pc-motion-ready .price-card,
+  html.pc-motion-ready .blog-card,
+  html.pc-motion-ready .team-card{transition:transform .48s var(--pc-motion-ease),box-shadow .48s ease,border-color .3s ease}
+  @media(hover:hover){
+    html.pc-motion-ready .service-card:hover,
+    html.pc-motion-ready .price-card:hover,
+    html.pc-motion-ready .blog-card:hover,
+    html.pc-motion-ready .team-card:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(18,59,41,.08)}
+    html.pc-motion-ready .service-card__image img,
+    html.pc-motion-ready .blog-card__image,
+    html.pc-motion-ready .team-card__image img{transition:transform .8s var(--pc-motion-ease)}
+    html.pc-motion-ready .service-card:hover .service-card__image img,
+    html.pc-motion-ready .blog-card:hover .blog-card__image,
+    html.pc-motion-ready .team-card:hover .team-card__image img{transform:scale(1.045)}
+    html.pc-motion-ready .overlap-photos__small{animation:pc-photo-float 7.5s ease-in-out infinite}
+    html.pc-motion-ready .main-nav a{transition:color .25s ease}
+  }
+  html.pc-motion-ready .v24-rfq-button{transition:transform .3s var(--pc-motion-ease),box-shadow .3s ease,background .3s ease}
+  html.pc-motion-ready .v24-rfq-button:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(0,0,0,.19)}
+  html.pc-motion-ready .circle-arrow{transition:transform .32s var(--pc-motion-ease),background .25s ease}
+  html.pc-motion-ready .circle-arrow:hover{transform:scale(1.055)}
+
+  #pc-scroll-progress{position:fixed;top:0;left:0;width:100%;height:2px;background:var(--color-primary,#36b864);z-index:9999;pointer-events:none;transform:scaleX(0);transform-origin:left center;will-change:transform;opacity:.78}
+}
+@keyframes pc-enter-up{from{opacity:0;transform:translate3d(0,24px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
+@keyframes pc-fade-in{from{opacity:0}to{opacity:1}}
+@keyframes pc-photo-breathe{from{transform:scale(1.045)}to{transform:scale(1)}}
+@keyframes pc-photo-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@media(prefers-reduced-motion:reduce){
+  html .hero__slide,html .hero__slide img,html .pc-reveal{animation:none!important;transition:none!important;opacity:1!important;transform:none!important}
+  #pc-scroll-progress{display:none!important}
+}

@@ -1,0 +1,68 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import vm from 'node:vm';
+import assert from 'node:assert/strict';
+import { fileURLToPath } from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const exists=p=>fs.existsSync(path.join(root,p));
+const paths=['tools/index.html','tools/business/dashboard.html','tools/business/customers.html','tools/business/quotations.html','tools/business/orders.html','tools/business/admin.css','tools/business/admin-data.js','tools/business/admin.js','data/demo/seed-data.js','docs/13-BUSINESS-DASHBOARD-V2.3.md'];
+for(const p of paths)assert.ok(exists(p),'Missing '+p);
+for(const page of ['dashboard','customers','quotations','orders']){
+ const file=read('tools/business/'+page+'.html');
+ assert.ok(file.includes(`data-page="${page}"`),'Wrong page marker');
+ for(const s of ['../../data/demo/seed-data.js','./admin-data.js','./admin.js','./admin.css'])assert.ok(file.includes(s),page+' missing '+s);
+}
+for(const name of ['customers','rfqs','quotes','orders'])assert.ok(Array.isArray(JSON.parse(read(`data/demo/${name}.json`))),'Missing JSON sample '+name);
+for(const code of ['tools/business/admin-data.js','tools/business/admin.js','data/demo/seed-data.js'])new vm.Script(read(code),{filename:code});
+const memory=new Map();const storage={getItem:k=>memory.get(k)||null,setItem:(k,v)=>memory.set(k,v)};
+const sandbox={window:{localStorage:storage},console,Date,Intl,Set,Map,JSON};vm.createContext(sandbox);
+vm.runInContext(read('data/demo/seed-data.js'),sandbox);
+vm.runInContext(read('tools/business/admin-data.js'),sandbox);
+const A=sandbox.window.PCAdminCore;
+assert.equal(A.read().customers.length,30);
+assert.equal(A.read().rfqs.length,42);
+assert.equal(A.read().quotes.length,35);
+assert.equal(A.read().orders.length,11);
+const current=A.metrics(A.read(),{period:'all',source:'all'});
+assert.equal(current.rfqs,42);
+assert.equal(current.won,11);
+assert.equal(current.quoted<=42,true);
+assert.equal(current.decided>0,true);
+assert.equal(current.quoteStatuses,undefined);
+assert.equal(current.conversion,100*11/42);
+const latest=A.latestQuotes();assert.ok(latest.length<A.read().quotes.length,'Quote revisions not deduplicated');
+const countBefore=A.read().customers.length;
+A.addCustomer({name:'QA Sample Company',email:'qa@example.com',source:'Website',segment:'SME'});
+assert.equal(A.read().customers.length,countBefore+1);
+const cust=A.read().customers.at(-1);assert.ok(cust.id.startsWith('C-'));
+A.addRfq({customerId:cust.id,title:'Sample labels',category:'Sticker & Label',quantity:350,source:'Website'});
+const rfq=A.read().rfqs.at(-1);assert.equal(rfq.customerId,cust.id);
+const formerQuoteCount=A.read().quotes.length;
+A.addQuote({rfqId:rfq.id,amount:'12000',estimatedCost:'7100'});
+const quote=A.read().quotes.at(-1);assert.equal(A.read().quotes.length,formerQuoteCount+1);
+assert.equal(quote.status,'draft');
+A.updateQuoteStatus(quote.id,'sent');assert.equal(A.getQuote(quote.id).status,'sent');
+let didFail=false;try{A.updateQuoteStatus(quote.id,'rejected','')}catch(e){didFail=true}assert.equal(didFail,true,'Lost reason should be mandatory');
+const formerOrders=A.read().orders.length;
+A.confirmOrder(quote.id);assert.equal(A.read().orders.length,formerOrders+1);
+const order=A.read().orders.at(-1);assert.equal(A.getQuote(quote.id).status,'accepted');assert.equal(A.getRfq(rfq.id).status,'won');
+A.updateOrderStatus(order.id,'in_production');assert.equal(A.getOrder(order.id).status,'in_production');
+assert.equal(A.metrics(A.read(),{period:'all',source:'all'}).won,current.won+1);
+// RFQ cannot produce second order; new Quote version should not increase lead count.
+didFail=false;try{A.confirmOrder(quote.id)}catch(e){didFail=true}assert.ok(didFail,'duplicate order must fail');
+A.addRfq({customerId:cust.id,title:'Alternate RFQ',source:'LINE'});
+const lostRfq=A.read().rfqs.at(-1);
+A.addQuote({rfqId:lostRfq.id,amount:9000,estimatedCost:5000});
+let lost=A.read().quotes.at(-1);
+A.updateQuoteStatus(lost.id,'sent');A.updateQuoteStatus(lost.id,'rejected','Price too high');assert.equal(A.getQuote(lost.id).lostReason,'Price too high');
+const backed=A.snapshot();assert.ok(memory.get(A.KEY).includes('QA Sample Company'));
+A.reset();assert.equal(A.read().customers.length,30);
+A.importData(backed);assert.equal(A.read().customers.length,31);
+const invalid={schemaVersion:1,customers:[],rfqs:[{id:'RFQ-X',customerId:'MISSING'}],quotes:[],orders:[],events:[]};
+didFail=false;try{A.importData(invalid)}catch(e){didFail=true}assert.ok(didFail,'foreign keys on import should be verified');
+// Demo emails only; ensures no accidentally copied real contacts in package.
+const demo=JSON.parse(read('data/demo/customers.json'));assert.ok(demo.every(c=>c.email.endsWith('@example.com')));
+// File-path sanity for existing public site
+for(const p of ['index.html','tools/site-manager.html','tools/image-manager.html','data/site-data.js','assets/images/hero/hero-scene.webp','src/scripts/i18n.js'])assert.ok(exists(p),'Base V2.2 asset missing: '+p);
+console.log('PASS V2.3: 4 module pages, demo data and cross-refs, KPI cohorts, quote de-duplication, Customer→RFQ→Quote→Order flow, lost reason, persistence/import/reset, inherited V2.2 resources');
