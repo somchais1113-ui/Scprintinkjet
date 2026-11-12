@@ -21,7 +21,7 @@
    const submit=document.getElementById('generalSubmit');
    submit.disabled=true;submit.textContent='กำลังส่ง / Submitting…';feedback.textContent='';
    try{
-     const out=await network.submit({name:v.name,email:v.email,phone:v.phone||'',title:String(v.message).slice(0,160),category:v.service,quantity:1,unit:'jobs',language:document.documentElement.lang==='th'?'th':'en',specs:{width:1,height:1,dimensionUnit:'mm',material:'Not applicable',finish:'None',printSides:'1',artwork:'not_applicable',deadline:'',notes:v.message}});
+     const out=await network.submit({name:v.name,email:v.email,phone:v.phone||'',title:String(v.message).slice(0,160),category:v.service,quantity:1,unit:'jobs',language:['th','en'].includes(document.documentElement.lang)?document.documentElement.lang:'en',specs:{width:1,height:1,dimensionUnit:'mm',material:'Not applicable',finish:'None',printSides:'1',artwork:'not_applicable',deadline:'',notes:v.message}});
      form.hidden=true;const success=document.getElementById('generalSuccess');success.hidden=false;
      const icon=document.createElement('div');icon.className='check';icon.textContent='✓';
      const title=document.createElement('h2');title.textContent='ได้รับคำขอแล้ว / Request received';

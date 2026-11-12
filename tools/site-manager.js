@@ -28,6 +28,7 @@ const fieldGroups={
  {title:'Legacy Pricing Settings',desc:'โหมดสติกเกอร์ใช้การขอราคา ไม่แสดง Monthly/Yearly บนหน้าเว็บ',fields:[['settings.currency','Currency','select','USD|THB|EUR|GBP|JPY'],['settings.yearlyDiscount','Yearly Discount (%)','number']]}
  ],
  content:[
+ {title:'Top Bar / Four-Step Quote Process',desc:'ข้อความใหม่จาก V1.1 ปรับแยกภาษา TH/EN ได้เช่นเดียวกับ Hero',fields:[['commerce.topBenefit','Top contact bar summary','textarea'],['commerce.topEstimate','Top bar price CTA'],['commerce.topInquiry','Top bar quote CTA'],['commerce.languageHint','Language menu label'],['commerce.languageNote','Available languages note','textarea'],['commerce.processEyebrow','Process eyebrow'],['commerce.processTitle','Process heading','textarea'],['commerce.processCta','Process CTA'],['commerce.processSteps.0.title','Step 1 title'],['commerce.processSteps.0.text','Step 1 description','textarea'],['commerce.processSteps.1.title','Step 2 title'],['commerce.processSteps.1.text','Step 2 description','textarea'],['commerce.processSteps.2.title','Step 3 title'],['commerce.processSteps.2.text','Step 3 description','textarea'],['commerce.processSteps.3.title','Step 4 title'],['commerce.processSteps.3.text','Step 4 description','textarea'],['commerce.pricingCta','Calculator CTA'],['commerce.pricingDisclaimer','Demo pricing disclaimer','textarea']]},
  {title:'Hero Section',fields:[['hero.eyebrow','Eyebrow'],['hero.title','Headline (H1)','textarea'],['hero.description','Description','textarea'],['hero.ctaPrimary','Primary CTA'],['hero.ctaSecondary','Secondary CTA']]},
  {title:'Services Introduction',fields:[['headings.servicesTitle','Section Title','textarea'],['headings.servicesEyebrow','Eyebrow'],['headings.servicesDescription','Description','textarea']]},
  {title:'Quote Section',fields:[['headings.quoteEyebrow','Eyebrow'],['headings.quoteTitle','Heading','textarea'],['headings.quoteDescription','Description','textarea'],['headings.quoteButton','CTA']]},
@@ -60,7 +61,7 @@ const tabMeta={
 };
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const get=path=>path.split('.').reduce((v,k)=>v?.[k],site);
-const fieldsToTranslate=new Set(['navigation','hero','headings','labels','footer']);
+const fieldsToTranslate=new Set(['navigation','hero','headings','labels','footer','commerce']);
 function localePath(path,type='text'){
  if(editLanguage!=='th'||type==='image'||type==='number'||type==='color'||type==='checkbox'||path.startsWith('design.')||path.startsWith('settings.')||path.startsWith('i18n.'))return path;
  const a=path.split('.'),group=a[0];

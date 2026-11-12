@@ -136,6 +136,7 @@
     byId('contactMethods').innerHTML=[ui.contactMethod('☎',labels.contactCall||'Call Us',cn.phone||''),ui.contactMethod('✉',labels.contactEmail||'Email Now',cn.email||''),ui.contactMethod('●',labels.contactAddress||'Address',cn.address||'')].join('');
     byId('year').textContent=new Date().getFullYear();
     fallbackImages();
+    window.dispatchEvent(new Event('scwork-site-updated'));
   }
   function useOverrides(original,overrides){
     const copy=JSON.parse(JSON.stringify(original));
@@ -153,12 +154,14 @@
     const selected=document.activeElement;
 
     draw();
+    window.dispatchEvent(new CustomEvent('scwork:locale-applied',{detail:{code:language}}));
     if(selected?.matches?.('[data-language]'))selected.focus();
   }
   draw();
   initHeroCarousel();
   setupAnchorScrolling();
   document.querySelectorAll('[data-language]').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.language)));
+  window.addEventListener('scwork:locale-change',event=>setLanguage(event.detail?.code));
   byId('blogMoreButton')?.addEventListener('click',()=>{
     const blogs=activeSite.blogs||[];
     const allShown=visibleBlogCount>=blogs.length;

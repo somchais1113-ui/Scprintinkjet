@@ -1,9 +1,45 @@
 /* SCWork Inkjet Sticker Printing — bilingual source of truth; editable in tools/site-manager.html */
 window.PROCLEANING_SITE = {
   "schemaVersion": 2,
+  "commerce": {
+    "topBenefit": "Online sticker printing  ·  Reference price calculator  ·  Custom orders",
+    "topEstimate": "Estimate price",
+    "topInquiry": "Request a quote",
+    "languageHint": "Select your language",
+    "languageNote": "TH / EN are translated; other languages are not yet available.",
+    "processEyebrow": "HOW TO ORDER",
+    "processTitle": "Four steps, from specifications to a quotation",
+    "processCta": "Try price calculator",
+    "processSteps": [
+      {"title":"Calculate", "text":"Select material, dimensions and quantity for a reference estimate."},
+      {"title":"Select options", "text":"Choose finishing and any design support needed."},
+      {"title":"Send specifications", "text":"Transfer your choices into Smart RFQ; artwork upload is not active in demo."},
+      {"title":"Receive a quotation", "text":"We confirm artwork, feasibility, production and final price before ordering."}
+    ],
+    "pricingCta": "Try reference price calculator",
+    "pricingDisclaimer": "Demo reference rates only. Final prices require confirmation by SCWork."
+  },
   "i18n": {
     "defaultLanguage": "th",
     "th": {
+      "commerce": {
+        "topBenefit": "สั่งผลิตสติกเกอร์ออนไลน์  ·  ทดลองคำนวณราคา  ·  รับผลิตตามสเปก",
+        "topEstimate": "คำนวณราคา",
+        "topInquiry": "ขอใบเสนอราคา",
+        "languageHint": "เลือกภาษาที่ต้องการ",
+        "languageNote": "รองรับคำแปล TH / EN เท่านั้นในเวอร์ชันนี้",
+        "processEyebrow": "ขั้นตอนการขอใบเสนอราคา",
+        "processTitle": "4 ขั้นตอนง่าย ๆ จากสเปกงานสู่การประเมินราคา",
+        "processCta": "ทดลองคำนวณราคา",
+        "processSteps": [
+          {"title":"คำนวณราคา", "text":"เลือกวัสดุ ขนาด และจำนวนเพื่อดูราคาเบื้องต้น"},
+          {"title":"เลือกตัวเลือก", "text":"ระบุงานเคลือบ งานหลังพิมพ์ หรือบริการออกแบบ"},
+          {"title":"ส่งสเปกงาน", "text":"ส่งรายละเอียดต่อไปยัง Smart RFQ โดยระบบทดลองยังไม่อัปโหลด Artwork"},
+          {"title":"รับใบเสนอราคา", "text":"ตรวจสอบไฟล์ ต้นทุนและการผลิต ก่อนยืนยันราคาจริงและรับงาน"}
+        ],
+        "pricingCta": "ทดลองคำนวณราคาสติกเกอร์",
+        "pricingDisclaimer": "ใช้ราคาตัวอย่างเพื่อศึกษาเท่านั้น ราคาจริงต้องได้รับการยืนยันจาก SCWork"
+      },
       "brand": {
         "tagline": "รับผลิตสติกเกอร์ Inkjet",
         "pageTitle": "SCWork | รับผลิตสติกเกอร์ Inkjet",

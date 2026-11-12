@@ -45,8 +45,10 @@
     form.elements.dimensionUnit.value=p.measure;
     form.elements.quantity.value=String(p.quantity);
   }
+  for(const [code,pack] of Object.entries(window.SCWORK_EXTRA_LOCALES||{})){copy[code]={...copy.en,...(pack.rfq||{})};}
   const languageSaved=()=>{try{return localStorage.getItem('procleaning-language')||'en';}catch{return'en';}};
-  let language = ['th','en'].includes(new URLSearchParams(location.search).get('lang'))?new URLSearchParams(location.search).get('lang'):languageSaved();
+  const supported=window.SCWORK_LANGUAGES||['ar','my','zh','ru','nl','es','en','th','fr','vi','de','it','ja','ko'];
+  let language = supported.includes(new URLSearchParams(location.search).get('lang'))?new URLSearchParams(location.search).get('lang'):(supported.includes(languageSaved())?languageSaved():'th');
   let step=1,submittedId='';
   if(connected){
     $('rfqLiveFields').hidden=false;
@@ -55,16 +57,16 @@
     form.elements.customerName.required=true;form.elements.customerEmail.required=true;
   }
 
-  const t=key=>copy[language][key]||key;
+  const t=key=>(copy[language]||copy.en)[key]||copy.en[key]||key;
   const escape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[c]));
   function setLanguage(next) {
-    if(!copy[next])return; language=next;document.documentElement.lang=next;
+    if(!supported.includes(next))return; language=next;document.documentElement.lang=next;
     try{localStorage.setItem('procleaning-language',next);}catch{}
     document.querySelectorAll('[data-language]').forEach(b=>{const on=b.dataset.language===next;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on));});
     document.querySelectorAll('[data-i18n]').forEach(el=>{const key=el.dataset.i18n;if(key==='title'||key==='sideTitle')el.innerHTML=t(key);else el.textContent=t(key);});
     document.querySelectorAll('[data-placeholder]').forEach(el=>el.placeholder=t(el.dataset.placeholder));
     $('homeLink').textContent=t('homeLink');
-    for(const op of $('category').options){if(productNames[op.value])op.textContent=productNames[op.value][next==='en'?0:1];}
+    for(const op of $('category').options){if(productNames[op.value])op.textContent=productNames[op.value][next==='th'?1:0];}
     if(step===3)review();
   }
   function stepValid(current) {
@@ -116,6 +118,7 @@
     }catch(err){showFeedback(t('saveFailed')+': '+err.message);}
   }
   document.querySelectorAll('[data-language]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.language)));
+  window.addEventListener('scwork:locale-change',e=>{setLanguage(e.detail?.code);window.dispatchEvent(new CustomEvent('scwork:locale-applied',{detail:{code:language}}));});
   document.querySelectorAll('[data-category]').forEach(button=>button.addEventListener('click',()=>{$('category').value=button.dataset.category;applyPreset(button.dataset.category);}));
   $('category').addEventListener('change',()=>applyPreset($('category').value));
   $('rfqNext').addEventListener('click',()=>{if(!stepValid(step)){showFeedback(t('noInput'));return;}showStep(step+1);});
@@ -129,5 +132,43 @@
   }else if(!new URLSearchParams(location.search).has('type')){
     $('category').value='Sticker & Label';applyPreset('Sticker & Label');
   }
+  // Optional one-tab handoff from the demonstrator; no personal details or artwork are transferred.
+  function takeEstimatorHandoff(){
+    if(new URLSearchParams(location.search).get('fromEstimator')!=='1')return;
+    let item;
+    try { item=JSON.parse(sessionStorage.getItem('scwork-pricing-handoff')||'null'); }
+    catch { return; }
+    if(!item || item.schemaVersion!==1 || !item.nonBinding || Date.now()-item.at>15*60*1000)return;
+    const safe=x=>Number.isFinite(Number(x))&&Number(x)>0?Number(x):null;
+    const details=item.details||{};
+    let category='Sticker & Label';
+    if(item.categoryId==='signage')category='Display & Signage';
+    else if(item.materialId==='pvc-sqm')category='Large Format Inkjet';
+    $('category').value=category;applyPreset(category);
+    const materialSelect=form.elements.material;
+    const options={
+      'paper-sticker':'Paper Sticker','kraft-sticker':'Paper Sticker',
+      'pp-white':'PP Sticker','pp-clear':'PP Sticker','pp-silver':'PP Sticker',
+      'pvc-sqm':'PVC Sticker','vinyl-banner':'Vinyl Banner'
+    };
+    const suggested=options[item.materialId];
+    if(suggested && [...materialSelect.options].some(o=>o.value===suggested))materialSelect.value=suggested;
+    const wh=item.mode==='area_sqm'?[safe(details.widthCm),safe(details.heightCm)]:[safe(details.widthCm),safe(details.heightCm)];
+    if(wh[0]&&wh[1]){form.elements.width.value=String(wh[0]);form.elements.height.value=String(wh[1]);form.elements.dimensionUnit.value='cm';}
+    const qty=safe(item.mode==='a3_sheet'?details.requestedPieces:item.mode==='area_sqm'?details.quantity:item.mode==='size_preset'?details.requestedQuantity:details.requestedQuantity);
+    if(qty&&Number.isInteger(qty))form.elements.quantity.value=String(qty);
+    const safeName=String(item.materialName||'Sticker').slice(0,80).replace(/[<>]/g,'');
+    form.elements.title.value=(language==='th'?'สอบถามผลิต ':'Quote request for ')+safeName;
+    const estimateNumber=safe(item.total);
+    const note=(language==='th'?'สเปกจากเครื่องคำนวณราคา SCWork (ข้อมูลราคาสาธิต ไม่ผูกพัน): ':'Specifications from SCWork demo estimator (non-binding reference rates): ')+
+      safeName+'; '+(wh[0]&&wh[1]?wh.join('×')+' cm; ':'')+'qty '+(qty||'—')+'; '+
+      (estimateNumber?'illustrative total ฿'+estimateNumber.toFixed(2)+'. ':'')+
+      (language==='th'?'ต้องตรวจสอบวัสดุและต้นทุนก่อนเสนอราคาจริง':'Final price subject to production review');
+    form.elements.notes.value=note.slice(0,500);
+    const notice=document.getElementById('scEstimateHandoffNotice');
+    if(notice){notice.textContent=language==='th'?'นำสเปกจากเครื่องคำนวณมาใส่ให้แล้ว · ราคาที่เห็นเป็นเพียงตัวอย่าง ไม่ใช่ราคายืนยัน':'Specifications imported from estimator · demo price is not a confirmed quote';notice.hidden=false;}
+    try{sessionStorage.removeItem('scwork-pricing-handoff');}catch{}
+  }
+  takeEstimatorHandoff();
   setLanguage(language);showStep(1);
 })();

@@ -18,7 +18,7 @@
   };
   function show(){
     document.documentElement.lang=lang;
-    const t=phrases[lang];
+    const t=phrases[lang]||phrases.en;
     document.querySelectorAll('[data-lang]').forEach(button=>{const active=button.dataset.lang===lang;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active));});
     $('backHeader').textContent=t.back;$('backFooter').textContent=t.all;$('articleQuote').textContent=t.quote;$('articleKicker').textContent=t.kicker;
     $('articleErrorTitle').textContent=t.notFound;$('articleErrorText').textContent=t.missing;$('articleErrorBack').textContent=t.all;
@@ -35,10 +35,12 @@
     $('articleCover').onerror=()=>{$('articleCover').onerror=null;$('articleCover').src='./assets/images/placeholder.svg';};
     const body=$('articleBody');body.replaceChildren();
     const paragraphs=String(post.body||'').split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+    if(lang!=='en'&&lang!=='th'&&!source.blogs.find(a=>a.id===id)?.translations?.[lang]?.body){const notice=document.createElement('p');notice.className='article-translation-note';notice.textContent='Full article available in English · เนื้อหาบทความฉบับเต็มยังเป็นภาษาอังกฤษ';body.appendChild(notice);}
     for(const text of (paragraphs.length?paragraphs:[t.empty])){const p=document.createElement('p');p.textContent=text;body.appendChild(p);}
     document.title=`${post.title} — ${(brand.prefix||'SC')+(brand.name||'Work')}`;
     const meta=document.querySelector('meta[name="description"]');if(meta)meta.content=post.text||'';
   }
   document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{lang=button.dataset.lang;locales.persist(lang);const url=new URL(location.href);url.searchParams.set('lang',lang);try{history.replaceState(null,'',url);}catch{}show();}));
+  window.addEventListener('scwork:locale-change',e=>{if(!locales.supported.includes(e.detail?.code))return;lang=e.detail.code;locales.persist(lang);const url=new URL(location.href);url.searchParams.set('lang',lang);try{history.replaceState(null,'',url);}catch{}show();window.dispatchEvent(new CustomEvent('scwork:locale-applied',{detail:{code:lang}}));});
   show();
 })();

@@ -7,3 +7,6 @@ window.PROCLEANING_PUBLIC_CONFIG = Object.freeze({
   publishableKey: '',             // sb_publishable_...; used only for staff sign-in/reads
   turnstileSiteKey: '',           // PUBLIC Cloudflare Turnstile site key
 });
+
+/* Optional business contact channels. Leave blank until verified. Never copy competitor contact details. */
+window.SCWORK_PUBLIC_CONTACT = Object.freeze({phone:'',lineId:'',lineUrl:''});

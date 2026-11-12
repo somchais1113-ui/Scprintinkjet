@@ -1,3 +1,10 @@
+## SCWork V1.2 — Multilingual storefront
+- Language modal aligned to reference: two columns, flags, language names, dark overlay and clear selection.
+- 14 languages supported in site navigation, hero, primary sections, service cards, blog teasers, buttons and order flow.
+- Persistent locale across public pages; localized essential RFQ/estimator headings, with honest English technical fallback.
+- EN/TH content manager preserved, CRM/quotation data model preserved, no pricing formula changed.
+- Added docs/26-V1.2-MULTILINGUAL.md with translation scope and limitations.
+
 ## V2.5.7 — Balanced Vertical Rhythm & Full-Page Spacing QA (2026-11-11)
 - Audited the complete public landing page, including Desktop/Tablet/Mobile and TH/EN.
 - Introduced a new late-loaded spacing system (src/styles/13-spacing-system.css), using the Website Manager's existing design.sectionSpacing token.
@@ -137,3 +144,13 @@
 - Repositioned team cards as workflow capabilities and testimonials as illustrative applications (not real customer testimonials).
 - Updated 3 full articles, service card links, and hero 4-photo sequence.
 - Preserved all underlying Admin, quote builder, orders, image manager, motion and RFQ logic.
+
+
+## SCWork V1.1 — Commerce foundation & estimator (2026-11-12)
+- New dark top contact/quick-actions bar; never displays third-party contact details by default.
+- TH/EN dropdown instead of compact toggle; retained site-content locale, remembered preference and Instant switching.
+- New 4-stage process band, adapted for quote-based sticker production and realistic demo limitations.
+- Added bilingual estimator supporting A3+ sheet nesting, sqm, quantity tier, size preset, material add-ons, VAT 7%.
+- Added transfer of NON-BINDING selected specs from the estimator to the existing Smart RFQ form.
+- Pricing figures originate from a user-provided reference starter and are demonstrative, not verified SCWork rates.
+- Preserved existing website manager, media manager, CRM prototype, Quotation Builder, dashboard, and backend foundation.

@@ -1,7 +1,7 @@
 /* ProCleaning v2.2: locale resolution shared by the website and the editor. */
 (() => {
   'use strict';
-  const supported=['en','th'];
+  const supported=['ar','my','zh','ru','nl','es','en','th','fr','vi','de','it','ja','ko'];
   const copy=value=>JSON.parse(JSON.stringify(value));
   function normalize(raw){
     if(!raw || typeof raw!=='object') return raw;
@@ -52,12 +52,14 @@
   function resolve(raw,lang){
     const site=normalize(raw), language=supported.includes(lang)?lang:'en';
     if(language==='en')return site;
-    const local=site.i18n?.th||{};
-    for(const key of ['brand','navigation','hero','headings','labels','footer','contact'])site[key]=mergeLocalized(site[key]||{},local[key]);
+    const preset=window.SCWORK_EXTRA_LOCALES?.[language] || {};
+    const local=mergeLocalized(preset,site.i18n?.[language]||{});
+    for(const key of ['brand','navigation','hero','headings','labels','footer','contact','commerce'])site[key]=mergeLocalized(site[key]||{},local[key]);
     if(Array.isArray(local.features))site.features=site.features.map((v,i)=>local.features[i]||v);
     for(const key of ['services','pricing','team','testimonials','blogs']){
-      site[key]=site[key].map(item=>mergeLocalized(item,item.translations?.th));
+      site[key]=site[key].map((item,i)=>{const base=mergeLocalized(item,local[key]?.[i]||{});return mergeLocalized(base,item.translations?.[language]||{});});
     }
+    if(language!=='th' && language!=='en'){site.pricing=site.pricing.map(p=>({...p,features:(local.features||site.features).slice(0,5)}));}
     return site;
   }
   const readSaved=()=>{try{return localStorage.getItem('procleaning-language');}catch{return null;}};
