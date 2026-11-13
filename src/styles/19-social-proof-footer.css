@@ -21,3 +21,9 @@
 .sc-social-proof__track.is-empty{animation:none}
 @media(prefers-reduced-motion:reduce){.sc-social-proof__track{animation:none!important}.sc-contact-assistant__actions{transition:none}}
 @media(max-width:520px){.sc-logo-chip img{max-height:34px;max-width:122px}}
+
+/* Unavailable customer contact channels and unapproved logo sections. */
+#client-logos[hidden], #topContactBar [hidden], .footer-contact-list [hidden],
+.footer-contact-list li[hidden], .footer-social [hidden], .sc-contact-assistant[hidden],
+#contactMethods [hidden], #footerContactHint[hidden]{display:none!important}
+.sc-real-contact{display:inline-flex;align-items:center;min-height:44px;padding:8px 13px;margin:0 6px 6px 0;border:1px solid #c7d7ef;border-radius:8px;color:#061b3d;text-decoration:underline;text-underline-offset:.22em}

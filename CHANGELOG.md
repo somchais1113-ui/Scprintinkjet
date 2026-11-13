@@ -1,3 +1,10 @@
+# V1.7.4 — Unified quote and LINE handoff
+
+- Storefront and article quote links use one path. Legacy tools and forms are retained only in the full development package.
+- Added optional advice request, LINE draft and copy/paste fallback, and localized Thai/English quote interface.
+- Public estimates show only when an approved rate applies. Unconfigured contacts and unapproved logo slots are hidden.
+- Preserved homepage hero artwork, brand logo, and #FF6900 primary action color.
+
 ## V1.7.3 — Client Logo Copy Refinement
 - Simplified the Thai headline and description in the client-logo marquee.
 - Added conditional TH/EN copy: placeholder wording before approved client logos, credibility wording after at least one approved local logo.

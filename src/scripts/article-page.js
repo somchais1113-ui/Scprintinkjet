@@ -13,14 +13,14 @@
   const source=locales.normalize(raw);
   const article=source.blogs.find((post)=>post.id===id);
   const phrases={
-    th:{back:'← กลับไปหน้าบทความ',all:'← บทความทั้งหมด',quote:'ขอใบเสนอราคา →',kicker:'บทความและเคล็ดลับ',notFound:'ไม่พบบทความ',missing:'บทความนี้อาจถูกย้ายหรือลบไปแล้ว',empty:'ยังไม่ได้เพิ่มเนื้อหาฉบับเต็ม กรุณาแก้ไขที่ Website Manager',disclaimer:'เนื้อหาตัวอย่าง ควรตรวจสอบก่อนเผยแพร่'},
-    en:{back:'← Back to articles',all:'← All articles',quote:'Get a quote →',kicker:'STORIES & INSIGHTS',notFound:'Article not found',missing:'This article may have been moved or removed.',empty:'Full article content has not been added yet. Open Website Manager to edit it.',disclaimer:'Sample content should be verified before publication.'}
+    th:{back:'← กลับไปหน้าบทความ',all:'← บทความทั้งหมด',quote:'เช็กราคาเบื้องต้น',kicker:'บทความและเคล็ดลับ',notFound:'ไม่พบบทความ',missing:'บทความนี้อาจถูกย้ายหรือลบไปแล้ว',empty:'ยังไม่ได้เพิ่มเนื้อหาฉบับเต็ม กรุณาแก้ไขที่ Website Manager',disclaimer:'เนื้อหาตัวอย่าง ควรตรวจสอบก่อนเผยแพร่'},
+    en:{back:'← Back to articles',all:'← All articles',quote:'Check estimated price',kicker:'STORIES & INSIGHTS',notFound:'Article not found',missing:'This article may have been moved or removed.',empty:'Full article content has not been added yet. Open Website Manager to edit it.',disclaimer:'Sample content should be verified before publication.'}
   };
   function show(){
     document.documentElement.lang=lang;
     const t=phrases[lang]||phrases.en;
     document.querySelectorAll('[data-lang]').forEach(button=>{const active=button.dataset.lang===lang;button.classList.toggle('is-active',active);button.setAttribute('aria-pressed',String(active));});
-    $('backHeader').textContent=t.back;$('backFooter').textContent=t.all;$('articleQuote').textContent=t.quote;$('articleKicker').textContent=t.kicker;
+    $('backHeader').textContent=t.back;$('backFooter').textContent=t.all;$('articleQuote').textContent=window.SCWORK_EXTRA_LOCALES?.[lang]?.navigation?.quote||t.quote;$('articleQuote').href='./smart-quote.html?lang='+encodeURIComponent(lang);$('articleKicker').textContent=t.kicker;
     $('articleErrorTitle').textContent=t.notFound;$('articleErrorText').textContent=t.missing;$('articleErrorBack').textContent=t.all;
     $('articleDisclaimer').textContent=t.disclaimer;
     const home=`./index.html?lang=${lang}${preview?'&editorPreview=1':''}#blog`;

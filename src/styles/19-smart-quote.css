@@ -7,3 +7,20 @@
 
 /* V1.6 customer-first quote shortcuts and transparent price breakdown */
 .q-size-presets,.q-qty-presets{display:grid;gap:8px;margin:0 0 4px}.q-size-presets>span,.q-qty-presets>span{font-size:12px;font-weight:700;color:#405c7e}.q-size-presets>div,.q-qty-presets>div{display:flex;gap:8px;flex-wrap:wrap}.q-size-presets button,.q-qty-presets button{min-height:43px;padding:9px 13px;border:1px solid #d7e3f2;background:#f7f9fd;border-radius:8px;color:#24466f;font-size:12px;font-weight:700;transition:background .15s,border-color .15s}.q-size-presets button.is-selected,.q-qty-presets button.is-selected{background:#fff4e9;border-color:#ff6900;color:#8e420c}.q-perpiece,.q-extra-cost{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#5d7390;font-size:12px;padding:7px 0}.q-perpiece strong,.q-extra-cost strong{color:#10356e}.q-extra-cost{color:#a0581a}.q-price-meta{font-size:11px;color:#6884a6;margin:4px 0}.q-demo-pill.is-approved{background:#eaf5fe;color:#174d8c}.q-safety p{max-width:none}.q-field input,.q-field select{font-size:16px}.q-mobile-bar{padding-bottom:max(10px,env(safe-area-inset-bottom))}@media(max-width:490px){.q-size-presets button,.q-qty-presets button{flex:1 1 76px;padding-inline:9px;white-space:nowrap}.q-size-presets>div,.q-qty-presets>div{gap:6px}.q-card{padding:19px 16px}.q-summary__sticky{padding:20px 16px}}
+
+/* V1.7.4 consultation, copy fallback and mobile quote summary. */
+.q-modes{grid-template-columns:repeat(3,minmax(0,1fr))}
+.q-mode{min-width:0}
+.q-guided textarea,.q-manual-copy textarea{width:100%;border:1px solid #bfcfe6;border-radius:9px;background:#fff;color:#061b3d;padding:11px;font:inherit;resize:vertical}
+.q-guided textarea{margin-top:2px}
+#helpPanel label:not(:first-child){margin-top:14px}
+.q-manual-copy{margin:12px 0}
+.q-manual-copy label{display:block;font-size:13px;margin:0 0 7px}
+.q-direct-contact{display:inline-flex;align-items:center;min-height:44px;color:#061b3d;text-decoration:underline;text-underline-offset:4px}
+.q-summary{scroll-margin-top:14px}
+#summarySpecs{overflow-wrap:anywhere;white-space:pre-wrap}
+.q-mobile-link{min-width:0}
+.q-translation-note{border-radius:8px;background:#f2f6fc;padding:10px 14px;font-size:13px}
+.q-mobile-bar{padding-bottom:max(10px,env(safe-area-inset-bottom))}
+@media(max-width:790px){html{scroll-padding-bottom:95px}.q-footer{padding-bottom:100px}.q-mobile-bar strong{font-size:14px}.q-mobile-link{font-size:12px;padding:12px 11px}.q-mobile-bar{gap:12px}body:has(.q-mobile-bar) .sc-contact-assistant{bottom:84px}}
+@media(max-width:490px){.q-modes{grid-template-columns:1fr}.q-mode{min-height:62px}}

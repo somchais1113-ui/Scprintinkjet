@@ -1,0 +1,34 @@
+import {readFileSync, existsSync} from 'node:fs';
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+import {resolve} from 'node:path';
+const require=createRequire(import.meta.url),root=fileURLToPath(new URL('../',import.meta.url));
+const read=file=>readFileSync(resolve(root,file),'utf8');
+const home=read('index.html'),quote=read('smart-quote.html');
+for(const file of ['index.html','article.html','smart-quote.html']){
+  const page=read(file);
+  assert.doesNotMatch(page,/href="[^"]*(request-quote|pricing-calculator|pricing-workbench|tools\/)/);
+}
+assert.match(home,/id="client-logos" hidden/);
+assert.match(home,/smart-quote\.html\?mode=help/);
+assert.doesNotMatch(quote,/type="file"|pricing-demo-data/);
+assert.match(read('data/pricing-public-data.js'),/SCWORK_PRICING_PUBLIC = null/);
+assert(existsSync(resolve(root,'tools/pricing-workbench.html')));
+const line=require('../src/scripts/quote-to-line.js');
+const approved={total:132.50,vatRate:0,demonstrationOnly:false};
+const spec={category:'ฉลาก',material:'PP',width:5,height:6,quantity:100,cut:'มาตรฐาน',artwork:'ส่งไฟล์ใน LINE'};
+const ask=line.buildMessage({...spec,result:{...approved,demonstrationOnly:true}},'th');
+assert.match(ask,/ขนาด: 5 × 6 ซม\./);assert.match(ask,/ขอให้ทีม SCWORK ประเมิน/);assert(!ask.includes('132.50'));
+const live=line.buildMessage({...spec,result:approved},'en');
+assert(live.includes('132.50 THB'));assert(!live.includes('incl. VAT'));
+const help=line.buildMessage({...spec,help:true,brief:'ฉลากติดขวด'},'th');
+assert(help.includes('ฉลากติดขวด'));assert(!help.includes('100 ชิ้น'));
+const link='https://example.com/art?q=a%20b#preview';
+assert(line.validArtworkLink(link));assert(!line.validArtworkLink('https://me:pass@example.com/'));
+const payload=line.buildMessage({...spec,artworkUrl:link},'th');
+assert.equal(decodeURIComponent(new URL(line.lineUrl('@example',payload)).search.slice(1)),payload);
+assert.equal(line.lineUrl('wrong',payload),'');
+const emoji='a'.repeat(1799)+'😀';
+assert.equal(decodeURIComponent(new URL(line.lineUrl('@example',emoji)).search.slice(1)),emoji);
+console.log('PASS V1.7.4: one quote route, manual/approved messages, safe LINE draft, artwork links, no demos/uploads.');

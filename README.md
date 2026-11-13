@@ -1,3 +1,7 @@
+# SCWORK V1.7.4
+
+**Start here:** [START_HERE_V1.7.4.md](START_HERE_V1.7.4.md) for setup and which ZIP to publish. Older notes below are historical.
+
 # SCWORK Inkjet Sticker — Full Package V1.4.1
 
 **Update:** Standardized all primary CTA buttons to the owner-approved `#FF6900`, with readable deep-navy labels `#061B3D`. Website, Calculator, Smart RFQ, Article, Blog and Admin tools use the shared `src/styles/18-cta-standard.css`. See `docs/28-V1.4.1-CTA-COLOR-GUIDELINE.md`.

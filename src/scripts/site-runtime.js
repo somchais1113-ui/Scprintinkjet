@@ -66,14 +66,11 @@
     if(brand.pageTitle)document.title=brand.pageTitle;
     const meta=q('meta[name="description"]');if(meta)meta.setAttribute('content',brand.metaDescription||'');
     const nav=site.navigation||{};
-    all('.footer-grid > div:nth-child(2) a').forEach((el,i)=>{const paths=['home','about','services','quote'];el.textContent=nav[paths[i]]||['Home','About us','Service','Get a quote'][i];});
+    all('.footer-grid > div:nth-child(2) > ul a').forEach((el,i)=>{const paths=['home','about','services','quote'];el.textContent=nav[paths[i]]||['Home','About us','Service','Get a quote'][i];});
     const footerServices=q('.footer-grid > div:nth-child(3) ul');
     if(footerServices){footerServices.replaceChildren();[...(site.services||[]).slice(0,3).map(s=>({title:s.title,href:'#services'})),{title:nav.quote||'Get a quote',href:'./smart-quote.html'}].forEach(item=>{
       const li=document.createElement('li'),a=document.createElement('a');a.href=item.href;a.textContent=item.title;li.append(a);footerServices.append(li);
     });}
-    setText('.footer-grid > div:nth-child(4) > a',site.contact?.email||'');
-    const mail=q('.footer-grid > div:nth-child(4) > a');if(mail){if(site.contact?.email){mail.href='mailto:'+encodeURIComponent(site.contact.email);}else{mail.removeAttribute('href');mail.textContent='';}}
-    const footerHint=q('#footerContactHint');if(footerHint)footerHint.textContent=root.lang==='th'?'สอบถามผ่านฟอร์ม Smart RFQ':'Please use the Smart RFQ form';
     const copyright=q('.footer-bottom > span:first-child');if(copyright){const yr=document.createElement('span');yr.id='year';yr.textContent=String(new Date().getFullYear());copyright.replaceChildren('© ',yr,` ${brand.prefix||''}${brand.name||''}. ${site.footer?.copyright||''}`);}
     const labels=site.labels||{};
     const language= root.lang==='th'?'th':'en';

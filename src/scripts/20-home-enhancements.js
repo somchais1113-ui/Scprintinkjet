@@ -9,13 +9,13 @@
     socialApprovedTitle:'แบรนด์ที่ร่วมงานกับ SCWORK',
     socialApprovedDescription:'ขอบคุณทุกแบรนด์ที่เลือกใช้บริการผลิตสติกเกอร์กับเรา',
     footerMiniTitle:'ปรึกษาเบื้องต้นได้รวดเร็ว',
-    footerMiniText:'ส่งขนาด วัสดุ จำนวน หรือรูปแบบงานที่ต้องการผ่าน Smart RFQ หรือช่องทางที่สะดวกได้เลย',
+    footerMiniText:'ส่งขนาด วัสดุ จำนวน หรือรายละเอียดเบื้องต้นทาง LINE ได้เลย',
     secondaryLinksTitle:'วิธีสั่งและข้อมูลช่วยเหลือ',
     howItWorks:'ขั้นตอนขอราคางาน 4 ขั้นตอน',
-    smartRfq:'Smart RFQ',
+    smartRfq:'เช็กราคาเบื้องต้น',
     helpfulArticles:'บทความช่วยเตรียมงานพิมพ์',
     contactCardTitle:'ติดต่อสอบถาม',
-    contactCardText:'เริ่มจากสรุปสเปกสั้น ๆ แล้วค่อยต่อใน LINE / โทร / Facebook ได้ทันที',
+    contactCardText:'บอกลักษณะงานเบื้องต้น แล้วให้ทีม SCWORK ช่วยแนะนำ',
     footerOffice:'เบอร์สำนักงาน',
     footerMobile:'เบอร์มือถือ',
     footerLine:'LINE Official',
@@ -35,13 +35,13 @@
     socialApprovedTitle:'Brands working with SCWORK',
     socialApprovedDescription:'Thank you to the brands choosing SCWORK for sticker printing.',
     footerMiniTitle:'Quick consultation',
-    footerMiniText:'Send size, material, quantity or a short project brief via Smart RFQ or your preferred contact channel.',
+    footerMiniText:'Send size, material, quantity or a short brief on LINE.',
     secondaryLinksTitle:'Ordering & helpful information',
     howItWorks:'4-step quotation flow',
-    smartRfq:'Smart RFQ',
+    smartRfq:'Check estimated price',
     helpfulArticles:'Helpful printing articles',
     contactCardTitle:'Contact us',
-    contactCardText:'Start with a short specification, then continue via LINE / phone / Facebook right away.',
+    contactCardText:'Share a short brief and let SCWORK help with the specifications.',
     footerOffice:'Office phone',
     footerMobile:'Mobile phone',
     footerLine:'LINE Official',
@@ -69,36 +69,44 @@
     if(href && /^https?:/i.test(href)){el.target='_blank'; el.rel='noopener noreferrer';} else {el.removeAttribute('target'); el.removeAttribute('rel');}
   }
 
+  const validLogo=item=>item?.approved===true && typeof item.name==='string' && item.name.trim() &&
+    /^\.\/assets\/images\/client-logos\/[\w.-]+\.(png|webp|svg|jpg|jpeg)$/i.test(String(item.src||'').trim());
+  let logoSignature;
   function renderClientLogos(){
-    const track=byId('scClientLogoTrack');if(!track)return;
-    const entries=Array.isArray(window.SCWORK_CLIENT_LOGOS)?window.SCWORK_CLIENT_LOGOS:[];
-    const logos=entries.filter(item=>item && typeof item.name==='string').slice(0,24);
+    const track=byId('scClientLogoTrack'),section=byId('client-logos');if(!track||!section)return;
+    const logos=(Array.isArray(window.SCWORK_CLIENT_LOGOS)?window.SCWORK_CLIENT_LOGOS:[]).filter(validLogo).slice(0,24);
+    const signature=JSON.stringify(logos.map(({name,src})=>[name,src]));
+    track.setAttribute('aria-label', t().socialApprovedTitle);
+    if(signature===logoSignature)return;
+    logoSignature=signature;
     track.replaceChildren();
-    const renderOne=(item,duplicated)=>{
-      const chip=document.createElement('span');chip.className='sc-logo-chip';
-      const approved=item.approved===true;
-      const src=String(item.src||'').trim();
-      const validImage=/^\.\/assets\/images\/client-logos\/[\w.-]+\.(png|webp|svg|jpg|jpeg)$/i.test(src);
-      if(approved && validImage){
-        const img=document.createElement('img');img.src=src;img.alt=duplicated?'':item.name;
-        img.loading='lazy';img.decoding='async';chip.appendChild(img);
-      } else {
-        chip.classList.add('is-placeholder');chip.textContent=item.name||'LOGO SLOT';
-      }
-      if(duplicated)chip.setAttribute('aria-hidden','true');
+    section.hidden=!logos.length;
+    track.classList.toggle('is-empty',!logos.length);
+    const chips=new Map();
+    function renderOne(item,duplicate){
+      const chip=document.createElement('span'),img=document.createElement('img');
+      chip.className='sc-logo-chip';
+      if(duplicate)chip.setAttribute('aria-hidden','true');
+      img.alt=duplicate?'':item.name;
+      img.decoding='async';
+      if(!chips.has(item))chips.set(item,[]);
+      chips.get(item).push(chip);
+      img.addEventListener('error',()=>{
+        if(signature!==logoSignature||!chips.has(item))return;
+        chips.get(item).forEach(node=>node.remove());
+        chips.delete(item);
+        section.hidden=!chips.size;
+      },{once:true});
+      img.src=item.src.trim();
+      chip.appendChild(img);
       return chip;
-    };
-    logos.forEach(item=>track.append(renderOne(item,false)));
-    logos.forEach(item=>track.append(renderOne(item,true)));
-    track.classList.toggle('is-empty',logos.length===0);
+    }
+    track.append(...logos.map(item=>renderOne(item,false)),...logos.map(item=>renderOne(item,true)));
   }
 
   function renderStaticCopy(){
     const copy=t();
-    // Never imply endorsements while the marquee only contains placeholders.
-    const hasApprovedLogo=Array.isArray(window.SCWORK_CLIENT_LOGOS) &&
-      window.SCWORK_CLIENT_LOGOS.some(item=>item && item.approved===true &&
-        /^\.\/assets\/images\/client-logos\/[\w.-]+\.(png|webp|svg|jpg|jpeg)$/i.test(String(item.src||'').trim()));
+    const hasApprovedLogo=Array.isArray(window.SCWORK_CLIENT_LOGOS) && window.SCWORK_CLIENT_LOGOS.some(validLogo);
     setText('socialProofEyebrow', hasApprovedLogo ? copy.socialApprovedEyebrow : copy.socialEyebrow);
     setText('socialProofTitle', hasApprovedLogo ? copy.socialApprovedTitle : copy.socialTitle);
     setText('socialProofDescription', hasApprovedLogo ? copy.socialApprovedDescription : copy.socialDescription);
@@ -130,7 +138,22 @@
     setLink('footerSocialLine', 'LINE', lineUrl || unavailableContactHref());
     setLink('footerSocialFacebook', 'f', facebook || messenger || unavailableContactHref());
     setLink('footerSocialCall', '☎', mobile ? 'tel:' + mobile.replace(/[^+\d]/g,'') : office ? 'tel:' + office.replace(/[^+\d]/g,'') : unavailableContactHref());
-    const card=byId('footerContactCard'); if(card) card.href = lineUrl || './smart-quote.html';
+    const hide=(id,on,list=false)=>{const el=byId(id);if(el)(list?el.closest('li')||el:el).hidden=on;};
+    hide('footerOfficePhone',!office,true);hide('footerMobilePhone',!mobile,true);hide('footerLineId',!lineUrl,true);
+    hide('footerFacebookLink',!(facebook||messenger),true);hide('footerAddressText',!contactValue('address'),true);
+    hide('footerSocialLine',!lineUrl);hide('footerSocialFacebook',!(facebook||messenger));hide('footerSocialCall',!(mobile||office));
+    hide('footerContactHint',!(mobile||office||lineUrl||facebook||messenger));
+    setText('footerContactHint',document.documentElement.lang==='th'?'เลือกช่องทางติดต่อ':'Choose a contact channel');
+    const methods=byId('contactMethods');
+    if(methods){
+      methods.replaceChildren();
+      const add=(name,href,value=name)=>{if(!href)return;const a=document.createElement('a');a.className='sc-real-contact';a.href=href;a.textContent=value;if(href.startsWith('https:')){a.target='_blank';a.rel='noopener noreferrer';}methods.appendChild(a);};
+      const phone=mobile||office;
+      add(copy.phone,phone?'tel:'+phone.replace(/[^+\d]/g,''):'',phone);
+      add(copy.line,lineUrl,lineId||'LINE');
+      add(copy.facebook,facebook);
+      add(copy.messenger,messenger);
+    }
   }
 
   function ensureAssistant(){
@@ -173,13 +196,14 @@
     const facebook=safeUrl(socialValue('facebookUrl'), /^https:\/\/(www\.)?(facebook\.com|fb\.com)\//i);
     const messenger=safeUrl(socialValue('messengerUrl'), /^https:\/\/(m\.me|www\.facebook\.com|facebook\.com)\//i);
     const actions=[
-      {key:'phone', label:copy.phone, href:phone ? 'tel:'+phone.replace(/[^+\d]/g,'') : unavailableContactHref(), cls:'phone'},
-      {key:'line', label:copy.line, href:lineUrl || unavailableContactHref(), cls:'line'},
-      {key:'facebook', label:copy.facebook, href:facebook || unavailableContactHref(), cls:'facebook'},
-      {key:'messenger', label:copy.messenger, href:messenger || facebook || unavailableContactHref(), cls:'messenger'}
+      {key:'phone', label:copy.phone, href:phone ? 'tel:'+phone.replace(/[^+\d]/g,'') : '', cls:'phone'},
+      {key:'line', label:copy.line, href:lineUrl, cls:'line'},
+      {key:'facebook', label:copy.facebook, href:facebook, cls:'facebook'},
+      {key:'messenger', label:copy.messenger, href:messenger, cls:'messenger'}
     ];
     panel.replaceChildren();
-    actions.forEach(action=>{
+    root.hidden=!actions.some(action=>action.href);
+    actions.filter(action=>action.href).forEach(action=>{
       const item=document.createElement('div'); item.className='sc-contact-assistant__quick';
       const link=document.createElement('a');link.className='sc-contact-assistant__action sc-contact-assistant__action--'+action.cls;
       link.href=action.href;link.innerHTML=iconMarkup(action.cls);link.setAttribute('aria-label',action.label);link.title=action.label;

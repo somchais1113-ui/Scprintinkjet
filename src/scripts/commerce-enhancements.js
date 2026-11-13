@@ -42,6 +42,7 @@
   function contactNode(id,kind,value,url){
     const slot=$(id);if(!slot)return;
     const span=slot.querySelector('[data-contact-value]');
+    slot.hidden=!(value&&url);
     if(!span)return;
     slot.classList.toggle('is-configured',Boolean(value));
     if(value&&url){
@@ -50,7 +51,7 @@
       span.replaceChildren(a);
     } else {
       span.textContent=value||'—';
-      slot.title=document.documentElement.lang==='th'?'เพิ่มข้อมูลติดต่อใน Tools → Website Manager':'Add contact information in Tools → Website Manager';
+      slot.removeAttribute('title');
     }
   }
   function showContacts(){
@@ -64,7 +65,7 @@
     const lineUrl=/^https:\/\/(line\.me|lin\.ee)\//.test(rawUrl)?rawUrl:line?'https://line.me/R/ti/p/'+encodeURIComponent(line):'';
     const officeLabel=$('topOfficePhone')?.querySelector('[data-contact-label]');if(officeLabel)officeLabel.textContent=isThai?'สำนักงาน':'Office';
     const mobileLabel=$('topMobilePhone')?.querySelector('[data-contact-label]');if(mobileLabel)mobileLabel.textContent=isThai?'มือถือ':'Mobile';
-    contactNode('topLine','line',line,lineUrl);
+    contactNode('topLine','line',line||(lineUrl?'LINE OA':''),lineUrl);
     contactNode('topOfficePhone','phone',office,office?'tel:'+office.replace(/[^+\d]/g,''):'');
     contactNode('topMobilePhone','phone',mobile,mobile?'tel:'+mobile.replace(/[^+\d]/g,''):'');
     const strip=$('topContactBar');

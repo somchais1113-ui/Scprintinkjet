@@ -26,22 +26,22 @@
   <link rel="stylesheet" href="./src/styles/13-spacing-system.css?v=scwork-1.4" />
   <link rel="stylesheet" href="./src/styles/14-sticker-transformation.css?v=scwork-1.4" />
   <link rel="stylesheet" href="./src/styles/15-commerce-enhancements.css?v=scwork-1.4" />
-  <script src="./data/site-data.js?v=scwork-1.7.3" defer></script>
+  <script src="./data/site-data.js?v=scwork-1.7.4" defer></script>
   <script src="./src/scripts/config.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/content.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/ui.js?v=scwork-1.5.1" defer></script>
-  <script src="./src/scripts/site-runtime.js?v=scwork-1.5.1" defer></script>
-  <script src="./data/extra-locales.js?v=scwork-1.4" defer></script>
+  <script src="./src/scripts/site-runtime.js?v=scwork-1.7.4" defer></script>
+  <script src="./data/extra-locales.js?v=scwork-1.7.4" defer></script>
   <script src="./src/scripts/i18n.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/main.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/motion.js?v=scwork-1.4" defer></script>
-  <script src="./src/scripts/commerce-enhancements.js?v=scwork-1.4" defer></script>
+  <script src="./src/scripts/commerce-enhancements.js?v=scwork-1.7.4" defer></script>
   <script src="./data/client-logos.js?v=scwork-1.7.1" defer></script>
-  <script src="./src/scripts/20-home-enhancements.js?v=scwork-1.7.3" defer></script>
+  <script src="./src/scripts/20-home-enhancements.js?v=scwork-1.7.4" defer></script>
   <link rel="stylesheet" href="./src/styles/17-language-modal.css?v=scwork-1.4" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" />
   <link rel="stylesheet" href="src/styles/18-cta-standard.css?v=1.4.1" />
-  <link rel="stylesheet" href="./src/styles/19-social-proof-footer.css?v=scwork-1.7.1" />
+  <link rel="stylesheet" href="./src/styles/19-social-proof-footer.css?v=scwork-1.7.4" />
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -49,9 +49,9 @@
     <div class="container sc-topbar__inner">
       <div class="sc-topbar__benefits"><span class="sc-topbar__signal" aria-hidden="true"></span><span id="topBenefitText">Online sticker printing · Quote calculator · Custom production</span></div>
       <div class="sc-topbar__contact" id="topContactActions" aria-label="SCWORK contact channels">
-        <span class="sc-topbar__contact-slot" id="topLine" data-contact="line"><span class="sc-topbar__contact-icon" aria-hidden="true">◉</span><span class="sc-topbar__contact-text">LINE: <span data-contact-value>ยังไม่ระบุ</span></span></span>
-        <span class="sc-topbar__contact-slot" id="topOfficePhone" data-contact="office"><span class="sc-topbar__contact-icon" aria-hidden="true">☎</span><span class="sc-topbar__contact-text"><span data-contact-label>สำนักงาน</span> <span data-contact-value>ยังไม่ระบุ</span></span></span>
-        <span class="sc-topbar__contact-slot" id="topMobilePhone" data-contact="mobile"><span class="sc-topbar__contact-icon" aria-hidden="true">▯</span><span class="sc-topbar__contact-text"><span data-contact-label>มือถือ</span> <span data-contact-value>ยังไม่ระบุ</span></span></span>
+        <span class="sc-topbar__contact-slot" id="topOfficePhone" hidden data-contact="office"><span class="sc-topbar__contact-icon" aria-hidden="true">☎</span><span class="sc-topbar__contact-text"><span data-contact-label>สำนักงาน</span> <span data-contact-value>ยังไม่ระบุ</span></span></span>
+        <span class="sc-topbar__contact-slot" id="topMobilePhone" hidden data-contact="mobile"><span class="sc-topbar__contact-icon" aria-hidden="true">▯</span><span class="sc-topbar__contact-text"><span data-contact-label>มือถือ</span> <span data-contact-value>ยังไม่ระบุ</span></span></span>
+        <span class="sc-topbar__contact-slot" id="topLine" hidden data-contact="line"><span class="sc-topbar__contact-icon" aria-hidden="true">◉</span><span class="sc-topbar__contact-text">LINE: <span data-contact-value>ยังไม่ระบุ</span></span></span>
       </div>
     </div>
   </div>
@@ -105,7 +105,7 @@
       </div>
     </section>
 
-    <section class="sc-social-proof" id="client-logos" aria-labelledby="socialProofTitle">
+    <section class="sc-social-proof" id="client-logos" hidden aria-labelledby="socialProofTitle">
       <div class="container">
         <div class="sc-social-proof__intro">
           <span class="eyebrow" id="socialProofEyebrow">CLIENTS & BRANDS</span>
@@ -114,7 +114,7 @@
         </div>
       </div>
       <div class="sc-social-proof__marquee" aria-label="Client logo layout preview">
-        <div class="sc-social-proof__track" id="scClientLogoTrack" aria-label="Client logo placeholders; no verified customer references yet"></div>
+        <div class="sc-social-proof__track" id="scClientLogoTrack" aria-label="Client logos"></div>
       </div>
     </section>
 
@@ -129,11 +129,10 @@
       </div>
     </section>
 
-    <!-- Sticker-specific Smart RFQ: demo mode until secure backend deployment. -->
-    <section class="v24-rfq-band" aria-label="Smart RFQ demo">
+    <section class="v24-rfq-band" aria-labelledby="quote-entry-title">
       <div class="container v24-rfq-inner">
-        <div><span class="v24-overline">SMART STICKER RFQ</span><h2><span class="v24-en">Custom Sticker Quotation</span><span class="v24-th">ขอใบเสนอราคางานสติกเกอร์</span></h2><p><span class="v24-en">Specify size, material, quantity and finishing for your sticker order. Demo submissions stay in this browser until the live backend is connected.</span><span class="v24-th">ระบุขนาด วัสดุ จำนวน และงานหลังพิมพ์เพื่อประเมินราคา โหมดทดลองยังไม่ส่งข้อมูลจริงจนกว่าจะเชื่อมระบบ</span></p></div>
-        <a class="v24-rfq-button" href="./request-quote.html?category=Sticker%20%26%20Label"><span class="v24-en">Start Smart RFQ →</span><span class="v24-th">เริ่มกรอกสเปกงาน →</span></a>
+        <div><span class="v24-overline" id="quoteEntryKicker">STICKER QUOTATION</span><h2 id="quote-entry-title">Plan your sticker order</h2><p id="quoteEntryText">Choose size, material and quantity, then send your specifications to SCWORK on LINE.</p></div>
+        <a class="v24-rfq-button" href="./smart-quote.html">Check estimated price</a>
       </div>
     </section>
 
@@ -153,7 +152,7 @@
         <div class="sc-process__grid" id="scProcessSteps">
           <article><span class="sc-process__number">01</span><h3>Estimate</h3><p>Choose material, size and quantity to calculate a reference price.</p></article>
           <article><span class="sc-process__number">02</span><h3>Select options</h3><p>Review finishing, design support and production requirements.</p></article>
-          <article><span class="sc-process__number">03</span><h3>Submit specifications</h3><p>Transfer the details to Smart RFQ for review.</p></article>
+          <article><span class="sc-process__number">03</span><h3>Submit specifications</h3><p>Send the specifications in LINE for SCWORK to review.</p></article>
           <article><span class="sc-process__number">04</span><h3>Get a quotation</h3><p>Our team confirms costs and feasibility before any order.</p></article>
         </div>
       </div>
@@ -182,7 +181,7 @@
 
     <section class="section blog-section" id="blog" aria-labelledby="blog-title"><div class="container"><div class="section-intro section-intro--border"><h2 id="blog-title">Sticker Printing Insights</h2><div class="section-intro__aside"><h3>STICKER KNOWLEDGE</h3><p>Practical guidance for choosing materials and preparing artwork.</p></div></div><div class="blog-grid" id="blogGrid"></div><div class="blog-more-wrap" id="blogMoreWrap" hidden><button type="button" class="blog-more-button" id="blogMoreButton" aria-controls="blogGrid">View more articles <span aria-hidden="true">↓</span></button></div></div></section>
 
-    <section class="section contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-grid"><div class="contact-info"><span class="eyebrow">Contact Us</span><h2 id="contact-title">Tell Us About Your Project</h2><p>Share project details using Smart RFQ. Real submissions require a connected backend.</p><div class="contact-methods" id="contactMethods"></div></div><div class="contact-form-wrap pc-rfq-entry"><span class="eyebrow">SMART RFQ · V2.5</span><h3 id="pc-unified-title">One request. One reference.</h3><p id="pc-unified-text">Use one secure request form. When the connected backend is configured, your request is recorded directly in our system and an acknowledgement email is queued automatically. No email app is required.</p><a class="button button--primary button--full" id="pc-unified-cta" href="./request-quote.html?category=Sticker%20%26%20Label">Start a quotation request →</a><p id="pc-unified-mode" class="form-note">Demo until the connected backend is configured. Do not enter personal information in demo mode.</p></div></div></section>
+    <section class="section contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-grid"><div class="contact-info"><span class="eyebrow">Contact us</span><h2 id="contact-title">Tell us about your project</h2><p id="contactLead">Tell us how you plan to use your stickers. We can help with material, size and finishing.</p><div class="contact-methods" id="contactMethods"></div></div><div class="contact-form-wrap pc-rfq-entry"><span class="eyebrow" id="pc-quote-eyebrow">STICKER ADVICE</span><h3 id="pc-unified-title">Not sure where to start?</h3><p id="pc-unified-text">Share what you know so far. You do not need a finished design or complete specifications.</p><a class="button button--primary button--full" id="pc-unified-cta" href="./smart-quote.html?mode=help" data-quote-help>Ask for advice</a><p id="pc-unified-mode" class="form-note">Send artwork later in LINE or share a link.</p></div></div></section>
   </main>
 
   <footer class="footer">
@@ -192,7 +191,7 @@
         <p>Sticker printing knowledge, material options and production-ready specifications.</p>
         <div class="footer-brand__mini-contact">
           <h4 id="footerMiniContactTitle">Quick consultation</h4>
-          <p id="footerMiniContactText">Use Smart RFQ or your preferred contact channel to send size, material and quantity.</p>
+          <p id="footerMiniContactText">Share material, dimensions and quantity on LINE.</p>
         </div>
         <div class="footer-social">
           <a class="footer-social__item" id="footerSocialLine" href="#contact" aria-label="LINE">LINE</a>
@@ -212,7 +211,7 @@
           <h4 id="footerSecondaryLinksTitle">How to order</h4>
           <ul>
             <li><a href="#how-it-works" id="footerHowItWorksLink">4-step quotation flow</a></li>
-            <li><a href="./request-quote.html" id="footerRFQLink">Smart RFQ</a></li>
+            <li><a href="./smart-quote.html" id="footerRFQLink">Check estimated price</a></li>
             <li><a href="#blog" id="footerArticlesLink">Helpful articles</a></li>
           </ul>
         </div>
@@ -229,22 +228,22 @@
       <div class="footer-contact-panel">
         <h3>Contact</h3>
         <p>Have a sticker project?</p>
-        <span id="footerContactHint">Contact via Smart RFQ</span>
+        <span id="footerContactHint">Choose a contact channel</span>
         <ul class="footer-contact-list">
-          <li><span class="footer-contact-icon">⌂</span><span id="footerAddressText">Use the Smart RFQ form to start an inquiry.</span></li>
+          <li><span class="footer-contact-icon">⌂</span><span id="footerAddressText"></span></li>
           <li><span class="footer-contact-icon">☎</span><a id="footerOfficePhone" href="#contact">Office phone</a></li>
           <li><span class="footer-contact-icon">▯</span><a id="footerMobilePhone" href="#contact">Mobile phone</a></li>
           <li><span class="footer-contact-icon">LINE</span><a id="footerLineId" href="#contact">LINE</a></li>
           <li><span class="footer-contact-icon">f</span><a id="footerFacebookLink" href="#contact">Facebook</a></li>
         </ul>
-        <a class="footer-contact-card" id="footerContactCard" href="./smart-quote.html">
-          <strong id="footerContactCardTitle">Smart RFQ</strong>
+        <a class="footer-contact-card" id="footerContactCard" href="./smart-quote.html?mode=help" data-quote-help>
+          <strong id="footerContactCardTitle">Contact us</strong>
           <span id="footerContactCardText">Start with a quick brief and continue in your preferred channel.</span>
         </a>
       </div>
     </div>
     <div class="container footer-bottom"><span>© <span id="year"></span> SCWork. All rights reserved.</span><span>Illustrative storefront preview · images are demonstration artwork</span></div>
   </footer>
-<script src="./config/public-config.js?v=scwork-1.4"></script><script src="./src/scripts/entry-cta.js?v=scwork-1.5.1"></script>  <script src="./src/scripts/language-modal.js?v=scwork-1.4" defer></script>
+<script src="./config/public-config.js?v=scwork-1.7.4"></script><script src="./src/scripts/entry-cta.js?v=scwork-1.7.4" defer></script>  <script src="./src/scripts/language-modal.js?v=scwork-1.4" defer></script>
 </body>
 </html>

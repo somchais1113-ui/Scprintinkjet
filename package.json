@@ -1,8 +1,8 @@
 {
   "name": "scwork-inkjet-sticker-storefront",
   "private": true,
-  "version": "1.7.3",
-  "description": "SCWORK V1.6 Smart Quote UX and V1.7 private cost-model workbench, preserving original homepage",
+  "version": "1.7.4",
+  "description": "SCWORK storefront, unified quote and LINE advice flow",
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "check": "node qa/validate-scwork.mjs",
@@ -17,7 +17,9 @@
     "check:brand": "node qa/validate-brand-v14.mjs",
     "check:cta": "node qa/validate-cta-v141.mjs",
     "check:smart-quote": "node qa/validate-smart-quote-v151.mjs",
-    "check:v17": "node qa/validate-v17.mjs"
+    "check:v17": "node qa/validate-v17.mjs",
+    "build:public": "node qa/build-public-v174.mjs",
+    "check:v174": "node qa/validate-v174.mjs && node qa/validate-v174-quote-ui.mjs"
   },
   "license": "UNLICENSED"
 }

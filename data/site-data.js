@@ -6,18 +6,18 @@ window.PROCLEANING_SITE = {
     "topEstimate": "Estimate price",
     "topInquiry": "Request a quote",
     "languageHint": "Select your language",
-    "languageNote": "TH / EN are translated; other languages are not yet available.",
+    "languageNote": "The website offers 14 languages. The quote page is available in Thai and English.",
     "processEyebrow": "HOW TO ORDER",
     "processTitle": "Four steps, from specifications to a quotation",
     "processCta": "Try price calculator",
     "processSteps": [
       {"title":"Calculate", "text":"Select material, dimensions and quantity for a reference estimate."},
       {"title":"Select options", "text":"Choose finishing and any design support needed."},
-      {"title":"Send specifications", "text":"Transfer your choices into Smart RFQ; artwork upload is not active in demo."},
+      {"title":"Send specifications", "text":"Send your specifications on LINE. You can send artwork later or share a link."},
       {"title":"Receive a quotation", "text":"We confirm artwork, feasibility, production and final price before ordering."}
     ],
     "pricingCta": "Try reference price calculator",
-    "pricingDisclaimer": "Demo reference rates only. Final prices require confirmation by SCWork."
+    "pricingDisclaimer": "Estimates are not final quotations. SCWORK confirms pricing after reviewing your specifications."
   },
   "i18n": {
     "defaultLanguage": "th",
@@ -27,18 +27,18 @@ window.PROCLEANING_SITE = {
         "topEstimate": "คำนวณราคา",
         "topInquiry": "ขอใบเสนอราคา",
         "languageHint": "เลือกภาษาที่ต้องการ",
-        "languageNote": "รองรับคำแปล TH / EN เท่านั้นในเวอร์ชันนี้",
+        "languageNote": "หน้าเว็บรองรับ 14 ภาษา หน้าเช็กราคารองรับภาษาไทยและอังกฤษ",
         "processEyebrow": "ขั้นตอนการขอใบเสนอราคา",
         "processTitle": "4 ขั้นตอนง่าย ๆ จากสเปกงานสู่การประเมินราคา",
         "processCta": "ทดลองคำนวณราคา",
         "processSteps": [
           {"title":"คำนวณราคา", "text":"เลือกวัสดุ ขนาด และจำนวนเพื่อดูราคาเบื้องต้น"},
           {"title":"เลือกตัวเลือก", "text":"ระบุงานเคลือบ งานหลังพิมพ์ หรือบริการออกแบบ"},
-          {"title":"ส่งสเปกงาน", "text":"ส่งรายละเอียดต่อไปยัง Smart RFQ โดยระบบทดลองยังไม่อัปโหลด Artwork"},
+          {"title":"ส่งสเปกงาน", "text":"ส่งสเปกทาง LINE แล้วแนบไฟล์ในแชตหรือส่งเป็นลิงก์ได้"},
           {"title":"รับใบเสนอราคา", "text":"ตรวจสอบไฟล์ ต้นทุนและการผลิต ก่อนยืนยันราคาจริงและรับงาน"}
         ],
         "pricingCta": "ทดลองคำนวณราคาสติกเกอร์",
-        "pricingDisclaimer": "ใช้ราคาตัวอย่างเพื่อศึกษาเท่านั้น ราคาจริงต้องได้รับการยืนยันจาก SCWork"
+        "pricingDisclaimer": "SCWORK ยืนยันราคาหลังตรวจสเปกและไฟล์งาน"
       },
       "brand": {
         "tagline": "รับผลิตสติกเกอร์ Inkjet",
@@ -143,7 +143,7 @@ window.PROCLEANING_SITE = {
         "disclaimer": "เว็บไซต์สาธิต · ใช้ภาพประกอบตัวอย่าง ไม่ใช่ผลงานลูกค้าจริง"
       },
       "contact": {
-        "address": "กรุณาส่งรายละเอียดผ่านฟอร์ม Smart RFQ",
+        "address": "",
         "bookingSubject": "ขอราคาพิมพ์สติกเกอร์",
         "facebookUrl": "",
         "messengerUrl": ""
@@ -277,7 +277,7 @@ window.PROCLEANING_SITE = {
     "lineUrl": "",
     "facebookUrl": "",
     "messengerUrl": "",
-    "address": "Use the Smart RFQ form to start an inquiry.",
+    "address": "",
     "bookingSubject": "Sticker printing RFQ"
   },
   "socialProof": {
