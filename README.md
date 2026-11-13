@@ -1,3 +1,7 @@
+# SCWork V1.7.5 · Pricing Master
+
+เริ่มที่ [START_HERE_V1.7.5.md](START_HERE_V1.7.5.md) สำหรับการตั้งราคาและส่งออกชุดขาย คู่มือด้านล่างเป็นประวัติเวอร์ชันก่อนหน้า
+
 # SCWORK V1.7.4
 
 **Start here:** [START_HERE_V1.7.4.md](START_HERE_V1.7.4.md) for setup and which ZIP to publish. Older notes below are historical.

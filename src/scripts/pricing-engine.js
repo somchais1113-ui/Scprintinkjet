@@ -1,4 +1,4 @@
-/* SCWork estimator engine — reference formulas, DEMO rates only.
+/* SCWork estimator engine — calculates from the supplied rate card.
  * No customer information, artwork or quote is sent by this module.
  */
 (function (global) {
@@ -13,6 +13,14 @@
     const tier=(tiers||[]).find(t=>units>=t.min&&(t.max==null||units<=t.max));
     if(!tier)throw Error('TIER_NOT_FOUND');
     return tier;
+  }
+  // Apply the new tier rate without lowering the same-spec total at a tier boundary.
+  function tierSubtotal(tiers,units,pricingMode){
+    const tier=findTier(tiers,units);
+    const current=units*tier.price;
+    if(pricingMode!=='tier_floor')return round2(current);
+    const previousTotals=tiers.filter(t=>Number.isFinite(t.max)&&t.max<units).map(t=>t.max*t.price);
+    return round2(Math.max(current,...previousTotals));
   }
   function calculate(raw, data) {
     if(!data || !Array.isArray(data.categories))throw Error('INVALID_CATALOG');
@@ -59,7 +67,8 @@
     } else throw Error('INVALID_MODE');
     const addons=Array.isArray(raw.addonIds)?raw.addonIds:[];
     const applied=(material.addons||[]).filter(a=>addons.includes(a.id)).map(a=>({id:a.id,name:a.name,type:a.type,unitPrice:a.price,amount:round2(a.type==='per_unit'?a.price*units:a.price)}));
-    const base=round2(units*unitRate);
+    const tiered=material.mode==='a3_sheet'||material.mode==='quantity_tier';
+    const base=tiered?tierSubtotal(material.tiers,units,material.pricingMode):round2(units*unitRate);
     const addOnTotal=round2(applied.reduce((sum,a)=>sum+a.amount,0));
     const minimumSurcharge=round2(Math.max(0,(material.minimumCharge||0)-base-addOnTotal));
     const subtotal=round2(base+addOnTotal+minimumSurcharge);
@@ -68,6 +77,6 @@
       units,unitLabel:material.unitLabel,unitRate,activeTier:tier?.label||null,details,
       basePrint:base,addons:applied,addonsTotal:addOnTotal,minimumSurcharge,subtotal,vat,vatRate:data.vatRate,total:round2(subtotal+vat),demonstrationOnly:data.status!=='approved',rateVersion:data.version||null};
   }
-  global.SCWORK_PRICING_ENGINE={calculate,findTier};
-  if(typeof module!=='undefined'&&module.exports) module.exports={calculate,findTier};
+  global.SCWORK_PRICING_ENGINE={calculate,findTier,tierSubtotal};
+  if(typeof module!=='undefined'&&module.exports) module.exports={calculate,findTier,tierSubtotal};
 })(typeof window!=='undefined'?window:globalThis);

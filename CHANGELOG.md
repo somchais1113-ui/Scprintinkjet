@@ -1,3 +1,10 @@
+# V1.7.5 — Pricing Master
+
+- Shared electricity, fuel and inbound freight rates, allocated per material using actual usage.
+- Draft comparison, selective approved-rate export, private JSON backup and revision history.
+- Same-spec totals no longer fall at tier boundaries on new Master exports.
+- Unapproved rates remain disabled. Homepage visuals and quote handoff are unchanged.
+
 # V1.7.4 — Unified quote and LINE handoff
 
 - Storefront and article quote links use one path. Legacy tools and forms are retained only in the full development package.

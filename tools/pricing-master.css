@@ -1,0 +1,19 @@
+body{font-size:15px}
+.shared,.impact{margin-top:20px}
+.shared h2,.impact h2{margin:0 0 14px;color:var(--navy);font-size:clamp(18px,2vw,25px)}
+.shared .three,.addons .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.field-grid label,.hint,.publish>label{font-size:14px;line-height:1.55}
+input:not([type=checkbox]):not([type=file]){font-size:16px;min-height:44px;min-width:0}
+.publish button,.file-label{min-height:44px}
+.hint{color:#435875;margin:10px 0 0;overflow-wrap:anywhere}
+.table-scroll{overflow:auto}
+table{width:100%;min-width:525px;border-collapse:collapse}
+th,td{padding:10px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{background:var(--soft)}
+.log-entry{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 0;border-bottom:1px solid var(--line)}
+.log-entry span{margin-inline-end:auto;overflow-wrap:anywhere}
+.log-entry button{min-height:42px;padding:6px 10px;border:1px solid var(--line);border-radius:7px;background:white;color:var(--navy)}
+.master-visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;clip-path:inset(50%);overflow:hidden}
+.file-label:focus-within,.table-scroll:focus-visible{outline:3px solid #ffac6e}
+@media(max-width:780px){.shared .three,.addons .three{grid-template-columns:1fr}}
