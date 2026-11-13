@@ -1,9 +1,9 @@
 /* v2.2 language switch: desktop and mobile stay accessible with 44px hit areas. */
-.language-switch{display:inline-flex;align-items:center;justify-content:center;gap:2px;flex:none;padding:3px;background:#f0f5f1;border:1px solid #d6e4d9;border-radius:100px;white-space:nowrap}
-.language-switch__btn{border:0;background:transparent;color:#68776a;font-family:inherit;font-size:13px;font-weight:700;min-width:43px;min-height:37px;border-radius:100px;padding:6px 8px;transition:background-color .15s,color .15s;cursor:pointer}
-.language-switch__btn.is-active{background:var(--color-primary);color:#fff;box-shadow:0 2px 9px #113b1d24}
-.language-switch__btn:focus-visible{outline:3px solid #1b8c4a;outline-offset:3px}
-.language-switch__divider{width:1px;height:16px;background:#c5d2c8}
+.language-switch{display:inline-flex;align-items:center;justify-content:center;gap:2px;flex:none;padding:3px;background:#f2f6fc;border:1px solid #e9f0fb;border-radius:100px;white-space:nowrap}
+.language-switch__btn{border:0;background:transparent;color:#43669c;font-family:inherit;font-size:13px;font-weight:700;min-width:43px;min-height:37px;border-radius:100px;padding:6px 8px;transition:background-color .15s,color .15s;cursor:pointer}
+.language-switch__btn.is-active{background:var(--color-primary);color:#fff;box-shadow:0 2px 9px #061B3D24}
+.language-switch__btn:focus-visible{outline:3px solid #C94A00;outline-offset:3px}
+.language-switch__divider{width:1px;height:16px;background:#dbe6f5}
 /* Original Figma content and geometry are retained in EN. Thai gets its own text rhythm. */
 html[lang="th"]{--font-body:'Noto Sans Thai','Be Vietnam Pro',system-ui,sans-serif;--font-secondary:'Noto Sans Thai','Montserrat',sans-serif}
 html[lang="th"] .hero h1,html[lang="th"] .section-intro h2,html[lang="th"] .about-copy h2,html[lang="th"] .quote-copy h2,html[lang="th"] .pricing-heading h2{letter-spacing:0;line-height:1.3}

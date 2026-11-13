@@ -1,0 +1,54 @@
+[
+  {
+    "screen": "desktop",
+    "initial": "฿625.95",
+    "after_qty": "฿1,203.75",
+    "after_size": "฿3,145.80",
+    "guided_visible": true,
+    "guided_material": "pvc-sqm",
+    "artLink": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "screen": "mobile",
+    "initial": "฿625.95",
+    "after_qty": "฿1,203.75",
+    "after_size": "฿3,145.80",
+    "guided_visible": true,
+    "guided_material": "pvc-sqm",
+    "artLink": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "screen": "narrow",
+    "initial": "฿625.95",
+    "after_qty": "฿1,203.75",
+    "after_size": "฿3,145.80",
+    "guided_visible": true,
+    "guided_material": "pvc-sqm",
+    "artLink": true,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "screen": "desktop",
+    "workbench": true,
+    "ready": "ต้นทุนครบ",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "screen": "mobile",
+    "workbench": true,
+    "ready": "ต้นทุนครบ",
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "homepage_carousel": 4,
+    "errors": [],
+    "ctaColor": "rgb(255, 105, 0)"
+  }
+]

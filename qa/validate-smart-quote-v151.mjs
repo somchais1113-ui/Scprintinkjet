@@ -1,0 +1,12 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import path from 'node:path';
+const base=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');const read=p=>fs.readFileSync(path.join(base,p),'utf8');
+const home=read('index.html'),style=read('src/styles/04-sections.css'),ui=read('src/scripts/ui.js');
+assert(home.includes('id="heroCarousel"') && home.includes('id="heroDots"'),'Hero retained');
+assert(home.includes('assets/images/hero/hero-scene.webp'),'Original banner retained');
+assert(home.includes('smart-quote.html'),'Quote entry active');
+assert(ui.includes('smart-quote.html?category=${cat}'),'Dynamic cards route to price UX');
+assert(read('src/scripts/site-runtime.js').includes("href:'./smart-quote.html'"),'Footer route retained');
+assert(read('smart-quote.html').includes('src/scripts/pricing-engine.js'),'Existing engine reused');
+assert(!/<input[^>]+type=["']file["']/.test(read('smart-quote.html')),'No uploads');
+assert(read('src/styles/19-smart-quote.css').toLowerCase().includes('#ff6900'),'CTA #FF6900');
+console.log('V1.5.1 scope QA PASS: original homepage/hero with quoted links, quote module, no upload, orange CTA');

@@ -1,0 +1,75 @@
+/* SCWORK V1.4.1 — single source of truth for ALL primary calls to action.
+   Chosen by owner: EXACT #FF6900; navy type passes WCAG AA (5.90:1)
+   whereas white on #FF6900 measures 2.89:1 and fails normal text contrast.
+   Secondary/outline controls, destructive/status actions and the original logo
+   are intentionally NOT recolored. Normal and hover background stay identical.
+   Website Manager may override --color-cta through its Primary Orange field. */
+:root{--color-cta:#FF6900;--color-cta-ink:#061B3D;--color-cta-focus:#012A62}
+:is(
+  .button--primary,
+  .services .service-card .button,
+  .price-card .button,
+  .price-card--sticker .button,
+  .contact-form-wrap button[type="submit"],
+  .v24-rfq-button,
+  .sc-process__cta,
+  .sc-price-link,
+  .blog-more-button,
+  .article-button--primary,
+  .rfq-nav .rfq-primary,
+  .general-submit,
+  .rfq-success a,
+  .est-primary,
+  .btn-primary,
+  .print-toolbar button,
+  .button--green,
+  .export-actions .primary,
+  .image-actions button.primary,
+  .primary:not(.button--outline),
+  #login button,
+  .actions button:not(:last-child)
+){
+  background:var(--color-cta) !important;
+  background-image:none !important;
+  border-color:var(--color-cta) !important;
+  color:var(--color-cta-ink) !important;
+  text-shadow:none !important;
+}
+:is(
+  .button--primary,
+  .services .service-card .button,
+  .price-card .button,
+  .price-card--sticker .button,
+  .contact-form-wrap button[type="submit"],
+  .v24-rfq-button,
+  .sc-process__cta,
+  .sc-price-link,
+  .blog-more-button,
+  .article-button--primary,
+  .rfq-nav .rfq-primary,
+  .general-submit,
+  .rfq-success a,
+  .est-primary,
+  .btn-primary,
+  .print-toolbar button,
+  .button--green,
+  .export-actions .primary,
+  .image-actions button.primary,
+  .primary:not(.button--outline),
+  #login button,
+  .actions button:not(:last-child)
+):is(:hover,:focus-visible,:active){
+  background:var(--color-cta) !important;
+  background-image:none !important;
+  border-color:var(--color-cta) !important;
+  color:var(--color-cta-ink) !important;
+  box-shadow:0 6px 20px rgba(255,105,0,.18);
+}
+:is(a,button):focus-visible{outline-offset:3px}
+/* Preserve navy technical and cancel controls, and avoid overriding ghost buttons. */
+:is(.button--outline,.btn-outline,.btn-danger,.rfq-back,.est-secondary,.article-button:not(.article-button--primary)){
+  background-image:none;
+}
+@media(prefers-reduced-motion:reduce){
+  :is(.button--primary,.btn-primary,.est-primary,.rfq-primary,.v24-rfq-button,.sc-process__cta){transition:none;transform:none}
+}

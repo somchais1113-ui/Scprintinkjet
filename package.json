@@ -1,8 +1,8 @@
 {
   "name": "scwork-inkjet-sticker-storefront",
   "private": true,
-  "version": "1.2.0",
-  "description": "SCWork Inkjet storefront with 14-language public website selector and retained pricing/RFQ/Admin prototypes",
+  "version": "1.7.1",
+  "description": "SCWORK V1.6 Smart Quote UX and V1.7 private cost-model workbench, preserving original homepage",
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "check": "node qa/validate-scwork.mjs",
@@ -13,7 +13,11 @@
     "check:v255": "node qa/validate-v255.mjs",
     "check:v256": "node qa/validate-v256.mjs && node qa/validate-v257.mjs",
     "check:pricing": "node qa/validate-pricing-v11.mjs",
-    "check:locales": "node qa/validate-locales-v12.mjs"
+    "check:locales": "node qa/validate-locales-v12.mjs",
+    "check:brand": "node qa/validate-brand-v14.mjs",
+    "check:cta": "node qa/validate-cta-v141.mjs",
+    "check:smart-quote": "node qa/validate-smart-quote-v151.mjs",
+    "check:v17": "node qa/validate-v17.mjs"
   },
   "license": "UNLICENSED"
 }

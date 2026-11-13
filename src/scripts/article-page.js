@@ -6,7 +6,7 @@
   if(!raw||!locales)return;
   const params=new URLSearchParams(location.search);
   const preview=params.get('editorPreview')==='1';
-  if(preview){try{const draft=JSON.parse(localStorage.getItem('pc-v22-site-draft')||'null');if(draft?.brand&&Array.isArray(draft.blogs))raw=draft;}catch{}}
+  if(preview){try{const draft=JSON.parse(localStorage.getItem('scwork-v14-site-draft')||'null');if(draft?.brand&&Array.isArray(draft.blogs))raw=draft;}catch{}}
   const $=id=>document.getElementById(id);
   let lang=locales.initial(raw);
   const id=params.get('post');

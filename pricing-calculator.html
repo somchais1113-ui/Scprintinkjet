@@ -4,13 +4,15 @@
 <link rel="icon" href="./assets/icons/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="./src/styles/16-pricing-calculator.css?v=1.1">
-  <script src="./data/extra-locales.js?v=1.2.0" defer></script>
-<script src="./data/pricing-demo-data.js?v=1.1" defer></script><script src="./src/scripts/pricing-engine.js?v=1.1" defer></script><script src="./src/scripts/pricing-calculator.js?v=1.1" defer></script>
-  <link rel="stylesheet" href="./src/styles/17-language-modal.css?v=1.2.0" />
+<link rel="stylesheet" href="./src/styles/16-pricing-calculator.css?v=scwork-1.4">
+  <script src="./data/extra-locales.js?v=scwork-1.4" defer></script>
+<script src="./data/pricing-demo-data.js?v=scwork-1.4" defer></script><script src="./src/scripts/pricing-engine.js?v=scwork-1.4" defer></script><script src="./src/scripts/pricing-calculator.js?v=scwork-1.4" defer></script>
+  <link rel="stylesheet" href="./src/styles/17-language-modal.css?v=scwork-1.4" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" />
+  <link rel="stylesheet" href="src/styles/18-cta-standard.css?v=1.4.1" />
+  <link rel="stylesheet" href="./src/styles/19-social-proof-footer.css?v=scwork-1.7.1" />
 </head><body>
-<header class="est-header"><div class="est-container est-header__inner"><a class="est-brand" href="./index.html"><img src="./assets/icons/logo-mark.svg" width="36" height="36" alt=""><span><strong>SC<span>Work</span></strong><small>Inkjet Sticker Printing</small></span></a><nav><a href="./index.html" id="estHome">← <span>กลับเว็บไซต์</span></a><div class="sc-locale sc-locale--compact" id="scLocale" data-language-launcher></div></nav></div></header>
+<header class="est-header"><div class="est-container est-header__inner"><a class="est-brand" href="./index.html"><img class="est-brand__logo" src="./assets/icons/scwork-logo.png" width="156" height="52" alt="SCWORK logo"></a><nav><a href="./index.html" id="estHome">← <span>กลับเว็บไซต์</span></a><div class="sc-locale sc-locale--compact" id="scLocale" data-language-launcher></div></nav></div></header>
 <main class="est-container est-main"><div class="est-heading"><div><span class="est-eyebrow">SCWORK / ESTIMATOR</span><h1 id="estTitle">คำนวณราคางานพิมพ์เบื้องต้น</h1><p id="estLead">เลือกวัสดุ ขนาด จำนวน และตัวเลือกเสริมเพื่อดูราคาอ้างอิง ก่อนส่งข้อมูลให้ประเมินจริง</p></div><div class="est-demo" role="note" id="estDemoNotice">ข้อมูลราคาในหน้านี้เป็นตัวอย่างจากไฟล์อ้างอิง ไม่ใช่ราคาจำหน่ายของ SCWork</div></div>
 <div class="est-layout"><div class="est-form">
 <section class="est-card"><h2><span>01</span><span id="estStep1">ประเภทสินค้าและวัสดุ</span></h2><div class="est-categories" id="estCategories"></div><div class="est-materials" id="estMaterials"></div></section>
@@ -20,5 +22,7 @@
 </div>
 <aside class="est-summary"><div class="est-summary__sticky"><div class="est-summary__heading"><span id="estSummaryTitle">สรุปราคาเบื้องต้น</span><small id="estSummaryTag">DEMO PRICING</small></div><div id="estSummaryMaterial" class="est-summary__material"></div><p class="est-summary__detail" id="estSummaryDetail"></p><dl class="est-breakdown"><div><dt id="estUnitsLabel">จำนวนที่คิดราคา</dt><dd id="estUnits">—</dd></div><div><dt id="estRateLabel">ราคาต่อหน่วย</dt><dd id="estRate">—</dd></div><div><dt id="estBaseLabel">ค่าพิมพ์เบื้องต้น</dt><dd id="estBase">—</dd></div><div><dt id="estAddonsLabel">ค่า Add-ons</dt><dd id="estExtras">—</dd></div><div><dt id="estSubtotalLabel">ยอดก่อน VAT</dt><dd id="estSubtotal">—</dd></div><div><dt id="estVatLabel">VAT 7%</dt><dd id="estVat">—</dd></div><div class="est-total"><dt id="estTotalLabel">รวมโดยประมาณ</dt><dd id="estTotal">—</dd></div></dl><p class="est-formula" id="estFormula"></p><p class="est-warning" id="estWarning" role="alert" hidden></p><button class="est-primary" id="estToRfq" type="button">ส่งสเปกนี้ไป Smart RFQ ↗</button><button class="est-secondary" id="estCopy" type="button">คัดลอกข้อมูล (JSON)</button><span class="est-feedback" id="estCopyFeedback" aria-live="polite"></span><p class="est-fineprint" id="estFinePrint">ราคาเพื่อทดลอง Logic เท่านั้น ยังไม่รวมค่าขนส่งหรือเงื่อนไขงานจริง และไม่ใช่ใบเสนอราคาที่อนุมัติแล้ว</p></div></aside></div></main>
 <footer class="est-footer"><div class="est-container">SCWork · Prototype Estimator <a href="./request-quote.html?category=Sticker%20%26%20Label" id="estFooterRfq">Smart RFQ ↗</a></div></footer>
-  <script src="./src/scripts/language-modal.js?v=1.2.0" defer></script>
+  <script src="./src/scripts/language-modal.js?v=scwork-1.4" defer></script>
+<script src="./config/public-config.js?v=scwork-1.7.1"></script>
+<script src="./src/scripts/20-home-enhancements.js?v=scwork-1.7.1" defer></script>
 </body></html>

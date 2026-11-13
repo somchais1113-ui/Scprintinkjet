@@ -144,7 +144,15 @@ window.PROCLEANING_SITE = {
       },
       "contact": {
         "address": "กรุณาส่งรายละเอียดผ่านฟอร์ม Smart RFQ",
-        "bookingSubject": "ขอราคาพิมพ์สติกเกอร์"
+        "bookingSubject": "ขอราคาพิมพ์สติกเกอร์",
+        "facebookUrl": "",
+        "messengerUrl": ""
+      },
+      "socialProof": {
+        "eyebrow": "เหมาะกับหลายประเภทธุรกิจ",
+        "title": "พื้นที่แสดงโลโก้ลูกค้าแบบโปร่งเบา เพื่อเสริมความน่าเชื่อถือ",
+        "description": "รองรับโลโก้ลูกค้าที่อนุญาตให้เผยแพร่ในโทนขาวดำหรือเทาอ่อน เพื่อไม่ให้รบกวนภาพรวมของหน้าเว็บ",
+        "logos": ["CAFE BRAND","BEAUTY LAB","FRESH LABEL","LOCAL STORE","EVENT STUDIO","FOOD PACK","PET SHOP","RETAIL BOX"]
       },
       "features": [
         "เลือกวัสดุตามการใช้งาน",
@@ -263,8 +271,20 @@ window.PROCLEANING_SITE = {
   "contact": {
     "email": "",
     "phone": "",
+    "officePhone": "",
+    "mobilePhone": "",
+    "lineId": "",
+    "lineUrl": "",
+    "facebookUrl": "",
+    "messengerUrl": "",
     "address": "Use the Smart RFQ form to start an inquiry.",
     "bookingSubject": "Sticker printing RFQ"
+  },
+  "socialProof": {
+    "eyebrow": "Suitable for many business types",
+    "title": "A flexible area for customer logo credibility",
+    "description": "Approved client logos can be displayed here in a soft grayscale style to reinforce credibility without overpowering the page.",
+    "logos": ["CAFE BRAND","BEAUTY LAB","FRESH LABEL","LOCAL STORE","EVENT STUDIO","FOOD PACK","PET SHOP","RETAIL BOX"]
   },
   "settings": {
     "currency": "THB",
@@ -272,12 +292,12 @@ window.PROCLEANING_SITE = {
     "priceMode": "quote"
   },
   "design": {
-    "primary": "#36b864",
-    "primaryHover": "#2da458",
-    "ink": "#111d15",
-    "body": "#666666",
-    "border": "#aac5b1",
-    "footer": "#0e2015",
+    "primary": "#FF6900",
+    "primaryHover": "#FF6900",
+    "ink": "#082E66",
+    "body": "#5b6b84",
+    "border": "#c7d7ef",
+    "footer": "#061B3D",
     "font": "Be Vietnam Pro",
     "headingScale": 100,
     "sectionSpacing": 95,

@@ -10,7 +10,7 @@
     return v;
   }
   function findTier(tiers,units){
-    const tier=(tiers||[]).find(t=>units>=t.min&&units<=t.max);
+    const tier=(tiers||[]).find(t=>units>=t.min&&(t.max==null||units<=t.max));
     if(!tier)throw Error('TIER_NOT_FOUND');
     return tier;
   }
@@ -42,7 +42,7 @@
       units=Math.max(material.minAreaSqm||0,actualSqm);
       unitRate=material.ratePerSqm;
       details={widthCm:w,heightCm:h,quantity,actualSqm,chargedSqm:units};
-      tier=(material.tiers||[]).find(t=>units>=t.min&&units<=t.max)||null;
+      tier=(material.tiers||[]).find(t=>units>=t.min&&(t.max==null||units<=t.max))||null;
     } else if(material.mode==='quantity_tier') {
       const quantity=requiredPositive(raw.quantity,'QUANTITY');
       if(!Number.isInteger(quantity))throw Error('INVALID_QUANTITY');
@@ -61,11 +61,12 @@
     const applied=(material.addons||[]).filter(a=>addons.includes(a.id)).map(a=>({id:a.id,name:a.name,type:a.type,unitPrice:a.price,amount:round2(a.type==='per_unit'?a.price*units:a.price)}));
     const base=round2(units*unitRate);
     const addOnTotal=round2(applied.reduce((sum,a)=>sum+a.amount,0));
-    const subtotal=round2(base+addOnTotal);
+    const minimumSurcharge=round2(Math.max(0,(material.minimumCharge||0)-base-addOnTotal));
+    const subtotal=round2(base+addOnTotal+minimumSurcharge);
     const vat=round2(subtotal*data.vatRate);
     return {categoryId:category.id,materialId:material.id,materialName:material.name,mode:material.mode,
       units,unitLabel:material.unitLabel,unitRate,activeTier:tier?.label||null,details,
-      basePrint:base,addons:applied,addonsTotal:addOnTotal,subtotal,vat,vatRate:data.vatRate,total:round2(subtotal+vat),demonstrationOnly:true};
+      basePrint:base,addons:applied,addonsTotal:addOnTotal,minimumSurcharge,subtotal,vat,vatRate:data.vatRate,total:round2(subtotal+vat),demonstrationOnly:data.status!=='approved',rateVersion:data.version||null};
   }
   global.SCWORK_PRICING_ENGINE={calculate,findTier};
   if(typeof module!=='undefined'&&module.exports) module.exports={calculate,findTier};

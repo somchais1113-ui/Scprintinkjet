@@ -31,14 +31,46 @@
   window.addEventListener('scwork-site-updated',applyLocale);
   // Some main draw() paths mutate the data without changing the language; the small delay catches initial render.
   applyLocale();
-  // Never use contact details from reference screenshots. Only show verified SCWork channels.
-  const contact=window.SCWORK_PUBLIC_CONTACT||{};
-  if(contact.phone && /^[+\d() -]{6,25}$/.test(contact.phone)){
-    const p=$('topPhone');p.href='tel:'+contact.phone.replace(/[^+\d]/g,'');p.textContent='☎ '+contact.phone;p.hidden=false;
+  // Contact strip: business contacts only. NEVER import competitor numbers.
+  // If a number is not configured, show a non-clickable setup hint instead of a false contact.
+  // Website Manager values take priority; public-config.js can provide deploy-only fallback.
+  const contactValue=(field)=>String(window.PROCLEANING_SITE?.contact?.[field]||window.SCWORK_PUBLIC_CONTACT?.[field]||'').trim();
+  function safePhone(raw){
+    const str=String(raw||'').trim();
+    return /^[+\d() .-]{7,24}$/.test(str)&&str.replace(/\D/g,'').length>=8?str:'';
   }
-  if(contact.lineId && /^@[\w.\-]{2,30}$/.test(contact.lineId)){
-    const l=$('topLine');l.textContent='LINE '+contact.lineId;
-    l.href=contact.lineUrl&&/^https:\/\/line\.me\//.test(contact.lineUrl)?contact.lineUrl:'https://line.me/R/ti/p/'+encodeURIComponent(contact.lineId);
-    l.hidden=false;
+  function contactNode(id,kind,value,url){
+    const slot=$(id);if(!slot)return;
+    const span=slot.querySelector('[data-contact-value]');
+    if(!span)return;
+    slot.classList.toggle('is-configured',Boolean(value));
+    if(value&&url){
+      const a=document.createElement('a');a.href=url;a.textContent=value;
+      if(kind==='line'){a.target='_blank';a.rel='noopener noreferrer';}
+      span.replaceChildren(a);
+    } else {
+      span.textContent=value||'—';
+      slot.title=document.documentElement.lang==='th'?'เพิ่มข้อมูลติดต่อใน Tools → Website Manager':'Add contact information in Tools → Website Manager';
+    }
   }
+  function showContacts(){
+    const lang=document.documentElement.lang;
+    const isThai=lang==='th';
+    const office=safePhone(contactValue('officePhone')||contactValue('phone'));
+    const mobile=safePhone(contactValue('mobilePhone'));
+    const rawLine=contactValue('lineId');
+    const line=/^@[\w.-]{2,30}$/.test(rawLine)?rawLine:'';
+    const rawUrl=contactValue('lineUrl');
+    const lineUrl=/^https:\/\/(line\.me|lin\.ee)\//.test(rawUrl)?rawUrl:line?'https://line.me/R/ti/p/'+encodeURIComponent(line):'';
+    const officeLabel=$('topOfficePhone')?.querySelector('[data-contact-label]');if(officeLabel)officeLabel.textContent=isThai?'สำนักงาน':'Office';
+    const mobileLabel=$('topMobilePhone')?.querySelector('[data-contact-label]');if(mobileLabel)mobileLabel.textContent=isThai?'มือถือ':'Mobile';
+    contactNode('topLine','line',line,lineUrl);
+    contactNode('topOfficePhone','phone',office,office?'tel:'+office.replace(/[^+\d]/g,''):'');
+    contactNode('topMobilePhone','phone',mobile,mobile?'tel:'+mobile.replace(/[^+\d]/g,''):'');
+    const strip=$('topContactBar');
+    if(strip)strip.dataset.contactReady=String(Boolean(office||mobile||line));
+  }
+  showContacts();
+  new MutationObserver(showContacts).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  window.addEventListener('scwork-site-updated',showContacts);
 })();

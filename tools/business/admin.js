@@ -37,7 +37,7 @@ function chartSvg(data){const months=recentMonths(data),width=710,height=236,bas
  for(let i=0;i<=4;i++){const y=base-i*(base-top)/4;svg+=`<line class="gridline" x1="${left}" x2="${width-right}" y1="${y}" y2="${y}"/><text x="${left-8}" y="${y+4}" text-anchor="end">${Math.round(round*i/4)}</text>`;}
  const step=(width-left-right)/months.length,bar=22;
  counts.forEach((v,i)=>{const center=left+step*(i+.5),lh=(base-top)*v.leads/round,wh=(base-top)*v.won/round;
- svg+=`<rect x="${center-25}" y="${base-lh}" width="${bar}" height="${lh}" rx="5" fill="#2eb773"/><rect x="${center+3}" y="${base-wh}" width="${bar}" height="${wh}" rx="5" fill="#c9e8d3"/><text x="${center}" y="${base+22}" text-anchor="middle">${labels[Number(v.m.slice(5,7))-1]} ${v.m.slice(2,4)}</text>`;});
+ svg+=`<rect x="${center-25}" y="${base-lh}" width="${bar}" height="${lh}" rx="5" fill="#ff9839"/><rect x="${center+3}" y="${base-wh}" width="${bar}" height="${wh}" rx="5" fill="#e9f0fb"/><text x="${center}" y="${base+22}" text-anchor="middle">${labels[Number(v.m.slice(5,7))-1]} ${v.m.slice(2,4)}</text>`;});
  return svg+'</svg><div class="chart-legend"><span><i class="legend-dot"></i> RFQ received</span><span><i class="legend-dot secondary"></i> Orders from RFQ cohort</span></div>';
 }
 function filteredRfqs(data){return data.rfqs.filter(r=>A.inPeriod(r.receivedAt,filter.period)&&(filter.source==='all'||r.source===filter.source));}

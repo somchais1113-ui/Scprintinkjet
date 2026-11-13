@@ -1,3 +1,38 @@
+## V1.7.2 — UI Refinement Update
+- Refined floating contact assistant to icon-only round buttons with consistent visual style.
+- Enlarged contact method icons and typography for easier scanning on mobile.
+- Updated Smart RFQ promo panel in the contact section to a dark navy treatment.
+- Rewrote customer-logo credibility copy and switched placeholder logo labels to Thai.
+
+## V1.7 — Smart Quote UX + Pricing & Cost Management (2026-11-13)
+- V1.6: Quick material journeys, clickable size & quantity presets, live price per piece and minimum-order breakdown, mobile actions; no artwork uploads.
+- V1.7: local-only Cost Workbench for supplier, material, print, finishing, waste, setup, freight, overhead and minimum charge; margin-based tier rate suggestions and public-only approved rate-card export.
+- Public Smart Quote defaults to explicitly labeled DEMO rates until an approved rate file is deployed.
+- Preserved original V1.5.1 homepage HTML, hero assets, CSS and animation scripts byte-for-byte.
+- Private cost draft must not be deployed; production security and supplier rates remain unverified.
+
+## V1.4.1 — CTA brand color standardization (13 Nov 2026)
+- Set every primary CTA background to the exact HEX `#FF6900` across website, pricing, RFQ, blog, article and internal tools.
+- Use dark navy `#061B3D` text for accessible contrast on orange; hover keeps the same orange and adds a soft shadow.
+- Preserve secondary/outline actions and the approved navy/orange logo.
+- Update Website Manager default primary swatch and migrate legacy SCWORK draft color defaults on load.
+- Added a dedicated shared CTA stylesheet loaded **last** on every HTML page, plus a validation script.
+
+
+## v1.4 — Brand Consistency, Contact Bar and Full UI Audit
+- Refined public contact bar to LINE, office phone, and mobile phone slots, with safe editable data. No reference-site contact details copied.
+- Removed translated tagline duplication beside SCWORK logo; reviewed desktop/mobile spacing.
+- Extracted brand navy/orange from supplied logo; applied coordinated colors to all public/admin/pricing/RFQ/article/print layouts and kept contrast-conscious orange CTA.
+- Added contact channel fields to Website Manager; isolated SCWORK v1.4 editor draft key from older Cleaning project drafts.
+- Updated quotation demo print header to SCWORK (legacy ProCleaning branding removed).
+- Added brand QA and full source-logo asset.
+
+
+## v1.3 — SCWORK logo & brand color update
+- Replaced website, calculator, RFQ and business-studio marks with the supplied SCWORK wordmark.
+- Updated public site and admin surfaces from green to SCWORK blue/orange brand colors.
+- Refreshed favicon and Site Manager color defaults to match the new identity.
+
 ## SCWork V1.2 — Multilingual storefront
 - Language modal aligned to reference: two columns, flags, language names, dark overlay and clear selection.
 - 14 languages supported in site navigation, hero, primary sections, service cards, blog teasers, buttons and order flow.
@@ -154,3 +189,10 @@
 - Added transfer of NON-BINDING selected specs from the estimator to the existing Smart RFQ form.
 - Pricing figures originate from a user-provided reference starter and are demonstrative, not verified SCWork rates.
 - Preserved existing website manager, media manager, CRM prototype, Quotation Builder, dashboard, and backend foundation.
+
+
+## V1.7.1 — credibility strip, richer footer, contact assistant
+- Added soft grayscale logo marquee section for client/social-proof placement.
+- Repositioned pricing CTA above the pricing cards to reduce scroll friction.
+- Upgraded footer with richer contact structure and utility links.
+- Added floating contact assistant for phone, LINE, Facebook and Messenger.

@@ -105,16 +105,16 @@
 .hero .hero__dot::before {
   width: 6px;
   height: 6px;
-  background: rgba(45,74,53,.32);
+  background: rgba(11,61,145,.32);
   box-shadow: none;
   transform: none;
 }
 .hero .hero__dot.is-active::before {
-  background: #2eb66b;
+  background: #ff9839;
   transform: scale(1.08);
 }
 .hero .hero__dot:hover::before {
-  background: #2eb66b;
+  background: #ff9839;
 }
 @media(max-width:1100px) {
   .hero .hero__inner {grid-template-columns: minmax(0, 600px) minmax(0, 1fr)}

@@ -33,7 +33,7 @@
   }
   function drawCurrent() {
     const c=$('previewCanvas'),s=slots[selectedIndex];c.width=s.width;c.height=s.height;
-    const ctx=c.getContext('2d');ctx.fillStyle='#e6f2e8';ctx.fillRect(0,0,c.width,c.height);
+    const ctx=c.getContext('2d');ctx.fillStyle='#f2f6fc';ctx.fillRect(0,0,c.width,c.height);
     const img=new Image();
     img.onload=()=>{ if(userImage || slots[selectedIndex]!==s)return;drawCover(ctx,img,s.width,s.height,1,.5,.45); };
     img.src=`../${s.path}`;

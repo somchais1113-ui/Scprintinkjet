@@ -133,7 +133,7 @@
       if(path)img.src=overrides[path.replace(/^\.\//,'')]||path;
     });
     const cn=activeSite.contact||{},labels=activeSite.labels||{};
-    byId('contactMethods').innerHTML=[ui.contactMethod('☎',labels.contactCall||'Call Us',cn.phone||''),ui.contactMethod('✉',labels.contactEmail||'Email Now',cn.email||''),ui.contactMethod('●',labels.contactAddress||'Address',cn.address||'')].join('');
+    byId('contactMethods').innerHTML=[ui.contactMethod('phone',labels.contactCall||'Call Us',cn.officePhone||cn.phone||cn.mobilePhone||''),ui.contactMethod('email',labels.contactEmail||'Email Now',cn.email||''),ui.contactMethod('contact',labels.contactAddress||'Address',cn.address||'')].join('');
     byId('year').textContent=new Date().getFullYear();
     fallbackImages();
     window.dispatchEvent(new Event('scwork-site-updated'));

@@ -1,0 +1,29 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>SCWORK — Price & Cost Workbench V1.7</title><link rel="icon" href="../assets/icons/favicon.svg"><link rel="stylesheet" href="pricing-workbench.css?v=1.7"><script src="../data/pricing-demo-data.js" defer></script><script src="../src/scripts/rate-card-builder.js?v=1.7" defer></script><script src="pricing-workbench.js?v=1.7" defer></script></head><body>
+<header class="head"><div class="wrap head-inner"><a href="index.html"><img src="../assets/icons/scwork-logo.png" width="154" alt="SCWORK logo"></a><div><h1>Pricing & Cost Workbench <small>V1.7</small></h1><p>จัดการต้นทุนและสร้าง Public Price Card สำหรับงานสติกเกอร์</p></div><a class="link" href="../smart-quote.html" target="_blank" rel="noopener">ดู Smart Quote ↗</a></div></header>
+<main class="wrap"><div class="alert" role="note"><strong>ข้อมูลต้นทุนเป็นความลับ</strong> · โปรโตไทป์นี้เก็บ Draft เฉพาะใน Browser ของเครื่องที่เปิด ห้ามใช้จัดเก็บต้นทุนจริงบนเว็บไซต์สาธารณะก่อนมี Login/Backend ที่ปลอดภัย ไฟล์สำหรับเผยแพร่จะมีเฉพาะราคาขายและรายละเอียดสินค้าเท่านั้น</div>
+<div class="intro"><div><p class="eyebrow">SCWORK / COMMERCE OPERATIONS</p><h2>คุมต้นทุนได้ ก่อนอนุมัติราคา</h2><p>ปรับ Supplier, วัสดุ, ค่าพิมพ์, สูญเสีย, ค่าตั้งงาน, ค่าใช้จ่าย และ Target Gross Margin แยกตามประเภทสติกเกอร์ แล้วตรวจ Rate Card ก่อนเผยแพร่</p></div><div class="pill" id="progressStatus">0 / 6 วัสดุพร้อมตรวจ</div></div>
+<div class="layout"><aside class="materials"><h3>วัสดุสติกเกอร์</h3><div id="materialNav" class="nav" aria-label="เลือกวัสดุ"></div><p class="aside-note">เปลี่ยนวัสดุเพื่อแก้ Cost Model ของแต่ละชนิด</p></aside>
+<section class="panel" aria-label="ต้นทุนวัสดุ"><div class="panel-title"><div><p class="eyebrow" id="materialMode">A3+ SHEET</p><h3 id="materialTitle">—</h3><p id="materialDescription">—</p></div><span id="validationPill" class="state">ยังไม่พร้อม</span></div>
+<form id="costForm" autocomplete="off"><div class="field-grid">
+<label>ค่าวัสดุ / หน่วยคิดราคา (฿)<input type="number" data-cost="materialCost" min="0" step="0.01" required></label>
+<label>ค่าพิมพ์ / หมึก / หน่วย (฿)<input type="number" data-cost="printCost" min="0" step="0.01" required></label>
+<label>ค่า Finishing / หน่วย (฿)<input type="number" data-cost="finishingCost" min="0" step="0.01" required></label>
+<label>Waste / เผื่อเสีย (%)<input type="number" data-cost="wastePct" min="0" max="80" step="0.1" required></label>
+<label>Setup / ค่าเริ่มงาน (฿)<input type="number" data-cost="setupCost" min="0" step="0.01" required></label>
+<label>Supplier / Outsource เหมาจ่าย (฿)<input type="number" data-cost="supplierFee" min="0" step="0.01" required></label>
+<label>ค่าขนส่งเข้า / งาน (฿)<input type="number" data-cost="freightIn" min="0" step="0.01" required></label>
+<label>Overhead ที่ปันส่วน / งาน (฿)<input type="number" data-cost="overhead" min="0" step="0.01" required></label>
+<label>Target Gross Margin (%)<input type="number" data-cost="marginPct" min="5" max="85" step="0.1" required></label>
+<label>ยอดขายขั้นต่ำ ไม่รวม VAT (฿)<input type="number" data-cost="minCharge" min="0" step="0.01" required></label>
+</div><div class="addons"><h4>ต้นทุนบริการเสริม</h4><div id="addonFields"></div><p>ตั้งต้นทุนจริงต่อหน่วย/เหมาจ่าย · ระบบคำนวณราคาขายบริการเสริมตาม Target Margin เดียวกัน</p></div></form>
+<div class="preview"><h4>ราคาขายที่ระบบแนะนำ (ยังไม่อนุมัติ)</h4><div id="ratePreview" class="rate-preview"></div><div class="metric-grid"><div><span>Gross Margin เป้าหมาย</span><strong id="marginPreview">—</strong></div><div><span>ต้นทุนคงที่ / งาน</span><strong id="fixedPreview">—</strong></div></div><p id="costError" class="feedback" role="status" aria-live="polite"></p></div></section>
+<aside class="publish"><h3>Publish Checklist</h3><p>เริ่มจากกรอกต้นทุนของ <strong>วัสดุสติกเกอร์ทุกชนิด</strong> จาก Supplier ของเรา ไม่ใช้ราคาของเว็บตัวอย่างเป็นราคาขายจริง</p><label>Rate Card Version<input id="priceVersion" maxlength="45" value="2026-001" spellcheck="false"></label><label>VAT (%)<input id="vatPct" type="number" min="0" max="20" step="0.1" value="7"></label>
+<div id="auditResult" class="audit" role="status"></div>
+<label class="approval"><input id="approval" type="checkbox"><span>ฉันตรวจสอบต้นทุนและราคาขายกับข้อมูลจริงแล้ว และอนุมัติให้เผยแพร่</span></label>
+<button id="downloadPublic" type="button" class="primary" disabled>Export PUBLIC Price Card (.js)</button>
+<button id="exportPrivate" type="button" class="secondary">Export Private Cost Draft (.json)</button>
+<label class="secondary file-label" for="importPrivate">Import Private Draft (.json)<input id="importPrivate" type="file" accept="application/json,.json" hidden></label>
+<button id="resetDraft" type="button" class="tertiary">ล้าง Draft ใน Browser</button>
+<p class="tiny">การ Export เป็นเพียงดาวน์โหลดไฟล์ ต้องนำ <code>pricing-public-data.js</code> ไปวางใน <code>data/</code> แล้ว Deploy เว็บไซต์เอง ไม่มี Auto Publish</p>
+</aside></div></main><footer class="wrap footer">SCWORK · V1.7 Private Costing Prototype · No private costs in published public price card</footer>
+</body></html>

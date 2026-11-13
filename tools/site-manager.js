@@ -6,8 +6,8 @@ window.PROCLEANING_TRANSLATION_DEFAULTS=rawDefaults;
 const i18n=window.PROCLEANING_I18N;
 const fresh=i18n.normalize(rawDefaults);
 const slots=window.PC_IMAGE_MANIFEST?.images||[];
-const STORAGE='pc-v22-site-draft';
-const PREVIOUS_STORAGE='pc-v21-site-draft';
+const STORAGE='scwork-v14-site-draft';
+const PREVIOUS_STORAGE='pc-v22-site-draft';
 let editLanguage='en';
 let site=JSON.parse(JSON.stringify(fresh)), tab='general', selectedImage=0;
 let imageSource=null,imageObjectUrl=null,imageUploads={};
@@ -21,14 +21,14 @@ const templates={
 };
 const fieldGroups={
  general:[
- {title:'Brand Identity',desc:'ชื่อแบรนด์และข้อความที่แสดงใน Header / Footer',fields:[['brand.prefix','Brand Prefix'],['brand.name','Brand Name'],['brand.tagline','Tagline'],['brand.pageTitle','Browser Title'],['brand.metaDescription','SEO Description','textarea']]},
+ {title:'Brand Identity',desc:'ชื่อแบรนด์และข้อความที่แสดงใน Header / Footer',fields:[['brand.prefix','Brand Prefix'],['brand.name','Brand Name'],['brand.tagline','Tagline (metadata; not beside logo)'],['brand.pageTitle','Browser Title'],['brand.metaDescription','SEO Description','textarea']]},
  {title:'Navigation',fields:[['navigation.home','Home'],['navigation.about','About'],['navigation.services','Services'],['navigation.blog','Blog'],['navigation.contact','Contact'],['navigation.quote','Primary CTA']]},
- {title:'Contact Details',fields:[['contact.email','Email'],['contact.phone','Phone'],['contact.address','Address','textarea'],['contact.bookingSubject','Email Subject']]},
+ {title:'Top Contact Bar & Contact Details',desc:'แก้ข้อมูลติดต่อของ SCWORK (ใช้ร่วมทุกภาษา) | ถ้าไม่มีเลขจริง ระบบแสดง — แทน และปิดลิงก์โทรอัตโนมัติ',fields:[['contact.officePhone','เบอร์สำนักงาน / Office Phone'],['contact.mobilePhone','เบอร์มือถือ / Mobile Phone'],['contact.lineId','LINE OA ID (@...)'],['contact.lineUrl','LINE OA URL (https://line.me/...)'],['contact.phone','เบอร์ติดต่อสำรอง / Legacy Phone'],['contact.email','Email'],['contact.address','Address','textarea'],['contact.bookingSubject','Email Subject']]},
  {title:'Language Settings',desc:'เลือกภาษาที่ลูกค้าจะเห็นเมื่อเข้าชมครั้งแรก (หากยังไม่เคยเลือกภาษา)',fields:[['i18n.defaultLanguage','Default Website Language','select','en|th']]},
  {title:'Legacy Pricing Settings',desc:'โหมดสติกเกอร์ใช้การขอราคา ไม่แสดง Monthly/Yearly บนหน้าเว็บ',fields:[['settings.currency','Currency','select','USD|THB|EUR|GBP|JPY'],['settings.yearlyDiscount','Yearly Discount (%)','number']]}
  ],
  content:[
- {title:'Top Bar / Four-Step Quote Process',desc:'ข้อความใหม่จาก V1.1 ปรับแยกภาษา TH/EN ได้เช่นเดียวกับ Hero',fields:[['commerce.topBenefit','Top contact bar summary','textarea'],['commerce.topEstimate','Top bar price CTA'],['commerce.topInquiry','Top bar quote CTA'],['commerce.languageHint','Language menu label'],['commerce.languageNote','Available languages note','textarea'],['commerce.processEyebrow','Process eyebrow'],['commerce.processTitle','Process heading','textarea'],['commerce.processCta','Process CTA'],['commerce.processSteps.0.title','Step 1 title'],['commerce.processSteps.0.text','Step 1 description','textarea'],['commerce.processSteps.1.title','Step 2 title'],['commerce.processSteps.1.text','Step 2 description','textarea'],['commerce.processSteps.2.title','Step 3 title'],['commerce.processSteps.2.text','Step 3 description','textarea'],['commerce.processSteps.3.title','Step 4 title'],['commerce.processSteps.3.text','Step 4 description','textarea'],['commerce.pricingCta','Calculator CTA'],['commerce.pricingDisclaimer','Demo pricing disclaimer','textarea']]},
+ {title:'Top Bar / Four-Step Quote Process',desc:'ข้อความใหม่จาก V1.1 ปรับแยกภาษา TH/EN ได้เช่นเดียวกับ Hero',fields:[['commerce.topBenefit','Top contact bar summary','textarea'],['commerce.languageHint','Language menu label'],['commerce.languageNote','Available languages note','textarea'],['commerce.processEyebrow','Process eyebrow'],['commerce.processTitle','Process heading','textarea'],['commerce.processCta','Process CTA'],['commerce.processSteps.0.title','Step 1 title'],['commerce.processSteps.0.text','Step 1 description','textarea'],['commerce.processSteps.1.title','Step 2 title'],['commerce.processSteps.1.text','Step 2 description','textarea'],['commerce.processSteps.2.title','Step 3 title'],['commerce.processSteps.2.text','Step 3 description','textarea'],['commerce.processSteps.3.title','Step 4 title'],['commerce.processSteps.3.text','Step 4 description','textarea'],['commerce.pricingCta','Calculator CTA'],['commerce.pricingDisclaimer','Demo pricing disclaimer','textarea']]},
  {title:'Hero Section',fields:[['hero.eyebrow','Eyebrow'],['hero.title','Headline (H1)','textarea'],['hero.description','Description','textarea'],['hero.ctaPrimary','Primary CTA'],['hero.ctaSecondary','Secondary CTA']]},
  {title:'Services Introduction',fields:[['headings.servicesTitle','Section Title','textarea'],['headings.servicesEyebrow','Eyebrow'],['headings.servicesDescription','Description','textarea']]},
  {title:'Quote Section',fields:[['headings.quoteEyebrow','Eyebrow'],['headings.quoteTitle','Heading','textarea'],['headings.quoteDescription','Description','textarea'],['headings.quoteButton','CTA']]},
@@ -41,7 +41,7 @@ const fieldGroups={
  {title:'Footer Text',fields:[['footer.description','Description','textarea'],['footer.quickTitle','Quick Links Header'],['footer.servicesTitle','Services Header'],['footer.contactTitle','Contact Header'],['footer.contactQuestion','Contact Question'],['footer.copyright','Copyright'],['footer.disclaimer','Disclaimer','textarea']]}
  ],
  design:[
- {title:'Brand Colors',desc:'ใช้ HEX #RRGGBB และดูสีเปลี่ยนใน Preview',fields:[['design.primary','Primary Green','color'],['design.primaryHover','Hover Color','color'],['design.ink','Heading / Ink','color'],['design.body','Body Text','color'],['design.border','Dividers','color'],['design.footer','Footer Background','color']]},
+ {title:'Brand Colors',desc:'ใช้ HEX #RRGGBB และดูสีเปลี่ยนใน Preview',fields:[['design.primary','CTA Orange — #FF6900','color'],['design.primaryHover','Hover Color','color'],['design.ink','Heading / Ink','color'],['design.body','Body Text','color'],['design.border','Dividers','color'],['design.footer','Footer Background','color']]},
  {title:'Typography & Spacing',desc:'ปรับค่าในขอบเขตที่ Responsive รองรับ',fields:[['design.font','Body Font','select','Be Vietnam Pro|Montserrat|System'],['design.headingScale','Heading Size (%)','number'],['design.sectionSpacing','Section Spacing (px)','number'],['design.containerWidth','Container Max Width (px)','number'],['design.cardRadius','Card Radius (px)','number'],['design.imageRadius','Image Radius (px)','number']]}
  ]
 };
@@ -84,7 +84,27 @@ function dirty(){
  clearTimeout(saveTimer);saveTimer=setTimeout(()=>{try{localStorage.setItem(STORAGE,JSON.stringify(site));$('saveStatus').textContent='บันทึกร่างใน Browser แล้ว';}catch(e){$('saveStatus').textContent='บันทึกไม่ได้: โปรด Export JSON';}},450);
  clearTimeout(previewTimer);previewTimer=setTimeout(updatePreview,160);
 }
-function loadDraft(){try{const saved=JSON.parse(localStorage.getItem(STORAGE)||localStorage.getItem(PREVIOUS_STORAGE)||'null');if(saved&&saved.brand&&saved.hero)site=i18n.normalize(saved);}catch(e){console.warn('Draft could not be loaded',e);}}
+function loadDraft(){
+  try{
+    const current=localStorage.getItem(STORAGE);
+    const legacy=!current?localStorage.getItem(PREVIOUS_STORAGE):null;
+    const saved=JSON.parse(current||legacy||'null');
+    if(!saved?.brand||!saved?.hero)return;
+    // Never accidentally import a Cleaning / ProCleaning draft into the SCWORK sticker site.
+    if(legacy){
+      const id=[saved.brand.pageTitle,saved.brand.name,saved.hero.title,(saved.services||[]).map(s=>s.title).join(' ')].join(' ').toLowerCase();
+      if(!/scwork|inkjet|sticker|สติกเกอร์/.test(id))return;
+    }
+    if(saved.design){
+      const d=saved.design;
+      if(['#36b864','#2eb767','#23ad65','#ff7a00','#c94a00','#fc6201'].includes(String(d.primary).toLowerCase())){
+        Object.assign(d,{primary:'#FF6900',primaryHover:'#FF6900',ink:'#082E66',body:'#5b6b84',border:'#c7d7ef',footer:'#061B3D'});
+      }
+    }
+    site=i18n.normalize(saved);
+    if(legacy)localStorage.setItem(STORAGE,JSON.stringify(site));
+  }catch(e){console.warn('Draft could not be loaded',e);}
+}
 function validData(obj){return !!(obj&&obj.schemaVersion===2&&obj.brand&&obj.hero&&obj.headings&&obj.labels&&obj.design&&obj.contact&&obj.settings&&['services','pricing','team','testimonials','blogs','features'].every(k=>Array.isArray(obj[k])));}
 function field([path,label,type='text',options]){
  const originalPath=path;path=localePath(path,type);const v=valueForField(path,originalPath);const id='field-'+path.replace(/[^a-z0-9]/gi,'-');let control='';
@@ -92,7 +112,7 @@ function field([path,label,type='text',options]){
  else if(type==='checkbox')control=`<input type="checkbox" id="${id}" data-field="${esc(path)}" data-type="checkbox" ${v?'checked':''} />`;
  else if(type==='image'){const optionsHtml=[...new Set([String(v||''),...slots.map(s=>'./'+s.path)])].map(p=>`<option value="${esc(p)}" ${p===v?'selected':''}>${esc(p.replace('./assets/images/',''))}</option>`).join('');control=`<select id="${id}" data-field="${esc(path)}" data-type="image">${optionsHtml}</select><small class="field__hint">เปลี่ยนไฟล์ที่หน้า Image Assets เพื่อใช้งานจริง</small>`;}
  else if(type==='select')control=`<select id="${id}" data-field="${esc(path)}">${options.split('|').map(o=>`<option value="${esc(o)}" ${o===String(v)?'selected':''}>${esc(o)}</option>`).join('')}</select>`;
- else if(type==='color')control=`<div class="color-input"><input type="color" data-field="${esc(path)}" value="${/^#[0-9a-f]{6}$/i.test(v)?v:'#36b864'}" /><input type="text" data-field="${esc(path)}" value="${esc(v)}" aria-label="${esc(label)} hex code" maxlength="7" /></div>`;
+ else if(type==='color')control=`<div class="color-input"><input type="color" data-field="${esc(path)}" value="${/^#[0-9a-f]{6}$/i.test(v)?v:'#FF6900'}" /><input type="text" data-field="${esc(path)}" value="${esc(v)}" aria-label="${esc(label)} hex code" maxlength="7" /></div>`;
  else control=`<input type="${type==='number'?'number':'text'}" id="${id}" data-field="${esc(path)}" value="${esc(v)}" ${type==='number'?'step="any"':'maxlength="500"'} />`;
  return `<label class="field ${type==='checkbox'?'field--checkbox':''}"><span class="field__label">${esc(label)}${editLanguage==='th'&&originalPath!==path?'<span class="field__language">TH</span>':''}</span>${control}</label>`;
 }
@@ -131,7 +151,7 @@ function restoreData(obj){const candidate=obj?.site||obj;if(!candidate?.brand||!
 function resetRanges(){$('imgZoom').value=100;$('imgFocusX').value=50;$('imgFocusY').value=50;updateRangeLabels();}
 function updateRangeLabels(){for(const [key,id] of [['imgZoom','zoomVal'],['imgFocusX','focusXVal'],['imgFocusY','focusYVal']])$(id).textContent=$(key).value+'%';}
 function drawCover(ctx,img,w,h,zoom,focusX,focusY){const scale=Math.max(w/img.naturalWidth,h/img.naturalHeight)*zoom;const cw=Math.min(img.naturalWidth,w/scale),ch=Math.min(img.naturalHeight,h/scale);const sx=Math.max(0,(img.naturalWidth-cw)*focusX),sy=Math.max(0,(img.naturalHeight-ch)*focusY);ctx.clearRect(0,0,w,h);ctx.drawImage(img,sx,sy,cw,ch,0,0,w,h);}
-function renderCanvas(){const slot=slots[selectedImage];if(!slot)return;const canvas=$('imageCanvas');if(!canvas)return;canvas.width=slot.width;canvas.height=slot.height;const ctx=canvas.getContext('2d');ctx.fillStyle='#e5f2e7';ctx.fillRect(0,0,canvas.width,canvas.height);if(imageSource)drawCover(ctx,imageSource,canvas.width,canvas.height,Number($('imgZoom').value)/100,Number($('imgFocusX').value)/100,Number($('imgFocusY').value)/100);}
+function renderCanvas(){const slot=slots[selectedImage];if(!slot)return;const canvas=$('imageCanvas');if(!canvas)return;canvas.width=slot.width;canvas.height=slot.height;const ctx=canvas.getContext('2d');ctx.fillStyle='#f2f6fc';ctx.fillRect(0,0,canvas.width,canvas.height);if(imageSource)drawCover(ctx,imageSource,canvas.width,canvas.height,Number($('imgZoom').value)/100,Number($('imgFocusX').value)/100,Number($('imgFocusY').value)/100);}
 function initImageCanvas(){imageSource=null;if(imageObjectUrl){URL.revokeObjectURL(imageObjectUrl);imageObjectUrl=null;}const slot=slots[selectedImage];if(!slot)return;const loaded=new Image();const index=selectedImage;loaded.onload=()=>{if(selectedImage!==index||!$('imageCanvas'))return;imageSource=null;const c=$('imageCanvas');c.width=slot.width;c.height=slot.height;drawCover(c.getContext('2d'),loaded,slot.width,slot.height,1,.5,.5);};loaded.src=imageUploads[slot.path]?.dataUrl||'../'+slot.path;}
 function readAsDataURL(blob){return new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(blob);});}
 function imageBlob(canvas){return new Promise((resolve,reject)=>canvas.toBlob(blob=>blob?.type==='image/webp'?resolve(blob):reject(Error('Browser ไม่รองรับ WebP Canvas Export')), 'image/webp',.86));}

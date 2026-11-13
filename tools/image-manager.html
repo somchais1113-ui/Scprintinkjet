@@ -6,30 +6,31 @@
   <meta name="color-scheme" content="light" />
   <title>SCWork · Image Asset Manager</title>
   <style>
-    :root{--ink:#153325;--muted:#617568;--green:#27ae61;--dark:#0b3224;--line:#dce8df;--canvas:#eaf4ec;--white:#fff}
-    *{box-sizing:border-box}body{margin:0;background:#f5f8f5;color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+    :root{--ink:#082E66;--muted:#647690;--green:#FF6900;--dark:#061B3D;--line:#dce5f3;--canvas:#edf4ff;--white:#fff}
+    *{box-sizing:border-box}body{margin:0;background:#f9fbff;color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
     a{color:inherit}button,input,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}
-    .top{background:linear-gradient(110deg,#092b20,#1a5c3c);color:white;padding:32px clamp(20px,5vw,70px);display:flex;align-items:center;gap:20px;justify-content:space-between;flex-wrap:wrap}
-    .eyebrow{color:#a9e6bc;font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800}
+    .top{background:linear-gradient(110deg,#061B3D,#012A62);color:white;padding:32px clamp(20px,5vw,70px);display:flex;align-items:center;gap:20px;justify-content:space-between;flex-wrap:wrap}
+    .eyebrow{color:#dbe6f5;font-size:12px;text-transform:uppercase;letter-spacing:2px;font-weight:800}
     h1{font-size:clamp(24px,3vw,38px);line-height:1.15;margin:6px 0 10px}h2{margin:0 0 10px;font-size:20px}p{margin:0 0 15px}
-    .top p{margin:0;max-width:720px;color:#d7eee0}.back{border:1px solid #78ad8e;border-radius:11px;padding:11px 18px;text-decoration:none;white-space:nowrap}
-    .instructions{max-width:1440px;margin:24px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.step{background:white;border:1px solid var(--line);padding:17px 19px;border-radius:14px;font-size:13px;color:#4e6155}.step b{color:var(--ink)}
-    .step strong{display:inline-flex;align-items:center;justify-content:center;background:#dcf8e5;color:#1a8050;border-radius:50%;width:27px;height:27px;margin-right:10px}
+    .top p{margin:0;max-width:720px;color:#e9f0fb}.back{border:1px solid #7594c4;border-radius:11px;padding:11px 18px;text-decoration:none;white-space:nowrap}
+    .instructions{max-width:1440px;margin:24px auto 0;padding:0 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.step{background:white;border:1px solid var(--line);padding:17px 19px;border-radius:14px;font-size:13px;color:#1c4785}.step b{color:var(--ink)}
+    .step strong{display:inline-flex;align-items:center;justify-content:center;background:#f2f6fc;color:#ad5000;border-radius:50%;width:27px;height:27px;margin-right:10px}
     .workspace{display:grid;grid-template-columns:minmax(290px,360px) minmax(0,1fr);gap:20px;padding:20px;max-width:1440px;margin:0 auto}
-    .panel{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 45px #254b3612}.panel-head{padding:23px 23px 16px;border-bottom:1px solid var(--line)}.panel-head p{font-size:13px;color:var(--muted);margin:0}.list{padding:12px;max-height:920px;overflow:auto}
-    .slot{display:flex;align-items:center;gap:11px;border:1px solid transparent;padding:9px;border-radius:10px;background:white;width:100%;text-align:left}.slot:hover,.slot:focus-visible{background:#f3f9f4}.slot.selected{border-color:#7bd49b;background:#eaf9ef}
-    .slot img{width:68px;height:58px;border-radius:8px;object-fit:cover;background:#e9f3e9;flex:none}.slot strong{display:block;font-size:13px}.slot small{display:block;font-size:11px;color:#617568;line-height:1.3;margin-top:4px;overflow-wrap:anywhere}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 10px 45px #012A6212}.panel-head{padding:23px 23px 16px;border-bottom:1px solid var(--line)}.panel-head p{font-size:13px;color:var(--muted);margin:0}.list{padding:12px;max-height:920px;overflow:auto}
+    .slot{display:flex;align-items:center;gap:11px;border:1px solid transparent;padding:9px;border-radius:10px;background:white;width:100%;text-align:left}.slot:hover,.slot:focus-visible{background:#f9fbff}.slot.selected{border-color:#f8ae66;background:#f2f6fc}
+    .slot img{width:68px;height:58px;border-radius:8px;object-fit:cover;background:#f2f6fc;flex:none}.slot strong{display:block;font-size:13px}.slot small{display:block;font-size:11px;color:#1c4785;line-height:1.3;margin-top:4px;overflow-wrap:anywhere}
     .editor{padding:23px}.meta{display:flex;gap:18px;align-items:start;justify-content:space-between;flex-wrap:wrap}.meta p{font-size:13px;color:var(--muted)}
-    .flag{font-size:11px;background:#eaf7ef;color:#206c40;border-radius:999px;padding:7px 11px;white-space:nowrap;font-weight:700}
-    .current{background:#f9fbf9;border:1px solid var(--line);border-radius:14px;padding:15px;display:flex;gap:16px;align-items:center;margin-bottom:18px}.current img{width:132px;height:100px;object-fit:cover;border-radius:9px;background:#e7eee7}.current code,.path{font-size:12px;overflow-wrap:anywhere;color:#1c6842}.current small{display:block;margin:8px 0 0;color:#64736a}
-    .drop{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:115px;border:2px dashed #86c6a0;border-radius:15px;background:#f6fbf7;padding:16px;cursor:pointer;position:relative}.drop.drag{background:#dff4e7}.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}.drop span{color:#66776b;font-size:12px}
-    .canvas-wrapper{display:flex;justify-content:center;align-items:center;min-height:200px;background:repeating-conic-gradient(#eaf2ed 0% 25%,#f5f8f4 0% 50%) 50%/20px 20px;border:1px solid var(--line);border-radius:15px;overflow:hidden;margin:18px 0}.canvas-wrapper canvas{display:block;max-width:100%;max-height:460px;object-fit:contain}
-    .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.control{display:grid;gap:6px;font-size:13px;font-weight:700}.control span{font-size:11px;color:var(--muted);font-weight:400}.control input{width:100%;accent-color:#25a75e}
-    .actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:23px}.primary{color:white;background:var(--green);border:0;border-radius:10px;padding:14px 22px;font-weight:800}.secondary{background:white;border:1px solid var(--line);padding:12px 17px;border-radius:10px}.status{font-size:12px;color:var(--muted);margin-top:12px;min-height:24px}.note{font-size:12px;margin-top:20px;padding:15px;border:1px solid #dbe6db;background:#fafbf9;border-radius:10px;color:#506657}.note strong{color:#264334}
+    .flag{font-size:11px;background:#f2f6fc;color:#173868;border-radius:999px;padding:7px 11px;white-space:nowrap;font-weight:700}
+    .current{background:#f9fbf9;border:1px solid var(--line);border-radius:14px;padding:15px;display:flex;gap:16px;align-items:center;margin-bottom:18px}.current img{width:132px;height:100px;object-fit:cover;border-radius:9px;background:#f2f6fc}.current code,.path{font-size:12px;overflow-wrap:anywhere;color:#173868}.current small{display:block;margin:8px 0 0;color:#43669c}
+    .drop{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:115px;border:2px dashed #7594c4;border-radius:15px;background:#f9fbff;padding:16px;cursor:pointer;position:relative}.drop.drag{background:#f2f6fc}.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}.drop span{color:#43669c;font-size:12px}
+    .canvas-wrapper{display:flex;justify-content:center;align-items:center;min-height:200px;background:repeating-conic-gradient(#f2f6fc 0% 25%,#f9fbff 0% 50%) 50%/20px 20px;border:1px solid var(--line);border-radius:15px;overflow:hidden;margin:18px 0}.canvas-wrapper canvas{display:block;max-width:100%;max-height:460px;object-fit:contain}
+    .controls{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.control{display:grid;gap:6px;font-size:13px;font-weight:700}.control span{font-size:11px;color:var(--muted);font-weight:400}.control input{width:100%;accent-color:#C94A00}
+    .actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:23px}.primary{color:white;background:var(--green);border:0;border-radius:10px;padding:14px 22px;font-weight:800}.secondary{background:white;border:1px solid var(--line);padding:12px 17px;border-radius:10px}.status{font-size:12px;color:var(--muted);margin-top:12px;min-height:24px}.note{font-size:12px;margin-top:20px;padding:15px;border:1px solid #e9f0fb;background:#fafbf9;border-radius:10px;color:#1c4785}.note strong{color:#173868}
     @media(max-width:920px){.workspace{grid-template-columns:1fr}.list{max-height:280px}.instructions{grid-template-columns:1fr}.controls{grid-template-columns:1fr}}
   </style>
-  <script src="../assets/images/manifest.js" defer></script>
+  <script src="../assets/images/manifest.js?v=scwork-1.4" defer></script>
   <script src="./image-manager.js" defer></script>
+  <link rel="stylesheet" href="../src/styles/18-cta-standard.css?v=1.4.1" />
 </head>
 <body>
   <header class="top"><div><div class="eyebrow">SCWork / Developer tools</div><h1>Image Asset Manager</h1><p>เครื่องมือเปลี่ยนรูปภาพในเว็บแบบออฟไลน์ เลือกตำแหน่ง อัปโหลด ครอป แล้วดาวน์โหลดเป็นไฟล์ WebP ชื่อถูกต้องสำหรับแทนไฟล์เดิม</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="back" href="./index.html">← Admin Home</a><a class="back" href="../index.html">เปิดหน้าเว็บ ↗</a></div></header>

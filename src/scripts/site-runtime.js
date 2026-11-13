@@ -40,12 +40,13 @@
   function apply(site, overrides={}) {
     if(!site || typeof site!=='object')return;
     const root=document.documentElement,st=root.style,d=site.design||{};
-    st.setProperty('--color-primary',cssColor(d.primary,'#36b864'));
-    st.setProperty('--color-primary-hover',cssColor(d.primaryHover,'#2da458'));
-    st.setProperty('--color-ink',cssColor(d.ink,'#111d15'));
-    st.setProperty('--color-body',cssColor(d.body,'#666666'));
-    st.setProperty('--color-border',cssColor(d.border,'#aac5b1'));
-    st.setProperty('--color-footer',cssColor(d.footer,'#0e2015'));
+    st.setProperty('--color-primary',cssColor(d.primary,'#FF6900'));
+    st.setProperty('--color-cta',cssColor(d.primary,'#FF6900'));
+    st.setProperty('--color-primary-hover',cssColor(d.primaryHover,'#FF6900'));
+    st.setProperty('--color-ink',cssColor(d.ink,'#082E66'));
+    st.setProperty('--color-body',cssColor(d.body,'#5b6b84'));
+    st.setProperty('--color-border',cssColor(d.border,'#c7d7ef'));
+    st.setProperty('--color-footer',cssColor(d.footer,'#061B3D'));
     const fonts={'Be Vietnam Pro':"'Be Vietnam Pro','Montserrat',Arial,sans-serif",'Montserrat':"'Montserrat','Be Vietnam Pro',Arial,sans-serif",'System':"system-ui,-apple-system,'Segoe UI',sans-serif"};
     st.setProperty('--font-body',root.lang==='th'?"'Noto Sans Thai','Be Vietnam Pro',sans-serif":fonts[d.font]||fonts['Be Vietnam Pro']);
     st.setProperty('--font-secondary',root.lang==='th'?"'Noto Sans Thai','Montserrat',sans-serif":"'Montserrat',Arial,sans-serif");
@@ -67,7 +68,7 @@
     const nav=site.navigation||{};
     all('.footer-grid > div:nth-child(2) a').forEach((el,i)=>{const paths=['home','about','services','quote'];el.textContent=nav[paths[i]]||['Home','About us','Service','Get a quote'][i];});
     const footerServices=q('.footer-grid > div:nth-child(3) ul');
-    if(footerServices){footerServices.replaceChildren();[...(site.services||[]).slice(0,3).map(s=>({title:s.title,href:'#services'})),{title:nav.quote||'Get a quote',href:'./request-quote.html?type=general'}].forEach(item=>{
+    if(footerServices){footerServices.replaceChildren();[...(site.services||[]).slice(0,3).map(s=>({title:s.title,href:'#services'})),{title:nav.quote||'Get a quote',href:'./smart-quote.html'}].forEach(item=>{
       const li=document.createElement('li'),a=document.createElement('a');a.href=item.href;a.textContent=item.title;li.append(a);footerServices.append(li);
     });}
     setText('.footer-grid > div:nth-child(4) > a',site.contact?.email||'');
@@ -88,7 +89,7 @@
     const serviceNext=q('#serviceNext');if(serviceNext)serviceNext.setAttribute('aria-label',labels.nextServices||'Next services');
     for(const [id,label] of [['testimonialPrev','previousTestimonial'],['testimonialNext','nextTestimonial']]){const e=document.getElementById(id);if(e)e.setAttribute('aria-label',labels[label]||'');}
     const billingSwitch=q('.billing-switch');if(billingSwitch)billingSwitch.setAttribute('aria-label',labels.billingAria||'Billing interval');
-    const heroCarousel=q('#heroCarousel');if(heroCarousel)heroCarousel.setAttribute('aria-label',labels.heroImageAlt||'Featured cleaning service photo ads');
+    const heroCarousel=q('#heroCarousel');if(heroCarousel)heroCarousel.setAttribute('aria-label',labels.heroImageAlt||'SCWORK inkjet sticker printing hero images');
     const altMap={quoteMainImage:'quoteMainAlt',quoteSmallImage:'quoteSmallAlt',aboutMainImage:'aboutMainAlt',aboutSmallImage:'aboutSmallAlt'};
     for(const [id,k] of Object.entries(altMap)){const el=document.getElementById(id);if(el)el.alt=labels[k]||'';}
     const feedback=q('#formFeedback');if(feedback){feedback.textContent='';feedback.className='form-feedback';}
