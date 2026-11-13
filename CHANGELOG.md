@@ -1,3 +1,9 @@
+## V1.7.3 — Client Logo Copy Refinement
+- Simplified the Thai headline and description in the client-logo marquee.
+- Added conditional TH/EN copy: placeholder wording before approved client logos, credibility wording after at least one approved local logo.
+- Preserved Homepage artwork, layouts, colors, animations, CTA styling, Smart Quote, Pricing and Admin.
+- Refreshed page copy defaults and cache busting for the updated script.
+
 ## V1.7.2 — UI Refinement Update
 - Refined floating contact assistant to icon-only round buttons with consistent visual style.
 - Enlarged contact method icons and typography for easier scanning on mobile.

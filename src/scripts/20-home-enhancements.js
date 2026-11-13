@@ -2,9 +2,12 @@
   'use strict';
   const isThai=() => document.documentElement.lang === 'th';
   const t = () => isThai() ? {
-    socialEyebrow:'เสริมความน่าเชื่อถือของแบรนด์',
-    socialTitle:'พื้นที่แสดงโลโก้ลูกค้าที่ไว้วางใจให้เราผลิตงาน',
-    socialDescription:'สามารถแสดงโลโก้ลูกค้าที่ได้รับอนุญาตในโทนสีเทาอ่อน เพื่อช่วยเสริมความน่าเชื่อถือและคงความสะอาดตาของหน้าเว็บ',
+    socialEyebrow:'ลูกค้าและแบรนด์',
+    socialTitle:'พื้นที่สำหรับโลโก้ลูกค้า',
+    socialDescription:'แสดงเฉพาะโลโก้ที่ได้รับอนุญาตให้เผยแพร่',
+    socialApprovedEyebrow:'ความไว้วางใจจากลูกค้า',
+    socialApprovedTitle:'แบรนด์ที่ร่วมงานกับ SCWORK',
+    socialApprovedDescription:'ขอบคุณทุกแบรนด์ที่เลือกใช้บริการผลิตสติกเกอร์กับเรา',
     footerMiniTitle:'ปรึกษาเบื้องต้นได้รวดเร็ว',
     footerMiniText:'ส่งขนาด วัสดุ จำนวน หรือรูปแบบงานที่ต้องการผ่าน Smart RFQ หรือช่องทางที่สะดวกได้เลย',
     secondaryLinksTitle:'วิธีสั่งและข้อมูลช่วยเหลือ',
@@ -25,9 +28,12 @@
     facebook:'Facebook',
     messenger:'Messenger'
   } : {
-    socialEyebrow:'Trusted by many business types',
-    socialTitle:'A dedicated area for customer logos and brand trust',
-    socialDescription:'Display approved customer logos in a soft grayscale treatment to strengthen credibility while keeping the page clean and understated.',
+    socialEyebrow:'CLIENTS & BRANDS',
+    socialTitle:'Customer logo showcase',
+    socialDescription:'Only client-approved logos will appear here.',
+    socialApprovedEyebrow:'CLIENTS & PARTNERS',
+    socialApprovedTitle:'Brands working with SCWORK',
+    socialApprovedDescription:'Thank you to the brands choosing SCWORK for sticker printing.',
     footerMiniTitle:'Quick consultation',
     footerMiniText:'Send size, material, quantity or a short project brief via Smart RFQ or your preferred contact channel.',
     secondaryLinksTitle:'Ordering & helpful information',
@@ -89,9 +95,13 @@
 
   function renderStaticCopy(){
     const copy=t();
-    setText('socialProofEyebrow', copy.socialEyebrow);
-    setText('socialProofTitle', copy.socialTitle);
-    setText('socialProofDescription', copy.socialDescription);
+    // Never imply endorsements while the marquee only contains placeholders.
+    const hasApprovedLogo=Array.isArray(window.SCWORK_CLIENT_LOGOS) &&
+      window.SCWORK_CLIENT_LOGOS.some(item=>item && item.approved===true &&
+        /^\.\/assets\/images\/client-logos\/[\w.-]+\.(png|webp|svg|jpg|jpeg)$/i.test(String(item.src||'').trim()));
+    setText('socialProofEyebrow', hasApprovedLogo ? copy.socialApprovedEyebrow : copy.socialEyebrow);
+    setText('socialProofTitle', hasApprovedLogo ? copy.socialApprovedTitle : copy.socialTitle);
+    setText('socialProofDescription', hasApprovedLogo ? copy.socialApprovedDescription : copy.socialDescription);
     setText('footerMiniContactTitle', copy.footerMiniTitle);
     setText('footerMiniContactText', copy.footerMiniText);
     setText('footerSecondaryLinksTitle', copy.secondaryLinksTitle);

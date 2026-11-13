@@ -149,9 +149,9 @@ window.PROCLEANING_SITE = {
         "messengerUrl": ""
       },
       "socialProof": {
-        "eyebrow": "เหมาะกับหลายประเภทธุรกิจ",
-        "title": "พื้นที่แสดงโลโก้ลูกค้าแบบโปร่งเบา เพื่อเสริมความน่าเชื่อถือ",
-        "description": "รองรับโลโก้ลูกค้าที่อนุญาตให้เผยแพร่ในโทนขาวดำหรือเทาอ่อน เพื่อไม่ให้รบกวนภาพรวมของหน้าเว็บ",
+        "eyebrow": "ลูกค้าและแบรนด์",
+        "title": "พื้นที่สำหรับโลโก้ลูกค้า",
+        "description": "แสดงเฉพาะโลโก้ที่ได้รับอนุญาตให้เผยแพร่",
         "logos": ["CAFE BRAND","BEAUTY LAB","FRESH LABEL","LOCAL STORE","EVENT STUDIO","FOOD PACK","PET SHOP","RETAIL BOX"]
       },
       "features": [
@@ -281,9 +281,9 @@ window.PROCLEANING_SITE = {
     "bookingSubject": "Sticker printing RFQ"
   },
   "socialProof": {
-    "eyebrow": "Suitable for many business types",
-    "title": "A flexible area for customer logo credibility",
-    "description": "Approved client logos can be displayed here in a soft grayscale style to reinforce credibility without overpowering the page.",
+    "eyebrow": "CLIENTS & BRANDS",
+    "title": "Customer logo showcase",
+    "description": "Only client-approved logos will appear here.",
     "logos": ["CAFE BRAND","BEAUTY LAB","FRESH LABEL","LOCAL STORE","EVENT STUDIO","FOOD PACK","PET SHOP","RETAIL BOX"]
   },
   "settings": {
