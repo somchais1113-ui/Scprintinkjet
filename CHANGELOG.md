@@ -1,3 +1,7 @@
+# V2.1.0 — Buyer types, settlement and print
+
+Features a clear estimate/VAT/withholding breakdown, buyer selection, an isolated demo and printable estimate/specification. Retains the six uploaded images and leaves seller VAT and commercial rates unconfirmed.
+
 # V2.0.0 — Project follow-up and reorder
 
 Added a Thai/English tracking page that reads the latest staff-published status using a private link, plus a local reorder spec import. Full-only Order Desk exports allowlisted status snapshots and separate repeat specifications from the confirmed delivered scope. No live orders, deployed service, or staff data ship with the release.

@@ -47,7 +47,9 @@
   const requested=query.get('lang');
   const lang=requested==='en'?'en':'th';
   const copy=C[lang];
-  const priceReady=!!window.SCWORK_LABEL_QUOTE_PLAN?.prepare(window.SCWORK_PRICING_PUBLIC,window.SCWORK_PRICING_ENGINE);
+  const basePlan=window.SCWORK_LABEL_QUOTE_PLAN?.prepare(window.SCWORK_PRICING_PUBLIC,window.SCWORK_PRICING_ENGINE);
+  const billing=window.SCWORK_QUOTE_BILLING;
+  const priceReady=!!(billing?billing.rated(basePlan,window.SCWORK_BILLING_CONFIG):basePlan);
   document.documentElement.lang=lang;
   document.title=copy.title;
   document.querySelector('meta[name="description"]')?.setAttribute('content',copy.description);

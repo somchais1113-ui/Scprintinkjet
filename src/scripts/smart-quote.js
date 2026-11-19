@@ -10,7 +10,9 @@
   const engine=window.SCWORK_PRICING_ENGINE,line=window.SCWORK_QUOTE_TO_LINE;
   const card=window.SCWORK_PRICING_PUBLIC,baseCatalog=window.SCWORK_QUOTE_CATALOG;
   if(!engine||!line||!Array.isArray(baseCatalog))return;
-  const phase=window.SCWORK_LABEL_QUOTE_PLAN,plan=phase?.prepare(card,engine);
+  const phase=window.SCWORK_LABEL_QUOTE_PLAN,basePlan=phase?.prepare(card,engine);
+  const bill=window.SCWORK_QUOTE_BILLING,billUI=window.SCWORK_QUOTE_BILLING_UI;
+  const plan=bill?bill.rated(basePlan,window.SCWORK_BILLING_CONFIG):basePlan;
   const strings={
     th:{
       title:'เช็กราคาสติกเกอร์เบื้องต้น | SCWORK',quoteKicker:'SCWORK / ราคาสติกเกอร์',quoteSkip:'ข้ามไปยังแบบเลือกสเปก',quoteNav:'เมนูหน้าเช็กราคา',backHome:'กลับหน้าเว็บไซต์',
@@ -156,11 +158,12 @@
     if(href){cta.href=href;cta.target='_blank';cta.rel='noopener noreferrer';}else cta.removeAttribute('href');
     const action=t(compact?(help?'lineAdvice':'lineCtaText'):'lineManual');
     text('lineCtaText',action);
-    const direct=href&&compact;
+    const direct=!billUI&&href&&compact;
     mobile.href=direct?href:'#quoteSummary';
     mobile.target=direct?'_blank':'_self';mobile.rel=direct?'noopener noreferrer':'';
     text('mobileAction',direct?action:t('mobileAction'));
     const hasLine=!!(contact.id||contact.url);
+    hide('lineHelp',!!billUI&&!hasLine);
     text('lineHelp',t(!hasLine?'noLine':!contact.id?'lineManualHelp':ready&&!compact?'longLine':'lineHelp'));
     text('quoteFeedback',!valid?t('badSpec'):!urlOK?t('badLink'):'');
     $('copyCta').disabled=!ready;
@@ -170,6 +173,12 @@
     all('[data-size]').forEach(b=>mark(b,b.dataset.size===size||b.dataset.size==='custom'&&!['3x3','5x5','8x10'].includes(size)));
     all('[data-qty]').forEach(b=>mark(b,Number(b.dataset.qty)===st.quantity));
     all('[data-plan-qty]').forEach(b=>mark(b,Number(b.dataset.planQty)===st.quantity));
+    if(billUI)billUI.render({
+      lang:lang==='th'?'th':'en',result,ready,version:plan?.version,material:$('summaryMaterial').textContent,specs:$('summarySpecs').textContent,
+      extra:help?'':[
+        t({label:'presetLabel',diecut:'presetDie',large:'presetLarge'}[preset]),t(customCut()?'cutCustom':'cutStandard'),...st.addonIds.map(addonLabel)
+      ].join(' · ')
+    });
   }
   function mark(b,on){b.classList.toggle('is-selected',on);b.setAttribute('aria-pressed',String(on));}
   function material(next){
