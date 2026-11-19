@@ -1,8 +1,8 @@
 {
   "name": "scwork-inkjet-sticker-storefront",
   "private": true,
-  "version": "1.7.5",
-  "description": "SCWORK storefront, unified quote and LINE advice flow",
+  "version": "2.0.0",
+  "description": "SCWork Inkjet storefront, product-label landing page, quote and private pricing tools",
   "scripts": {
     "dev": "python3 -m http.server 8000",
     "check": "node qa/validate-scwork.mjs",
@@ -18,9 +18,15 @@
     "check:cta": "node qa/validate-cta-v141.mjs",
     "check:smart-quote": "node qa/validate-smart-quote-v151.mjs",
     "check:v17": "node qa/validate-v17.mjs",
-    "build:public": "node qa/build-public-v174.mjs",
+    "build:public": "node qa/build-public-v200.mjs",
     "check:v174": "node qa/validate-v174.mjs && node qa/validate-v174-quote-ui.mjs",
-    "check:v175": "node qa/validate-v175.mjs && node qa/validate-v175-workbench.mjs"
+    "check:v175": "node qa/validate-v175.mjs && node qa/validate-v175-workbench.mjs",
+    "check:v180": "node qa/validate-v180.mjs",
+    "check:v181": "node qa/validate-v181.mjs",
+    "check:v182": "node qa/validate-v182.mjs && node qa/validate-v174-quote-ui.mjs",
+    "check:launch": "node qa/check-live-v182.mjs",
+    "check:v190": "node qa/validate-v190.mjs",
+    "check:v200": "node qa/validate-v200.mjs"
   },
   "license": "UNLICENSED"
 }

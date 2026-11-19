@@ -8,6 +8,21 @@
     const base='https://line.me/R/oaMessage/'+encodeURIComponent(value);
     return text ? base+'/?'+encodeURIComponent(String(text).replace(/[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?<![\uD800-\uDBFF])[\uDC00-\uDFFF]/g,'\uFFFD')) : base;
   }
+  function resolveContact(id,url){
+    const configured=lineId(id);
+    try{
+      const u=new URL(url);
+      if(u.protocol==='https:'&&!u.port&&!u.username&&!u.password&&!u.search&&!u.hash){
+        if(u.hostname==='line.me'){
+          const path=u.pathname.match(/^\/(?:R\/)?(?:ti\/p|oaMessage)\/((?:@|%40)[a-z0-9_.-]+)\/?$/i);
+          const account=lineId(path?decodeURIComponent(path[1]):'');
+          if(account)return {id:configured||account,url:configured&&configured!==account?'':u.href};
+        }
+        if(u.hostname==='lin.ee'&&/^\/[A-Za-z0-9]+\/?$/.test(u.pathname))return {id:configured,url:u.href};
+      }
+    }catch{}
+    return {id:configured,url:''};
+  }
   function validArtworkLink(input){
     if(typeof input!=='string'||!input||input.length>1500||/\s/.test(input))return false;
     try{const u=new URL(input);return ['http:','https:'].includes(u.protocol)&&!!u.hostname&&!u.username&&!u.password;}catch{return false;}
@@ -29,13 +44,16 @@
       if(d.result&&!d.result.demonstrationOnly&&Number.isFinite(d.result.total)){
         put(d.result.vatRate>0?'ราคาประเมิน (รวม VAT)':'ราคาประเมิน',d.result.vatRate>0?'Estimated price (incl. VAT)':'Estimated price',money(d.result.total,lang)+pick(' บาท',' THB'));
         put('ตารางราคา','Rate card',d.rateVersion);
-        lines.push(pick('กรุณาตรวจไฟล์ สเปก และค่าส่งก่อนยืนยันราคา','Estimate from reviewed rate card. Please confirm artwork, specifications and shipping.'));
+        if(d.result.quantity&&Number.isFinite(d.result.perPiece)){
+          put('เฉลี่ย/ดวง','Average per label',money(d.result.perPiece,lang)+pick(' บาท',' THB'));
+          lines.push(d.result.vatRate>0?pick('ไม่รวมค่าส่ง','Shipping excluded'):pick('ไม่คิด VAT และไม่รวมค่าส่ง','No VAT applied; shipping excluded'));
+        }else lines.push(pick('กรุณาตรวจไฟล์ สเปก และค่าส่งก่อนยืนยันราคา','Estimate from reviewed rate card. Please confirm artwork, specifications and shipping.'));
       }else put('ราคา','Price',pick('ขอให้ทีม SCWORK ประเมิน','Please provide a quote'));
     }
     put('ไฟล์งาน','Artwork',d.artwork);
     if(validArtworkLink(d.artworkUrl))put('ลิงก์ไฟล์','Artwork link',d.artworkUrl);
     return lines.join('\n');
   }
-  const api={lineId,lineUrl,validArtworkLink,buildMessage};root.SCWORK_QUOTE_TO_LINE=api;
+  const api={lineId,lineUrl,resolveContact,validArtworkLink,buildMessage};root.SCWORK_QUOTE_TO_LINE=api;
   if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

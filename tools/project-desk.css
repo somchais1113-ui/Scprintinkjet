@@ -1,0 +1,6 @@
+.d-aside{position:static}
+#deskBriefContent{padding:8px 10px;border:1px solid var(--line);border-radius:7px;white-space:pre-wrap;overflow-wrap:anywhere;font:400 .87rem/1.55 system-ui,Tahoma,sans-serif}
+.d-check{display:flex;align-items:center;gap:8px;margin:14px 0;font-size:.9rem}.d-check input{flex:none}
+.d-save{margin-top:17px;border-top:1px solid var(--line);padding-top:13px}
+#deskOtherLabel{margin-top:8px}
+#deskRefView{white-space:pre-line}

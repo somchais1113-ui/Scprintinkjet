@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Order Desk ภายใน | SCWork</title>
+  <link rel="stylesheet" href="../src/styles/22-project-quote.css?v=1.9.0">
+  <link rel="stylesheet" href="../src/styles/23-order-followup.css?v=2.0.0">
+  <link rel="stylesheet" href="./order-desk.css?v=2.0.0">
+  <script defer src="../src/scripts/project-brief.js?v=2.0.0"></script>
+  <script defer src="../src/scripts/order-followup-core.js?v=2.0.0"></script>
+  <script defer src="./project-desk-core.js?v=1.9.0"></script>
+  <script defer src="./order-desk-core.js?v=2.0.0"></script>
+  <script defer src="./order-desk.js?v=2.0.0"></script>
+</head>
+<body>
+  <header class="p-header"><div class="p-wrap p-nav"><a class="p-brand" href="./index.html"><img src="../assets/icons/scwork-logo.png" width="136" height="45" alt="SCWork"></a><a href="./project-desk.html">Project Desk</a></div></header>
+  <main id="main" class="p-wrap">
+    <section class="p-intro">
+      <p class="p-kicker">SCWORK / INTERNAL ONLY</p><h1>Order Desk</h1>
+      <p class="p-lede">อัปเดตงานด้วยไฟล์สถานะแยกจากข้อมูลลูกค้า และเตรียมสเปกให้ลูกค้าสั่งซ้ำหลังส่งมอบ</p>
+    </section>
+    <section class="p-card" aria-labelledby="loadTitle">
+      <h2 id="loadTitle">01 · เปิดงานจาก Project Desk</h2>
+      <div class="p-fields">
+        <label>ไฟล์ Project Desk หรือ Order Desk (JSON)<input id="orderImport" type="file" accept=".json,application/json"></label>
+        <label>URL หลักของเว็บไซต์สำหรับสร้างลิงก์<input id="siteBase" type="url" inputmode="url" placeholder="https://your-site.example/"></label>
+      </div>
+      <p class="p-help">งานใหม่ใช้ไฟล์ Project Desk งานที่เคยสร้างลิงก์แล้วให้เปิดไฟล์ Order Desk ล่าสุด เพื่อใช้ลิงก์เดิมและไม่เขียนสถานะทับผิดฉบับ</p>
+      <p class="p-help" id="loadState" role="status"></p>
+    </section>
+    <div class="p-layout od-layout" id="orderWorkspace" hidden>
+      <div>
+        <section class="p-card">
+          <h2>02 · อัปเดตสถานะให้ลูกค้า</h2>
+          <div class="p-ref" id="orderRef"></div>
+          <p class="p-help" id="proofState"></p>
+          <div class="p-fields">
+            <label>สถานะ<select id="orderStage">
+              <option value="received">รับงานแล้ว</option><option value="artwork">ตรวจไฟล์และชุดแบบ</option><option value="production">กำลังผลิต</option>
+              <option value="quality">ตรวจคุณภาพ</option><option value="ready">พร้อมส่งมอบ</option><option value="delivered">ส่งมอบแล้ว</option>
+            </select></label>
+            <label>กำหนดส่งล่าสุดที่แจ้งลูกค้า<input id="orderTarget" type="date" min="2000-01-01" max="2099-12-31"></label>
+          </div>
+          <label class="od-check"><input id="orderHold" type="checkbox">พักงาน / กำลังประสานงานเพิ่มเติม</label>
+          <button type="button" class="p-button p-primary" id="makeStatus">ดาวน์โหลดไฟล์สถานะสำหรับเผยแพร่</button>
+          <p class="p-help" id="statusBuildFeedback" role="status"></p>
+          <p class="p-help">วางไฟล์เลขรหัสในโฟลเดอร์ <code>order-status/</code> และเผยแพร่ชุด Public ใหม่ ลิงก์จะแสดงสถานะหลังเผยแพร่จริง ไม่ได้อัปเดตจากหน้านี้โดยตรง</p>
+          <label class="p-preview">ลิงก์ส่งให้ลูกค้า<textarea readonly rows="2" id="trackingLink"></textarea></label>
+          <button class="p-button p-small" id="copyTracking" type="button" disabled>คัดลอกลิงก์ติดตาม</button>
+        </section>
+        <section class="p-card" aria-labelledby="repeatTitle">
+          <div class="p-card-head"><h2 id="repeatTitle">03 · สเปกจริงสำหรับสั่งซ้ำ</h2><button id="addFinal" type="button" class="p-button p-small">+ เพิ่ม SKU</button></div>
+          <p class="p-help">ตรวจสเปกกับชุดแบบและงานที่ส่งจริง ตัวเลือก “อื่น ๆ” ต้องระบุวัสดุในหมายเหตุ ใส่การตัดหรือเคลือบเฉพาะที่ต้องทำซ้ำ</p>
+          <div id="finalItems"></div>
+          <template id="finalTemplate">
+            <fieldset class="p-sku"><legend></legend><div class="p-fields">
+              <label>ชื่อแบบ / รหัส SKU<input data-key="name" maxlength="80"></label>
+              <label>จำนวนเดิม (ดวง)<input data-key="qty" type="number" min="1" max="1000000" step="1"></label>
+              <label>กว้าง (มม.)<input data-key="width" type="number" min="1" max="10000" step="0.1"></label>
+              <label>สูง (มม.)<input data-key="height" type="number" min="1" max="10000" step="0.1"></label>
+              <label>วัสดุ<select data-key="material"><option value="undecided">ยังไม่ยืนยัน</option><option value="pp-white">PP ขาว</option><option value="pp-clear">PP ใส</option><option value="paper">กระดาษ</option><option value="other">อื่น ๆ</option></select></label>
+              <label>สเปกเพิ่มเติม<input data-key="note" maxlength="110"></label>
+            </div><button data-remove type="button" class="p-button p-small">ลบ SKU</button></fieldset>
+          </template>
+          <label class="od-check"><input id="finalChecked" type="checkbox">ตรวจทุก SKU กับชุดแบบที่อนุมัติและงานที่ส่งจริงแล้ว</label>
+          <button type="button" class="p-button p-primary" id="makeRepeat" disabled>ดาวน์โหลดไฟล์สเปกสั่งซ้ำ</button>
+          <p class="p-help" id="repeatBuildFeedback" role="status"></p>
+          <p class="p-help">ส่งไฟล์สเปกให้ลูกค้าผ่านช่องทางโครงการเท่านั้น ไม่ใส่ไฟล์นี้ในโฟลเดอร์สถานะสาธารณะ</p>
+        </section>
+      </div>
+      <aside class="p-card">
+        <p class="p-kicker">INTERNAL BACKUP</p>
+        <h2>เก็บไฟล์งานก่อนปิดหน้า</h2>
+        <p class="p-help" id="lastExport">ยังไม่ได้สร้างไฟล์สถานะ</p>
+        <button class="p-button p-primary od-save" type="button" id="backupOrder">ดาวน์โหลด Order Desk JSON</button>
+        <p class="p-help" id="backupFeedback" role="status"></p>
+        <p class="p-help">ไฟล์นี้เป็นข้อมูลภายใน มีบรีฟและหลักฐานอ้างอิง ไม่ต้องส่งให้ลูกค้าหรืออัปโหลดขึ้นเว็บ</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="p-wrap p-footer"><span>SCWork · Order Desk / Full Package</span><span>สำหรับใช้ภายใน</span></footer>
+</body>
+</html>

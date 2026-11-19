@@ -1,3 +1,23 @@
+# SCWork V2.0.0
+
+เริ่มที่ [START_HERE_V2.0.md](START_HERE_V2.0.md) สำหรับหน้าติดตามสถานะ Order Desk และการสั่งซ้ำจากสเปกที่ส่งมอบ
+
+# SCWork V1.9.0
+
+เริ่มที่ [START_HERE_V1.9.md](START_HERE_V1.9.md) สำหรับการเตรียมบรีฟหลาย SKU แบบไม่ต้องสมัครสมาชิก และ Project Desk ภายใน
+
+# SCWork V1.8.2
+
+เริ่มที่ [START_HERE_V1.8.2.md](START_HERE_V1.8.2.md) สำหรับ Phase 02 เทียบราคาฉลาก PP ขาวและส่งสเปกต่อเข้า LINE
+
+# SCWork V1.8.1
+
+เริ่มที่ [START_HERE_V1.8.1.md](START_HERE_V1.8.1.md) สำหรับ Phase 01 ขั้นตอนก่อนผลิต ตัวอย่างแบบตรวจ และวิธีเปิดชุดภาพถ่ายงานพิมพ์จริง
+
+# SCWork V1.8.0
+
+เริ่มที่ [START_HERE_V1.8.0.md](START_HERE_V1.8.0.md) สำหรับหน้า Landing ฉลากสินค้าและวิธีเปิดทดสอบ
+
 # SCWork V1.7.5 · Pricing Master
 
 เริ่มที่ [START_HERE_V1.7.5.md](START_HERE_V1.7.5.md) สำหรับการตั้งราคาและส่งออกชุดขาย คู่มือด้านล่างเป็นประวัติเวอร์ชันก่อนหน้า

@@ -1,4 +1,4 @@
-/* SCWORK V1.7.4 — customer quote, advice and LINE handoff. No uploads or form submission. */
+/* SCWORK V1.8.2 — standard label estimates, manual quotes and LINE handoff. */
 (() => {
   'use strict';
   const $=id=>document.getElementById(id);
@@ -10,26 +10,14 @@
   const engine=window.SCWORK_PRICING_ENGINE,line=window.SCWORK_QUOTE_TO_LINE;
   const card=window.SCWORK_PRICING_PUBLIC,baseCatalog=window.SCWORK_QUOTE_CATALOG;
   if(!engine||!line||!Array.isArray(baseCatalog))return;
-  const positive=n=>Number.isFinite(n)&&n>0;
-  const nonNegative=n=>Number.isFinite(n)&&n>=0;
-  const sheet=card?.a3PlusSheet;
-  const validSheet=positive(sheet?.usableWidthCm)&&positive(sheet?.usableHeightCm)&&nonNegative(sheet?.gapCm);
-  const approvedById=new Map();
-  if(card?.status==='approved'&&card.demonstrationOnly===false&&nonNegative(card.vatRate)&&card.vatRate<=1){
-    const materials=card.categories?.find?.(c=>c.id==='sticker')?.materials;
-    if(Array.isArray(materials))for(const m of materials){
-      if(!baseCatalog.some(b=>b.id===m?.id)||!nonNegative(m.minimumCharge??0))continue;
-      if(m.addons!=null&&(!Array.isArray(m.addons)||m.addons.some(a=>!a?.id||!['flat','per_unit'].includes(a.type)||!nonNegative(a.price))))continue;
-      if(m.mode==='area_sqm'&&m.id==='pvc-sqm'&&positive(m.ratePerSqm)&&nonNegative(m.minAreaSqm??0))approvedById.set(m.id,m);
-      if(m.mode==='a3_sheet'&&m.id!=='pvc-sqm'&&validSheet&&Number.isInteger(m.minSheets??1)&&(m.minSheets??1)>=1&&Array.isArray(m.tiers)&&m.tiers.length&&m.tiers.every(t=>Number.isInteger(t?.min)&&t.min>=1&&(t.max==null||(Number.isInteger(t.max)&&t.max>=t.min))&&positive(t.price)))approvedById.set(m.id,m);
-    }
-  }
+  const phase=window.SCWORK_LABEL_QUOTE_PLAN,plan=phase?.prepare(card,engine);
   const strings={
     th:{
       title:'เช็กราคาสติกเกอร์เบื้องต้น | SCWORK',quoteKicker:'SCWORK / ราคาสติกเกอร์',quoteSkip:'ข้ามไปยังแบบเลือกสเปก',quoteNav:'เมนูหน้าเช็กราคา',backHome:'กลับหน้าเว็บไซต์',
-      pageTitle:'เช็กราคาสติกเกอร์|เบื้องต้น',pageLead:'เลือกวัสดุ ขนาด และจำนวน แล้วส่งสเปกทาง LINE ได้เลย ไม่ต้องสมัครสมาชิกหรืออัปโหลดไฟล์บนเว็บ',
+      pageTitle:'เช็กราคาสติกเกอร์|เบื้องต้น',pageLead:'เลือกวัสดุ ขนาด และจำนวนเพื่อเตรียมขอราคา ไม่ต้องสมัครสมาชิกหรืออัปโหลดไฟล์บนเว็บ',
       rateNotice:'ราคาที่แสดงเป็นราคาเบื้องต้น ทีม SCWORK ยืนยันหลังตรวจสเปกและไฟล์งาน',noRateNotice:'ทีม SCWORK ประเมินราคาตามสเปกและไฟล์งาน',
       modeTitle:'เริ่มจากสิ่งที่คุณรู้',modeLead:'เลือกวิธีที่สะดวก แล้วปรับได้ทุกเมื่อ',quickTitle:'รู้สเปกแล้ว',quickDesc:'เลือกวัสดุ ขนาด และจำนวน',guidedTitle:'ช่วยเลือกวัสดุ',guidedDesc:'แนะนำตามการใช้งาน',helpTitle:'ให้ทีมช่วยแนะนำ',helpDesc:'บอกเท่าที่ทราบได้เลย',
+      projectQuotePrompt:'มีหลาย SKU วันที่ต้องใช้ หรือเอกสารจัดซื้อที่ต้องขอ?',projectQuoteEntry:'ขอราคาโครงการ ↗',
       purposeLabel:'จะนำสติกเกอร์ไปใช้กับอะไร?',guidedTip:'วัสดุที่แนะนำเป็นจุดเริ่มต้น เปลี่ยนได้ในช่องวัสดุ',helpPurposeLabel:'จะนำไปใช้กับอะไร? (ไม่บังคับ)',helpBriefLabel:'รายละเอียดเพิ่มเติม (ไม่บังคับ)',helpPlaceholder:'เช่น อยากได้ฉลากกันน้ำสำหรับขวด 100 ใบ',unsure:'ยังไม่แน่ใจ',
       purposes:['ติดสินค้า / บรรจุภัณฑ์','ติดขวด / ต้องการกันน้ำ','อยากได้ฉลากใส','ติดกระจก / ป้ายใหญ่ / ภายนอก'],
       specTitle:'สเปกสติกเกอร์',specLead:'เลือกแบบที่ใกล้เคียงกับงานของคุณ',presetLabel:'ฉลากสินค้า',presetDie:'สติกเกอร์ไดคัท',presetLarge:'สติกเกอร์ขนาดใหญ่',
@@ -37,7 +25,10 @@
       advancedTitle:'การเคลือบ ไดคัท และบริการออกแบบ',cutLabel:'การตัดสติกเกอร์',cutStandard:'ตัดมาตรฐาน',cutCustom:'ไดคัทตามรูปทรง',lamination:'เคลือบเงา / ด้าน',design:'บริการออกแบบ',perUnit:'ต่อหน่วย',
       artTitle:'ไฟล์งาน',artLead:'ยังไม่มีไฟล์ก็ส่งสเปกหรือขอคำแนะนำได้',artNone:'ยังไม่มีไฟล์ / ส่งภายหลัง',artLine:'มีไฟล์ จะส่งใน LINE',artLink:'แนบลิงก์ไฟล์',linkLabel:'ลิงก์ไฟล์ (เช่น Google Drive)',linkHelp:'ใช้ลิงก์ที่ทีม SCWORK เปิดได้โดยไม่ต้องขอรหัสผ่าน',
       summaryEyebrow:'สรุปงาน',summaryTitle:'สรุปราคาเบื้องต้น',manualTitle:'สรุปสเปกขอราคา',adviceTitle:'ขอคำแนะนำ',advicePending:'บอกเท่าที่ทราบได้เลย',sumUnitLabel:'จำนวนที่คิดราคา',sumBaseLabel:'ค่าพิมพ์',sumAddonLabel:'ตัวเลือกเสริม',minimumLabel:'ส่วนต่างถึงยอดขั้นต่ำ',sumTotalLabel:'ยอดประมาณการ',
-      vat:'ภาษีมูลค่าเพิ่ม',perPiece:'เฉลี่ยต่อชิ้น',inclVat:'รวมภาษี',rateStatus:'ราคาเบื้องต้น',rateMeta:'ตารางราคา',priced:'ราคานี้ยังไม่รวมค่าส่ง และอาจเปลี่ยนหลังตรวจไฟล์งาน',manual:'ส่งสเปกเพื่อให้ทีม SCWORK ประเมินราคา',advice:'ทีม SCWORK ช่วยแนะนำวัสดุ ขนาด และงานหลังพิมพ์ได้',custom:'งานไดคัทตามรูปทรงต้องให้ทีมประเมินเพิ่มเติม',
+      vat:'ภาษีมูลค่าเพิ่ม',perPiece:'เฉลี่ยต่อดวง',rateStatus:'ราคาเบื้องต้น',rateMeta:'ตารางราคา',priced:'ทีม SCWork ยืนยันราคาหลังตรวจสเปกและไฟล์งาน',manual:'ส่งสเปกเพื่อให้ทีม SCWork ประเมินราคา',advice:'ทีม SCWork ช่วยแนะนำวัสดุ ขนาด และงานหลังพิมพ์ได้',custom:'งานไดคัทตามรูปทรงต้องให้ทีมประเมินเพิ่มเติม',
+      labelPricesTitle:'เทียบราคา 3 จำนวน',labelPricesSpec:'PP ขาว · 5 × 5 ซม. · ตัดมาตรฐาน',
+      vatIncluded:'รวม VAT {rate}%',vatNotApplied:'ไม่คิด VAT ในยอดนี้',shippingExcluded:'ไม่รวมค่าส่ง',labels:'ดวง',
+      manualScope:'สเปกนี้ไม่มีราคาออนไลน์ ส่งรายละเอียดให้ทีมประเมินได้เลย',
       badSpec:'ระบุขนาดตั้งแต่ 0.1 ซม. และจำนวนเต็มมากกว่า 0',badLink:'กรุณาใส่ลิงก์ไฟล์ที่ขึ้นต้นด้วย https:// หรือ http:// หรือเลือกส่งไฟล์ภายหลัง',
       lineHelp:'LINE จะเปิดพร้อมข้อความร่าง กรุณากดส่งในแชตด้วยตัวเอง',lineCtaText:'ส่งสเปกทาง LINE',lineAdvice:'ขอคำแนะนำทาง LINE',lineManual:'เปิดแชต LINE',lineManualHelp:'คัดลอกข้อความก่อนเปิด LINE แล้ววางในแชตเพื่อส่ง',noLine:'ยังไม่เปิดรับข้อความผ่าน LINE จากหน้านี้ คุณคัดลอกรายละเอียดไว้ได้',longLine:'ข้อความยาว กรุณาคัดลอกก่อนเปิด LINE แล้ววางในแชต',
       copyCtaText:'คัดลอกรายละเอียดงาน',manualCopyLabel:'คัดลอกข้อความจากช่องนี้',copied:'คัดลอกแล้ว วางข้อความในแชตได้เลย',privacyText:'ไม่ต้องสมัครสมาชิกหรืออัปโหลดไฟล์บนเว็บ',footerBack:'กลับเว็บไซต์',call:'โทรหา SCWORK',facebook:'ติดต่อทาง Facebook',messenger:'ติดต่อทาง Messenger',
@@ -45,9 +36,10 @@
     },
     en:{
       title:'Sticker price estimate | SCWORK',quoteKicker:'SCWORK / STICKER PRICING',quoteSkip:'Skip to quote options',quoteNav:'Quote page navigation',backHome:'Back to website',
-      pageTitle:'Sticker pricing|made simple',pageLead:'Choose material, size and quantity, then continue in LINE. No account or file upload required.',
+      pageTitle:'Sticker pricing|made simple',pageLead:'Choose a material, size and quantity to prepare a quote request. No account or file upload required.',
       rateNotice:'Online estimates are preliminary. SCWORK confirms pricing after reviewing your specifications and artwork.',noRateNotice:'SCWORK will quote based on your specifications and artwork.',
       modeTitle:'Start with what you know',modeLead:'Choose a starting point. You can switch at any time.',quickTitle:'I know my specs',quickDesc:'Choose material, size and quantity',guidedTitle:'Help me choose a material',guidedDesc:'Get a suggestion based on use',helpTitle:'Ask the team for advice',helpDesc:'Share as much as you know',
+      projectQuotePrompt:'Multiple SKUs, a target date or purchasing documents?',projectQuoteEntry:'Request a project quote ↗',
       purposeLabel:'How will you use the stickers?',guidedTip:'This is a starting suggestion. You can change the material below.',helpPurposeLabel:'Intended use (optional)',helpBriefLabel:'Extra details (optional)',helpPlaceholder:'For example, water-resistant labels for 100 bottles',unsure:'Not sure yet',
       purposes:['Products / packaging','Bottles / water resistance','Clear labels','Windows / large signs / outdoor use'],
       specTitle:'Sticker specifications',specLead:'Select the options closest to what you need.',presetLabel:'Product labels',presetDie:'Die-cut stickers',presetLarge:'Large-format stickers',
@@ -55,7 +47,10 @@
       advancedTitle:'Lamination, die cutting and design support',cutLabel:'Cutting',cutStandard:'Standard cut',cutCustom:'Custom contour cut',lamination:'Gloss / matte lamination',design:'Design service',perUnit:'per unit',
       artTitle:'Artwork',artLead:'You can request a quote or ask for advice without artwork.',artNone:'No artwork yet / send later',artLine:'I will send the file in LINE',artLink:'Include an artwork link',linkLabel:'Artwork link (e.g. Google Drive)',linkHelp:'Make sure SCWORK can open the link without a password.',
       summaryEyebrow:'JOB SUMMARY',summaryTitle:'Estimated price',manualTitle:'Quote request summary',adviceTitle:'Request advice',advicePending:'Share as much as you know',sumUnitLabel:'Billable units',sumBaseLabel:'Printing',sumAddonLabel:'Add-ons',minimumLabel:'Minimum order adjustment',sumTotalLabel:'Estimated total',
-      vat:'VAT',perPiece:'Average per piece',inclVat:'incl. VAT',rateStatus:'Estimate',rateMeta:'Rate card',priced:'Shipping is not included. Pricing may change after artwork review.',manual:'Send your specifications for a quote from SCWORK.',advice:'SCWORK can help with material, size and finishing.',custom:'Custom contour cutting requires a separate review.',
+      vat:'VAT',perPiece:'Average per label',rateStatus:'Estimate',rateMeta:'Rate card',priced:'SCWork confirms pricing after reviewing your specs and artwork.',manual:'Send your specifications for a quote from SCWork.',advice:'SCWork can help with material, size and finishing.',custom:'Custom contour cutting requires a separate review.',
+      labelPricesTitle:'Compare 3 quantities',labelPricesSpec:'White PP · 5 × 5 cm · Standard cut',
+      vatIncluded:'Includes {rate}% VAT',vatNotApplied:'No VAT applied to this estimate',shippingExcluded:'Shipping excluded',labels:'labels',
+      manualScope:'This specification is not priced online. Share your details for a quote.',
       badSpec:'Enter dimensions of at least 0.1 cm and a positive whole-number quantity.',badLink:'Enter a valid https:// or http:// link, or choose to send artwork later.',
       lineHelp:'LINE opens with a draft. Tap Send in the chat to submit it.',lineCtaText:'Send specs via LINE',lineAdvice:'Ask via LINE',lineManual:'Open LINE chat',lineManualHelp:'Copy the details before opening LINE, then paste and send them in chat.',noLine:'LINE is not available from this page yet. You can still copy your details.',longLine:'This message is long. Copy it before opening LINE, then paste it in the chat.',
       copyCtaText:'Copy job details',manualCopyLabel:'Copy the text from this field',copied:'Copied. You can paste the details into your chat.',privacyText:'No account or website file upload required',footerBack:'Back to website',call:'Call SCWORK',facebook:'Contact on Facebook',messenger:'Contact on Messenger',
@@ -83,26 +78,23 @@
     const value=k=>String(site[k]||cfg[k]||'').trim();
     const safeUrl=(key,pattern)=>{const v=value(key);return pattern.test(v)?v:'';};
     const phone=['mobilePhone','officePhone','phone'].map(value).find(v=>/^[+\d() .-]{7,24}$/.test(v)&&v.replace(/\D/g,'').length>=8);
-    const id=line.lineId(value('lineId'));
-    const url=safeUrl('lineUrl',/^https:\/\/(line\.me|lin\.ee)\//i);
+    const contact=line.resolveContact(value('lineId'),value('lineUrl'));
     const facebook=safeUrl('facebookUrl',/^https:\/\/(www\.)?(facebook\.com|fb\.com)\//i);
     const messenger=safeUrl('messengerUrl',/^https:\/\/(m\.me|www\.facebook\.com|facebook\.com)\//i);
-    return {id,url,backup:phone?['tel:'+phone.replace(/[^+\d]/g,''),'call']:facebook?[facebook,'facebook']:messenger?[messenger,'messenger']:null};
+    return {...contact,backup:phone?['tel:'+phone.replace(/[^+\d]/g,''),'call']:facebook?[facebook,'facebook']:messenger?[messenger,'messenger']:null};
   }
   function renderOptions(){
     $('material').replaceChildren(...baseCatalog.map(m=>new Option(matName(m),m.id)));
     $('material').value=materialId;
     text('materialHelp',selection().mode==='area_sqm'?t('sqmHelp'):t('materialHelp'));
-    const kept=selectedAddons(),priced=approvedById.get(materialId)?.addons||[];
+    const kept=selectedAddons();
     $('addonList').replaceChildren();
     const ids=new Set(['lamination','design']);
     for(const id of ids){
-      const rate=priced.find(a=>a.id===id);
-      const label=document.createElement('label'),input=document.createElement('input'),name=document.createElement('span'),fee=document.createElement('small');
+      const label=document.createElement('label'),input=document.createElement('input'),name=document.createElement('span');
       input.type='checkbox';input.dataset.addon=id;input.checked=kept.includes(id);
       name.textContent=addonLabel(id);
-      if(rate)fee.textContent='+'+currency(rate.price)+(rate.type==='per_unit'?' / '+t('perUnit'):'');
-      label.append(input,name);if(rate)label.append(fee);
+      label.append(input,name);
       input.addEventListener('change',calculate);$('addonList').append(label);
     }
   }
@@ -113,17 +105,25 @@
       brief:$('helpBrief').value.trim(),category:t({label:'presetLabel',diecut:'presetDie',large:'presetLarge'}[preset]),
       material:matName(selection()),width:st.widthCm,height:st.heightCm,quantity:st.quantity,
       cut:t(customCut()?'cutCustom':'cutStandard'),addons:st.addonIds.map(addonLabel).join(', '),
-      result,rateVersion:card?.version,artwork:t({none:'artNone',line:'artLine',link:'artLink'}[art()]),artworkUrl:art()==='link'?$('artUrl').value.trim():''
+      result,rateVersion:plan?.version,artwork:t({none:'artNone',line:'artLine',link:'artLink'}[art()]),artworkUrl:art()==='link'?$('artUrl').value.trim():''
     },lang);
   }
   function calculate(){
     const st=raw(),help=journey==='help',valid=help||validSpec(st);
     const urlOK=art()!=='link'||line.validArtworkLink($('artUrl').value.trim());
-    const available=approvedById.get(materialId);
-    const allAddonsPriced=st.addonIds.every(id=>available?.addons?.some(a=>a.id===id));
-    result=null;
-    if(!help&&valid&&available&&allAddonsPriced&&!customCut()){
-      try{const n=engine.calculate(st,card);if(!n.demonstrationOnly&&Number.isFinite(n.total)&&n.total>0)result=n;}catch{}
+    const matches=phase?.matches({...st,preset,standardCut:!customCut()});
+    const showPlan=!!(!help&&matches&&plan);
+    result=showPlan&&valid?plan.options.find(q=>q.quantity===st.quantity)||null:null;
+    hide('labelPrices',!showPlan);
+    hide('quoteQuantities',showPlan);
+    const terms=vatRate=>(vatRate>0?t('vatIncluded').replace('{rate}',number(vatRate*100)):t('vatNotApplied'))+' · '+t('shippingExcluded');
+    if(showPlan){
+      text('labelPricesTerms',terms(plan.vatRate));
+      for(const q of plan.options){
+        text('planQty'+q.quantity,number(q.quantity)+' '+t('labels'));
+        text('planTotal'+q.quantity,currency(q.total));
+        text('planEach'+q.quantity,currency(q.perPiece)+' / '+pick('ดวง','label'));
+      }
     }
     text('summaryTitle',t(help?'adviceTitle':result?'summaryTitle':'manualTitle'));
     text('summaryMaterial',help?($('helpPurpose').selectedIndex>0?$('helpPurpose').selectedOptions[0].textContent:t('advicePending')):matName(selection()));
@@ -131,17 +131,16 @@
     for(const id of ['priceRows','perPieceRow','totalRow','rateStatus','rateMeta'])hide(id,!result);
     text('rateStatus',t('rateStatus'));$('rateStatus').classList.toggle('is-approved',!!result);
     text('rateMeta',card?.version?t('rateMeta')+' '+card.version:'');hide('rateMeta',!result||!card?.version);
-    text('priceInfo',t(help?'advice':result?'priced':'manual'));
-    text('demoNotice',t(approvedById.size?'rateNotice':'noRateNotice'));
+    text('priceInfo',help?t('advice'):result?terms(result.vatRate)+' · '+t('priced'):t(plan?'manualScope':'manual'));
+    text('demoNotice',t(plan?'rateNotice':'noRateNotice'));
     hide('priceWarning',help||valid&&!customCut());text('priceWarning',t(!valid?'badSpec':'custom'));
     if(result){
-      const hasVat=result.vatRate>0;
       text('sumUnitLabel',t('sumUnitLabel'));text('sumUnits',number(result.units)+' '+t(selection().mode==='area_sqm'?'area':'sheets'));
       text('sumBase',currency(result.basePrint));text('sumAddons',currency(result.addonsTotal));
       text('sumVatLabel',t('vat')+' '+number(result.vatRate*100)+'%');text('sumVat',currency(result.vat));
       hide('minimumRow',!result.minimumSurcharge);text('minimumValue',currency(result.minimumSurcharge));
-      text('perPieceLabel',t('perPiece')+(hasVat?' ('+t('inclVat')+')':''));
-      text('perPieceValue',currency(result.total/st.quantity));text('sumTotal',currency(result.total));
+      text('perPieceLabel',t('perPiece'));
+      text('perPieceValue',currency(result.perPiece));text('sumTotal',currency(result.total));
     }
     text('mobileTotalLabel',t(help?'adviceTitle':result?'mobileTotalLabel':'summaryEyebrow'));
     text('mobileTotal',result?currency(result.total):t(help?'helpTitle':'request'));
@@ -170,6 +169,7 @@
     const size=st.widthCm+'x'+st.heightCm;
     all('[data-size]').forEach(b=>mark(b,b.dataset.size===size||b.dataset.size==='custom'&&!['3x3','5x5','8x10'].includes(size)));
     all('[data-qty]').forEach(b=>mark(b,Number(b.dataset.qty)===st.quantity));
+    all('[data-plan-qty]').forEach(b=>mark(b,Number(b.dataset.planQty)===st.quantity));
   }
   function mark(b,on){b.classList.toggle('is-selected',on);b.setAttribute('aria-pressed',String(on));}
   function material(next){
@@ -205,6 +205,9 @@
     document.title=t('title');
     const keys=['quoteKicker','quoteSkip','backHome','pageLead','modeTitle','modeLead','quickTitle','quickDesc','guidedTitle','guidedDesc','helpTitle','helpDesc','purposeLabel','guidedTip','helpPurposeLabel','helpBriefLabel','specTitle','specLead','presetLabel','presetDie','presetLarge','materialLabel','widthLabel','heightLabel','quantityLabel','sizePresetLabel','qtyPresetLabel','customSizeButton','advancedTitle','cutLabel','cutStandard','cutCustom','artTitle','artLead','artNone','artLine','artLink','linkLabel','linkHelp','summaryEyebrow','sumBaseLabel','sumAddonLabel','minimumLabel','sumTotalLabel','copyCtaText','manualCopyLabel','privacyText','footerBack'];
     keys.forEach(id=>text(id,t(id)));
+    for(const id of ['labelPricesTitle','labelPricesSpec'])text(id,t(id));
+    for(const id of ['projectQuotePrompt','projectQuoteEntry'])text(id,t(id));
+    $('projectQuoteEntry').href='./project-quote.html?lang='+pick('th','en');
     const [first,second]=t('pageTitle').split('|'),em=document.createElement('em');em.textContent=second;$('pageTitle').replaceChildren(first,document.createElement('br'),em);
     $('helpBrief').placeholder=t('helpPlaceholder');
     [...$('purpose').options].forEach((el,i)=>el.textContent=t('purposes')[i]);
@@ -230,6 +233,7 @@
     const [w,h]=b.dataset.size.split('x');$('width').value=w;$('height').value=h;calculate();
   }));
   all('[data-qty]').forEach(b=>b.addEventListener('click',()=>{$('quantity').value=b.dataset.qty;calculate();}));
+  all('[data-plan-qty]').forEach(b=>b.addEventListener('click',()=>{$('quantity').value=b.dataset.planQty;calculate();}));
   $('material').addEventListener('change',e=>material(e.target.value));
   for(const id of ['width','height','quantity','artUrl','helpBrief'])$(id).addEventListener('input',calculate);
   for(const [id,delta] of [['quantityPlus',100],['quantityMinus',-100]])$(id).addEventListener('click',()=>{

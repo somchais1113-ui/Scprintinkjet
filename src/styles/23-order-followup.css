@@ -1,0 +1,17 @@
+/* Shared follow-up and local re-order elements. */
+.o-layout{align-items:start}
+.o-token{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:10px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.o-token input{font-family:ui-monospace,monospace;font-size:.84rem}
+.o-state{font-size:1.35rem;font-weight:820;margin-top:12px}
+.o-hold{background:#fff2dc;border:1px solid #f0d6a6;color:#6c4713;border-radius:7px;padding:8px 10px;font-size:.86rem;margin:7px 0}
+.o-steps{list-style:none;padding:0;margin:12px 0}
+.o-steps li{display:flex;align-items:center;gap:9px;padding:5px 6px;color:var(--muted);border-radius:5px;margin-bottom:1px}
+.o-steps span{font:700 .8rem/1 monospace;border:1px solid #c8d9ea;border-radius:5px;padding:5px}
+.o-steps li[aria-current=step]{color:var(--blue);font-weight:800;background:#eaf3fd}.o-steps .o-done span{background:var(--blue);color:white;border-color:var(--blue)}
+#refreshStatus,.o-reorder{margin-top:12px}
+.o-import{margin-bottom:13px}
+.o-import summary{font-weight:800;cursor:pointer}
+.o-import .p-field{margin-top:8px}
+.o-import input[type=file]{min-width:0;overflow:hidden}
+.o-reorder-nav{display:inline-flex;align-items:center;min-height:44px;font-size:.88rem;font-weight:750}
+@media(max-width:420px){.o-token{grid-template-columns:1fr}.o-token button{justify-self:start}}

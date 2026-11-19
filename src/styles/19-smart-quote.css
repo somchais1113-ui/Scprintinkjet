@@ -24,3 +24,24 @@
 .q-mobile-bar{padding-bottom:max(10px,env(safe-area-inset-bottom))}
 @media(max-width:790px){html{scroll-padding-bottom:95px}.q-footer{padding-bottom:100px}.q-mobile-bar strong{font-size:14px}.q-mobile-link{font-size:12px;padding:12px 11px}.q-mobile-bar{gap:12px}body:has(.q-mobile-bar) .sc-contact-assistant{bottom:84px}}
 @media(max-width:490px){.q-modes{grid-template-columns:1fr}.q-mode{min-height:62px}}
+
+/* Phase 02 · approved standard-label comparison */
+.q-label-prices{margin-top:17px;padding:15px 14px 13px;border:1px solid #d4e1f2;background:#f5f9fe;border-radius:12px}
+.q-label-prices__head{display:flex;align-items:baseline;justify-content:space-between;gap:3px 13px;flex-wrap:wrap;margin-bottom:10px}
+.q-label-prices__head h3{margin:0;color:var(--navy);font-size:15px}
+.q-label-prices__head p,.q-label-prices__terms{margin:0;color:#415b7a;font-size:12px}
+.q-label-prices__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.q-label-prices__grid button{min-height:87px;min-width:0;text-align:left;display:grid;gap:2px;padding:9px 10px;border:1px solid #d0def0;border-radius:9px;background:#fff;color:var(--ink);overflow-wrap:anywhere;cursor:pointer;line-height:1.4}
+.q-label-prices__grid button:hover{border-color:#819fc4;background:#f8fbff}
+.q-label-prices__grid button.is-selected{box-shadow:inset 0 0 0 1px var(--navy);border-color:var(--navy);background:#eaf3ff}
+.q-label-prices__grid button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.q-label-prices__quantity{font-size:12px;color:#405c7e;font-weight:800}
+.q-label-prices__grid strong{font-size:clamp(14px,1.6vw,19px);font-variant-numeric:tabular-nums}
+.q-label-prices__grid small{color:#406080;font-size:11px}
+.q-label-prices__terms{margin-top:9px}
+@media(max-width:460px){.q-label-prices__grid{grid-template-columns:1fr}.q-label-prices__grid button{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);align-items:center;gap:3px 6px;min-height:58px}.q-label-prices__grid strong,.q-label-prices__grid small{text-align:right}.q-label-prices__quantity{grid-row:span 2}}
+
+/* Enterprise route, distinct from the standard calculator. */
+.q-project-note{display:flex;align-items:center;justify-content:space-between;gap:8px 15px;flex-wrap:wrap;margin:0 0 18px;padding:8px 14px;border:1px solid #d6e1ed;border-radius:10px;background:#fff;color:#36516f;font-size:.88rem}
+.q-project-note p{margin:0}
+.q-project-note a{display:inline-flex;align-items:center;min-height:42px;font-weight:800;color:var(--navy);text-decoration:underline;text-underline-offset:.17em}

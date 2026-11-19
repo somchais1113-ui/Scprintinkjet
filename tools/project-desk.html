@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Project Desk ภายใน | SCWork</title>
+  <link rel="stylesheet" href="../src/styles/22-project-quote.css?v=1.9.0">
+  <link rel="stylesheet" href="./project-desk.css?v=1.9.0">
+  <script defer src="../src/scripts/project-brief.js?v=1.9.0"></script>
+  <script defer src="./project-desk-core.js?v=1.9.0"></script>
+  <script defer src="./project-desk.js?v=1.9.0"></script>
+</head>
+<body>
+  <header class="p-header"><div class="p-wrap p-nav"><a class="p-brand" href="./index.html"><img src="../assets/icons/scwork-logo.png" width="136" height="45" alt="SCWork"></a><a href="./index.html">กลับหน้าเครื่องมือ</a></div></header>
+  <main class="p-wrap">
+    <section class="p-intro">
+      <p class="p-kicker">SCWORK / INTERNAL ONLY</p>
+      <h1>Project Desk</h1>
+      <p class="p-lede">ใช้เลขเดียวกันในบรีฟ ใบเสนอราคา และชุดแบบตรวจ คัดลอกหัวอ้างอิงไปใส่ในเอกสารที่ทีมใช้อยู่จริง</p>
+      <p class="p-help">ชุดเต็มเท่านั้น · ข้อมูลไม่ถูกส่งออกจากเบราว์เซอร์อัตโนมัติ · ดาวน์โหลดไฟล์งานก่อนปิดหน้า</p>
+    </section>
+    <div class="p-layout">
+      <div id="deskForm">
+        <section class="p-card">
+          <h2>01 · รับบรีฟ</h2>
+          <div class="p-fields">
+            <label class="p-full">เปิดไฟล์บรีฟลูกค้าหรือไฟล์ Project Desk (JSON)<input type="file" id="deskImport" accept=".json,application/json"></label>
+            <label class="p-full">เลขอ้างอิงโครงการ<input id="deskRef" placeholder="SCW-PRJ-YYYYMMDD-…" maxlength="30" autocomplete="off"></label>
+            <label>เลขฉบับบรีฟ (BR)<input type="number" id="deskBriefRev" value="1" min="1" max="9999" step="1"></label>
+            <label>ผู้ประสานงาน<input id="deskOwner" maxlength="100"></label>
+          </div>
+          <p class="p-help">กรณีรับบรีฟผ่านแชต ให้กรอกเลขและฉบับ BR ตามที่ลูกค้าส่งมา หากเปิด JSON ระบบจะแสดงสเปกให้อ่านแทนการกรอกซ้ำ</p>
+          <details id="deskBriefPanel" class="p-details" hidden><summary>ดูรายการ SKU และเอกสารที่ขอ</summary><pre id="deskBriefContent"></pre></details>
+        </section>
+        <section class="p-card">
+          <h2>02 · อ้างอิงใบเสนอราคา</h2>
+          <div class="p-fields">
+            <label>เลขฉบับใบเสนอราคา (Q)<input type="number" id="deskQuoteRev" value="1" min="1" max="9999" step="1"></label>
+            <label>เลขใบเสนอราคาที่บริษัทใช้จริง<input id="deskQuoteNo" maxlength="100"></label>
+            <label class="p-full">กำหนดงานที่ตกลงแล้ว (ถ้ามี)<input id="deskTimeline" maxlength="160" placeholder="เว้นไว้จนกว่าจะยืนยันกับลูกค้า"></label>
+          </div>
+          <fieldset class="p-docset"><legend>เอกสารที่ยืนยันกับทีมแล้วว่าออกได้</legend>
+            <label><input type="checkbox" data-available="quote">ใบเสนอราคา</label><label><input type="checkbox" data-available="tax">ใบกำกับภาษี</label><label><input type="checkbox" data-available="company">ขึ้นทะเบียนผู้ขาย</label><label><input type="checkbox" data-available="other">อื่น ๆ</label>
+          </fieldset>
+          <label class="p-field" id="deskOtherLabel" hidden>ระบุเอกสารอื่น ๆ<input id="deskOtherDoc" maxlength="110"></label>
+        </section>
+        <section class="p-card">
+          <h2>03 · ยืนยันชุดแบบก่อนผลิต</h2>
+          <p class="p-help">ใช้ไฟล์ชุดตรวจฉบับเดียวที่รวมทุก SKU ถ้าแก้แบบ ให้เพิ่มเลขฉบับ P และส่งให้ลูกค้ายืนยันอีกครั้ง</p>
+          <div class="p-fields">
+            <label>เลขฉบับชุดแบบ (P)<input type="number" id="deskProofRev" value="1" min="1" max="9999" step="1"></label>
+            <label>ชื่อไฟล์ชุดแบบ<input id="deskProofFile" maxlength="150" placeholder="Labels_P01.pdf"></label>
+          </div>
+          <p class="p-help" id="proofExpected"></p>
+          <div class="p-fields">
+            <label class="p-full">เลขชุดแบบที่ลูกค้ายืนยันจริง<input id="deskConfirmed" maxlength="40" placeholder="คัดลอกจากข้อความยืนยันของลูกค้า"></label>
+            <label>วันที่ลูกค้ายืนยัน<input type="date" id="deskApprovalDate" min="2000-01-01" max="2099-12-31"></label>
+            <label>อ้างหลักฐาน (ช่องทางหรือชื่อไฟล์)<input id="deskProofEvidence" maxlength="180"></label>
+          </div>
+          <label class="d-check"><input type="checkbox" id="deskAll">ลูกค้ายืนยันครบทุก SKU ในชุดนี้แล้ว ไม่มีรายการแก้ค้าง</label>
+          <button class="p-button p-primary" id="recordApproval" type="button">บันทึกผลยืนยันแบบ</button>
+          <p class="p-help" id="approvalState" role="status"></p>
+        </section>
+      </div>
+      <aside class="p-aside d-aside" aria-labelledby="deskSummary">
+        <p class="p-kicker">PROJECT REFERENCE</p><h2 id="deskSummary">ข้อมูลสำหรับส่งต่อ</h2>
+        <p class="p-help">ต้องใช้คู่กับใบเสนอราคาและหลักฐานยืนยันฉบับจริง หน้านี้ไม่ได้ออกใบเสนอราคา รับลายเซ็น หรือสั่งผลิตอัตโนมัติ</p>
+        <div class="p-ref" id="deskRefView">ยังไม่มีเลขอ้างอิงที่ถูกต้อง</div>
+        <label class="p-preview">หัวอ้างอิงสำหรับใบเสนอราคา<textarea readonly id="deskQuoteText" rows="5"></textarea></label><button class="p-button p-small" id="copyQuoteRef" type="button" disabled>คัดลอกหัวใบเสนอราคา</button>
+        <label class="p-preview">ข้อความขอให้ลูกค้ายืนยันแบบ<textarea readonly id="deskProofText" rows="5"></textarea></label><button class="p-button p-small" id="copyProofRef" type="button" disabled>คัดลอกข้อความยืนยันแบบ</button>
+        <label class="p-preview">บันทึกส่งต่อทีมผลิต<textarea readonly id="deskReleaseText" rows="5"></textarea></label><button class="p-button p-small" id="copyReleaseRef" type="button" disabled>คัดลอกบันทึกส่งต่อทีมผลิต</button>
+        <div class="d-save"><button class="p-button p-primary" id="saveDesk" type="button" disabled>ดาวน์โหลดไฟล์งาน JSON</button></div>
+        <p class="p-help" id="deskFeedback" role="status"></p>
+      </aside>
+    </div>
+  </main>
+  <footer class="p-wrap p-footer"><span>SCWork · Project Desk / Full Package</span><span>สำหรับใช้ภายใน</span></footer>
+</body>
+</html>

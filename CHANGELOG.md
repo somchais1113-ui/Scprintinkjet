@@ -1,3 +1,23 @@
+# V2.0.0 — Project follow-up and reorder
+
+Added a Thai/English tracking page that reads the latest staff-published status using a private link, plus a local reorder spec import. Full-only Order Desk exports allowlisted status snapshots and separate repeat specifications from the confirmed delivered scope. No live orders, deployed service, or staff data ship with the release.
+
+# V1.9.0 — Enterprise project quotes
+
+Added a separate bilingual multi-SKU project brief with a stable reference across brief revisions, requested date and procurement documents. Added a Full-only Project Desk for sharing reference blocks, checking the approved proof revision against the current quotation and recording manual handoff notes. Standard label pricing, homepage and proof examples are unchanged.
+
+# V1.8.2 — Standard PP label estimates and LINE handoff
+
+Compare three approved quantities for 5 × 5 cm standard-cut white PP labels, with total, average per label, VAT treatment and shipping exclusion. Route other specs to a manual quote. The landing CTA and quote share one price gate. LINE OA can open a prefilled draft when the real account is configured. Includes a local launch check. The packaged rate card and contacts remain unset.
+
+# V1.8.1 — Label trust and review
+
+Added a four-step customer process, a bilingual illustrative print proof and an opt-in gallery for three actual FORM 01 white PP print photos. Empty contact channels and the unconfigured photo gallery remain hidden. Preserved the concept renders, homepage, quote handoff and pricing.
+
+# V1.8.0 — Product label landing page
+
+Added a separate Thai/English campaign page featuring two coordinated bottle and print-sheet concept renders. Quote and material advice use the existing flow. Homepage, Smart Quote logic and Pricing Master are unchanged from V1.7.5.
+
 # V1.7.5 — Pricing Master
 
 - Shared electricity, fuel and inbound freight rates, allocated per material using actual usage.
