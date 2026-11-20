@@ -1,5 +1,5 @@
 {
-  "version": "sticker-1.0",
+  "version": "sticker-2.1.8",
   "figma_original": false,
   "source_master": "Illustrative AI design studies in assets/images/source/",
   "images": [
@@ -191,6 +191,123 @@
       "type": "image/webp",
       "origin": "Illustrative AI design-study crop; not an actual SCWork product/equipment photo",
       "alt": "Example sticker printing visual"
+    },
+    {
+      "slot": "Product & packaging labels",
+      "path": "assets/images/services/product-labels-v217.webp",
+      "width": 1536,
+      "height": 1024,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Bottles and a carton with applied labels"
+    },
+    {
+      "slot": "Custom die-cut stickers",
+      "path": "assets/images/services/die-cut-stickers-v217.webp",
+      "width": 1536,
+      "height": 1024,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Contour-cut stickers with a bear character"
+    },
+    {
+      "slot": "Retail and glass graphics",
+      "path": "assets/images/services/window-graphics-v217.webp",
+      "width": 1536,
+      "height": 1024,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "White vinyl graphic applied to a café window"
+    },
+    {
+      "slot": "Artwork review",
+      "path": "assets/images/team/artwork-review-v217.webp",
+      "width": 1290,
+      "height": 860,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Reviewing print proof, bleed guides and print dimensions"
+    },
+    {
+      "slot": "Material and print",
+      "path": "assets/images/team/material-print-v217.webp",
+      "width": 1536,
+      "height": 1024,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Printing labels with white and kraft media samples"
+    },
+    {
+      "slot": "Finishing and handover",
+      "path": "assets/images/team/finishing-handover-v217.webp",
+      "width": 1536,
+      "height": 1024,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Inspecting finished sticker sheets beside a shipping box"
+    },
+    {
+      "slot": "Hero / Inkjet printing",
+      "path": "assets/images/hero/inkjet-print-v218.webp",
+      "width": 1440,
+      "height": 960,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Inkjet printer and roll of printed stickers"
+    },
+    {
+      "slot": "Hero / Product labels",
+      "path": "assets/images/hero/product-labels-v218.webp",
+      "width": 1440,
+      "height": 960,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Bottles, jar and carton with printed labels"
+    },
+    {
+      "slot": "Hero / Die-cut stickers",
+      "path": "assets/images/hero/die-cut-stickers-v218.webp",
+      "width": 1440,
+      "height": 960,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Contour-cut illustrated adhesive stickers"
+    },
+    {
+      "slot": "Hero / Retail vinyl",
+      "path": "assets/images/hero/retail-vinyl-v218.webp",
+      "width": 1440,
+      "height": 960,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Custom-cut vinyl on a café window"
+    },
+    {
+      "slot": "Workflow / Artwork review",
+      "path": "assets/images/team/artwork-review-v218.webp",
+      "width": 1440,
+      "height": 960,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Measuring the printed proof and checking the dieline"
+    },
+    {
+      "slot": "Workflow / Materials and printing",
+      "path": "assets/images/team/material-print-v218.webp",
+      "width": 1440,
+      "height": 960,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Comparing adhesive material and inkjet print samples"
+    },
+    {
+      "slot": "Workflow / Finishing and handover",
+      "path": "assets/images/team/finishing-handover-v218.webp",
+      "width": 1440,
+      "height": 960,
+      "type": "image/webp",
+      "origin": "Photoreal illustrative asset for SCWork website",
+      "alt": "Final inspection of laminated and die-cut sheets ready for packing"
     }
   ]
 }

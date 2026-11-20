@@ -18,7 +18,7 @@
     docsTitle:'Artwork and purchasing documents',docsLegend:'Documents for the team to check',docQuote:'Quotation',docTax:'Tax invoice',docCompany:'Vendor registration documents',docOther:'Other documents',
     docsNote:'These are requests only. SCWork will confirm which documents are available and any conditions.',
     otherDoc:'Name of other document',artwork:'Artwork link (optional)',notes:'Additional details (optional)',
-    prepare:'Prepare brief and reference ↗',summary:'Brief to share with SCWork',start:'Enter a project name and at least one SKU, then prepare your brief.',
+    prepare:'Prepare brief and reference',summary:'Brief to share with SCWork',start:'Enter a project name and at least one SKU, then prepare your brief.',
     preview:'Review your message before sharing',copy:'Copy brief',saveOptions:'Keep a shareable brief file',saveNote:'The SCWork team can open this JSON brief without re-entering the specifications.',save:'Download JSON brief',
     coordinator:'SCWork project coordinator',coordinatorNote:'Quote this reference when contacting us. The team will confirm your contact person, available documents and next steps.',
     privacy:'This page does not save the brief on a server or send it automatically. Keep a copy before closing.',labelsPage:'Back to product labels',
@@ -84,7 +84,7 @@
     action.hidden=!href;
     if(href){
       action.href=href;
-      action.textContent=prefill?pick('เปิด LINE พร้อมบรีฟ ↗','Open LINE with brief ↗'):pick('เปิดแชต LINE ↗','Open LINE chat ↗');
+      action.textContent=prefill?pick('เปิด LINE พร้อมบรีฟ','Open LINE with brief'):pick('เปิดแชต LINE','Open LINE chat');
     }else action.removeAttribute('href');
     $('contactState').textContent=!href?pick('ยังไม่เปิดช่องทาง LINE ในหน้านี้ คุณคัดลอกบรีฟหรือดาวน์โหลดเพื่อส่งต่อได้','LINE is not configured for this page. Copy or download the brief to share it.'):
       prefill?pick('ตรวจข้อความร่างและกดส่งด้วยตัวเองใน LINE','Review the draft and tap Send in LINE.'):

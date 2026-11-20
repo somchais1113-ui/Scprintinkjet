@@ -23,11 +23,10 @@
    try{
      const out=await network.submit({name:v.name,email:v.email,phone:v.phone||'',title:String(v.message).slice(0,160),category:v.service,quantity:1,unit:'jobs',language:['th','en'].includes(document.documentElement.lang)?document.documentElement.lang:'en',specs:{width:1,height:1,dimensionUnit:'mm',material:'Not applicable',finish:'None',printSides:'1',artwork:'not_applicable',deadline:'',notes:v.message}});
      form.hidden=true;const success=document.getElementById('generalSuccess');success.hidden=false;
-     const icon=document.createElement('div');icon.className='check';icon.textContent='✓';
      const title=document.createElement('h2');title.textContent='ได้รับคำขอแล้ว / Request received';
      const reference=document.createElement('p');reference.textContent='Reference: '+out.reference;
      const note=document.createElement('p');note.textContent='Saved to database. An acknowledgement email is queued; it may arrive later.';
-     success.append(icon,title,reference,note);
+     success.append(title,reference,note);
    }catch(err){feedback.textContent='ยังยืนยันการรับคำขอไม่ได้ / Unable to confirm receipt: '+(err.message||'NETWORK_ERROR')+' — Retry with same submission ID.';}
    finally{submit.disabled=false;submit.textContent='ส่งคำขอ / Submit request →';}
  });

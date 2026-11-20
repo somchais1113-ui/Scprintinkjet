@@ -1,0 +1,51 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import './validate-v218.mjs';
+
+const read=f=>readFileSync(new URL('../'+f,import.meta.url),'utf8');
+const home=read('index.html'),css=read('src/styles/29-benefit-strip.css');
+assert.match(home,/<main id="main">\s*<section class="sc-benefits" id="scBenefits"/);
+assert.equal([...home.matchAll(/data-scb-label="[^"]+"/g)].length,4);
+assert.match(home,/aria-live="polite" aria-atomic="true"/);
+assert.match(home,/id="scBenefitRating" hidden/);
+assert.match(home,/class="sc-benefits__badge sc-benefits__badge--price" href="\.\/(?:smart-quote\.html" data-quote-label-preserve|standard-pricing\.html\?lang=(?:th|en)" data-scb-page)/);
+assert.match(css,/grid-template-columns:repeat\(4,minmax\(0,1fr\)\)/);
+assert.match(css,/@media\(max-width:650px\)[\s\S]*?grid-template-columns:repeat\(2,minmax\(0,1fr\)\)/);
+assert.doesNotMatch(read('config/public-config.js'),/reviewScore:\s*4\.6|reviewCount:\s*541/);
+
+const el=(dataset={})=>({dataset,hidden:true,textContent:'',attrs:new Map(),events:new Map(),
+  classList:{toggle(name,flag){this[name]=flag;}},
+  setAttribute(k,v){this.attrs.set(k,v);},addEventListener(k,v){this.events.set(k,v);}});
+const ids=['scBenefits','scBenefitList','scBenefitRating','scBenefitPrev','scBenefitNext','scBenefitMessage','scBenefitScore','scBenefitReviewCount','scBenefitNotice','scBenefitControls','scBenefitToggle','scBenefitPosition','scBenefitEyebrow','scBenefitSize0','scBenefitSize1','scBenefitSize2'];
+const els=Object.fromEntries(ids.map(id=>[id,el()]));
+const labels=['price','design','shipping','credit'].map(scbLabel=>el({scbLabel}));
+els.scBenefits.querySelectorAll=()=>labels;
+const window=el(),document={documentElement:{lang:'th'},getElementById:id=>els[id],addEventListener(){}};
+vm.runInNewContext(read('config/public-config.js'),{window});
+vm.runInNewContext(read('src/scripts/benefit-strip.js'),{document,window});
+assert.deepEqual(labels.map(i=>i.textContent),['ราคามาตรฐาน','บริการออกแบบ','จัดส่งรวดเร็วและตรงเวลา','มีการชำระแบบเครดิตเทอม']);
+assert(els.scBenefitRating.hidden);
+assert.match(els.scBenefitMessage.textContent,/กำหนดจัดส่ง/);
+assert(!els.scBenefitPrev.hidden&&!els.scBenefitNext.hidden);
+const click=id=>els[id].events.get('click')();
+click('scBenefitPrev');
+assert.match(els.scBenefitMessage.textContent,/เครดิตเทอม/);
+click('scBenefitNext');
+click('scBenefitNext');
+assert.match(els.scBenefitMessage.textContent,/ตรวจ/);
+click('scBenefitPrev');
+window.SCWORK_PUBLIC_BENEFITS={reviewScore:4.8,reviewCount:18,deliveryNoticeTh:'ข้อความทดสอบของฝ่ายจัดส่ง'};
+window.events.get('scwork-site-updated')();
+assert.equal(els.scBenefitMessage.textContent,'ข้อความทดสอบของฝ่ายจัดส่ง');
+assert.equal(els.scBenefitScore.textContent,'4.8 / 5');
+assert.equal(els.scBenefitReviewCount.textContent,'18 ความคิดเห็น');
+assert(!els.scBenefitRating.hidden&&els.scBenefitList.classList['has-rating']);
+document.documentElement.lang='en';
+window.events.get('scwork:locale-applied')();
+assert.equal(labels[0].textContent,'Standard pricing');
+assert.equal(els.scBenefitReviewCount.textContent,'18 reviews');
+window.SCWORK_PUBLIC_BENEFITS={reviewScore:5.1,reviewCount:18};
+window.events.get('scwork-site-updated')();
+assert(els.scBenefitRating.hidden);
+console.log('PASS V2.1.9: four localized benefits, responsive layout, service notice controls and optional review data.');

@@ -70,7 +70,10 @@
     project:'./project-quote.html?lang='+lang,
     tracking:'./order-tracking.html?lang='+lang
   };
-  document.querySelectorAll('[data-route]').forEach(a=>{a.href=routes[a.dataset.route];});
+  document.querySelectorAll('[data-route]').forEach(a=>{
+    a.href=routes[a.dataset.route];
+    if(a.dataset.route==='quote')a.classList.toggle('sc-quote-cta',priceReady);
+  });
   document.querySelectorAll('.locale [hreflang]').forEach(a=>{
     if(a.getAttribute('hreflang')===lang)a.setAttribute('aria-current','page');
     else a.removeAttribute('aria-current');

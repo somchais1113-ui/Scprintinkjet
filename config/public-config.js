@@ -14,6 +14,22 @@ window.SCWORK_PUBLIC_CONTACT = Object.freeze({
   mobilePhone: '',  // เบอร์มือถือสำหรับลูกค้าจริง เช่น 08... 
   lineId: '',       // LINE Official Account: @yourname
   lineUrl: '',      // optional: https://line.me/...
+  supportLineQr: '', // optional: './assets/images/support/line-qr.png', verified QR for this LINE account
   facebookUrl: '',  // optional: https://facebook.com/...
   messengerUrl: ''  // optional: https://m.me/... or https://facebook.com/messages/...
+});
+
+// Set only the channels SCWork accepts. No payment or DBD badge is implied by default.
+window.SCWORK_PUBLIC_FOOTER = Object.freeze({
+  paymentMethods: [], // 'mastercard', 'visa', 'bank-transfer'
+  dbdCertificateUrl: '',
+  dbdBadgeAsset: '', // approved file under ./assets/icons/payments/
+});
+
+// Optional values for the home benefits strip, confirmed for SCWork.
+window.SCWORK_PUBLIC_BENEFITS = Object.freeze({
+  reviewScore: null, // average on a five-point scale
+  reviewCount: null, // number of genuine reviews
+  deliveryNoticeTh: '',
+  deliveryNoticeEn: '',
 });

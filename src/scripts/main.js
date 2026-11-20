@@ -7,7 +7,7 @@
   const config=window.PROCLEANING_CONFIG,ui=window.PROCLEANING_UI;
   const byId=id=>document.getElementById(id);
   let visibleBlogCount=3;
-  let serviceOffset=0,testimonialIndex=0,billing='monthly',heroIndex=0,heroTimer=null;
+  let serviceOffset=0,billing='monthly',heroIndex=0,heroTimer=null;
   if(!site||!config||!ui){console.error('Missing data/site-data.js or scripts');return;}
   function fallbackImages(scope=document){scope.querySelectorAll('img[data-fallback]').forEach(img=>{
     if(img.dataset.fallbackBound)return;
@@ -102,11 +102,6 @@
     button.setAttribute('aria-label',text);
     button.setAttribute('aria-expanded',String(complete));
   }
-  function renderTestimonial(){
-    const list=activeSite.testimonials||[];const card=byId('testimonialCard');if(!list.length){card.textContent=activeSite.labels?.emptyTestimonials||'No testimonials configured.';return;}
-    testimonialIndex=((testimonialIndex%list.length)+list.length)%list.length;
-    card.innerHTML=ui.testimonial(list[testimonialIndex]);fallbackImages(card);
-  }
   function draw(){
     document.documentElement.lang=language;
     activeSite=i18n.resolve(site,language);
@@ -114,23 +109,20 @@
     window.PROCLEANING_APPLY_SITE(activeSite,window.PROCLEANING_IMAGE_OVERRIDES||{});
     renderServices();
     byId('teamGrid').innerHTML=(activeSite.team||[]).map((p,i)=>ui.teamCard(p,i)).join('');
-    byId('featureGrid').innerHTML=(activeSite.features||[]).map(x=>`<div class="feature-pill">${ui.escape(x)}</div>`).join('');
-    renderPricing();renderTestimonial();
+    const featureGrid=byId('featureGrid');
+    if(featureGrid)featureGrid.innerHTML=(activeSite.features||[]).map(x=>`<div class="feature-pill">${ui.escape(x)}</div>`).join('');
+    renderPricing();
     renderBlogs();
     const photos=activeSite.photos||{};
     const images={quoteMainImage:photos.quoteMain,quoteSmallImage:photos.quoteSmall,aboutMainImage:photos.aboutMain,aboutSmallImage:photos.aboutSmall};
     Object.entries(images).forEach(([id,url])=>{const el=byId(id);if(el)el.src=url||'./assets/images/placeholder.svg';});
     // Hero images remain replaceable in the Unified Image Manager preview.
     const overrides=window.PROCLEANING_IMAGE_OVERRIDES||{};
-    const heroSlideImages=[
-      './assets/images/hero/hero-scene.webp',
-      './assets/images/hero/slide-02-labels.webp',
-      './assets/images/hero/slide-03-cut.webp',
-      './assets/images/hero/slide-04-branding.webp'
-    ];
-    document.querySelectorAll('.hero__slide img').forEach((img,index)=>{
-      const path=heroSlideImages[index];
-      if(path)img.src=overrides[path.replace(/^\.\//,'')]||path;
+    document.querySelectorAll('.hero__slide img').forEach(img=>{
+      const path=img.dataset.heroDefault||(img.dataset.heroDefault=img.getAttribute('src'));
+      if(!path)return;
+      const current=overrides[path.replace(/^\.\//,'')]||overrides[img.dataset.heroLegacy]||path;
+      if(img.getAttribute('src')!==current)img.src=current;
     });
     const cn=activeSite.contact||{},labels=activeSite.labels||{};
     byId('contactMethods').innerHTML=[ui.contactMethod('phone',labels.contactCall||'Call Us',cn.officePhone||cn.phone||cn.mobilePhone||''),ui.contactMethod('email',labels.contactEmail||'Email Now',cn.email||''),ui.contactMethod('contact',labels.contactAddress||'Address',cn.address||'')].join('');
@@ -169,9 +161,7 @@
     renderBlogs();
     if(allShown){const blogTitle=byId('blog-title');if(blogTitle){const top=window.pageYOffset+blogTitle.getBoundingClientRect().top-12;window.scrollTo({top:Math.max(0,top),behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches?'auto':'smooth'});}}
   });
-  byId('serviceNext').addEventListener('click',()=>{serviceOffset++;renderServices();});
-  byId('testimonialPrev').addEventListener('click',()=>{testimonialIndex--;renderTestimonial();});
-  byId('testimonialNext').addEventListener('click',()=>{testimonialIndex++;renderTestimonial();});
+  byId('serviceNext').addEventListener('click',()=>{serviceOffset++;renderServices();window.dispatchEvent(new Event('scwork:estimate-links-updated'));});
   document.querySelectorAll('[data-billing]').forEach(btn=>btn.addEventListener('click',()=>{billing=btn.dataset.billing;renderPricing();}));
   const menu=byId('mainNav'),menuToggle=byId('menuToggle');
   menuToggle.addEventListener('click',()=>{const open=menu.classList.toggle('is-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?(activeSite.labels?.closeNav||'Close navigation'):(activeSite.labels?.openNav||'Open navigation'));});
@@ -186,7 +176,7 @@
       window.PROCLEANING_IMAGE_OVERRIDES=event.data.images||{};
       site=useOverrides(event.data.site,window.PROCLEANING_IMAGE_OVERRIDES);
       if(i18n.supported.includes(event.data.lang))language=event.data.lang;
-      serviceOffset=0;testimonialIndex=0;draw();
+      serviceOffset=0;draw();
     });
     window.parent.postMessage({kind:'PROCLEANING_PREVIEW_READY'},'*');
   }

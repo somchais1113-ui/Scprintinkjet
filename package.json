@@ -1,7 +1,7 @@
 {
   "name": "scwork-inkjet-sticker-storefront",
   "private": true,
-  "version": "2.1.0",
+  "version": "2.1.11",
   "description": "SCWork Inkjet storefront, product-label landing page, quote and private pricing tools",
   "scripts": {
     "dev": "python3 -m http.server 8000",
@@ -18,7 +18,7 @@
     "check:cta": "node qa/validate-cta-v141.mjs",
     "check:smart-quote": "node qa/validate-smart-quote-v151.mjs",
     "check:v17": "node qa/validate-v17.mjs",
-    "build:public": "node qa/build-public-v210.mjs",
+    "build:public": "node qa/build-public-v2111.mjs",
     "check:v174": "node qa/validate-v174.mjs && node qa/validate-v174-quote-ui.mjs",
     "check:v175": "node qa/validate-v175.mjs && node qa/validate-v175-workbench.mjs",
     "check:v180": "node qa/validate-v180.mjs",
@@ -27,7 +27,18 @@
     "check:launch": "node qa/check-live-v182.mjs",
     "check:v190": "node qa/validate-v190.mjs",
     "check:v200": "node qa/validate-v200.mjs",
-    "check:v210": "node qa/validate-v210.mjs"
+    "check:v210": "node qa/validate-v210.mjs",
+    "check:v211": "node qa/validate-v211.mjs",
+    "check:v212": "node qa/validate-v212.mjs",
+    "check:v213": "node qa/validate-v213.mjs",
+    "check:v214": "node qa/validate-v214.mjs",
+    "check:v215": "node qa/validate-v215.mjs",
+    "check:v216": "node qa/validate-v216.mjs",
+    "check:v217": "node qa/validate-v217.mjs",
+    "check:v218": "node qa/validate-v218.mjs",
+    "check:v219": "node qa/validate-v219.mjs",
+    "check:v2110": "node qa/validate-v2110.mjs",
+    "check:v2111": "node qa/validate-v2111.mjs"
   },
   "license": "UNLICENSED"
 }

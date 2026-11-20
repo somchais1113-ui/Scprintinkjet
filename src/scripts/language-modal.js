@@ -2,13 +2,13 @@
 (() => {
  'use strict';
  const left = [
-   ['ar','🇸🇦','العربية'],['zh','🇨🇳','简体中文'],['nl','🇳🇱','Nederlands'],
-   ['en','🇬🇧','English'],['fr','🇫🇷','Français'],['de','🇩🇪','Deutsch'],
-   ['it','🇮🇹','Italiano'],['ja','🇯🇵','日本語'],['ko','🇰🇷','한국어']
+   ['ar','العربية'],['zh','简体中文'],['nl','Nederlands'],
+   ['en','English'],['fr','Français'],['de','Deutsch'],
+   ['it','Italiano'],['ja','日本語'],['ko','한국어']
  ];
  const right = [
-   ['my','🇲🇲','မြန်မာ'],['ru','🇷🇺','Русский'],['es','🇪🇸','Español'],
-   ['th','🇹🇭','ไทย'],['vi','🇻🇳','Tiếng Việt']
+   ['my','မြန်မာ'],['ru','Русский'],['es','Español'],
+   ['th','ไทย'],['vi','Tiếng Việt']
  ];
  const langs=[...left,...right];
  const all=langs.map(x=>x[0]);
@@ -16,7 +16,6 @@
  const host=document.querySelector('[data-language-launcher]');
  if(!host)return;
  let lang=document.documentElement.lang||'th';
- const t=(value)=>String(value||'');
  const trigger=document.createElement('button');
  trigger.type='button';trigger.className='sc-language-trigger';trigger.id='scLocaleTrigger';
  trigger.setAttribute('aria-haspopup','dialog');trigger.setAttribute('aria-expanded','false');
@@ -33,13 +32,12 @@
  </div>`;
  document.body.appendChild(backdrop);
  const modal=backdrop.querySelector('.sc-language-dialog');
- const buttonMarkup=([code,flag,label])=>{
+ const buttonMarkup=([code,label])=>{
    const b=document.createElement('button');b.type='button';b.className='sc-language-option';b.dataset.locale=code;
    b.lang=code;b.setAttribute('aria-pressed','false');
-   const flagSpan=document.createElement('span');flagSpan.className='sc-language-flag';flagSpan.textContent=flag;flagSpan.setAttribute('aria-hidden','true');
+   const codeSpan=document.createElement('span');codeSpan.className='sc-language-code';codeSpan.textContent=code.toUpperCase();codeSpan.setAttribute('aria-hidden','true');
    const langSpan=document.createElement('span');langSpan.className='sc-language-name';langSpan.textContent=label;
-   const marker=document.createElement('span');marker.className='sc-language-selected';marker.textContent='✓';marker.setAttribute('aria-hidden','true');
-   b.append(flagSpan,langSpan,marker);
+   b.append(codeSpan,langSpan);
    b.addEventListener('click',()=>choose(code));
    return b;
  };
@@ -53,14 +51,12 @@
    return 'th';
  }
  function update(){
-   lang=current();const record=langs.find(item=>item[0]===lang)||['th','🇹🇭','ไทย'];
+   lang=current();const record=langs.find(item=>item[0]===lang)||['th','ไทย'];
    trigger.replaceChildren();
-   const icon=document.createElement('span');icon.textContent='◉';icon.className='sc-language-globe';icon.setAttribute('aria-hidden','true');
-   const flag=document.createElement('span');flag.textContent=record[1];flag.setAttribute('aria-hidden','true');
    const name=document.createElement('strong');name.textContent=lang.toUpperCase();
-   const arrow=document.createElement('span');arrow.textContent='⌄';arrow.setAttribute('aria-hidden','true');
-   trigger.append(icon,flag,name,arrow);
-   trigger.setAttribute('aria-label',`Choose website language, current ${record[2]}`);
+   const arrow=document.createElement('span');arrow.className='sc-language-caret';arrow.setAttribute('aria-hidden','true');
+   trigger.append(name,arrow);
+   trigger.setAttribute('aria-label',lang==='th'?'เลือกภาษาเว็บไซต์ ภาษาปัจจุบัน '+record[1]:'Choose website language, current '+record[1]);
    backdrop.querySelectorAll('.sc-language-option').forEach(b=>{
      const selected=b.dataset.locale===lang;b.setAttribute('aria-pressed',String(selected));b.classList.toggle('is-selected',selected);
    });

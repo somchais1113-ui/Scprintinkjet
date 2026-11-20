@@ -1,0 +1,94 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import './validate-v219.mjs';
+
+const read=f=>readFileSync(new URL('../'+f,import.meta.url),'utf8');
+const home=read('index.html'),css=read('src/styles/29-benefit-strip.css');
+assert.match(home,/29-benefit-strip\.css\?v=2\.1\.10/);
+assert.match(home,/benefit-strip\.js\?v=2\.1\.1[01]/);
+assert.match(home,/id="scBenefitToggle" type="button" aria-controls="scBenefitMessage"/);
+assert.equal([...home.matchAll(/class="sc-benefits__size" id="scBenefitSize[0-2]" aria-hidden="true"/g)].length,3);
+assert.match(css,/\.sc-benefits__message,\.sc-benefits__size\s*\{\s*grid-area:1\/1;/);
+assert.match(css,/\.sc-benefits__size\s*\{visibility:hidden/);
+assert.match(css,/@media\(prefers-reduced-motion:reduce\)/);
+const el=()=>({textContent:'',hidden:true,dataset:{},events:new Map(),attrs:new Map(),
+  classList:{toggle(){}},addEventListener(k,f){this.events.set(k,f);},setAttribute(k,v){this.attrs.set(k,v);}});
+const ids=['scBenefits','scBenefitList','scBenefitRating','scBenefitPrev','scBenefitNext','scBenefitMessage','scBenefitScore','scBenefitReviewCount','scBenefitNotice','scBenefitControls','scBenefitToggle','scBenefitPosition','scBenefitEyebrow','scBenefitSize0','scBenefitSize1','scBenefitSize2'];
+const els=Object.fromEntries(ids.map(id=>[id,el()]));
+const labels=['price','design','shipping','credit'].map(scbLabel=>({...el(),dataset:{scbLabel}}));
+els.scBenefits.querySelectorAll=()=>labels;
+els.scBenefitNotice.contains=target=>target===els.scBenefitNext;
+let nextTimer=0,observer,animations=0,animationCancels=0;
+const timers=new Map(),motion={...el(),matches:false};
+const document={...el(),documentElement:{lang:'th'},getElementById:id=>els[id],hidden:false};
+const window={...el(),matchMedia:()=>motion,
+  setTimeout(fn,ms){assert.equal(ms,6500);timers.set(++nextTimer,fn);return nextTimer;},
+  clearTimeout(n){timers.delete(n);},
+  IntersectionObserver:class{constructor(callback){observer=callback;} observe(node){assert.equal(node,els.scBenefitNotice);}}
+};
+els.scBenefitMessage.animate=(frames,options)=>{
+  assert.equal(options.duration,330);
+  assert.equal(frames[1].opacity,1);
+  animations++;
+  return {cancel(){animationCancels++;}};
+};
+vm.runInNewContext(read('config/public-config.js'),{window});
+vm.runInNewContext(read('src/scripts/benefit-strip.js'),{document,window});
+const trigger=(id,key,args)=>els[id].events.get(key)(args);
+const oneTimer=()=>assert.equal(timers.size,1);
+const noTimer=()=>assert.equal(timers.size,0);
+const playTimer=()=>{
+  oneTimer();
+  const [id,fn]=timers.entries().next().value;
+  timers.delete(id);
+  fn();
+};
+const msg=els.scBenefitMessage;
+assert.equal(els.scBenefitEyebrow.textContent,'อัปเดตบริการ');
+assert.equal(labels[0].textContent,'ราคามาตรฐาน');
+assert.equal(els.scBenefitSize0.textContent,msg.textContent);
+assert.equal(msg.attrs.get('aria-live'),'off');
+assert.equal(els.scBenefitPosition.textContent,'01 / 03');
+playTimer();
+assert.equal(els.scBenefitPosition.textContent,'02 / 03');
+assert.equal(animations,1);
+trigger('scBenefitNotice','pointerenter',{pointerType:'mouse'});
+noTimer();
+assert.equal(msg.attrs.get('aria-live'),'polite');
+trigger('scBenefitNotice','pointerleave',{pointerType:'mouse'});
+oneTimer();
+trigger('scBenefitNotice','focusin');
+noTimer();
+trigger('scBenefitNext','click');
+assert.equal(els.scBenefitPosition.textContent,'03 / 03');
+assert.equal(animations,2);
+assert.equal(animationCancels,1);
+trigger('scBenefitNotice','focusout',{relatedTarget:els.scBenefitNext});
+noTimer();
+trigger('scBenefitNotice','focusout',{relatedTarget:null});
+oneTimer();
+trigger('scBenefitToggle','click');
+assert.equal(els.scBenefitToggle.dataset.paused,'true');
+noTimer();
+trigger('scBenefitToggle','click');
+oneTimer();
+observer([{isIntersecting:false}]);
+noTimer();
+observer([{isIntersecting:true}]);
+oneTimer();
+document.hidden=true;
+document.events.get('visibilitychange')();
+noTimer();
+document.hidden=false;
+document.events.get('visibilitychange')();
+oneTimer();
+motion.matches=true;
+motion.events.get('change')();
+assert(els.scBenefitToggle.hidden);
+noTimer();
+const oldAnimations=animations;
+trigger('scBenefitPrev','click');
+assert.equal(animations,oldAnimations);
+assert.equal(els.scBenefitPosition.textContent,'02 / 03');
+console.log('PASS V2.1.10: visual scope, stable notice rows, autoplay, pause/resume, focus, visibility and reduced motion.');

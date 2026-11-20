@@ -24,7 +24,7 @@
     '.contact-info > p':'headings.contactDescription','.contact-form-wrap .eyebrow':'headings.formEyebrow',
     '.contact-form-wrap h3':'headings.formTitle',
     '.header-cta':'navigation.quote','.main-nav a[href="#home"]':'navigation.home',
-    '.main-nav a[href="#about"]':'navigation.about','.main-nav a[href="#services"]':'navigation.services',
+    '.main-nav a[href="#about"]:not(#clientCreditsNav)':'navigation.about','.main-nav a[href="#services"]':'navigation.services',
     '.main-nav a[href="#blog"]':'navigation.blog','.main-nav a[href="#contact"]':'navigation.contact',
     '.pricing-note':'labels.pricingDemoNote',
     '.contact-form-wrap button[type="submit"]':'labels.submit','.form-note':'labels.formNote',
@@ -66,7 +66,7 @@
     if(brand.pageTitle)document.title=brand.pageTitle;
     const meta=q('meta[name="description"]');if(meta)meta.setAttribute('content',brand.metaDescription||'');
     const nav=site.navigation||{};
-    all('.footer-grid > div:nth-child(2) > ul a').forEach((el,i)=>{const paths=['home','about','services','quote'];el.textContent=nav[paths[i]]||['Home','About us','Service','Get a quote'][i];});
+    all('.footer-grid > div:nth-child(2) > ul a').forEach((el,i)=>{if(el.id==='clientCreditsFooter')return;const paths=['home','about','services','quote'];el.textContent=nav[paths[i]]||['Home','About us','Service','Get a quote'][i];});
     const footerServices=q('.footer-grid > div:nth-child(3) ul');
     if(footerServices){footerServices.replaceChildren();[...(site.services||[]).slice(0,3).map(s=>({title:s.title,href:'#services'})),{title:nav.quote||'Get a quote',href:'./smart-quote.html'}].forEach(item=>{
       const li=document.createElement('li'),a=document.createElement('a');a.href=item.href;a.textContent=item.title;li.append(a);footerServices.append(li);

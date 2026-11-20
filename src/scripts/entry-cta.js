@@ -28,11 +28,14 @@
       if(!url.pathname.endsWith('/smart-quote.html'))return;
       url.searchParams.set('lang',lang);
       a.setAttribute('href','./smart-quote.html'+url.search+url.hash);
-      if(a.id==='footerContactCard')return;
-      a.textContent=a.hasAttribute('data-quote-help')?advice:quote;
+      if(a.id==='footerContactCard'||a.hasAttribute('data-quote-label-preserve'))return;
+      const isHelp=a.hasAttribute('data-quote-help')||url.searchParams.get('mode')==='help';
+      a.classList.toggle('sc-quote-cta',!isHelp);
+      a.textContent=isHelp?advice:quote;
     });
   }
   window.addEventListener('scwork-site-updated',apply);
+  window.addEventListener('scwork:estimate-links-updated',apply);
   window.addEventListener('scwork:locale-applied',apply);
   document.addEventListener('DOMContentLoaded',apply);
   apply();

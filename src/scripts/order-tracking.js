@@ -12,7 +12,7 @@
     refresh:'Refresh status',tokenLabel:'Tracking code from your link',open:'View status',
     reorderTitle:'Reorder from saved specs',
     reorderLead:'Open the JSON spec file supplied by the team, then choose which SKUs and quantities to request. The team confirms materials, pricing and delivery for the new request.',
-    reorder:'Open a reorder spec file ↗',privateNote:'Anyone with the link can see this status. Share it only with people involved. Contact names, addresses, prices and artwork are not shown here.'};
+    reorder:'Open a reorder spec file',privateNote:'Anyone with the link can see this status. Share it only with people involved. Contact names, addresses, prices and artwork are not shown here.'};
   const labels={
     th:['รับงานแล้ว','ตรวจไฟล์และชุดแบบ','กำลังผลิต','ตรวจคุณภาพ','พร้อมส่งมอบ','ส่งมอบแล้ว'],
     en:['Received','Artwork review','In production','Quality check','Ready for handover','Handed over']

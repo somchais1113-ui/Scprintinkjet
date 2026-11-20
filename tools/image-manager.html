@@ -28,12 +28,12 @@
     .actions{display:flex;align-items:center;gap:13px;flex-wrap:wrap;margin-top:23px}.primary{color:white;background:var(--green);border:0;border-radius:10px;padding:14px 22px;font-weight:800}.secondary{background:white;border:1px solid var(--line);padding:12px 17px;border-radius:10px}.status{font-size:12px;color:var(--muted);margin-top:12px;min-height:24px}.note{font-size:12px;margin-top:20px;padding:15px;border:1px solid #e9f0fb;background:#fafbf9;border-radius:10px;color:#1c4785}.note strong{color:#173868}
     @media(max-width:920px){.workspace{grid-template-columns:1fr}.list{max-height:280px}.instructions{grid-template-columns:1fr}.controls{grid-template-columns:1fr}}
   </style>
-  <script src="../assets/images/manifest.js?v=scwork-1.4" defer></script>
+  <script src="../assets/images/manifest.js?v=2.1.8" defer></script>
   <script src="./image-manager.js" defer></script>
   <link rel="stylesheet" href="../src/styles/18-cta-standard.css?v=1.4.1" />
 </head>
 <body>
-  <header class="top"><div><div class="eyebrow">SCWork / Developer tools</div><h1>Image Asset Manager</h1><p>เครื่องมือเปลี่ยนรูปภาพในเว็บแบบออฟไลน์ เลือกตำแหน่ง อัปโหลด ครอป แล้วดาวน์โหลดเป็นไฟล์ WebP ชื่อถูกต้องสำหรับแทนไฟล์เดิม</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="back" href="./index.html">← Admin Home</a><a class="back" href="../index.html">เปิดหน้าเว็บ ↗</a></div></header>
+  <header class="top"><div><div class="eyebrow">SCWork / Developer tools</div><h1>Image Asset Manager</h1><p>เครื่องมือเปลี่ยนรูปภาพในเว็บแบบออฟไลน์ เลือกตำแหน่ง อัปโหลด ครอป แล้วดาวน์โหลดเป็นไฟล์ WebP ชื่อถูกต้องสำหรับแทนไฟล์เดิม</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="back" href="./index.html">← Admin Home</a><a class="back" href="../index.html">เปิดหน้าเว็บ</a></div></header>
   <div class="instructions" aria-label="Image editing steps"><div class="step"><strong>1</strong><b>เลือกภาพ</b> จากรายการด้านซ้าย (18 ตำแหน่ง)</div><div class="step"><strong>2</strong><b>อัปโหลดและครอป</b> แล้วกดดาวน์โหลด WebP</div><div class="step"><strong>3</strong><b>นำไฟล์ไปทับ</b> ในโฟลเดอร์เดิม และรีเฟรชหน้าเว็บ</div></div>
   <main class="workspace">
     <section class="panel" aria-label="Image slots"><div class="panel-head"><h2>Asset Library <span id="assetCount"></span></h2><p>ภาพที่รวมในเว็บไซต์และตำแหน่งการใช้งานทั้งหมด</p></div><div class="list" id="slotList"></div></section>

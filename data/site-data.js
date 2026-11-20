@@ -308,7 +308,7 @@ window.PROCLEANING_SITE = {
   "services": [
     {
       "title": "Product & Packaging Labels",
-      "image": "./assets/images/services/office.webp",
+      "image": "./assets/images/services/product-labels-v217.webp",
       "description": "Custom inkjet labels for bottles, jars and packaging, with material and finishing options based on the product.",
       "category": "Sticker & Label",
       "translations": {
@@ -320,7 +320,7 @@ window.PROCLEANING_SITE = {
     },
     {
       "title": "Custom Die-Cut Stickers",
-      "image": "./assets/images/services/spring.webp",
+      "image": "./assets/images/services/die-cut-stickers-v217.webp",
       "description": "Kiss-cut and contour-cut sticker designs for promotions, merchandise and creative branded applications.",
       "category": "Sticker & Label",
       "translations": {
@@ -332,7 +332,7 @@ window.PROCLEANING_SITE = {
     },
     {
       "title": "Retail & Glass Graphics",
-      "image": "./assets/images/services/house.webp",
+      "image": "./assets/images/services/window-graphics-v217.webp",
       "description": "Large-format printed vinyl graphics for windows, stores and promotional spaces, subject to site and installation needs.",
       "category": "Large Format Inkjet",
       "translations": {
@@ -346,7 +346,7 @@ window.PROCLEANING_SITE = {
   "team": [
     {
       "name": "01 / Artwork Review",
-      "image": "./assets/images/team/person-01.webp",
+      "image": "./assets/images/team/artwork-review-v218.webp",
       "description": "Review dimensions, bleed, resolution and printing requirements before production.",
       "translations": {
         "th": {
@@ -357,7 +357,7 @@ window.PROCLEANING_SITE = {
     },
     {
       "name": "02 / Print & Color",
-      "image": "./assets/images/team/person-02.webp",
+      "image": "./assets/images/team/material-print-v218.webp",
       "description": "Select a suitable material and printing method, with color expectations explained upfront.",
       "translations": {
         "th": {
@@ -368,7 +368,7 @@ window.PROCLEANING_SITE = {
     },
     {
       "name": "03 / Finishing & Delivery",
-      "image": "./assets/images/team/person-03.webp",
+      "image": "./assets/images/team/finishing-handover-v218.webp",
       "description": "Plan lamination, contour cutting, inspection and the agreed handover method.",
       "translations": {
         "th": {

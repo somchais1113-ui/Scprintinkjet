@@ -123,7 +123,7 @@
       const d=Core.read(),q=d.quotes.at(-1);
       if(d.quotes.length!==before+1)throw Error('Save not completed');
       lastSaved=q.id;
-      $('saveResult').innerHTML=`<strong>Saved ${safe(q.id)} · v${safe(q.version)}</strong><br><a class="qb-link" href="quote-print.html?id=${encodeURIComponent(q.id)}" target="_blank" rel="noopener">Open print / Save PDF view ↗</a> · <a class="qb-link" href="quotations.html">Mark sent / track outcome ↗</a>`;
+      $('saveResult').innerHTML=`<strong>Saved ${safe(q.id)} · v${safe(q.version)}</strong><br><a class="qb-link" href="quote-print.html?id=${encodeURIComponent(q.id)}" target="_blank" rel="noopener">Open print / Save PDF view</a> · <a class="qb-link" href="quotations.html">Mark sent / track outcome</a>`;
       alert('Demo draft saved as '+q.id+' (version '+q.version+'). Use the links below to print or manage the quote.');
       // Keep user's input, but next save creates a new revision.
       $('saveQuote').textContent='Save next revision';

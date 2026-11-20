@@ -12,8 +12,8 @@
     set('scLocaleCurrent',lang.toUpperCase());
     set('scLocaleHint',c.languageHint);set('scLocaleNote',c.languageNote);
     set('topBenefitText',c.topBenefit);set('topPriceText',c.topEstimate);set('topInquiryText',c.topInquiry);
-    set('scProcessEyebrow',c.processEyebrow);set('scProcessTitle',c.processTitle);set('scProcessCTA',(c.processCta||'Estimate price')+' ↗');
-    set('scPriceLink',(c.pricingCta||'Estimate price')+' ↗');set('scPricingDisclaimer',c.pricingDisclaimer);
+    set('scProcessEyebrow',c.processEyebrow);set('scProcessTitle',c.processTitle);set('scProcessCTA',(c.processCta||'Estimate price')+'');
+    set('scPriceLink',(c.pricingCta||'Estimate price')+'');set('scPricingDisclaimer',c.pricingDisclaimer);
     const band=document.querySelector('.v24-rfq-band');
     if(band && lang!=='en' && lang!=='th'){
       const english=band.querySelectorAll('.v24-en');

@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import './validate-v173-copy.mjs';
+const read=file=>readFileSync(new URL('../'+file,import.meta.url),'utf8');
+const home=read('index.html'),css=read('src/styles/19-social-proof-footer.css');
+assert.doesNotMatch(home,/about-section|about-title|aboutMainImage|aboutSmallImage|featureGrid|sc-social-proof/);
+assert.equal(home.match(/id="client-logos"/g)?.length,1);
+assert.match(home, /id="team"[\s\S]*?<section class="section sc-client-credits" id="about" aria-labelledby="socialProofTitle"/);
+assert.match(home,/href="#about" id="clientCreditsNav"/);
+assert.match(home,/href="#about" id="clientCreditsFooter"/);
+assert.match(home,/id="scClientLogoPause" type="button" aria-controls="scClientLogoTrack" hidden/);
+assert.match(css,/#pricing \.pricing-section__green::before\s*\{[^}]+url\("\.\.\/\.\.\/assets\/images\/about\/main\.webp"\)[^}]+opacity: \.15;[^}]+pointer-events: none;/);
+assert.match(css,/animation: scClientCreditsLoop [^;]+ linear infinite;/);
+assert.match(css,/translateX\(-50%\)/);
+assert.match(css,/prefers-reduced-motion: reduce[\s\S]*?animation: none;/);
+assert.match(read('data/client-logos.js'),/window\.SCWORK_CLIENT_LOGOS = \[\];/);
+console.log('PASS V2.1.3: single credits block, scoped 15% printing overlay, seamless loop, reduced motion.');

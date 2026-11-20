@@ -1,3 +1,47 @@
+# V2.1.11 — Benefit detail pages
+
+Linked the four homepage benefit cards to dedicated Thai and English detail pages. The strip and its notice rotation retain their existing layout and behaviour. Existing quote and order tools are unchanged.
+
+# V2.1.10 — Service strip polish
+
+Refined the homepage benefit strip, added gentle automatic notice rotation with pause and manual controls, and kept all other page content and checkout/quote behaviour unchanged.
+
+# V2.1.9 — Top benefits strip
+
+Added four brand-styled benefit badges and a manually browsable service notice bar above the hero. Rating figures and custom delivery copy are optional SCWork configuration.
+
+# V2.1.8 — Hero photography and footer icon strip
+
+Added four hero photographs in a protected right-hand image panel, refreshed the three workflow photos, and added a footer icon strip with optional payment and DBD configuration. Homepage hero typography and pricing logic are unchanged.
+
+# V2.1.7 — Matched swatch marks and new home photography
+
+All five material images use a single shared vector mark in the same size, colour and placement. Three service photos and three production workflow photos were replaced with subject-specific images. The quote engine, contact bar and other pages are unchanged.
+
+# V2.1.6 — Sticker material gallery
+
+Replaced the homepage application carousel with five material swatches and accessible image previews. The help bar, quote rules and other pages are unchanged.
+
+# V2.1.5 — Sticky support bar
+
+Added a fixed, touch-friendly help bar with an original bear mascot on the six public storefront pages. It uses the existing configured contact channels, supports an optional verified LINE QR, and stacks cleanly below the Smart Quote mobile summary.
+
+# V2.1.4 — Process backdrop, logo mockups and estimate links
+
+Added the existing print-floor image at 15% behind the four-step process, standardized its orange to the Pantone 1505 C screen equivalent, added six clearly labeled logo mockups to the slower loop and increased estimate CTA typography.
+
+# V2.1.3 — Client credits and print texture
+
+Replaced the redundant About block with client credits and a single grayscale logo loop. Added a 15% print-photo overlay without changing the pricing cards. The section remains visible as a thank-you message if no client logos are configured.
+
+# V2.1.2 — Home application cards
+
+Moved the three popular print applications into the former pre-print spec section, removed the redundant quote promotion and enlarged the descriptions on the three cards. Kept quote routes, prices and image files unchanged.
+
+# V2.1.1 — Clean interface symbols
+
+Removed emoji flags, phone glyphs, decorative arrows and status marks from public and staff UI, including generated labels. The 14-language picker now uses short codes and native language names. Preserved all images, quotes, billing logic and page routes.
+
 # V2.1.0 — Buyer types, settlement and print
 
 Features a clear estimate/VAT/withholding breakdown, buyer selection, an isolated demo and printable estimate/specification. Retains the six uploaded images and leaves seller VAT and commercial rates unconfirmed.

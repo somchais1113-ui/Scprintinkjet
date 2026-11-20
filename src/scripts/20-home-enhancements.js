@@ -2,12 +2,13 @@
   'use strict';
   const isThai=() => document.documentElement.lang === 'th';
   const t = () => isThai() ? {
-    socialEyebrow:'ลูกค้าและแบรนด์',
-    socialTitle:'พื้นที่สำหรับโลโก้ลูกค้า',
-    socialDescription:'แสดงเฉพาะโลโก้ที่ได้รับอนุญาตให้เผยแพร่',
-    socialApprovedEyebrow:'ความไว้วางใจจากลูกค้า',
-    socialApprovedTitle:'แบรนด์ที่ร่วมงานกับ SCWORK',
-    socialApprovedDescription:'ขอบคุณทุกแบรนด์ที่เลือกใช้บริการผลิตสติกเกอร์กับเรา',
+    socialEyebrow:'ขอบคุณจาก SCWork',
+    socialTitle:'ลูกค้าที่ร่วมงานกับเรา',
+    socialDescription:'ขอบคุณที่ไว้วางใจให้ SCWork ดูแลงานพิมพ์สติกเกอร์ของคุณ',
+    socialNav:'ลูกค้าของเรา',
+    previewLogos:'โลโก้ตัวอย่างสำหรับดูการจัดวาง',
+    pauseLogos:'หยุดเลื่อนโลโก้',
+    resumeLogos:'เลื่อนโลโก้ต่อ',
     footerMiniTitle:'ปรึกษาเบื้องต้นได้รวดเร็ว',
     footerMiniText:'ส่งขนาด วัสดุ จำนวน หรือรายละเอียดเบื้องต้นทาง LINE ได้เลย',
     secondaryLinksTitle:'วิธีสั่งและข้อมูลช่วยเหลือ',
@@ -28,12 +29,13 @@
     facebook:'Facebook',
     messenger:'Messenger'
   } : {
-    socialEyebrow:'CLIENTS & BRANDS',
-    socialTitle:'Customer logo showcase',
-    socialDescription:'Only client-approved logos will appear here.',
-    socialApprovedEyebrow:'CLIENTS & PARTNERS',
-    socialApprovedTitle:'Brands working with SCWORK',
-    socialApprovedDescription:'Thank you to the brands choosing SCWORK for sticker printing.',
+    socialEyebrow:'CLIENT CREDITS',
+    socialTitle:'Clients we’ve worked with',
+    socialDescription:'Thank you for trusting SCWork with your sticker printing projects.',
+    socialNav:'Clients',
+    previewLogos:'Logo mockups for layout preview',
+    pauseLogos:'Pause logo animation',
+    resumeLogos:'Resume logo animation',
     footerMiniTitle:'Quick consultation',
     footerMiniText:'Send size, material, quantity or a short brief on LINE.',
     secondaryLinksTitle:'Ordering & helpful information',
@@ -69,47 +71,84 @@
     if(href && /^https?:/i.test(href)){el.target='_blank'; el.rel='noopener noreferrer';} else {el.removeAttribute('target'); el.removeAttribute('rel');}
   }
 
-  const validLogo=item=>item?.approved===true && typeof item.name==='string' && item.name.trim() &&
-    /^\.\/assets\/images\/client-logos\/[\w.-]+\.(png|webp|svg|jpg|jpeg)$/i.test(String(item.src||'').trim());
-  let logoSignature;
+  const validLogoName=item=>typeof item?.name==='string'&&item.name.trim();
+  const validLogo=item=>item?.approved===true && validLogoName(item) &&
+    /^\.\/assets\/images\/client-logos\/(?:actual\/)?[\w.-]+\.(png|webp|svg|jpg|jpeg)$/i.test(String(item.src||'').trim());
+  const validMockup=item=>validLogoName(item)&&
+    /^\.\/assets\/images\/client-logos\/mockups\/logo-mockup-0[1-6]\.svg$/.test(String(item.src||'').trim());
+  let logoSignature, logosPaused=false;
+  const brokenLogoSources=new Set();
+  function availableLogos(items,valid){
+    const logos=[],seen=new Set();
+    for(const item of Array.isArray(items)?items:[]){
+      if(!valid(item))continue;
+      const src=item.src.trim();
+      if(seen.has(src)||brokenLogoSources.has(src))continue;
+      seen.add(src);
+      logos.push({name:item.name.trim(),src});
+      if(logos.length===24)break;
+    }
+    return logos;
+  }
   function renderClientLogos(){
-    const track=byId('scClientLogoTrack'),section=byId('client-logos');if(!track||!section)return;
-    const logos=(Array.isArray(window.SCWORK_CLIENT_LOGOS)?window.SCWORK_CLIENT_LOGOS:[]).filter(validLogo).slice(0,24);
-    const signature=JSON.stringify(logos.map(({name,src})=>[name,src]));
-    track.setAttribute('aria-label', t().socialApprovedTitle);
+    const track=byId('scClientLogoTrack'),logosArea=byId('client-logos'),marquee=byId('scClientLogoMarquee'),pause=byId('scClientLogoPause'),note=byId('scClientLogoPreviewNote');
+    if(!track||!logosArea||!marquee||!pause)return;
+    const actual=availableLogos(window.SCWORK_CLIENT_LOGOS,validLogo);
+    const logos=actual.length?actual:availableLogos(window.SCWORK_CLIENT_LOGO_MOCKUPS,validMockup);
+    const isPreview=!actual.length&&logos.length>0;
+    if(note){note.hidden=!isPreview;note.textContent=t().previewLogos;}
+    function updatePause(){
+      marquee.classList.toggle('is-paused',logosPaused);
+      pause.textContent=logosPaused?t().resumeLogos:t().pauseLogos;
+    }
+    updatePause();
+    const signature=JSON.stringify([isPreview,logos]);
     if(signature===logoSignature)return;
     logoSignature=signature;
-    track.replaceChildren();
-    section.hidden=!logos.length;
-    track.classList.toggle('is-empty',!logos.length);
-    const chips=new Map();
-    function renderOne(item,duplicate){
-      const chip=document.createElement('span'),img=document.createElement('img');
-      chip.className='sc-logo-chip';
-      if(duplicate)chip.setAttribute('aria-hidden','true');
-      img.alt=duplicate?'':item.name;
-      img.decoding='async';
-      if(!chips.has(item))chips.set(item,[]);
-      chips.get(item).push(chip);
-      img.addEventListener('error',()=>{
-        if(signature!==logoSignature||!chips.has(item))return;
-        chips.get(item).forEach(node=>node.remove());
-        chips.delete(item);
-        section.hidden=!chips.size;
-      },{once:true});
-      img.src=item.src.trim();
-      chip.appendChild(img);
-      return chip;
+    const moves=logos.length>1;
+    logosArea.hidden=!logos.length;
+    pause.hidden=!moves;
+    marquee.classList.toggle('has-loop',moves);
+    pause.onclick=()=>{logosPaused=!logosPaused;updatePause();};
+    const groups=[];
+    // Equal-width strips include the final gap, so -50% lands exactly on the next strip.
+    const repeats=moves?Math.ceil(8/logos.length):1;
+    track.style.setProperty('--logo-duration',Math.max(64,repeats*logos.length*8.5)+'s');
+    function logoGroup(clone){
+      const group=document.createElement('div');
+      group.className=clone?'sc-client-credits__group sc-client-credits__group--clone':'sc-client-credits__group';
+      if(clone)group.setAttribute('aria-hidden','true');
+      for(let pass=0;pass<repeats;pass++){
+        for(const {name,src} of logos){
+          const chip=document.createElement('span'),img=document.createElement('img');
+          chip.className='sc-client-credits__logo'+(pass?' sc-client-credits__logo--repeat':'');
+          if(pass)chip.setAttribute('aria-hidden','true');
+          img.alt=clone||pass?'':name;
+          img.decoding='async';
+          img.addEventListener('error',()=>{
+            if(signature!==logoSignature||brokenLogoSources.has(src))return;
+            brokenLogoSources.add(src);
+            renderClientLogos();
+          },{once:true});
+          img.src=src;
+          chip.appendChild(img);
+          group.appendChild(chip);
+        }
+      }
+      return group;
     }
-    track.append(...logos.map(item=>renderOne(item,false)),...logos.map(item=>renderOne(item,true)));
+    if(logos.length)groups.push(logoGroup(false));
+    if(moves)groups.push(logoGroup(true));
+    track.replaceChildren(...groups);
   }
 
   function renderStaticCopy(){
     const copy=t();
-    const hasApprovedLogo=Array.isArray(window.SCWORK_CLIENT_LOGOS) && window.SCWORK_CLIENT_LOGOS.some(validLogo);
-    setText('socialProofEyebrow', hasApprovedLogo ? copy.socialApprovedEyebrow : copy.socialEyebrow);
-    setText('socialProofTitle', hasApprovedLogo ? copy.socialApprovedTitle : copy.socialTitle);
-    setText('socialProofDescription', hasApprovedLogo ? copy.socialApprovedDescription : copy.socialDescription);
+    setText('socialProofEyebrow',copy.socialEyebrow);
+    setText('socialProofTitle',copy.socialTitle);
+    setText('socialProofDescription',copy.socialDescription);
+    setText('clientCreditsNav',copy.socialNav);
+    setText('clientCreditsFooter',copy.socialNav);
     setText('footerMiniContactTitle', copy.footerMiniTitle);
     setText('footerMiniContactText', copy.footerMiniText);
     setText('footerSecondaryLinksTitle', copy.secondaryLinksTitle);
@@ -137,7 +176,9 @@
     setLink('footerFacebookLink', facebook ? 'Facebook' : copy.footerFacebook, facebook || messenger || unavailableContactHref());
     setLink('footerSocialLine', 'LINE', lineUrl || unavailableContactHref());
     setLink('footerSocialFacebook', 'f', facebook || messenger || unavailableContactHref());
-    setLink('footerSocialCall', '☎', mobile ? 'tel:' + mobile.replace(/[^+\d]/g,'') : office ? 'tel:' + office.replace(/[^+\d]/g,'') : unavailableContactHref());
+    setLink('footerSocialCall', copy.phone, mobile ? 'tel:' + mobile.replace(/[^+\d]/g,'') : office ? 'tel:' + office.replace(/[^+\d]/g,'') : unavailableContactHref());
+    const footerCall=byId('footerSocialCall');
+    if(footerCall){footerCall.innerHTML=iconMarkup('phone');footerCall.setAttribute('aria-label',copy.phone);footerCall.title=copy.phone;}
     const hide=(id,on,list=false)=>{const el=byId(id);if(el)(list?el.closest('li')||el:el).hidden=on;};
     hide('footerOfficePhone',!office,true);hide('footerMobilePhone',!mobile,true);hide('footerLineId',!lineUrl,true);
     hide('footerFacebookLink',!(facebook||messenger),true);hide('footerAddressText',!contactValue('address'),true);
@@ -162,7 +203,7 @@
       root=document.createElement('div');
       root.className='sc-contact-assistant';
       root.id='scContactAssistant';
-      root.innerHTML=`<div class="sc-contact-assistant__actions" id="scContactAssistantActions"></div><button class="sc-contact-assistant__toggle" id="scContactAssistantToggle" type="button" aria-expanded="false" aria-controls="scContactAssistantActions"><span>✆</span><span>×</span></button>`;
+      root.innerHTML=`<div class="sc-contact-assistant__actions" id="scContactAssistantActions"></div><button class="sc-contact-assistant__toggle" id="scContactAssistantToggle" type="button" aria-expanded="false" aria-controls="scContactAssistantActions"><span>${iconMarkup('phone')}</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m6 6 12 12M18 6 6 18"/></svg></span></button>`;
       document.body.appendChild(root);
       const toggle=root.querySelector('#scContactAssistantToggle');
       toggle.addEventListener('click',()=>{const open=root.classList.toggle('is-open');toggle.setAttribute('aria-expanded',String(open)); toggle.setAttribute('aria-label', t().assistantOpen);});

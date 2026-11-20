@@ -44,3 +44,5 @@
 
 /* Bright original-mark orange is reserved for small accent details. CTA is a darker accessible shade. */
 .sc-topbar__contact-icon,.sc-topbar__signal{color:#FC6201;background-color:transparent}.sc-topbar__signal{background-color:#FC6201}.sc-process__number{color:#FFAF78}
+
+.sc-topbar__contact-icon{display:inline-flex;flex:none}.sc-topbar__contact-icon svg{height:1em;width:1em;display:block}
