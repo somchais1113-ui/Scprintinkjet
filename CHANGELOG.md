@@ -1,3 +1,9 @@
+## V2.1.13
+
+- Removed the “SCWORK confirms pricing after reviewing your specs/artwork” helper copy from the home pricing area and smart quote summary.
+- Strengthened heading weight in the sticker materials section and the preview modal.
+- Upgraded the material preview modal into a richer in-page slider with arrows, dot navigation, auto-rotation, material benefits and real-surface usage examples in Thai/English.
+
 ## V2.1.12 — Hero width, remove updates, premium quote selection cards
 - Standardize all four homepage hero slides in a 1170px centered frame with mobile crop.
 - Remove service-update ticker; retain four linked feature badges.

@@ -17,7 +17,7 @@ window.PROCLEANING_SITE = {
       {"title":"Receive a quotation", "text":"We confirm artwork, feasibility, production and final price before ordering."}
     ],
     "pricingCta": "Try reference price calculator",
-    "pricingDisclaimer": "Estimates are not final quotations. SCWORK confirms pricing after reviewing your specifications."
+    "pricingDisclaimer": ""
   },
   "i18n": {
     "defaultLanguage": "th",
@@ -38,7 +38,7 @@ window.PROCLEANING_SITE = {
           {"title":"รับใบเสนอราคา", "text":"ตรวจสอบไฟล์ ต้นทุนและการผลิต ก่อนยืนยันราคาจริงและรับงาน"}
         ],
         "pricingCta": "ทดลองคำนวณราคาสติกเกอร์",
-        "pricingDisclaimer": "SCWORK ยืนยันราคาหลังตรวจสเปกและไฟล์งาน"
+        "pricingDisclaimer": ""
       },
       "brand": {
         "tagline": "รับผลิตสติกเกอร์ Inkjet",

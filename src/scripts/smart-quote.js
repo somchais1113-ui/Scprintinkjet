@@ -27,7 +27,7 @@
       advancedTitle:'การเคลือบ ไดคัท และบริการออกแบบ',cutLabel:'การตัดสติกเกอร์',cutStandard:'ตัดมาตรฐาน',cutCustom:'ไดคัทตามรูปทรง',lamination:'เคลือบเงา / ด้าน',design:'บริการออกแบบ',perUnit:'ต่อหน่วย',
       artTitle:'ไฟล์งาน',artLead:'ยังไม่มีไฟล์ก็ส่งสเปกหรือขอคำแนะนำได้',artNone:'ยังไม่มีไฟล์ / ส่งภายหลัง',artLine:'มีไฟล์ จะส่งใน LINE',artLink:'แนบลิงก์ไฟล์',linkLabel:'ลิงก์ไฟล์ (เช่น Google Drive)',linkHelp:'ใช้ลิงก์ที่ทีม SCWORK เปิดได้โดยไม่ต้องขอรหัสผ่าน',
       summaryEyebrow:'สรุปงาน',summaryTitle:'สรุปราคาเบื้องต้น',manualTitle:'สรุปสเปกขอราคา',adviceTitle:'ขอคำแนะนำ',advicePending:'บอกเท่าที่ทราบได้เลย',sumUnitLabel:'จำนวนที่คิดราคา',sumBaseLabel:'ค่าพิมพ์',sumAddonLabel:'ตัวเลือกเสริม',minimumLabel:'ส่วนต่างถึงยอดขั้นต่ำ',sumTotalLabel:'ยอดประมาณการ',
-      vat:'ภาษีมูลค่าเพิ่ม',perPiece:'เฉลี่ยต่อดวง',rateStatus:'ราคาเบื้องต้น',rateMeta:'ตารางราคา',priced:'ทีม SCWork ยืนยันราคาหลังตรวจสเปกและไฟล์งาน',manual:'ส่งสเปกเพื่อให้ทีม SCWork ประเมินราคา',advice:'ทีม SCWork ช่วยแนะนำวัสดุ ขนาด และงานหลังพิมพ์ได้',custom:'งานไดคัทตามรูปทรงต้องให้ทีมประเมินเพิ่มเติม',
+      vat:'ภาษีมูลค่าเพิ่ม',perPiece:'เฉลี่ยต่อดวง',rateStatus:'ราคาเบื้องต้น',rateMeta:'ตารางราคา',priced:'',manual:'ส่งสเปกเพื่อให้ทีม SCWork ประเมินราคา',advice:'ทีม SCWork ช่วยแนะนำวัสดุ ขนาด และงานหลังพิมพ์ได้',custom:'งานไดคัทตามรูปทรงต้องให้ทีมประเมินเพิ่มเติม',
       labelPricesTitle:'เทียบราคา 3 จำนวน',labelPricesSpec:'PP ขาว · 5 × 5 ซม. · ตัดมาตรฐาน',
       vatIncluded:'รวม VAT {rate}%',vatNotApplied:'ไม่คิด VAT ในยอดนี้',shippingExcluded:'ไม่รวมค่าส่ง',labels:'ดวง',
       manualScope:'สเปกนี้ไม่มีราคาออนไลน์ ส่งรายละเอียดให้ทีมประเมินได้เลย',
@@ -49,7 +49,7 @@
       advancedTitle:'Lamination, die cutting and design support',cutLabel:'Cutting',cutStandard:'Standard cut',cutCustom:'Custom contour cut',lamination:'Gloss / matte lamination',design:'Design service',perUnit:'per unit',
       artTitle:'Artwork',artLead:'You can request a quote or ask for advice without artwork.',artNone:'No artwork yet / send later',artLine:'I will send the file in LINE',artLink:'Include an artwork link',linkLabel:'Artwork link (e.g. Google Drive)',linkHelp:'Make sure SCWORK can open the link without a password.',
       summaryEyebrow:'JOB SUMMARY',summaryTitle:'Estimated price',manualTitle:'Quote request summary',adviceTitle:'Request advice',advicePending:'Share as much as you know',sumUnitLabel:'Billable units',sumBaseLabel:'Printing',sumAddonLabel:'Add-ons',minimumLabel:'Minimum order adjustment',sumTotalLabel:'Estimated total',
-      vat:'VAT',perPiece:'Average per label',rateStatus:'Estimate',rateMeta:'Rate card',priced:'SCWork confirms pricing after reviewing your specs and artwork.',manual:'Send your specifications for a quote from SCWork.',advice:'SCWork can help with material, size and finishing.',custom:'Custom contour cutting requires a separate review.',
+      vat:'VAT',perPiece:'Average per label',rateStatus:'Estimate',rateMeta:'Rate card',priced:'',manual:'Send your specifications for a quote from SCWork.',advice:'SCWork can help with material, size and finishing.',custom:'Custom contour cutting requires a separate review.',
       labelPricesTitle:'Compare 3 quantities',labelPricesSpec:'White PP · 5 × 5 cm · Standard cut',
       vatIncluded:'Includes {rate}% VAT',vatNotApplied:'No VAT applied to this estimate',shippingExcluded:'Shipping excluded',labels:'labels',
       manualScope:'This specification is not priced online. Share your details for a quote.',
@@ -133,7 +133,8 @@
     for(const id of ['priceRows','perPieceRow','totalRow','rateStatus','rateMeta'])hide(id,!result);
     text('rateStatus',t('rateStatus'));$('rateStatus').classList.toggle('is-approved',!!result);
     text('rateMeta',card?.version?t('rateMeta')+' '+card.version:'');hide('rateMeta',!result||!card?.version);
-    text('priceInfo',help?t('advice'):result?terms(result.vatRate)+' · '+t('priced'):t(plan?'manualScope':'manual'));
+    const pricedCopy=t('priced');
+    text('priceInfo',help?t('advice'):result?(pricedCopy?terms(result.vatRate)+' · '+pricedCopy:terms(result.vatRate)):t(plan?'manualScope':'manual'));
     text('demoNotice',t(plan?'rateNotice':'noRateNotice'));
     hide('priceWarning',help||valid&&!customCut());text('priceWarning',t(!valid?'badSpec':'custom'));
     if(result){
