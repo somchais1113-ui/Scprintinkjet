@@ -26,7 +26,7 @@ for(const size of [16,32,180,192,512]){
  assert.equal(buf.readUInt32BE(20),size,path+' height');
 }
 assert.match(full,/32-services-crossfade\.css\?v=2\.1\.17/);
-assert.match(full,/main\.js\?v=2\.1\.17/);
+assert.match(full,/main\.js\?v=2\.1\.(?:17|19)/); // New hero stories reuse the existing full-card services implementation.
 for(const selector of ['.services__viewport--crossfade','.services__grid--outgoing','.services__grid--incoming','.services__viewport--active']){
   assert(css.includes(selector),`missing crossfade selector ${selector}`);
 }

@@ -1,3 +1,11 @@
+## V2.1.19 — Cinematic Main Banner
+
+- Replaced split-image homepage hero with a full-bleed four-story banner based on the supplied reference video.
+- Retained existing SCWork Inkjet, label, die-cut and window-graphics imagery and preserved the main quotation CTA.
+- Added contextual bilingual slide copy, image crossfade, subtle photo motion, compact previous/pause/next/dots controls and scroll cue.
+- Added desktop/tablet/mobile crops, accessibility and reduced-motion behaviour.
+- Pricing, quotation, navigation and other homepage sections remain unchanged.
+
 ## V2.1.18 — Quotation UX Refinement
 
 - Redesigned quote entry choices as readable title-over-description cards with navy headings and orange selection state.

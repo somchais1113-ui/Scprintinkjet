@@ -19,31 +19,136 @@
     img.addEventListener('error',()=>{if(!img.src.endsWith('placeholder.svg'))img.src=img.dataset.fallback;});
   });}
 
+  // Cinematic story rail (V2.1.19): four original service photos with
+  // coordinated visual and copy transitions. Keeps the standard site editor
+  // text for slide 01 and its image overrides for all four photos.
   function initHeroCarousel(){
-    const slides=[...document.querySelectorAll('.hero__slide')];
-    const dots=[...document.querySelectorAll('[data-hero-dot]')];
-    if(!slides.length||!dots.length)return;
+    const hero=document.querySelector('.hero--cinematic');
+    if(!hero)return;
+    const slides=[...hero.querySelectorAll('.hero__slide')];
+    const dots=[...hero.querySelectorAll('[data-hero-dot]')];
+    const prev=byId('scCinematicPrev');
+    const next=byId('scCinematicNext');
+    const playPause=byId('scCinematicPause');
+    const count=byId('scCinematicCount');
+    const scroll=byId('scCinematicScroll');
+    const story=byId('scCinematicStory');
+    const title=byId('hero-title');
+    const eyebrow=hero.querySelector('.hero__eyebrow');
+    const desc=hero.querySelector('.hero__description');
+    if(!slides.length||!dots.length||!story||!prev||!next||!playPause)return;
     const total=slides.length;
     const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
-    let isHovered=false;
-    function renderHero(){
-      heroIndex=((heroIndex%total)+total)%total;
-      slides.forEach((slide,i)=>slide.classList.toggle('is-active',i===heroIndex));
-      dots.forEach((dot,i)=>{const active=i===heroIndex;dot.classList.toggle('is-active',active);dot.setAttribute('aria-pressed',String(active));});
+    let isHovered=false,isFocusWithin=false,manualPause=false,isVisible=true;
+    let isSwitching=false,copyTimer=null;
+    const duration=7400;
+
+    function locale(){return document.documentElement.lang||'en';}
+    function storyField(slide,field,language){
+      const key=field+language[0].toUpperCase()+language.slice(1);
+      return slide.dataset[key]||slide.dataset[field+'En']||'';
     }
+    function setHeroCopy(){
+      const current=slides[heroIndex];
+      const language=locale();
+      const first=heroIndex===0;
+      const extendedLocale=language!=='th'&&language!=='en';
+      const siteHero=activeSite?.hero||{};
+      const defaultEyebrow=language==='th'?'SCWORK / งานพิมพ์สติกเกอร์ Inkjet':'SCWORK / INKJET STICKER PRINTING';
+      eyebrow.textContent=(first||extendedLocale) ? (siteHero.eyebrow||(language==='th'?'SCWORK / งานพิมพ์สติกเกอร์ Inkjet':'SCWORK / INKJET PRINT PRODUCTION')) : (storyField(current,'label',language)||defaultEyebrow);
+      title.textContent=(first||extendedLocale) ? (siteHero.title||storyField(current,'title',language)||'Stickers that make your brand stand out') : storyField(current,'title',language);
+      desc.textContent=(first||extendedLocale) ? (siteHero.description||storyField(current,'desc',language)||'Custom sticker production with practical design and materials') : storyField(current,'desc',language);
+      const format=i=>String(i+1).padStart(2,'0');
+      if(count){
+        const strong=count.querySelector('strong'); if(strong)strong.textContent=format(heroIndex);
+        count.setAttribute('aria-label',language==='th'?`สไลด์ ${heroIndex+1} จาก ${total}`:`Slide ${heroIndex+1} of ${total}`);
+      }
+      dots.forEach((dot,i)=>{const active=i===heroIndex;dot.classList.toggle('is-active',active);dot.setAttribute('aria-pressed',String(active));dot.setAttribute('aria-label',language==='th'?`แสดงภาพที่ ${i+1}`:`Show image ${i+1}`);});
+      scroll.querySelector('span').textContent=language==='th'?'เลื่อนดูบริการ':(extendedLocale?(activeSite?.navigation?.services||'Explore Services'):'SCROLL TO EXPLORE');
+      scroll.setAttribute('aria-label',language==='th'?'เลื่อนไปดูบริการสติกเกอร์':'Scroll down to sticker services');
+      prev.setAttribute('aria-label',language==='th'?'สไลด์ก่อนหน้า':'Previous slide');
+      next.setAttribute('aria-label',language==='th'?'สไลด์ถัดไป':'Next slide');
+      playPause.setAttribute('aria-label',manualPause?(language==='th'?'เล่นสไลด์ต่อ':'Resume slideshow'):(language==='th'?'หยุดสไลด์ชั่วคราว':'Pause slideshow'));
+      playPause.setAttribute('aria-pressed',String(manualPause));
+      playPause.classList.toggle('is-paused',manualPause);
+    }
+    function preloadNearby(){
+      for(let n=1;n<=2;n++){
+        const image=slides[(heroIndex+n)%total]?.querySelector('img');
+        if(image && image.loading!=='eager') image.loading='eager';
+      }
+    }
+    function commitSlide(index){
+      heroIndex=(index+total)%total;
+      slides.forEach((slide,i)=>{
+        const active=i===heroIndex;
+        slide.classList.toggle('is-active',active);
+        slide.setAttribute('aria-hidden',String(!active));
+      });
+      setHeroCopy();
+      preloadNearby();
+    }
+    async function goTo(index){
+      if(isSwitching)return;
+      const target=(index+total)%total;
+      if(target===heroIndex)return;
+      isSwitching=true;
+      const nextImg=slides[target]?.querySelector('img');
+      if(nextImg && nextImg.loading!=='eager')nextImg.loading='eager';
+      // Decode before starting: switching directly from 01 to 04 never flashes a blank frame.
+      if(nextImg && !nextImg.complete && typeof nextImg.decode==='function'){
+        try { await Promise.race([nextImg.decode(),new Promise(resolve=>window.setTimeout(resolve,1600))]); }
+        catch { /* keep fallback image and text visible if the next photo fails */ }
+      }
+      // Copy starts fading out while the incoming photo crossfades over the old one.
+      if(reduceMotion?.matches){commitSlide(target);isSwitching=false;return;}
+      story.classList.add('sc-cinema__copy--leaving');
+      if(copyTimer)window.clearTimeout(copyTimer);
+      copyTimer=window.setTimeout(()=>{
+        commitSlide(target);
+        window.requestAnimationFrame(()=>story.classList.remove('sc-cinema__copy--leaving'));
+        isSwitching=false;
+      },190);
+    }
+    function stopTimer(){if(heroTimer){window.clearInterval(heroTimer);heroTimer=null;}}
     function restart(){
-      if(heroTimer)window.clearInterval(heroTimer);
-      heroTimer=null;
-      if(document.hidden || reduceMotion?.matches || isHovered)return;
-      heroTimer=window.setInterval(()=>{heroIndex=(heroIndex+1)%total;renderHero();},6000);
+      stopTimer();
+      if(document.hidden||!isVisible||manualPause||reduceMotion?.matches||isHovered||isFocusWithin)return;
+      heroTimer=window.setInterval(()=>goTo(heroIndex+1),duration);
     }
-    dots.forEach((dot,i)=>dot.addEventListener('click',()=>{heroIndex=i;renderHero();restart();}));
-    const carousel=byId('heroCarousel');
-    carousel?.addEventListener('mouseenter',()=>{isHovered=true;restart();});
-    carousel?.addEventListener('mouseleave',()=>{isHovered=false;restart();});
+    function navigate(i){goTo(i);restart();}
+    prev.addEventListener('click',()=>navigate(heroIndex-1));
+    next.addEventListener('click',()=>navigate(heroIndex+1));
+    dots.forEach((dot,i)=>dot.addEventListener('click',()=>navigate(i)));
+    playPause.addEventListener('click',()=>{
+      manualPause=!manualPause;
+      setHeroCopy();
+      restart();
+    });
+    hero.addEventListener('mouseenter',()=>{isHovered=true;restart();});
+    hero.addEventListener('mouseleave',()=>{isHovered=false;restart();});
+    hero.addEventListener('focusin',()=>{isFocusWithin=true;restart();});
+    hero.addEventListener('focusout',event=>{
+      if(!hero.contains(event.relatedTarget)){isFocusWithin=false;restart();}
+    });
+    hero.addEventListener('keydown',event=>{
+      if(event.target.matches('input,textarea,select'))return;
+      if(event.key==='ArrowRight'){event.preventDefault();navigate(heroIndex+1);}
+      if(event.key==='ArrowLeft'){event.preventDefault();navigate(heroIndex-1);}
+    });
     document.addEventListener('visibilitychange',restart);
     reduceMotion?.addEventListener?.('change',restart);
-    renderHero();restart();
+    if('IntersectionObserver' in window){
+      const observer=new IntersectionObserver(entries=>{
+        isVisible=(entries[0]?.intersectionRatio||0)>.15;
+        restart();
+      },{threshold:[0,.15,.5]});
+      observer.observe(hero);
+    }
+    // Site editor / translation draw() rewrites hero text; restore the current story after it.
+    window.addEventListener('scwork-site-updated',()=>setHeroCopy());
+    commitSlide(0);
+    restart();
   }
 
   function getScrollTarget(hash){

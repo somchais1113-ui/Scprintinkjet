@@ -37,7 +37,7 @@
   <script src="./src/scripts/site-runtime.js?v=2.1.3" defer></script>
   <script src="./data/extra-locales.js?v=2.1.1" defer></script>
   <script src="./src/scripts/i18n.js?v=scwork-1.4" defer></script>
-  <script src="./src/scripts/main.js?v=2.1.17" defer></script>
+  <script src="./src/scripts/main.js?v=2.1.19" defer></script>
   <script src="./src/scripts/motion.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/commerce-enhancements.js?v=2.1.15" defer></script>
   <script src="./data/client-logos.js?v=2.1.4" defer></script>
@@ -57,6 +57,7 @@
   <link rel="stylesheet" href="./src/styles/31-home-quote-polish.css?v=2.1.12" />
   <script defer src="./src/scripts/benefit-strip.js?v=2.1.12"></script>
   <link rel="stylesheet" href="./src/styles/32-services-crossfade.css?v=2.1.17">
+  <link rel="stylesheet" href="./src/styles/34-cinematic-hero.css?v=2.1.19">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -111,32 +112,62 @@
         </ul>
       </div>
     </section>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero__media" id="heroCarousel" aria-roledescription="carousel" aria-label="Sticker printing showcase image carousel">
+    <!-- V2.1.19 / cinematic storytelling banner; the rest of the homepage is unchanged. -->
+    <section class="hero hero--cinematic" aria-labelledby="hero-title">
+      <div class="hero__media" id="heroCarousel" aria-roledescription="carousel" aria-label="SCWork sticker production visual stories">
         <div class="hero__slides" id="heroSlides">
-          <figure class="hero__slide is-active" data-hero-slide="0">
-            <img src="./assets/images/hero/inkjet-print-v218.webp" data-hero-legacy="assets/images/hero/hero-scene.webp" alt="Inkjet printer producing a roll of illustrated adhesive labels" width="1440" height="960" decoding="async" loading="eager" fetchpriority="high" />
+          <figure class="hero__slide is-active" data-hero-slide="0"
+            data-label-th="การผลิตสติกเกอร์ Inkjet" data-label-en="INKJET PRINT PRODUCTION">
+            <img src="./assets/images/hero/inkjet-print-v218.webp" data-hero-legacy="assets/images/hero/hero-scene.webp" alt="Inkjet print machine running sticker artwork on a wide roll" width="1440" height="960" decoding="async" loading="eager" fetchpriority="high" />
           </figure>
-          <figure class="hero__slide" data-hero-slide="1">
-            <img src="./assets/images/hero/product-labels-v218.webp" data-hero-legacy="assets/images/hero/slide-02-labels.webp" alt="Printed labels on bottles, a jar and a carton" width="1440" height="960" decoding="async" loading="lazy" />
+          <figure class="hero__slide" data-hero-slide="1"
+            data-label-th="ฉลากสินค้าและบรรจุภัณฑ์" data-label-en="PRODUCT LABELS & PACKAGING"
+            data-title-th="ฉลากที่ทำให้แบรนด์เป็นที่จดจำ" data-title-en="Packaging that makes a lasting impression"
+            data-desc-th="เลือกวัสดุและงานพิมพ์ให้เหมาะกับขวด กระปุก และบรรจุภัณฑ์ของคุณ"
+            data-desc-en="Product labels with the right material and finish for bottles, jars, and packaging.">
+            <img src="./assets/images/hero/product-labels-v218.webp" data-hero-legacy="assets/images/hero/slide-02-labels.webp" alt="Custom printed product labels applied to bottles jars and cartons" width="1440" height="960" decoding="async" loading="lazy" />
           </figure>
-          <figure class="hero__slide" data-hero-slide="2">
-            <img src="./assets/images/hero/die-cut-stickers-v218.webp" data-hero-legacy="assets/images/hero/slide-03-cut.webp" alt="Contour-cut stickers being lifted from their release liner" width="1440" height="960" decoding="async" loading="lazy" />
+          <figure class="hero__slide" data-hero-slide="2"
+            data-label-th="สติกเกอร์ไดคัท" data-label-en="CUSTOM DIE-CUT STICKERS"
+            data-title-th="สร้างรูปทรงให้ทุกไอเดียโดดเด่น" data-title-en="Make every shape part of your story"
+            data-desc-th="งานไดคัทตามรูปทรง เหมาะกับสติกเกอร์แบรนด์ ของแจก และแคมเปญ"
+            data-desc-en="Precision-shaped stickers for branding, giveaways, and creative campaigns.">
+            <img src="./assets/images/hero/die-cut-stickers-v218.webp" data-hero-legacy="assets/images/hero/slide-03-cut.webp" alt="Colourful contour-cut stickers photographed on their backing sheets" width="1440" height="960" decoding="async" loading="lazy" />
           </figure>
-          <figure class="hero__slide" data-hero-slide="3">
-            <img src="./assets/images/hero/retail-vinyl-v218.webp" data-hero-legacy="assets/images/hero/slide-04-branding.webp" alt="White cut vinyl decal on a café entrance window" width="1440" height="960" decoding="async" loading="lazy" />
+          <figure class="hero__slide" data-hero-slide="3"
+            data-label-th="สติกเกอร์ตกแต่งร้านและกระจก" data-label-en="RETAIL & WINDOW GRAPHICS"
+            data-title-th="เปลี่ยนหน้าร้านให้เล่าเรื่องแบรนด์" data-title-en="Turn your storefront into a brand experience"
+            data-desc-th="งานกราฟิกติดกระจกและพื้นที่ร้านค้า ที่คำนึงถึงวัสดุ ขนาด และการติดตั้ง"
+            data-desc-en="Window graphics and retail decals designed around real surfaces and installation needs.">
+            <img src="./assets/images/hero/retail-vinyl-v218.webp" data-hero-legacy="assets/images/hero/slide-04-branding.webp" alt="White vinyl storefront graphics applied to a modern cafe window" width="1440" height="960" decoding="async" loading="lazy" />
           </figure>
         </div>
       </div>
       <div class="container hero__inner">
-        <div class="hero__content">
+        <div class="hero__content" id="scCinematicStory" aria-live="polite" aria-atomic="true">
           <p class="hero__eyebrow">SCWork · Inkjet Sticker Printing</p>
           <h1 id="hero-title">Stickers That Make Your Brand Stand Out.</h1>
           <p class="hero__description">Custom inkjet labels, die-cut stickers and branding graphics built for your needs.</p>
+          <div class="hero__actions">
+            <div class="button-group">
+              <a class="sc-quote-cta button button--primary" href="./smart-quote.html">Request a Quote</a>
+              <a class="button button--outline" href="#services">Explore Services</a>
+            </div>
+          </div>
         </div>
-        <div class="hero__actions">
-          <div class="button-group"><a class="sc-quote-cta button button--primary" href="./smart-quote.html">Request a Quote</a><a class="button button--outline" href="#services">Explore Services</a></div>
-          <div class="hero__carousel-controls" aria-label="Hero carousel controls">
+        <div class="sc-cinema__footer">
+          <div class="sc-cinema__controls" aria-label="Slideshow controls">
+            <span class="sc-cinema__count" id="scCinematicCount" aria-label="Slide 1 of 4"><strong>01</strong><span> / 04</span></span>
+            <button class="sc-cinema__control" id="scCinematicPrev" type="button" aria-label="Previous story">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m14.5 5-7 7 7 7"/></svg>
+            </button>
+            <button class="sc-cinema__control sc-cinema__control--pause" id="scCinematicPause" type="button" aria-label="Pause slideshow" aria-pressed="false">
+              <svg class="sc-cinema__pause-icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><rect x="6" y="4.5" width="4" height="15" rx="1"/><rect x="14" y="4.5" width="4" height="15" rx="1"/></svg>
+              <svg class="sc-cinema__play-icon" viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M7 4.5a1 1 0 0 1 1.52-.85l11 7.5a1 1 0 0 1 0 1.7l-11 7.5A1 1 0 0 1 7 19.5z"/></svg>
+            </button>
+            <button class="sc-cinema__control" id="scCinematicNext" type="button" aria-label="Next story">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9.5 5 7 7-7 7"/></svg>
+            </button>
             <div class="hero__dots" id="heroDots" role="group" aria-label="Select hero photo">
               <button class="hero__dot is-active" type="button" aria-label="Show hero photo 1" aria-pressed="true" data-hero-dot="0"></button>
               <button class="hero__dot" type="button" aria-label="Show hero photo 2" aria-pressed="false" data-hero-dot="1"></button>
@@ -144,6 +175,7 @@
               <button class="hero__dot" type="button" aria-label="Show hero photo 4" aria-pressed="false" data-hero-dot="3"></button>
             </div>
           </div>
+          <a class="sc-cinema__scroll" id="scCinematicScroll" href="#services"><span>SCROLL TO EXPLORE</span><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
         </div>
       </div>
     </section>
