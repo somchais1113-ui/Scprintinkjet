@@ -1,0 +1,246 @@
+/* SCWork V2.1.18 — targeted quotation entry and artwork-readiness UX.
+   Scope intentionally limited to steps 01 and 03; no pricing logic changes. */
+
+/* Keep the existing navy/white identity; orange #FF6900 indicates selection only. */
+.q-card--mode .q-section-top,
+.q-card--artwork .q-section-top {
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.q-card--mode .q-step,
+.q-card--artwork .q-step {
+  width: 46px;
+  height: 46px;
+  font-size: 17px;
+  border-radius: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.q-card--mode .q-section-top>div,
+.q-card--artwork .q-section-top>div { min-width: 0; }
+.q-card--mode .q-section-top h2,
+.q-card--artwork .q-section-top h2 {
+  font-size: clamp(23px,2.2vw,29px);
+  line-height: 1.33;
+  font-weight: 800;
+  letter-spacing: -.025em;
+  margin-bottom: 6px;
+  color: #0B2B60;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.q-card--mode .q-section-top p,
+.q-card--artwork .q-section-top p {
+  font-size: clamp(15px,1.2vw,17px);
+  line-height: 1.65;
+  color: #5A708D;
+  max-width: 630px;
+  margin: 0;
+}
+
+/* Step 01: each choice is a clear title with its description BELOW it.
+   The legacy 28px text column is explicitly removed. */
+.q-card--mode .q-modes {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: 13px;
+  align-items: stretch;
+}
+.q-card--mode .q-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
+  gap: 14px;
+  width: 100%;
+  min-width: 0;
+  min-height: 178px;
+  padding: 20px 18px;
+  border: 1.5px solid #D6E3F1;
+  border-radius: 16px;
+  background: #FFFFFF;
+  color: #0B2B60;
+  box-shadow: 0 6px 20px rgba(11,43,96,.035);
+  transition: background-color .18s ease,border-color .18s ease,box-shadow .18s ease,transform .18s ease;
+}
+.q-card--mode .q-mode__indicator {
+  flex: none;
+  width: 23px;
+  height: 23px;
+  border: 2px solid #B8C9DF;
+  border-radius: 50%;
+  background: #FFFFFF;
+  position: relative;
+  display: block;
+}
+.q-card--mode .q-mode__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+}
+.q-card--mode .q-mode strong {
+  display: block;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(17px,1.25vw,20px);
+  font-weight: 800;
+  line-height: 1.4;
+  color: #0B2B60;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: normal;
+}
+.q-card--mode .q-mode small {
+  display: block;
+  width: 100%;
+  margin: 0;
+  font-size: clamp(14px,1.05vw,16px);
+  font-weight: 400;
+  line-height: 1.62;
+  color: #526B89;
+  overflow-wrap: normal;
+  word-break: normal;
+  white-space: normal;
+}
+.q-card--mode .q-mode.is-selected {
+  background: #FFF8F3;
+  border-color: #FF6900;
+  box-shadow: inset 0 0 0 1px #FF6900,0 9px 24px rgba(255,105,0,.075);
+}
+.q-card--mode .q-mode.is-selected .q-mode__indicator {
+  border-color: #FF6900;
+  background: #FFF;
+}
+.q-card--mode .q-mode.is-selected .q-mode__indicator::after {
+  content: '';
+  display: block;
+  position: absolute;
+  inset: 4px;
+  background: #FF6900;
+  border-radius: 50%;
+}
+.q-card--mode .q-mode:hover:not(.is-selected) {
+  border-color: #A2BAD8;
+  background: #F7FAFE;
+}
+
+/* Step 03: native radio state remains the single source of truth. */
+.q-card--artwork .q-art-options {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  border: 0;
+  display: grid;
+  gap: 12px;
+}
+.q-card--artwork .q-art-options .q-art-option {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  min-height: 84px;
+  margin: 0;
+  padding: 17px 20px;
+  border: 1.5px solid #D8E4F2;
+  border-radius: 14px;
+  background: #FFFFFF;
+  color: #0B2B60;
+  cursor: pointer;
+  box-shadow: 0 5px 18px rgba(11,43,96,.02);
+  transition: background-color .18s ease,border-color .18s ease,box-shadow .18s ease;
+}
+.q-card--artwork .q-art-options input[type="radio"] {
+  flex: none;
+  accent-color: #FF6900;
+  width: 23px;
+  height: 23px;
+  margin: 0;
+  cursor: pointer;
+}
+.q-card--artwork .q-art-option__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+  min-width: 0;
+}
+.q-card--artwork .q-art-option strong {
+  display: block;
+  font-size: clamp(17px,1.25vw,19px);
+  line-height: 1.4;
+  font-weight: 800;
+  color: #0B2B60;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.q-card--artwork .q-art-option small {
+  display: block;
+  font-size: clamp(14px,1.08vw,16px);
+  line-height: 1.55;
+  font-weight: 400;
+  color: #536E90;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+.q-card--artwork .q-art-options .q-art-option:has(input:checked) {
+  border-color: #FF6900;
+  background: #FFF8F3;
+  box-shadow: inset 0 0 0 1px #FF6900;
+}
+.q-card--artwork .q-art-options .q-art-option:hover:not(:has(input:checked)) {
+  background: #F7FAFE;
+  border-color: #A2BAD8;
+}
+.q-card--artwork #artLinkPanel { margin-top: 18px; }
+.q-card--artwork #artLinkPanel .q-field>span { font-size: 16px; }
+.q-card--artwork #artLinkPanel .q-field small { font-size: 14px; line-height: 1.55; }
+.q-card--artwork #artLinkPanel input { font-size: 16px; }
+
+/* Fit three readable cards at the desktop quote column; stack on smaller widths. */
+@media (max-width: 1080px) and (min-width: 791px) {
+  .q-card--mode .q-modes { grid-template-columns: 1fr; }
+  .q-card--mode .q-mode { min-height: 86px; flex-direction: row; align-items: center; }
+  .q-card--mode .q-mode__indicator { align-self: center; }
+}
+@media (max-width: 650px) {
+  .q-card--mode .q-modes { grid-template-columns: 1fr; gap: 10px; }
+  .q-card--mode .q-mode {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    min-height: 84px;
+    padding: 15px 17px;
+  }
+  .q-card--mode .q-mode__indicator { align-self: center; }
+  .q-card--mode .q-mode__copy { gap: 3px; }
+  .q-card--mode .q-mode strong { font-size: 18px; }
+  .q-card--mode .q-mode small { font-size: 15px; }
+  .q-card--artwork .q-art-options .q-art-option { padding: 14px 16px; min-height: 78px; gap: 14px; }
+  .q-card--artwork .q-art-option strong { font-size: 18px; }
+  .q-card--artwork .q-art-option small { font-size: 15px; }
+}
+@media (max-width: 390px) {
+  .q-card--mode .q-mode { padding: 14px; }
+  .q-card--mode .q-mode strong { font-size: 17px; }
+  .q-card--mode .q-mode small { font-size: 14px; }
+  .q-card--artwork .q-art-option strong { font-size: 17px; }
+  .q-card--artwork .q-art-option small { font-size: 14px; }
+  .q-card--mode .q-section-top h2,.q-card--artwork .q-section-top h2 { font-size: 22px; }
+  .q-card--mode .q-section-top p,.q-card--artwork .q-section-top p { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .q-card--mode .q-mode,.q-card--artwork .q-art-options .q-art-option { transition: none; }
+}
+
+/* Prevent the quote workspace's intrinsic content width from forcing horizontal
+   page scrolling at mobile widths (especially when translated labels are long). */
+@media (max-width: 790px) {
+  .q-grid { grid-template-columns: minmax(0,1fr); }
+  .q-grid > .q-workspace,
+  .q-grid > .q-summary,
+  .q-workspace > .q-card,
+  .q-summary__sticky { min-width: 0; }
+}

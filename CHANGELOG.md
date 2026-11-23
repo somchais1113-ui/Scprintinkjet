@@ -1,3 +1,10 @@
+## V2.1.18 — Quotation UX Refinement
+
+- Redesigned quote entry choices as readable title-over-description cards with navy headings and orange selection state.
+- Improved step 03 artwork options with accessible native radios and clear descriptions for send-later, LINE and link workflows.
+- Added responsive layouts and explicit TH/EN translations without changing pricing calculations or existing selection values.
+- Added focused QA and public build inclusion for `33-quotation-ux-refinement.css`.
+
 ## V2.1.17 — Services Crossfade & Approved Chrome Favicon
 
 - Services section now crossfades the complete set of visible cards when its arrow is pressed, with a 670ms paired-layer opacity transition, image preloading and reduced-motion support.

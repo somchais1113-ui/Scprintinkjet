@@ -15,12 +15,13 @@
 <script src="data/site-data.js?v=2.1.15" defer></script><script src="config/public-config.js?v=2.1.5" defer></script>
 <script src="data/quote-catalog.js?v=1.7.4" defer></script><script src="data/pricing-public-data.js?v=1.8.2" defer></script><script src="src/scripts/pricing-engine.js?v=1.7.5" defer></script>
 <script src="src/scripts/label-quote-plan.js?v=1.8.2" defer></script><script src="src/scripts/quote-to-line.js?v=1.8.2" defer></script>
-<script src="config/billing-config.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing-ui.js?v=2.1.0" defer></script><script src="src/scripts/smart-quote.js?v=2.1.15" defer></script><script src="src/scripts/language-modal.js?v=2.1.1" defer></script>
+<script src="config/billing-config.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing-ui.js?v=2.1.0" defer></script><script src="src/scripts/smart-quote.js?v=2.1.18" defer></script><script src="src/scripts/language-modal.js?v=2.1.1" defer></script>
   <link rel="stylesheet" href="./src/styles/19-social-proof-footer.css?v=2.1.1" />
 <link rel="stylesheet" href="src/styles/24-quote-billing.css?v=2.1.0">
 <link rel="stylesheet" href="src/styles/31-home-quote-polish.css?v=2.1.12">
   <link rel="stylesheet" href="./src/styles/26-support-bar.css?v=2.1.5">
   <script defer src="./src/scripts/support-bar.js?v=2.1.5"></script>
+<link rel="stylesheet" href="src/styles/33-quotation-ux-refinement.css?v=2.1.18">
 </head><body>
 <a id="quoteSkip" class="skip-link" href="#quoteForm">Skip to quote / ข้ามไปหน้าคำนวณ</a>
 <header class="q-top"><div class="q-wrap q-top__inner"><a class="q-brand" href="index.html" aria-label="SCWORK"><img src="assets/icons/scwork-logo.png" alt="SCWORK" width="166" height="58"></a><nav class="q-top__links" id="quoteNav"><a href="index.html" id="backHome">← กลับหน้าเว็บไซต์</a><div class="sc-locale" id="scLocale" data-language-launcher></div></nav></div></header>
@@ -30,7 +31,20 @@
 <div class="q-grid">
 <section class="q-workspace" id="quoteWorkspace" aria-label="Quote options">
 <div class="q-card q-card--mode"><div class="q-section-top"><span class="q-step">01</span><div><h2 id="modeTitle">คุณอยากเริ่มแบบไหน?</h2><p id="modeLead">เลือกวิธีที่สะดวกสำหรับคุณ</p></div></div>
-<div class="q-modes" id="quoteModes" role="group" aria-label="Quote journey"><button class="q-mode is-selected" type="button" data-mode="quick" aria-pressed="true"><strong id="quickTitle">รู้สเปกแล้ว</strong><small id="quickDesc">เลือกวัสดุและขนาดได้เลย</small></button><button class="q-mode" type="button" data-mode="guided" aria-pressed="false"><strong id="guidedTitle">ให้เราช่วยเลือก</strong><small id="guidedDesc">ไม่แน่ใจว่าสติกเกอร์แบบไหนดี</small></button><button class="q-mode" type="button" data-mode="help" aria-pressed="false"><strong id="helpTitle">ให้ทีมช่วยแนะนำ</strong><small id="helpDesc">บอกเท่าที่ทราบได้เลย</small></button></div>
+<div class="q-modes" id="quoteModes" role="group" aria-labelledby="modeTitle">
+  <button class="q-mode is-selected" type="button" data-mode="quick" aria-pressed="true">
+    <span class="q-mode__indicator" aria-hidden="true"></span>
+    <span class="q-mode__copy"><strong id="quickTitle">มีสเปกแล้ว</strong><small id="quickDesc">เลือกวัสดุ ขนาด และจำนวน</small></span>
+  </button>
+  <button class="q-mode" type="button" data-mode="guided" aria-pressed="false">
+    <span class="q-mode__indicator" aria-hidden="true"></span>
+    <span class="q-mode__copy"><strong id="guidedTitle">ช่วยเลือกวัสดุ</strong><small id="guidedDesc">แนะนำตามลักษณะการใช้งาน</small></span>
+  </button>
+  <button class="q-mode" type="button" data-mode="help" aria-pressed="false">
+    <span class="q-mode__indicator" aria-hidden="true"></span>
+    <span class="q-mode__copy"><strong id="helpTitle">ปรึกษาทีมงาน</strong><small id="helpDesc">บอกความต้องการให้เราช่วย</small></span>
+  </button>
+</div>
 <div class="q-guided" id="guidedPanel" hidden><label for="purpose" id="purposeLabel">นำสติกเกอร์ไปใช้กับอะไร?</label><select id="purpose"><option value="label">ติดสินค้า / บรรจุภัณฑ์</option><option value="waterproof">ติดขวด / ต้องการกันน้ำ</option><option value="transparent">อยากให้พื้นฉลากโปร่งใส</option><option value="outdoor">ติดกระจก / ป้ายใหญ่ / ภายนอก</option></select><p id="guidedTip" class="q-help">ระบบจะแนะนำวัสดุเบื้องต้น สามารถเปลี่ยนเองได้</p></div>
 <div class="q-guided" id="helpPanel" hidden>
 <label for="helpPurpose" id="helpPurposeLabel">จะนำสติกเกอร์ไปใช้กับอะไร? (ไม่บังคับ)</label>
@@ -56,7 +70,12 @@
   <p id="labelPricesTerms" class="q-label-prices__terms"></p>
 </section>
 <details class="q-advanced" id="advanced"><summary id="advancedTitle">ตัวเลือกเพิ่มเติม เช่น เคลือบ / ออกแบบ / ไดคัท <span>⌄</span></summary><div class="q-options"><fieldset><legend id="cutLabel">การตัดสติกเกอร์</legend><label><input type="radio" name="cut" value="standard" checked><span id="cutStandard">แบบมาตรฐาน</span></label><label><input type="radio" name="cut" value="custom"><span id="cutCustom">ไดคัทตามรูปทรง (ให้ร้านประเมินเพิ่ม)</span></label></fieldset><div id="addonList" class="q-addons"></div></div></details></div>
-<div class="q-card"><div class="q-section-top"><span class="q-step">03</span><div><h2 id="artTitle">ไฟล์ Artwork ของคุณ</h2><p id="artLead">ยังไม่มีไฟล์ก็เช็กราคาก่อนได้</p></div></div><div class="q-art-options"><label><input type="radio" name="artwork" value="none" checked><span id="artNone">ยังไม่มีไฟล์ / ให้ร้านช่วยออกแบบ</span></label><label><input type="radio" name="artwork" value="line"><span id="artLine">มีไฟล์แล้ว จะส่งใน LINE</span></label><label><input type="radio" name="artwork" value="link"><span id="artLink">มีลิงก์ไฟล์แล้ว</span></label></div><div id="artLinkPanel" hidden><label class="q-field"><span id="linkLabel">ลิงก์ Google Drive / OneDrive / Dropbox</span><input id="artUrl" type="url" autocomplete="off" inputmode="url" maxlength="1500" placeholder="https://..."><small id="linkHelp">ตรวจสอบสิทธิ์การเข้าถึงก่อนส่ง และอย่าใส่ลิงก์ที่มีข้อมูลลับ</small></label></div></div>
+<div class="q-card q-card--artwork"><div class="q-section-top"><span class="q-step">03</span><div><h2 id="artTitle">คุณมีไฟล์งานพร้อมพิมพ์หรือยัง?</h2><p id="artLead">ไม่จำเป็นต้องอัปโหลดไฟล์บนเว็บไซต์ เลือกวิธีที่สะดวกได้เลย</p></div></div>
+<fieldset class="q-art-options" aria-labelledby="artTitle">
+  <label class="q-art-option"><input type="radio" name="artwork" value="none" checked><span class="q-art-option__copy"><strong id="artNone">ยังไม่มีไฟล์</strong><small id="artNoneDesc">สามารถส่งไฟล์เพิ่มเติมภายหลังได้</small></span></label>
+  <label class="q-art-option"><input type="radio" name="artwork" value="line"><span class="q-art-option__copy"><strong id="artLine">มีไฟล์แล้ว ส่งผ่าน LINE</strong><small id="artLineDesc">ส่งไฟล์ให้ทีมหลังจากเช็กราคา</small></span></label>
+  <label class="q-art-option"><input type="radio" name="artwork" value="link"><span class="q-art-option__copy"><strong id="artLink">มีลิงก์ไฟล์</strong><small id="artLinkDesc">วางลิงก์ Google Drive, OneDrive หรือ Dropbox</small></span></label>
+</fieldset><div id="artLinkPanel" hidden><label class="q-field"><span id="linkLabel">ลิงก์ Google Drive / OneDrive / Dropbox</span><input id="artUrl" type="url" autocomplete="off" inputmode="url" maxlength="1500" placeholder="https://..."><small id="linkHelp">ตรวจสอบสิทธิ์การเข้าถึงก่อนส่ง และอย่าใส่ลิงก์ที่มีข้อมูลลับ</small></label></div></div>
 <div class="q-card qb-options" id="billOptions">
 <div class="q-section-top"><span class="q-step">04</span><div><h2 data-b="billing">ข้อมูลผู้ซื้อและภาษี</h2><p data-b="billingLead">ดูยอดแยกก่อนพิมพ์เอกสาร โดยไม่ต้องเปิด LINE</p></div></div>
 <div class="q-fields"><label class="q-field q-field--full"><span data-b="buyer">ประเภทผู้ซื้อ</span><select id="billBuyer"><option value="individual" data-b="individual">บุคคลธรรมดา</option><option value="company" data-b="company">นิติบุคคลไทย (ภาคเอกชน)</option><option value="other" data-b="other">อื่น ๆ / ให้ตรวจสอบ</option></select></label>
