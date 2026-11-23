@@ -30,6 +30,13 @@ window.PROCLEANING_UI = {
     const e=this.escape;
     return `${this.img(t.image,t.name,'testimonial-card__photo')}<div class="testimonial-card__text"><h3>${e(t.name)}</h3><p class="testimonial-card__role">${e(t.role)}</p><p class="testimonial-card__quote">${e(t.quote)}</p></div>`;
   },
-  blogCard(b,index=0,language='en'){const e=this.escape;const id=encodeURIComponent(String(b.id||`article-${index+1}`));const lang=(window.PROCLEANING_I18N?.supported||['en','th']).includes(language)?language:'en';const editorPreview=typeof URLSearchParams!=='undefined'&&new URLSearchParams(window.location?.search||'').get('editorPreview')==='1';const href=`./article.html?post=${id}&lang=${lang}${editorPreview?'&editorPreview=1':''}`;return `<article class="blog-card">${this.img(b.image,b.title,'blog-card__image')}<div class="blog-card__body"><span class="blog-card__meta">${e(b.meta)}</span><h3>${e(b.title)}</h3><p>${e(b.text)}</p><a class="blog-card__more" href="${e(href)}" aria-label="${e(window.PROCLEANING_SITE?.labels?.readMore||'Read More')}: ${e(b.title)}">${e(window.PROCLEANING_SITE?.labels?.readMore||'Read More')} </a></div></article>`;},
+  blogCard(b,index=0,language='en'){
+    const e=this.escape, id=encodeURIComponent(String(b.id||`article-${index+1}`));
+    const lang=(window.PROCLEANING_I18N?.supported||['en','th']).includes(language)?language:'en';
+    const editorPreview=typeof URLSearchParams!=='undefined'&&new URLSearchParams(window.location?.search||'').get('editorPreview')==='1';
+    const href=`./article.html?post=${id}&lang=${lang}${editorPreview?'&editorPreview=1':''}`;
+    const read=window.PROCLEANING_SITE?.labels?.readMore||(language==='th'?'อ่านเพิ่มเติม':'Read More');
+    return `<article class="blog-card"><a class="blog-card__image-link" href="${e(href)}" aria-label="${e(b.title)}">${this.img(b.image,b.title,'blog-card__image')}</a><div class="blog-card__body"><span class="blog-card__meta">${e(b.meta)}</span><h3><a class="blog-card__title-link" href="${e(href)}">${e(b.title)}</a></h3><p>${e(b.text)}</p><a class="blog-card__more" href="${e(href)}" aria-label="${e(read)}: ${e(b.title)}">${e(read)} <span aria-hidden="true">↗</span></a></div></article>`;
+  },
   contactMethod(icon,label,value){const e=this.escape;return `<div class="contact-method"><span class="contact-method__icon" aria-hidden="true">${this.iconSvg(icon)}</span><div><strong>${e(label)}</strong><p>${e(value)}</p></div></div>`;}
 };

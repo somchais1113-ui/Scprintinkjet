@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="th">
 <head>
   <link rel="icon" href="./favicon.ico?v=2.1.17" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png?v=2.1.17">
@@ -14,12 +14,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="./src/styles/12-article.css?v=scwork-1.4" />
-  <script src="./data/site-data.js?v=scwork-1.7.4" defer></script>
+  <link rel="stylesheet" href="./src/styles/12-article.css?v=2.1.23" />
+  <script src="./data/site-data.js?v=2.1.23" defer></script>
   <script src="./data/extra-locales.js?v=2.1.1" defer></script>
   <script src="./src/scripts/i18n.js?v=scwork-1.4" defer></script>
-  <script src="./src/scripts/article-page.js?v=scwork-1.7.4" defer></script>
+  <script src="./src/scripts/article-page.js?v=2.1.23" defer></script>
   <link rel="stylesheet" href="./src/styles/17-language-modal.css?v=2.1.1" />
+  <link rel="stylesheet" href="./src/styles/30-knowledge.css?v=2.1.23" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" />
   <link rel="stylesheet" href="src/styles/18-cta-standard.css?v=2.1.20" />
   <link rel="stylesheet" href="./src/styles/19-social-proof-footer.css?v=2.1.4" />
@@ -31,7 +32,7 @@
   <a class="skip" href="#articleMain">Skip to content</a>
   <header class="article-header">
     <div class="article-shell article-header__inner">
-      <a href="./index.html" class="article-brand" id="articleBrand" aria-label="SCWORK home"><img class="article-brand__logo" src="./assets/icons/scwork-logo.png" width="158" height="54" alt="SCWORK logo" /></a>
+      <a href="./index.html" class="article-brand" id="articleBrand" aria-label="SCWORK home"><img class="article-brand__logo" src="./assets/icons/scwork-logo.png" width="176" height="58" alt="SCWORK logo" /></a>
       <div class="article-header__right">
         <div class="sc-locale sc-locale--compact" id="scLocale" data-language-launcher></div>
         <a id="backHeader" class="back-link" href="./index.html#blog">← Back to articles</a>
@@ -45,7 +46,10 @@
       <h1 id="articleTitle"></h1>
       <p class="article-lead" id="articleLead"></p>
       <div class="article-image"><img id="articleCover" alt="" /></div>
+      <nav id="articleToc" class="article-toc" aria-label="Article sections" hidden><strong id="articleTocTitle">ในบทความนี้</strong><div id="articleTocItems"></div></nav>
       <div class="article-body" id="articleBody"></div>
+      <aside class="article-note"><strong id="articleNoteTitle">นำข้อมูลไปใช้ก่อนสั่งผลิต</strong><p id="articleNoteText"></p></aside>
+      <section class="article-related" aria-labelledby="articleRelatedTitle"><h2 id="articleRelatedTitle">อ่านต่อในหัวข้อที่เกี่ยวข้อง</h2><div id="articleRelatedList"></div></section>
       <div class="article-end">
         <a class="article-button" id="backFooter" href="./index.html#blog">← All articles</a>
         <a class="article-button article-button--primary sc-quote-cta" id="articleQuote" href="./smart-quote.html">Check estimated price</a>

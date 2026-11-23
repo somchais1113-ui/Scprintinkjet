@@ -305,19 +305,16 @@
     const blogs=activeSite.blogs||[];
     const grid=byId('blogGrid'),wrap=byId('blogMoreWrap'),button=byId('blogMoreButton');
     if(!grid||!wrap||!button)return;
-    const amount=Math.min(visibleBlogCount,blogs.length);
-    grid.innerHTML=blogs.slice(0,amount).map((blog,index)=>ui.blogCard(blog,index,language)).join('');
+    grid.innerHTML=blogs.slice(0,3).map((blog,index)=>ui.blogCard(blog,index,language)).join('');
     fallbackImages(grid);
     wrap.hidden=blogs.length<=3;
-    if(blogs.length<=3)return;
-    const complete=amount===blogs.length;
-    const labels=activeSite.labels||{};
-    const text=complete?(labels.showLessArticles||(language==='th'?'แสดงน้อยลง':'Show fewer articles'))
-      :(labels.viewMoreArticles||(language==='th'?'ดูบทความเพิ่มเติม':'View more articles'));
-    button.innerHTML=ui.escape(text)+` <span aria-hidden="true">${complete?'↑':'↓'}</span>`;
-    button.setAttribute('aria-label',text);
-    button.setAttribute('aria-expanded',String(complete));
+    const label=language==='th'?`ดูบทความทั้งหมด (${blogs.length})`:`Explore all articles (${blogs.length})`;
+    const preview=new URLSearchParams(window.location.search).get('editorPreview')==='1';
+    button.href=`./knowledge.html?lang=${encodeURIComponent(language)}${preview?'&editorPreview=1':''}`;
+    button.innerHTML=ui.escape(label)+' <span aria-hidden="true">↗</span>';
+    button.setAttribute('aria-label',label);
   }
+
   function draw(){
     resetServicesTransition();
     document.documentElement.lang=language;
@@ -371,13 +368,6 @@
   setupAnchorScrolling();
   document.querySelectorAll('[data-language]').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.language)));
   window.addEventListener('scwork:locale-change',event=>setLanguage(event.detail?.code));
-  byId('blogMoreButton')?.addEventListener('click',()=>{
-    const blogs=activeSite.blogs||[];
-    const allShown=visibleBlogCount>=blogs.length;
-    visibleBlogCount=allShown?3:Math.min(blogs.length,visibleBlogCount+3);
-    renderBlogs();
-    if(allShown){const blogTitle=byId('blog-title');if(blogTitle){const top=window.pageYOffset+blogTitle.getBoundingClientRect().top-12;window.scrollTo({top:Math.max(0,top),behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches?'auto':'smooth'});}}
-  });
   byId('serviceNext').addEventListener('click',()=>{void advanceServices();});
   document.querySelectorAll('[data-billing]').forEach(btn=>btn.addEventListener('click',()=>{billing=btn.dataset.billing;renderPricing();}));
   const menu=byId('mainNav'),menuToggle=byId('menuToggle');

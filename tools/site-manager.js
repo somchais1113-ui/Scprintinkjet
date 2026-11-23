@@ -17,7 +17,7 @@ const templates={
  pricing:{name:'New Package',monthly:0,featured:false,features:['Feature 1','Feature 2'],translations:{th:{name:'แพ็กเกจใหม่',features:['รายการบริการ 1','รายการบริการ 2']}}},
  team:{name:'Team Member',description:'Add a team member description.',image:'./assets/images/team/person-01.webp',translations:{th:{name:'สมาชิกทีม',description:'กรอกรายละเอียดทีมงาน'}}},
  testimonials:{name:'Customer Name',role:'Customer',quote:'Enter a verified customer review.',image:'./assets/images/testimonials/customer-01.webp',translations:{th:{name:'ชื่อลูกค้า',role:'ลูกค้า',quote:'ใช้ความคิดเห็นจริงที่ได้รับอนุญาตแล้ว'},}},
- blogs:{id:'',title:'New Article',meta:'AUTHOR · DATE',text:'Short excerpt of this article.',body:'Enter the full article text here.\n\nSeparate paragraphs with a blank line.',image:'./assets/images/blog/article-01.webp',translations:{th:{title:'บทความใหม่',meta:'ผู้เขียน · วันที่',text:'สรุปบทความภาษาไทย',body:'เพิ่มเนื้อหาบทความฉบับเต็มภาษาไทยที่นี่'}}}
+ blogs:{id:'',category:'materials',title:'New Article',meta:'AUTHOR · DATE',text:'Short excerpt of this article.',body:'## Key point\n\nExplain the topic.\n\n## Suitable uses\n\n- Example application',image:'./assets/images/blog/article-01.webp',translations:{th:{title:'บทความใหม่',meta:'ผู้เขียน · วันที่',text:'สรุปบทความภาษาไทย',body:'เพิ่มเนื้อหาบทความฉบับเต็มภาษาไทยที่นี่'}}}
 };
 const fieldGroups={
  general:[
@@ -50,13 +50,13 @@ const arraySchemas={
  pricing:[['name','Package Name'],['featured','Featured / Highlight','checkbox'],['features','Features (one per line)','lines']],
  team:[['name','Process Step'],['description','Description','textarea'],['image','Process Image','image']],
  testimonials:[['name','Application Name'],['role','Example Label'],['quote','Application Description','textarea'],['image','Illustration Image','image']],
- blogs:[['title','Article Title'],['meta','Author / Date'],['text','Excerpt (Card Summary)','textarea'],['body','Full Article Body (separate paragraphs with blank lines)','textarea'],['image','Cover Image','image']]
+ blogs:[['title','Article Title'],['category','Topic Group','select','materials|durability|production|applications'],['meta','Author / Date'],['text','Excerpt (Card Summary)','textarea'],['body','Article Body (## headings, - bullet lines, blank lines between blocks)','textarea'],['image','Cover Image','image']]
 };
 const tabMeta={
  general:['Brand & Navigation','ชื่อแบรนด์ เมนู และข้อมูลติดต่อ','BRAND SETTINGS'],content:['Page Text & CTA','ข้อความทุก Section และปุ่มบนเว็บไซต์','PAGE COPY'],
  services:['Services','เพิ่ม ลบ จัดลำดับ และแก้บริการ','COLLECTION EDITOR'],pricing:['Sticker Applications','เพิ่ม ลบ และแก้รูปแบบงาน/รายละเอียดสเปก โดยเสนอราคาตามใบงาน','STICKER PRODUCT CARDS'],
  team:['Production Workflow','จัดการขั้นตอนการผลิตและจุดเด่น','PROCESS EDITOR'],reviews:['Application Examples','ตัวอย่างการใช้งาน ห้ามอ้างเป็นผลงานหรือรีวิวจริง','ILLUSTRATIVE EXAMPLES'],
- blog:['Blog','จัดการชื่อบทความ รายละเอียด และภาพประกอบ','BLOG EDITOR'],images:['Image Assets','อัปโหลด → ครอป → เพิ่มใน Preview → Export เป็น WebP','IMAGE STUDIO'],
+ blog:['Knowledge Articles','จัดการบทความ 15 หัวข้อ หมวดหมู่ เนื้อหา TH/EN และภาพปก','KNOWLEDGE HUB EDITOR'],images:['Image Assets','อัปโหลด → ครอป → เพิ่มใน Preview → Export เป็น WebP','IMAGE STUDIO'],
  design:['Design Tokens','เปลี่ยนสี ฟอนต์ ขนาดหัวข้อ และระยะห่าง','STYLE SETTINGS'],export:['Import / Export','สำรองข้อมูล และสร้างไฟล์อัปเดตเว็บไซต์','DEPLOYMENT']
 };
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -70,7 +70,7 @@ function localePath(path,type='text'){
  if(group==='contact'&&['address','bookingSubject'].includes(a[1]))return 'i18n.th.'+path;
  if(group==='features'&&a.length===2)return 'i18n.th.features.'+a[1];
  if(['services','team','testimonials','blogs','pricing'].includes(group)&&a.length===3){
-   if(['image','monthly','featured'].includes(a[2]))return path;
+   if(['image','monthly','featured','category'].includes(a[2]))return path;
    return `${group}.${a[1]}.translations.th.${a[2]}`;
  }
  return path;
@@ -117,7 +117,7 @@ function field([path,label,type='text',options]){
  return `<label class="field ${type==='checkbox'?'field--checkbox':''}"><span class="field__label">${esc(label)}${editLanguage==='th'&&originalPath!==path?'<span class="field__language">TH</span>':''}</span>${control}</label>`;
 }
 function formSection(section){return `<section class="form-section"><h3>${esc(section.title)}</h3>${section.desc?`<p>${esc(section.desc)}</p>`:''}<div class="field-grid">${section.fields.map(field).join('')}</div></section>`;}
-function editorArray(key){const a=site[key];return `<section class="form-section"><h3>${key==='blogs'?'Blog Articles':key[0].toUpperCase()+key.slice(1)} (${a.length})</h3><p>แก้ค่าได้ทันที กดปุ่มลูกศรเพื่อจัดเรียงรายการ</p>${a.map((item,i)=>`<article class="card-editor"><div class="card-editor__top"><strong>${i+1}. ${esc(editLanguage==='th'?(item.translations?.th?.title||item.translations?.th?.name||item.title||item.name):(item.title||item.name))}</strong><div class="card-editor__buttons"><button class="icon-button" type="button" aria-label="Move up" data-move="${key}:${i}:-1" ${i===0?'disabled':''}>↑</button><button class="icon-button" type="button" aria-label="Move down" data-move="${key}:${i}:1" ${i===a.length-1?'disabled':''}>↓</button><button class="icon-button danger" type="button" aria-label="Delete item" data-remove="${key}:${i}">×</button></div></div><div class="field-grid">${arraySchemas[key].map(([k,l,t])=>field([`${key}.${i}.${k}`,l,t])).join('')}</div></article>`).join('')}<button class="add-item" type="button" data-add="${key}">＋ เพิ่มรายการ ${esc(key)}</button></section>`;}
+function editorArray(key){const a=site[key];return `<section class="form-section"><h3>${key==='blogs'?'Blog Articles':key[0].toUpperCase()+key.slice(1)} (${a.length})</h3><p>แก้ค่าได้ทันที กดปุ่มลูกศรเพื่อจัดเรียงรายการ</p>${a.map((item,i)=>`<article class="card-editor"><div class="card-editor__top"><strong>${i+1}. ${esc(editLanguage==='th'?(item.translations?.th?.title||item.translations?.th?.name||item.title||item.name):(item.title||item.name))}</strong><div class="card-editor__buttons"><button class="icon-button" type="button" aria-label="Move up" data-move="${key}:${i}:-1" ${i===0?'disabled':''}>↑</button><button class="icon-button" type="button" aria-label="Move down" data-move="${key}:${i}:1" ${i===a.length-1?'disabled':''}>↓</button><button class="icon-button danger" type="button" aria-label="Delete item" data-remove="${key}:${i}">×</button></div></div><div class="field-grid">${arraySchemas[key].map(([k,l,t,o])=>field([`${key}.${i}.${k}`,l,t,o])).join('')}</div></article>`).join('')}<button class="add-item" type="button" data-add="${key}">＋ เพิ่มรายการ ${esc(key)}</button></section>`;}
 function featuresEditor(){return `<section class="form-section"><h3>About / Company Features (${site.features.length})</h3><p>จุดเด่นบริษัทที่แสดงเป็น Pills บนหน้า About</p>${site.features.map((t,i)=>`<div class="field-row" style="margin-bottom:10px"><label class="field"><span class="field__label">Feature ${i+1}</span><input data-field="${editLanguage==='th'?`i18n.th.features.${i}`:`features.${i}`}" value="${esc(editLanguage==='th'?(site.i18n.th.features[i]||t):t)}"></label><button type="button" class="icon-button danger" data-remove="features:${i}" style="align-self:end;height:40px">×</button></div>`).join('')}<button class="add-item" data-add="features" type="button">＋ เพิ่ม Feature</button></section>`;}
 function exportPanel(){return `<section class="form-section"><h3>Export Changes</h3><p>สร้างไฟล์อัปเดตเฉพาะ <strong>Content + Design + ภาพที่เปลี่ยน</strong> เพื่อแตกไฟล์ทับโปรเจกต์เดิม</p><div class="export-actions"><button class="primary" type="button" id="downloadPatch">↓ Export Changes ZIP</button><button type="button" id="downloadSiteJS">↓ Export data/site-data.js</button><button type="button" id="downloadJSON">↓ Backup Content JSON</button></div></section>
 <section class="form-section"><h3>Import / Restore</h3><p>กู้คืนข้อความจาก JSON ที่เคย Export (ไม่รวมไฟล์ภาพ)</p><div class="export-actions"><label for="importJSON">↑ Import JSON Backup<input type="file" id="importJSON" accept=".json,application/json" /></label><button class="warning" type="button" id="resetDraft">Reset to Original V2.2 Content</button></div></section>

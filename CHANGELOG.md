@@ -365,3 +365,12 @@ Added a separate Thai/English campaign page featuring two coordinated bottle and
 - LINE CTA only opens LINE when verified public contact configuration exists; otherwise falls back to the advice form.
 - Added supplied LINE icon, displayed only for a configured LINE channel.
 - No changes to hero, pricing logic, benefits pages or other approved website sections.
+
+## V2.1.23 — SCWork Print Knowledge Hub
+- Added searchable, category-filtered `knowledge.html` for 15 bilingual knowledge articles.
+- Expanded from three brief articles to 15 structured long-form TH/EN guides; kept original article slugs.
+- Added contextual article photography in `assets/images/knowledge/`, with a dedicated Image Studio slot for each cover.
+- Replaced homepage incremental blog expansion with one "View all articles" link; made card titles and images clickable.
+- Fixed article logo being overwritten by JavaScript; matched approved main site PNG logo.
+- Article reader now supports headings, lists, reading contents navigation, caution note, related articles and localized meta information.
+- Scoped changes to knowledge/blog; prior approved Hero, pricing functions, four service pages and footer remain unchanged.
