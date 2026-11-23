@@ -1,3 +1,10 @@
+## V2.1.17 — Services Crossfade & Approved Chrome Favicon
+
+- Services section now crossfades the complete set of visible cards when its arrow is pressed, with a 670ms paired-layer opacity transition, image preloading and reduced-motion support.
+- Installed the exact approved multi-size Favicon files provided by the user, and linked them across live HTML routes, including the quote pages.
+- Updated public-package builder so Favicon assets and the services animation stylesheet are shipped together.
+- No changes to service content, artwork, the hero carousel, pricing calculations, VAT or contact workflows.
+
 ## V2.1.16 — Material Stories & Two-Layer Crossfade
 
 - Kept all five material-card thumbnail images unchanged.

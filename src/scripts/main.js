@@ -7,6 +7,10 @@
   const config=window.PROCLEANING_CONFIG,ui=window.PROCLEANING_UI;
   const byId=id=>document.getElementById(id);
   let visibleBlogCount=3;
+  let serviceTransitionLocked=false;
+  let serviceTransitionEpoch=0;
+  let serviceTransitionTimer=null;
+  let outgoingServiceLayer=null;
   let serviceOffset=0,billing='monthly',heroIndex=0,heroTimer=null;
   if(!site||!config||!ui){console.error('Missing data/site-data.js or scripts');return;}
   function fallbackImages(scope=document){scope.querySelectorAll('img[data-fallback]').forEach(img=>{
@@ -74,11 +78,95 @@
 
   function renderServices(){
     const list=activeSite.services||[],grid=byId('servicesGrid');if(!list.length){grid.textContent=activeSite.labels?.emptyServices||'No services configured.';byId('serviceNext').disabled=true;return;}
-    byId('serviceNext').disabled=list.length<2;
+    byId('serviceNext').disabled=list.length<2 || serviceTransitionLocked;
     const offset=serviceOffset%list.length;
     grid.innerHTML=list.slice(offset).concat(list.slice(0,offset)).map((s,i)=>ui.serviceCard(s,i)).join('');
     fallbackImages(grid);
   }
+  // Cleanly abort a carousel transition when a locale/editor refresh replaces the cards.
+  function resetServicesTransition(){
+    serviceTransitionEpoch += 1;
+    if(serviceTransitionTimer !== null){window.clearTimeout(serviceTransitionTimer);serviceTransitionTimer=null;}
+    if(outgoingServiceLayer){outgoingServiceLayer.remove();outgoingServiceLayer=null;}
+    const grid=byId('servicesGrid');
+    const viewport=byId('servicesViewport');
+    grid?.classList.remove('services__grid--incoming');
+    viewport?.classList.remove('services__viewport--crossfade','services__viewport--active');
+    viewport?.style.removeProperty('min-height');
+    viewport?.removeAttribute('aria-busy');
+    serviceTransitionLocked=false;
+    const button=byId('serviceNext');
+    if(button)button.disabled=(activeSite?.services||[]).length<2;
+  }
+
+  // Load upcoming card imagery first so a slow network cannot show blank cards mid-fade.
+  function warmServicePhoto(src){
+    return new Promise(resolve=>{
+      if(!src){resolve();return;}
+      const image=new Image();
+      let done=false;
+      const timer=window.setTimeout(finish,1000);
+      function finish(){
+        if(done)return;
+        done=true;window.clearTimeout(timer);resolve();
+      }
+      image.onload=finish;image.onerror=finish;
+      image.src=src;
+      if(image.complete)finish();
+    });
+  }
+
+  async function advanceServices(){
+    const services=activeSite?.services||[];
+    const grid=byId('servicesGrid'),viewport=byId('servicesViewport');
+    const button=byId('serviceNext');
+    if(serviceTransitionLocked||services.length<2||!grid||!viewport)return;
+
+    const newOffset=(serviceOffset+1)%services.length;
+    const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
+    if(reduceMotion){
+      serviceOffset=newOffset;renderServices();
+      window.dispatchEvent(new Event('scwork:estimate-links-updated'));
+      return;
+    }
+
+    serviceTransitionLocked=true;
+    button.disabled=true;
+    const epoch=++serviceTransitionEpoch;
+    const nextOrder=services.slice(newOffset).concat(services.slice(0,newOffset));
+    await Promise.all(nextOrder.slice(0,3).map(item=>warmServicePhoto(item.image)));
+    if(epoch!==serviceTransitionEpoch)return;
+
+    const oldHeight=grid.getBoundingClientRect().height;
+    const outgoing=grid.cloneNode(true);
+    outgoing.removeAttribute('id');
+    outgoing.classList.add('services__grid--outgoing');
+    outgoing.setAttribute('aria-hidden','true');
+    outgoing.inert=true;
+    outgoing.querySelectorAll('a,button').forEach(link=>link.setAttribute('tabindex','-1'));
+
+    serviceOffset=newOffset;
+    viewport.classList.add('services__viewport--crossfade');
+    viewport.setAttribute('aria-busy','true');
+    grid.classList.add('services__grid--incoming');
+    renderServices();
+    // The reveal observer normally handles these cards; make the transition independent of it.
+    grid.querySelectorAll('.service-card').forEach(card=>card.classList.add('is-visible'));
+    viewport.append(outgoing);
+    outgoingServiceLayer=outgoing;
+    viewport.style.minHeight=`${Math.max(oldHeight,grid.getBoundingClientRect().height)}px`;
+    window.dispatchEvent(new Event('scwork:estimate-links-updated'));
+    // Commit the zero-opacity start state before allowing the new cards to fade in.
+    void grid.offsetWidth;
+
+    window.requestAnimationFrame(()=>window.requestAnimationFrame(()=>{
+      if(epoch===serviceTransitionEpoch)viewport.classList.add('services__viewport--active');
+    }));
+    serviceTransitionTimer=window.setTimeout(()=>{
+      if(epoch===serviceTransitionEpoch)resetServicesTransition();
+    },740);
+  }
+
   function renderPricing(){
     const list=activeSite.pricing||[];
     byId('pricingGrid').innerHTML=list.length?list.map(p=>ui.priceCard(p,billing,config.demoYearlyDiscount)).join(''):`<p>${ui.escape(activeSite.labels?.emptyPricing||'No packages configured.')}</p>`;
@@ -103,6 +191,7 @@
     button.setAttribute('aria-expanded',String(complete));
   }
   function draw(){
+    resetServicesTransition();
     document.documentElement.lang=language;
     activeSite=i18n.resolve(site,language);
     window.PROCLEANING_SITE=activeSite;
@@ -161,7 +250,7 @@
     renderBlogs();
     if(allShown){const blogTitle=byId('blog-title');if(blogTitle){const top=window.pageYOffset+blogTitle.getBoundingClientRect().top-12;window.scrollTo({top:Math.max(0,top),behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches?'auto':'smooth'});}}
   });
-  byId('serviceNext').addEventListener('click',()=>{serviceOffset++;renderServices();window.dispatchEvent(new Event('scwork:estimate-links-updated'));});
+  byId('serviceNext').addEventListener('click',()=>{void advanceServices();});
   document.querySelectorAll('[data-billing]').forEach(btn=>btn.addEventListener('click',()=>{billing=btn.dataset.billing;renderPricing();}));
   const menu=byId('mainNav'),menuToggle=byId('menuToggle');
   menuToggle.addEventListener('click',()=>{const open=menu.classList.toggle('is-open');menuToggle.setAttribute('aria-expanded',String(open));menuToggle.setAttribute('aria-label',open?(activeSite.labels?.closeNav||'Close navigation'):(activeSite.labels?.openNav||'Open navigation'));});
