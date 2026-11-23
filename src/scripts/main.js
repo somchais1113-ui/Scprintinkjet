@@ -19,7 +19,7 @@
     img.addEventListener('error',()=>{if(!img.src.endsWith('placeholder.svg'))img.src=img.dataset.fallback;});
   });}
 
-  // Cinematic story rail (V2.1.19): four original service photos with
+  // Cinematic story rail (V2.1.20): four original service photos with
   // coordinated visual and copy transitions. Keeps the standard site editor
   // text for slide 01 and its image overrides for all four photos.
   function initHeroCarousel(){
@@ -42,6 +42,9 @@
     let isHovered=false,isFocusWithin=false,manualPause=false,isVisible=true;
     let isSwitching=false,copyTimer=null;
     const duration=7400;
+    // Keep the outgoing image slowly zooming until opacity crossfade completes.
+    const exitTimers=new Map();
+    const photoFadeDuration=880;
 
     function locale(){return document.documentElement.lang||'en';}
     function storyField(slide,field,language){
@@ -78,10 +81,30 @@
         if(image && image.loading!=='eager') image.loading='eager';
       }
     }
+    function activeExitTimer(i){return exitTimers.has(i);}
+    function clearExitTimer(i){
+      window.clearTimeout(exitTimers.get(i));
+      exitTimers.delete(i);
+    }
     function commitSlide(index){
+      const previous=heroIndex;
       heroIndex=(index+total)%total;
       slides.forEach((slide,i)=>{
         const active=i===heroIndex;
+        if(active){
+          // A returning slide becomes foreground; cancel any pending exit.
+          if(activeExitTimer(i))clearExitTimer(i);
+          slide.classList.remove('is-exiting');
+        } else if(i===previous && !reduceMotion?.matches){
+          // Preserve the *current* image scale through the complete fade.
+          // Other exiting slides retain their own timers during rapid navigation.
+          if(activeExitTimer(i))clearExitTimer(i);
+          slide.classList.add('is-exiting');
+          exitTimers.set(i,window.setTimeout(()=>{
+            slide.classList.remove('is-exiting');
+            exitTimers.delete(i);
+          },photoFadeDuration+50));
+        }
         slide.classList.toggle('is-active',active);
         slide.setAttribute('aria-hidden',String(!active));
       });

@@ -8,10 +8,10 @@ const css=get('src/styles/34-cinematic-hero.css');
 const js=get('src/scripts/main.js');
 const build=get('qa/build-public-v2111.mjs');
 const packageInfo=JSON.parse(get('package.json'));
-assert.equal(packageInfo.version,'2.1.19');
+assert(['2.1.19','2.1.20'].includes(packageInfo.version));
 assert.match(html,/hero--cinematic/);
-assert.match(html,/34-cinematic-hero\.css\?v=2\.1\.19/);
-assert.match(html,/main\.js\?v=2\.1\.19/);
+assert.match(html,/34-cinematic-hero\.css\?v=2\.1\.(?:19|20)/);
+assert.match(html,/main\.js\?v=2\.1\.(?:19|20)/);
 for(let i=0;i<4;i++){
  assert.match(html,new RegExp(`data-hero-slide="${i}"`));
  assert.match(html,new RegExp(`data-hero-dot="${i}"`));

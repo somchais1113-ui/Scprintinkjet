@@ -1,4 +1,4 @@
-/* SCWork V2.1.19 — full-bleed cinematic hero, isolated to homepage.
+/* SCWork V2.1.20 — cinematic hero with slow, foreground-independent photo zoom-in.
    Takes precedence over 04/10/11/28/31 hero styles; no other section is changed. */
 body:has(> #main) section.hero.hero--cinematic {
   width: 100%;
@@ -59,22 +59,30 @@ body:has(> #main) section.hero.hero--cinematic .hero__slide[data-hero-slide] img
   object-fit: cover;
   object-position: center 50%;
   filter: saturate(1.025) contrast(1.02);
+  /* Image moves independently; copy, buttons, indicators and overlay stay fixed. */
   animation: none !important;
-  transform: scale(1.015);
+  transform: scale(1);
+  transform-origin: center center;
+  backface-visibility: hidden;
 }
 /* Different crops keep the product or production detail from being hidden under copy. */
 body:has(> #main) section.hero.hero--cinematic .hero__slide[data-hero-slide="0"] img {object-position: center 53%;}
 body:has(> #main) section.hero.hero--cinematic .hero__slide[data-hero-slide="1"] img {object-position: center 44%;}
 body:has(> #main) section.hero.hero--cinematic .hero__slide[data-hero-slide="2"] img {object-position: center 48%;}
 body:has(> #main) section.hero.hero--cinematic .hero__slide[data-hero-slide="3"] img {object-position: center 51%;}
+/* 7.4s is the current slide interval. A 9.0s linear ramp produces a subtle
+   ~6% zoom while the slide is visible and holds gracefully if autoplay stops.
+   Keep an outgoing slide's animation alive during its 880ms crossfade to avoid
+   an image snap on the last frame. JS removes is-exiting after fade finishes. */
 @media (prefers-reduced-motion:no-preference) {
-  section.hero.hero--cinematic .hero__slide.is-active img {
-    animation: sc-cinema-breathe 9s linear both !important;
+  body:has(> #main) section.hero.hero--cinematic .hero__slide:is(.is-active,.is-exiting) img {
+    animation: sc-cinema-slow-zoom-in 9s linear both !important;
+    will-change: transform;
   }
 }
-@keyframes sc-cinema-breathe {
-  from {transform: scale(1.035) translate3d(0,0,0);}
-  to {transform: scale(1.005) translate3d(0,0,0);}
+@keyframes sc-cinema-slow-zoom-in {
+  from {transform: translate3d(0,0,0) scale(1);}
+  to {transform: translate3d(0,0,0) scale(1.075);}
 }
 body:has(> #main) section.hero.hero--cinematic .hero__inner {
   position: relative;
@@ -181,7 +189,7 @@ section.hero.hero--cinematic .hero__actions .button {
 section.hero.hero--cinematic .hero__actions .button--primary {
   background: #ff6900;
   border-color: #ff6900;
-  color: #092954;
+  color: #fff;
   box-shadow: 0 7px 22px rgba(0,0,0,.15);
 }
 section.hero.hero--cinematic .hero__actions .button--outline {

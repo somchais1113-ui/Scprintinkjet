@@ -39,7 +39,7 @@
 .benefit-lede {max-width:62ch;margin-top:18px;color:var(--benefit-muted);font-size:clamp(1rem,1.1vw,1.13rem)}
 .benefit-actions {margin-top:24px;display:flex;flex-wrap:wrap;gap:10px}
 .benefit-cta,.benefit-secondary {display:inline-flex;align-items:center;justify-content:center;text-align:center;gap:10px;min-height:48px;padding:10px 16px;border:1px solid transparent;border-radius:9px;line-height:1.45;font-weight:750}
-.benefit-cta {background:var(--benefit-orange);color:#102645}
+.benefit-cta {background:var(--benefit-orange);color:#fff}
 .benefit-cta:hover {background:#ff8432}
 .benefit-secondary {background:#fff;border-color:#b8cce1;color:var(--benefit-navy)}
 .benefit-secondary:hover {background:#ebf4fc}

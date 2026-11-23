@@ -81,10 +81,10 @@ html[data-sc-support="ready"] .q-footer { padding-bottom: calc(22px + var(--sc-q
   text-decoration: none;
   cursor: pointer;
   white-space: nowrap;
-  color: #061b3d;
+  color: #fff;
   background: #ff6900;
 }
-.sc-helpbar__button:hover { background: #ff822e; color: #061b3d; }
+.sc-helpbar__button:hover { background: #ff822e; color: #fff; }
 .sc-helpbar :is(a, button):focus-visible { outline: 2px solid #092954; outline-offset: 3px; }
 .sc-helpbar__qr {
   display: block;

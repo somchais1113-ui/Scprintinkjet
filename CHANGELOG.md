@@ -1,3 +1,12 @@
+## V2.1.20 — Hero Slow Zoom-in & White Text on Orange CTA (23 November 2026)
+
+- Homepage cinematic hero: slow, linear **zoom-in** from `scale(1)` to `scale(1.075)` over 9 seconds on each active photo (approx. 6% zoom during the existing 7.4-second slide interval). Foreground copy, buttons, controls and overlay stay stationary.
+- Preserve photo animation through the existing 880ms crossfade with a temporary `.is-exiting` state to avoid an outgoing frame snapping to its starting scale. Four photos, slide narratives, autoplay and controls are unchanged.
+- Respect reduced-motion preference: no zoom movement and no automatic slide rotation, matching existing site behaviour.
+- Owner-requested brand CTA styling: **#FF6900 background + white (#FFFFFF) labels** across homepage and other public website pages, plus shared tool buttons. Secondary/ghost/selection/disabled controls retain their intended colors.
+- CSS query versions bumped so deployed browsers load the revised stylesheet; no changes to pricing logic, images or application data.
+- Accessibility caveat: white on `#FF6900` yields approximately **2.89:1 contrast**, below WCAG AA normal text. Orange hue is preserved exactly per owner instruction.
+
 ## V2.1.19 — Cinematic Main Banner
 
 - Replaced split-image homepage hero with a full-bleed four-story banner based on the supplied reference video.

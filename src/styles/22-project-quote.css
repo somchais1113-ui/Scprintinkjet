@@ -44,7 +44,7 @@ textarea{resize:vertical}
 input[type=checkbox]{accent-color:var(--blue);width:17px;height:17px}
 .p-button{display:inline-flex;justify-content:center;align-items:center;min-height:44px;border:1px solid #a9bdd6;border-radius:8px;background:#fff;color:var(--blue);font-weight:750;padding:9px 13px;text-decoration:none;cursor:pointer;line-height:1.38;text-align:center}
 .p-button:hover:not(:disabled){background:#edf4fd}.p-button:disabled{opacity:.55;cursor:not-allowed}
-.p-primary{background:var(--orange);border-color:var(--orange);color:#102142}.p-primary:hover:not(:disabled){background:#ff842e}
+.p-primary{background:var(--orange);border-color:var(--orange);color:#fff}.p-primary:hover:not(:disabled){background:#ff842e}
 .p-small{padding:7px 11px;font-size:.84rem}
 .p-prepare{margin-top:13px}
 .p-aside{position:sticky;top:15px;scroll-margin-top:15px}

@@ -1,10 +1,11 @@
-/* SCWORK V1.4.1 — single source of truth for ALL primary calls to action.
-   Chosen by owner: EXACT #FF6900; navy type passes WCAG AA (5.90:1)
-   whereas white on #FF6900 measures 2.89:1 and fails normal text contrast.
-   Secondary/outline controls, destructive/status actions and the original logo
-   are intentionally NOT recolored. Normal and hover background stay identical.
+/* SCWORK V2.1.20 — standard orange CTA background with white text site-wide.
+   Owner-approved: #FF6900 background + #FFFFFF labels in default/hover/focus/active.
+   Important accessibility trade-off: white on #FF6900 is approx 2.89:1,
+   below WCAG AA for normal-size text. Do not claim AA compliance; revisit
+   orange darkness if accessible contrast becomes a requirement.
+   Secondary/outline, status, disabled and destructive controls remain unchanged.
    Website Manager may override --color-cta through its Primary Orange field. */
-:root{--color-cta:#FF6900;--color-cta-ink:#061B3D;--color-cta-focus:#012A62}
+:root{--color-cta:#FF6900;--color-cta-ink:#FFFFFF;--color-cta-focus:#012A62}
 :is(
   .button--primary,
   .services .service-card .button,
