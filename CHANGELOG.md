@@ -1,3 +1,18 @@
+## V2.1.16 — Material Stories & Two-Layer Crossfade
+
+- Kept all five material-card thumbnail images unchanged.
+- Rebuilt each material's modal sequence as Surface → Printed/Cut Material → Product Application (15 images, 10 new optimized WebP files).
+- Added true two-image overlap crossfade with directional motion, preloading, disabled rapid-click controls and reduced-motion support.
+- Updated per-slide captions in Thai/English and labeled the visual references as mockups rather than certified material specifications or verified customer projects.
+- Refined responsive modal scrolling while retaining the liquid-glass blue-tinted control bar, existing pages, pricing and branding.
+
+## V2.1.15
+
+- Added smoother image transitions to the sticker material modal for arrow navigation, dots and autoplay.
+- Improved the motion behaviour of the right-side content panel during slide changes.
+- Added temporary disabled states for material modal navigation controls during transitions to prevent rapid-click jitter.
+- Updated asset query versions to `2.1.15` for the refreshed material-gallery experience.
+
 ## V2.1.14
 
 - Reworked the sticker material modal content and image references so each material now shows more relevant surface, application and real-use examples.
