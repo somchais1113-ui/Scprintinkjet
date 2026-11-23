@@ -1,0 +1,18 @@
+import {readFileSync,existsSync} from 'node:fs';
+import {join,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import assert from 'node:assert/strict';
+const root=dirname(dirname(fileURLToPath(import.meta.url)));
+const html=readFileSync(join(root,'index.html'),'utf8');
+const style=readFileSync(join(root,'src/styles/35-editorial-footer.css'),'utf8');
+const script=readFileSync(join(root,'src/scripts/editorial-footer.js'),'utf8');
+assert(html.includes('id="siteFooter"')&&html.includes('footer-consult__action'));
+assert(html.includes('35-editorial-footer.css')&&html.includes('editorial-footer.js'));
+for(const cls of ['footer-brand','footer-services','footer-support','footer-company'])assert(html.includes('class="'+cls+'"'));
+for(const id of ['footerConsultCta','footerConsultLineIcon','footerConsultCtaLabel'])assert(html.includes('id="'+id+'"'));
+assert(!html.includes('sc-footer-utility__inner'));
+assert(style.includes('grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr))'));
+assert(style.includes('color:#fff;'));
+assert(script.includes('window.SCWORK_PUBLIC_CONTACT')&&script.includes('smart-quote.html?mode=help'));
+assert(existsSync(join(root,'assets/icons/line-official.png')));
+console.log('SCWork V2.1.22 footer structure, 4-column layout, CTA fallback, icon, and links: OK');

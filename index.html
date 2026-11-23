@@ -52,12 +52,14 @@
   <link rel="stylesheet" href="./src/styles/27-material-gallery.css?v=2.1.16" />
   <script defer src="./src/scripts/material-gallery.js?v=2.1.16"></script>
   <link rel="stylesheet" href="./src/styles/28-hero-footer.css?v=2.1.8" />
-  <script defer src="./src/scripts/footer-utility.js?v=2.1.8"></script>
+
   <link rel="stylesheet" href="./src/styles/29-benefit-strip.css?v=2.1.21" />
   <link rel="stylesheet" href="./src/styles/31-home-quote-polish.css?v=2.1.12" />
   <script defer src="./src/scripts/benefit-strip.js?v=2.1.12"></script>
   <link rel="stylesheet" href="./src/styles/32-services-crossfade.css?v=2.1.17">
   <link rel="stylesheet" href="./src/styles/34-cinematic-hero.css?v=2.1.20">
+  <link rel="stylesheet" href="./src/styles/35-editorial-footer.css?v=2.1.22">
+  <script defer src="./src/scripts/editorial-footer.js?v=2.1.22"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -326,83 +328,57 @@
     <section class="section contact-section" id="contact" aria-labelledby="contact-title"><div class="container contact-grid"><div class="contact-info"><span class="eyebrow">Contact us</span><h2 id="contact-title">Tell us about your project</h2><p id="contactLead">Tell us how you plan to use your stickers. We can help with material, size and finishing.</p><div class="contact-methods" id="contactMethods"></div></div><div class="contact-form-wrap pc-rfq-entry"><span class="eyebrow" id="pc-quote-eyebrow">STICKER ADVICE</span><h3 id="pc-unified-title">Not sure where to start?</h3><p id="pc-unified-text">Share what you know so far. You do not need a finished design or complete specifications.</p><a class="button button--primary button--full" id="pc-unified-cta" href="./smart-quote.html?mode=help" data-quote-help>Ask for advice</a><p id="pc-unified-mode" class="form-note">Send artwork later in LINE or share a link.</p></div></div></section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a class="brand brand--footer" href="#home"><img class="brand__logo brand__logo--footer" src="./assets/icons/scwork-logo.png" width="176" height="58" alt="SCWORK" /></a>
-        <p>Sticker printing knowledge, material options and production-ready specifications.</p>
-        <div class="footer-brand__mini-contact">
-          <h4 id="footerMiniContactTitle">Quick consultation</h4>
-          <p id="footerMiniContactText">Share material, dimensions and quantity on LINE.</p>
+  <footer class="footer footer--editorial" id="siteFooter">
+    <div class="container">
+      <!-- A single consultation entry replaces duplicate contact cards. -->
+      <section class="footer-consult" aria-labelledby="footerConsultTitle">
+        <div class="footer-consult__copy">
+          <p class="footer-consult__eyebrow" data-footer-th="LET’S MAKE IT WORK" data-footer-en="LET’S MAKE IT WORK">LET’S MAKE IT WORK</p>
+          <h2 id="footerConsultTitle" data-footer-th="มีงานสติกเกอร์ที่อยากปรึกษา?" data-footer-en="Have a sticker project to discuss?">มีงานสติกเกอร์ที่อยากปรึกษา?</h2>
+          <p data-footer-th="แจ้งขนาด วัสดุ จำนวน หรือรายละเอียดเบื้องต้น เพื่อให้ทีม SCWork ช่วยแนะนำแนวทางที่เหมาะสมกับงาน" data-footer-en="Share size, material, quantity or a short brief. Our team can help you choose the right approach.">แจ้งขนาด วัสดุ จำนวน หรือรายละเอียดเบื้องต้น เพื่อให้ทีม SCWork ช่วยแนะนำแนวทางที่เหมาะสมกับงาน</p>
         </div>
-        <div class="footer-social">
-          <a class="footer-social__item" id="footerSocialLine" href="#contact" aria-label="LINE">LINE</a>
-          <a class="footer-social__item" id="footerSocialFacebook" href="#contact" aria-label="Facebook">f</a>
-          <a class="footer-social__item" id="footerSocialCall" href="#contact" aria-label="Call"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.2 3.8c.5-.5 1.3-.6 1.9-.2l2.2 1.5c.7.5 1 1.4.7 2.2l-.7 1.8c-.1.4 0 .8.2 1.1 1 1.6 2.4 3 4 4 .3.2.7.3 1.1.2l1.8-.7c.8-.3 1.7 0 2.2.7l1.5 2.2c.4.6.3 1.4-.2 1.9l-1.3 1.3c-.7.7-1.8 1-2.8.8-2.8-.6-5.5-2.1-8-4.5C7.8 14 6.3 11.3 5.7 8.5c-.2-1 .1-2.1.8-2.8l.7-.7Z" fill="currentColor"/></svg></a>
+        <a class="footer-consult__action" id="footerConsultCta" data-quote-label-preserve href="./smart-quote.html?mode=help&amp;lang=th">
+          <img src="./assets/icons/line-official.png" width="24" height="24" alt="" id="footerConsultLineIcon" hidden />
+          <span id="footerConsultCtaLabel">ส่งรายละเอียดเพื่อปรึกษา</span>
+          <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16m-6-6 6 6-6 6"/></svg>
+        </a>
+      </section>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand brand--footer" href="#home"><img class="brand__logo brand__logo--footer" src="./assets/icons/scwork-logo.png" width="176" height="58" alt="SCWORK" /></a>
+          <p>งานสติกเกอร์ Inkjet งานไดคัท และโซลูชันการผลิต ตั้งแต่การเลือกวัสดุจนถึงการเตรียมไฟล์ให้พร้อมผลิต</p>
+          <span class="footer-brand__signature">DESIGN · PRODUCTION · SOLUTIONS</span>
         </div>
-      </div>
-      <div class="footer-links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about" id="clientCreditsFooter">Clients</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a class="sc-quote-cta" href="./smart-quote.html">Price Calculator</a></li>
-        </ul>
-        <div class="footer-links__sub">
-          <h4 id="footerSecondaryLinksTitle">How to order</h4>
+        <div class="footer-services">
+          <h3 data-footer-th="บริการสติกเกอร์" data-footer-en="Sticker services">บริการสติกเกอร์</h3>
           <ul>
-            <li><a href="#how-it-works" id="footerHowItWorksLink">4-step quotation flow</a></li>
-            <li><a class="sc-quote-cta" href="./smart-quote.html" id="footerRFQLink">Check estimated price</a></li>
-            <li><a href="#blog" id="footerArticlesLink">Helpful articles</a></li>
+            <li><a href="#services" data-footer-th="ฉลากสินค้าและบรรจุภัณฑ์" data-footer-en="Product labels & packaging">ฉลากสินค้าและบรรจุภัณฑ์</a></li>
+            <li><a href="#services" data-footer-th="สติกเกอร์ไดคัทตามรูปทรง" data-footer-en="Custom die-cut stickers">สติกเกอร์ไดคัทตามรูปทรง</a></li>
+            <li><a href="#services" data-footer-th="สติกเกอร์ติดร้านและกระจก" data-footer-en="Retail & window graphics">สติกเกอร์ติดร้านและกระจก</a></li>
+            <li><a href="./smart-quote.html?lang=th" data-quote-label-preserve data-footer-th="เช็กราคาเบื้องต้น" data-footer-en="Check estimated price">เช็กราคาเบื้องต้น</a></li>
+          </ul>
+        </div>
+        <div class="footer-support">
+          <h3 data-footer-th="ข้อมูลและช่วยเหลือ" data-footer-en="Information & support">ข้อมูลและช่วยเหลือ</h3>
+          <ul>
+            <li><a href="#how-it-works" data-footer-th="วิธีสั่งงาน · 4 ขั้นตอน" data-footer-en="How to order · 4 steps">วิธีสั่งงาน · 4 ขั้นตอน</a></li>
+            <li><a href="./design-services.html?lang=th" data-footer-local data-footer-th="เตรียมไฟล์งานพิมพ์" data-footer-en="Prepare print-ready artwork">เตรียมไฟล์งานพิมพ์</a></li>
+            <li><a href="./credit-terms.html?lang=th" data-footer-local data-footer-th="สอบถามการชำระเงิน" data-footer-en="Payment enquiries">สอบถามการชำระเงิน</a></li>
+            <li><a href="#blog" data-footer-th="บทความและคำแนะนำ" data-footer-en="Articles & guidance">บทความและคำแนะนำ</a></li>
+          </ul>
+        </div>
+        <div class="footer-company">
+          <h3>SCWork</h3>
+          <ul>
+            <li><a href="#home" data-footer-th="หน้าแรก" data-footer-en="Home">หน้าแรก</a></li>
+            <li><a href="#about" id="clientCreditsFooter" data-footer-th="ลูกค้าของเรา" data-footer-en="Our clients">ลูกค้าของเรา</a></li>
+            <li><a href="#blog" data-footer-th="บทความ" data-footer-en="Insights">บทความ</a></li>
+            <li><a href="#contact" data-footer-th="ติดต่อเรา" data-footer-en="Contact us">ติดต่อเรา</a></li>
           </ul>
         </div>
       </div>
-      <div class="footer-services">
-        <h3>Services</h3>
-        <ul>
-          <li><a href="#services">Product Labels</a></li>
-          <li><a href="#services">Die-Cut Stickers</a></li>
-          <li><a href="#services">Retail Graphics</a></li>
-          <li><a class="sc-quote-cta" href="./smart-quote.html">Request a Quote</a></li>
-        </ul>
-      </div>
-      <div class="footer-contact-panel">
-        <h3>Contact</h3>
-        <p>Have a sticker project?</p>
-        <span id="footerContactHint">Choose a contact channel</span>
-        <ul class="footer-contact-list">
-          <li><span class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M19 10c0 5-7 10-7 10S5 15 5 10a7 7 0 1 1 14 0Z"/><circle cx="12" cy="10" r="2"/></svg></span><span id="footerAddressText"></span></li>
-          <li><span class="footer-contact-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.2 3.8c.5-.5 1.3-.6 1.9-.2l2.2 1.5c.7.5 1 1.4.7 2.2l-.7 1.8c-.1.4 0 .8.2 1.1 1 1.6 2.4 3 4 4 .3.2.7.3 1.1.2l1.8-.7c.8-.3 1.7 0 2.2.7l1.5 2.2c.4.6.3 1.4-.2 1.9l-1.3 1.3c-.7.7-1.8 1-2.8.8-2.8-.6-5.5-2.1-8-4.5C7.8 14 6.3 11.3 5.7 8.5c-.2-1 .1-2.1.8-2.8l.7-.7Z" fill="currentColor"/></svg></span><a id="footerOfficePhone" href="#contact">Office phone</a></li>
-          <li><span class="footer-contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17h2"/></svg></span><a id="footerMobilePhone" href="#contact">Mobile phone</a></li>
-          <li><span class="footer-contact-icon">LINE</span><a id="footerLineId" href="#contact">LINE</a></li>
-          <li><span class="footer-contact-icon">f</span><a id="footerFacebookLink" href="#contact">Facebook</a></li>
-        </ul>
-        <a class="footer-contact-card" id="footerContactCard" href="./smart-quote.html?mode=help" data-quote-help>
-          <strong id="footerContactCardTitle">Contact us</strong>
-          <span id="footerContactCardText">Start with a quick brief and continue in your preferred channel.</span>
-        </a>
-      </div>
+      <div class="footer-bottom"><span>© <span id="year">2026</span> SCWork. สงวนลิขสิทธิ์</span><span>เว็บไซต์สาธิต · ใช้ภาพประกอบตัวอย่าง ไม่ใช่ผลงานลูกค้าจริง</span></div>
     </div>
-    <div class="sc-footer-utility">
-      <div class="container sc-footer-utility__inner">
-        <nav class="sc-footer-utility__shortcuts" id="scFooterShortcuts" aria-label="SCWork shortcuts">
-          <a class="sc-footer-utility__item" href="./smart-quote.html" data-quote-label-preserve><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 12h1m3 0h1m3 0h1m-9 4h1m3 0h1m3 0h1"/></svg><span data-footer-copy="estimate">Price estimate</span></a>
-          <a class="sc-footer-utility__item" href="#how-it-works"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M8 10l1 1 2-2m2 1h3m-8 6 1 1 2-2m2 1h3"/></svg><span data-footer-copy="steps">How to order</span></a>
-          <a class="sc-footer-utility__item" href="#contact"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h18L12 4 3 9Zm2 2v6m5-6v6m4-6v6m5-6v6M3 20h18"/></svg><span data-footer-copy="paymentHelp">Payment enquiries</span></a>
-        </nav>
-        <div class="sc-footer-utility__verified">
-          <div class="sc-footer-utility__methods" id="scFooterPayments" hidden aria-label="Accepted payment methods">
-            <span class="sc-footer-utility__item" data-footer-payment="mastercard" hidden><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h3"/></svg><span>Mastercard</span></span>
-            <span class="sc-footer-utility__item" data-footer-payment="visa" hidden><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h3"/></svg><span>Visa</span></span>
-            <span class="sc-footer-utility__item" data-footer-payment="bank-transfer" hidden><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 9h18L12 4 3 9Zm2 2v6m5-6v6m4-6v6m5-6v6M3 20h18"/></svg><span data-footer-copy="transfer">Bank transfer</span></span>
-          </div>
-          <a class="sc-footer-utility__item sc-footer-utility__contact" href="#contact"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 11a7 7 0 0 1-7 7H7l-4 2 1.3-4a7 7 0 0 1-1.3-5 7 7 0 0 1 7-7h3a7 7 0 0 1 7 7ZM8 11h.02m3.98 0h.02m3.98 0h.02"/></svg><span data-footer-copy="contact">Contact SCWork</span></a>
-          <a class="sc-footer-utility__dbd" id="scFooterDbd" hidden target="_blank" rel="noopener noreferrer"><img id="scFooterDbdMark" alt="DBD Trusted Platform" decoding="async" /></a>
-        </div>
-      </div>
-    </div>
-    <div class="container footer-bottom"><span>© <span id="year"></span> SCWork. All rights reserved.</span><span>Illustrative storefront preview · images are demonstration artwork</span></div>
   </footer>
 <script src="./config/public-config.js?v=2.1.9"></script><script src="./src/scripts/entry-cta.js?v=2.1.8" defer></script>  <script src="./src/scripts/language-modal.js?v=2.1.1" defer></script>
 </body>

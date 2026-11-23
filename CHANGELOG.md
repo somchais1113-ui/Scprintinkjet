@@ -356,3 +356,12 @@ Added a separate Thai/English campaign page featuring two coordinated bottle and
 - Repositioned pricing CTA above the pricing cards to reduce scroll friction.
 - Upgraded footer with richer contact structure and utility links.
 - Added floating contact assistant for phone, LINE, Facebook and Messenger.
+
+
+## V2.1.22 — Editorial Footer
+- Rebuilt home footer to match approved reference: consultation CTA, divider, four aligned columns, copyright row.
+- Removed redundant footer utility bar and duplicate consultation panels on the homepage.
+- Preserved valid internal links, TH/EN footer labels and responsive behavior.
+- LINE CTA only opens LINE when verified public contact configuration exists; otherwise falls back to the advice form.
+- Added supplied LINE icon, displayed only for a configured LINE channel.
+- No changes to hero, pricing logic, benefits pages or other approved website sections.

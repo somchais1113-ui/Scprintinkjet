@@ -28,9 +28,9 @@
     '.main-nav a[href="#blog"]':'navigation.blog','.main-nav a[href="#contact"]':'navigation.contact',
     '.pricing-note':'labels.pricingDemoNote',
     '.contact-form-wrap button[type="submit"]':'labels.submit','.form-note':'labels.formNote',
-    '.footer-brand > p':'footer.description','.footer-grid > div:nth-child(2) h3':'footer.quickTitle',
-    '.footer-grid > div:nth-child(3) h3':'footer.servicesTitle','.footer-grid > div:nth-child(4) h3':'footer.contactTitle',
-    '.footer-grid > div:nth-child(4) p':'footer.contactQuestion',
+    '.footer-brand > p':'footer.description',
+    
+    
     '.footer-bottom > span:last-child':'footer.disclaimer'
   };
   function readPath(obj, path){return path.split('.').reduce((o,k)=>o?.[k],obj);}
@@ -66,11 +66,6 @@
     if(brand.pageTitle)document.title=brand.pageTitle;
     const meta=q('meta[name="description"]');if(meta)meta.setAttribute('content',brand.metaDescription||'');
     const nav=site.navigation||{};
-    all('.footer-grid > div:nth-child(2) > ul a').forEach((el,i)=>{if(el.id==='clientCreditsFooter')return;const paths=['home','about','services','quote'];el.textContent=nav[paths[i]]||['Home','About us','Service','Get a quote'][i];});
-    const footerServices=q('.footer-grid > div:nth-child(3) ul');
-    if(footerServices){footerServices.replaceChildren();[...(site.services||[]).slice(0,3).map(s=>({title:s.title,href:'#services'})),{title:nav.quote||'Get a quote',href:'./smart-quote.html'}].forEach(item=>{
-      const li=document.createElement('li'),a=document.createElement('a');a.href=item.href;a.textContent=item.title;li.append(a);footerServices.append(li);
-    });}
     const copyright=q('.footer-bottom > span:first-child');if(copyright){const yr=document.createElement('span');yr.id='year';yr.textContent=String(new Date().getFullYear());copyright.replaceChildren('© ',yr,` ${brand.prefix||''}${brand.name||''}. ${site.footer?.copyright||''}`);}
     const labels=site.labels||{};
     const language= root.lang==='th'?'th':'en';
