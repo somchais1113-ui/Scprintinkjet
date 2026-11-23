@@ -1,3 +1,10 @@
+## V2.1.14
+
+- Reworked the sticker material modal content and image references so each material now shows more relevant surface, application and real-use examples.
+- Added a new `assets/images/material-preview/` image set for the richer modal experience.
+- Restyled the bottom image info bar and controls with a liquid-glass blue-tint treatment.
+- Refined modal typography, panel styling and visual hierarchy for a cleaner presentation.
+
 ## V2.1.13
 
 - Removed the “SCWORK confirms pricing after reviewing your specs/artwork” helper copy from the home pricing area and smart quote summary.
