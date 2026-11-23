@@ -14,6 +14,7 @@
 <script src="config/billing-config.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing-ui.js?v=2.1.0" defer></script><script src="src/scripts/smart-quote.js?v=2.1.1" defer></script><script src="src/scripts/language-modal.js?v=2.1.1" defer></script>
   <link rel="stylesheet" href="./src/styles/19-social-proof-footer.css?v=2.1.1" />
 <link rel="stylesheet" href="src/styles/24-quote-billing.css?v=2.1.0">
+<link rel="stylesheet" href="src/styles/31-home-quote-polish.css?v=2.1.12">
   <link rel="stylesheet" href="./src/styles/26-support-bar.css?v=2.1.5">
   <script defer src="./src/scripts/support-bar.js?v=2.1.5"></script>
 </head><body>
@@ -34,7 +35,7 @@
 <textarea id="helpBrief" rows="3" maxlength="450"></textarea>
 </div></div>
 <div class="q-card" id="specPanel"><div class="q-section-top"><span class="q-step">02</span><div><h2 id="specTitle">รายละเอียดสติกเกอร์</h2><p id="specLead">กรอกข้อมูลเพียงเท่าที่จำเป็น</p></div></div>
-<div class="q-service-chips" id="quoteTypes" role="group" aria-label="Type of work"><button type="button" data-preset="label" class="is-selected"><img src="assets/images/services/office.webp" alt=""/><span id="presetLabel">ฉลากสินค้า</span></button><button type="button" data-preset="diecut"><img src="assets/images/services/house.webp" alt=""/><span id="presetDie">สติกเกอร์ไดคัท</span></button><button type="button" data-preset="large"><img src="assets/images/services/spring.webp" alt=""/><span id="presetLarge">สติกเกอร์ขนาดใหญ่</span></button></div>
+<div class="q-service-chips" id="quoteTypes" role="group" aria-label="Type of work"><button type="button" data-preset="label" class="is-selected"><img src="assets/images/quote-choices/quote-product-labels.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""/><span id="presetLabel">ฉลากสินค้า</span></button><button type="button" data-preset="diecut"><img src="assets/images/quote-choices/quote-diecut-stickers.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""/><span id="presetDie">สติกเกอร์ไดคัท</span></button><button type="button" data-preset="large"><img src="assets/images/quote-choices/quote-large-format.webp" width="1200" height="800" loading="lazy" decoding="async" alt=""/><span id="presetLarge">สติกเกอร์ขนาดใหญ่</span></button></div>
 <div class="q-fields"><label class="q-field q-field--full"><span id="materialLabel">วัสดุสติกเกอร์</span><select id="material"></select><small id="materialHelp">เลือกตามการใช้งานได้เลย</small></label>
 <div id="quoteSizes" class="q-size-presets q-field--full" role="group" aria-label="ขนาดที่นิยม"><span id="sizePresetLabel">ขนาดยอดนิยม</span><div><button data-size="3x3" type="button">3 × 3 ซม.</button><button data-size="5x5" type="button" class="is-selected">5 × 5 ซม.</button><button data-size="8x10" type="button">8 × 10 ซม.</button><button data-size="custom" type="button" id="customSizeButton">กำหนดเอง</button></div></div>
 <label class="q-field"><span id="widthLabel">กว้าง (ซม.)</span><input id="width" type="number" step="0.1" min="0.1" max="100000" inputmode="decimal" value="5"></label>

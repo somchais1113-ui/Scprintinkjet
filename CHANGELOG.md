@@ -1,3 +1,9 @@
+## V2.1.12 — Hero width, remove updates, premium quote selection cards
+- Standardize all four homepage hero slides in a 1170px centered frame with mobile crop.
+- Remove service-update ticker; retain four linked feature badges.
+- Replace 3 quote-type pictures with 3 high-resolution dedicated work-type images and responsive selectable cards.
+- Keep quote calculation, approved price settings, billing, language switch and other sections unchanged.
+
 # V2.1.11 — Benefit detail pages
 
 Linked the four homepage benefit cards to dedicated Thai and English detail pages. The strip and its notice rotation retain their existing layout and behaviour. Existing quote and order tools are unchanged.
