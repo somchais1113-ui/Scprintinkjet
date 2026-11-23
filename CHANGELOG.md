@@ -1,3 +1,10 @@
+## V2.1.25 — Homepage portfolio production imagery
+- Kept all three approved homepage portfolio categories and layout unchanged.
+- Replaced only homepage portfolio visuals with three scene-based examples that show Asian-looking illustrative workers and the matching production process/output: product-label inspection/printing/packaging, die-cut review/cutting/finished stickers, and large-format installation/printing/vinyl.
+- Smart Quote's product-choice images remain untouched; pricing, hero, knowledge hub, footer, navigation and bilingual functionality are unchanged.
+- Updated bilingual disclosures to clarify that AI-created workers and process scenes are illustrative and **not actual SCWork employees, factory documentation or verified customer work**.
+- Files: `assets/images/portfolio/*.webp`, `index.html`, `src/scripts/main.js`.
+
 ## V2.1.24 — Navigation, quote feedback and spacing
 
 - New localized Portfolio nav and clearly marked work-type examples.

@@ -322,7 +322,7 @@
     window.PROCLEANING_SITE=activeSite;
     window.PROCLEANING_APPLY_SITE(activeSite,window.PROCLEANING_IMAGE_OVERRIDES||{});
     const thai=language==='th';
-    const portfolioCopy=thai?{eyebrow:'ตัวอย่างงาน',title:'ผลงาน',lead:'สำรวจประเภทงานสติกเกอร์ที่เรารับผลิต',notice:'ภาพประกอบใช้แสดงประเภทงานเท่านั้น ไม่ใช่ภาพผลงานลูกค้าจริง',labels:['ฉลากสินค้า','สติกเกอร์ไดคัท','สติกเกอร์ขนาดใหญ่']}:{eyebrow:'WORK TYPES',title:'Portfolio',lead:'Explore the sticker work types we can help produce.',notice:'Illustrative examples of work types, not actual customer projects.',labels:['Product labels','Die-cut stickers','Large-format graphics']};
+    const portfolioCopy=thai?{eyebrow:'ตัวอย่างงาน',title:'ผลงาน',lead:'สำรวจประเภทงานสติกเกอร์ที่เรารับผลิต',notice:'ภาพจำลองขั้นตอนการทำงานและบุคลากร เพื่อแสดงประเภทงาน ไม่ใช่ภาพทีมงานหรือผลงานลูกค้าจริง',labels:['ฉลากสินค้า','สติกเกอร์ไดคัท','สติกเกอร์ขนาดใหญ่']}:{eyebrow:'WORK TYPES',title:'Portfolio',lead:'Explore the sticker work types we can help produce.',notice:'Illustrative AI-generated scenes of workers and processes, not actual SCWork staff or customer projects.',labels:['Product labels','Die-cut stickers','Large-format graphics']};
     for(const [id,value] of Object.entries({scPortfolioEyebrow:portfolioCopy.eyebrow,scPortfolioTitle:portfolioCopy.title,scPortfolioLead:portfolioCopy.lead,scPortfolioNotice:portfolioCopy.notice,scPortfolioLabel1:portfolioCopy.labels[0],scPortfolioLabel2:portfolioCopy.labels[1],scPortfolioLabel3:portfolioCopy.labels[2]})){const el=byId(id);if(el)el.textContent=value;}
     renderServices();
     byId('teamGrid').innerHTML=(activeSite.team||[]).map((p,i)=>ui.teamCard(p,i)).join('');
