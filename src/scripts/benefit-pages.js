@@ -5,6 +5,7 @@
   if (!english) return;
   document.documentElement.lang = 'en';
   document.querySelectorAll('[data-en]').forEach(node => { node.textContent = node.dataset.en; });
+  document.querySelectorAll('[data-en-alt]').forEach(node => { node.setAttribute('alt', node.dataset.enAlt); });
   document.querySelectorAll('[data-en-content]').forEach(node => {
     node.setAttribute('content', node.dataset.enContent);
   });

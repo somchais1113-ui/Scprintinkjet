@@ -1,3 +1,10 @@
+## V2.1.21 — Service information editorial redesign
+
+- Four service pages rebuilt as typography-first layouts with contextual photographs, reduced icons, clearer content hierarchy and coherent navigation.
+- Home benefit strip simplified to typographic links, with mobile horizontal scrolling.
+- Original TH/EN content and button destinations preserved; accessible image alternatives added.
+- V2.1.20 cinematic zoom-in and orange/white CTA styles preserved without modification.
+
 ## V2.1.20 — Hero Slow Zoom-in & White Text on Orange CTA (23 November 2026)
 
 - Homepage cinematic hero: slow, linear **zoom-in** from `scale(1)` to `scale(1.075)` over 9 seconds on each active photo (approx. 6% zoom during the existing 7.4-second slide interval). Foreground copy, buttons, controls and overlay stay stationary.

@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&amp;family=Noto+Sans+Thai:wght@400;500;600;700;800&amp;display=swap">
-  <link rel="stylesheet" href="./src/styles/30-benefit-pages.css?v=2.1.20">
+  <link rel="stylesheet" href="./src/styles/30-benefit-pages.css?v=2.1.21">
   <link rel="stylesheet" href="./src/styles/26-support-bar.css?v=2.1.20">
-  <script defer src="./src/scripts/benefit-pages.js?v=2.1.11"></script>
+  <script defer src="./src/scripts/benefit-pages.js?v=2.1.21"></script>
   <script defer src="./config/public-config.js?v=2.1.5"></script>
   <script defer src="./src/scripts/support-bar.js?v=2.1.5"></script>
 </head>
@@ -32,52 +32,62 @@
     </div>
   </header>
   <main id="main">
-    <section class="benefit-hero" aria-labelledby="benefit-title">
-      <div class="benefit-wrap">
-        <nav class="benefit-trail" aria-label="ตำแหน่งบนเว็บไซต์" data-en-label="Breadcrumb">
-          <a data-en="Home" href="./index.html?lang=th#scBenefits" data-benefit-local>หน้าแรก</a>
-          <span aria-hidden="true">/</span>
-          <span data-en="Standard pricing" aria-current="page">ราคามาตรฐาน</span>
+  <section class="benefit-intro" aria-label="ข้อมูลบริการ" data-en-label="Service information">
+    <div class="benefit-wrap">
+      <nav aria-label="ตำแหน่งบนเว็บไซต์" class="benefit-trail" data-en-label="Breadcrumb">
+<a data-benefit-local="" data-en="Home" href="./index.html?lang=th#scBenefits">หน้าแรก</a>
+<span aria-hidden="true">/</span>
+<span aria-current="page" data-en="Standard pricing">ราคามาตรฐาน</span>
+</nav>
+      <div class="benefit-intro-navigation">
+        <div class="benefit-intro-label"><span data-en="Service information">ข้อมูลบริการ</span><span class="benefit-intro-count"> / 04</span></div>
+        <nav class="benefit-tabs" aria-label="เลือกหมวดข้อมูลบริการ" data-en-label="Service information categories">
+          <a href="./standard-pricing.html?lang=th" data-benefit-local aria-current="page"><span data-en="Standard pricing">ราคามาตรฐาน</span></a>
+<a href="./design-services.html?lang=th" data-benefit-local ><span data-en="Design services">บริการออกแบบ</span></a>
+<a href="./delivery.html?lang=th" data-benefit-local ><span data-en="Delivery">การจัดส่ง</span></a>
+<a href="./credit-terms.html?lang=th" data-benefit-local ><span data-en="Credit terms">เครดิตเทอม</span></a>
         </nav>
-        <div class="benefit-hero-grid">
-          <div>
-            <p class="benefit-kicker"><span aria-hidden="true"></span><span data-en="Standard pricing">ราคามาตรฐาน</span></p>
-            <h1 data-en="Estimate your printing costs up front" id="benefit-title">ประเมินราคาได้ตั้งแต่ก่อนเริ่มงาน</h1>
-            <p data-en="Enter your material, size and quantity to see an estimate before SCWork reviews your specifications and confirms a quote." class="benefit-lede">ระบุวัสดุ ขนาด และจำนวนที่ต้องการ เพื่อดูราคาเบื้องต้นก่อนส่งสเปกให้ SCWork ตรวจและยืนยันราคา</p>
-            <div class="benefit-actions">
-              <a class="benefit-cta" href="./smart-quote.html?lang=th" data-benefit-local><span data-en="Get a price estimate">เช็กราคาเบื้องต้น</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
-              <a data-en="Ask about pricing" class="benefit-secondary" href="./smart-quote.html?mode=help&amp;lang=th" data-benefit-local>สอบถามเรื่องราคา</a>
-            </div>
-          </div>
-          <div class="benefit-emblem" aria-hidden="true">
-            <span class="benefit-emblem-number">SCWORK&nbsp; / &nbsp;01</span>
-            <span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20 13 13 20 4 11V4h7l9 9Z"/><circle cx="8.3" cy="8.3" r="1.05"/></svg></span>
-            <span class="benefit-emblem-mark"></span>
-          </div>
-        </div>
       </div>
-    </section>
-    <section class="benefit-wrap benefit-detail" aria-labelledby="benefit-detail-title">
-      <h2 data-en="What affects the price?" id="benefit-detail-title">อะไรมีผลต่อราคา?</h2>
-      <ol class="benefit-steps" role="list">
-          <li><span class="benefit-step-num" aria-hidden="true">01</span><h3 data-en="Material and finish">วัสดุและผิวงาน</h3><p data-en="Paper, white PP, clear PP and PVC have different costs. Choose for the surface and conditions where the sticker will be used.">กระดาษ PP ขาว PP ใส และ PVC มีต้นทุนต่างกัน เลือกตามพื้นผิวที่จะติดและสภาพใช้งาน</p></li>
-          <li><span class="benefit-step-num" aria-hidden="true">02</span><h3 data-en="Size and quantity">ขนาดและจำนวน</h3><p data-en="Measure the finished width and height, then specify the quantity. For multiple designs, list the quantity for each.">วัดขนาดสำเร็จเป็นกว้าง × สูง แล้วระบุจำนวนชิ้น ถ้ามีหลายแบบให้แยกจำนวนของแต่ละแบบ</p></li>
-          <li><span class="benefit-step-num" aria-hidden="true">03</span><h3 data-en="Shape and finishing">รูปทรงและงานหลังพิมพ์</h3><p data-en="Contour cuts and lamination can affect pricing. Include them in your brief so the team can price the right specification.">งานไดคัทตามรูปทรงและการเคลือบอาจมีผลต่อราคา แจ้งรายละเอียดไว้เพื่อให้ทีมประเมินได้ตรงงาน</p></li>
-      </ol>
-      <aside class="benefit-note">
-        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>
-        <p data-en="Calculator results are estimates. Refer to the quote the team confirms for your final specification.">ตัวเลขจากหน้าเช็กราคาเป็นประมาณการ ให้ยึดใบเสนอราคาที่ทีมยืนยันตามสเปกจริง</p>
-      </aside>
-    </section>
-    <nav class="benefit-wrap benefit-related" aria-labelledby="benefit-related-title">
-        <h2 data-en="Explore other topics" id="benefit-related-title">ดูหัวข้ออื่น</h2>
-        <ul role="list">
-          <li><a href="./design-services.html?lang=th" data-benefit-local><span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m4 20 3-7 10-10 4 4-10 10-7 3Zm3-7 4 4m4-12 4 4M4 20l3-4"/></svg></span><span data-en="Design services">บริการออกแบบ</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></li>
-          <li><a href="./delivery.html?lang=th" data-benefit-local><span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M3 6h12v11H3zM15 10h3l3 3v4h-6M3 13H1m9-4H1"/><circle cx="7" cy="18" r="2" fill="var(--benefit-icon-bg)"/><circle cx="18" cy="18" r="2" fill="var(--benefit-icon-bg)"/></svg></span><span data-en="Fast, on-time delivery">จัดส่งรวดเร็วและตรงเวลา</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></li>
-          <li><a href="./credit-terms.html?lang=th" data-benefit-local><span class="benefit-icon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18m-14 5h4"/></svg></span><span data-en="Credit terms available">มีการชำระแบบเครดิตเทอม</span><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a></li>
-        </ul>
-    </nav>
-  </main>
+    </div>
+  </section>
+  <section class="benefit-hero" aria-labelledby="benefit-title">
+    <div class="benefit-wrap benefit-hero-grid">
+      <div class="benefit-hero-copy">
+        <p class="benefit-kicker"><span class="benefit-kicker-rule" aria-hidden="true"></span>PRICE GUIDE <span class="benefit-kicker-index">/ 01</span></p>
+        <h1 data-en="Estimate your printing costs up front" id="benefit-title">ประเมินราคาได้ตั้งแต่ก่อนเริ่มงาน</h1>
+        <p class="benefit-lede" data-en="Enter your material, size and quantity to see an estimate before SCWork reviews your specifications and confirms a quote.">ระบุวัสดุ ขนาด และจำนวนที่ต้องการ เพื่อดูราคาเบื้องต้นก่อนส่งสเปกให้ SCWork ตรวจและยืนยันราคา</p>
+        <div class="benefit-actions">
+<a class="benefit-cta" data-benefit-local="" href="./smart-quote.html?lang=th"><span data-en="Get a price estimate">เช็กราคาเบื้องต้น</span><svg aria-hidden="true" fill="none" focusable="false" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.65" viewbox="0 0 24 24" width="18"><path d="M4 12h15m-6-6 6 6-6 6"></path></svg></a>
+<a class="benefit-secondary" data-benefit-local="" data-en="Ask about pricing" href="./smart-quote.html?mode=help&amp;lang=th">สอบถามเรื่องราคา</a>
+</div>
+      </div>
+      <figure class="benefit-photo">
+        <img src="./assets/images/benefits/pricing.webp" width="1376" height="1000" loading="eager" fetchpriority="high" decoding="async" alt="งานพิมพ์และการเลือกวัสดุ" data-en-alt="Printing materials and production" />
+        <figcaption data-en="Printing materials and production">งานพิมพ์และการเลือกวัสดุ</figcaption>
+      </figure>
+    </div>
+  </section>
+  <section class="benefit-wrap benefit-detail" aria-labelledby="benefit-detail-title">
+    <div class="benefit-detail-grid">
+      <header class="benefit-detail-intro">
+        <p class="benefit-mini-label"><span data-en="What to know">สิ่งที่ควรรู้</span><span aria-hidden="true"> / 01</span></p>
+        <h2 data-en="What affects the price?" id="benefit-detail-title">อะไรมีผลต่อราคา?</h2>
+        <p class="benefit-detail-summary" data-en="Understand your printing costs">ภาพรวมต้นทุนก่อนสั่งพิมพ์</p>
+      </header>
+      <div class="benefit-detail-content">
+        <ol class="benefit-steps" role="list">
+<li><span aria-hidden="true" class="benefit-step-num">01</span><h3 data-en="Material and finish">วัสดุและผิวงาน</h3><p data-en="Paper, white PP, clear PP and PVC have different costs. Choose for the surface and conditions where the sticker will be used.">กระดาษ PP ขาว PP ใส และ PVC มีต้นทุนต่างกัน เลือกตามพื้นผิวที่จะติดและสภาพใช้งาน</p></li>
+<li><span aria-hidden="true" class="benefit-step-num">02</span><h3 data-en="Size and quantity">ขนาดและจำนวน</h3><p data-en="Measure the finished width and height, then specify the quantity. For multiple designs, list the quantity for each.">วัดขนาดสำเร็จเป็นกว้าง × สูง แล้วระบุจำนวนชิ้น ถ้ามีหลายแบบให้แยกจำนวนของแต่ละแบบ</p></li>
+<li><span aria-hidden="true" class="benefit-step-num">03</span><h3 data-en="Shape and finishing">รูปทรงและงานหลังพิมพ์</h3><p data-en="Contour cuts and lamination can affect pricing. Include them in your brief so the team can price the right specification.">งานไดคัทตามรูปทรงและการเคลือบอาจมีผลต่อราคา แจ้งรายละเอียดไว้เพื่อให้ทีมประเมินได้ตรงงาน</p></li>
+</ol>
+      </div>
+    </div>
+    <aside class="benefit-note" aria-label="ข้อควรรู้" data-en-label="Important information">
+       <strong data-en="Please note">ข้อควรรู้</strong>
+       <p data-en="Calculator results are estimates. Refer to the quote the team confirms for your final specification.">ตัวเลขจากหน้าเช็กราคาเป็นประมาณการ ให้ยึดใบเสนอราคาที่ทีมยืนยันตามสเปกจริง</p>
+    </aside>
+  </section>
+</main>
   <footer class="benefit-footer">
     <div class="benefit-wrap benefit-footer-inner">
       <small>© 2026 SCWork</small>

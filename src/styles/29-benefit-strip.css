@@ -1,161 +1,34 @@
-/* The top benefit strip is self-contained; the navigation, hero and footer keep their own styles. */
-.sc-benefits {
-  --scb-ink:#112e52;
-  padding-block:clamp(12px,1.2vw,20px);
-  background:#fff;
-  border-top:1px solid #f0f4f9;
-  color:var(--scb-ink);
+/* SCWork V2.1.21: quiet typographic benefit navigation, no decorative icons. */
+.sc-benefits{--scb-ink:#112e52;padding-block:clamp(11px,1.1vw,16px);background:#fff;border-top:1px solid #e8eef5;color:var(--scb-ink)}
+.sc-benefits [hidden]{display:none!important}
+.sc-benefits__list{list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0;padding:0;border-block:1px solid #e6edf5;background:#fff}
+.sc-benefits__list.has-rating{grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,.7fr)}
+.sc-benefits__list>li{min-width:0}
+.sc-benefits__list>li+li{border-inline-start:1px solid #e6edf5}
+.sc-benefits__badge{display:flex;align-items:center;gap:12px;min-height:66px;height:100%;padding:10px clamp(10px,1.8vw,25px);background:transparent;color:var(--scb-ink);text-decoration:none;transition:color .2s,background .2s}
+.sc-benefits a.sc-benefits__badge:hover{background:#f6f9fc;color:#ff6900}
+.sc-benefits a:focus-visible{outline:2px solid #14558e;outline-offset:-3px}
+.sc-benefits__index{align-self:center;font-size:.7rem;font-weight:800;color:#e2671e;letter-spacing:.05em}
+.sc-benefits__label{font-size:clamp(12px,1.03vw,15px);font-weight:700;line-height:1.5}
+.sc-benefits__badge--rating{justify-content:center;color:#24476b;background:#f3f7fb}
+.sc-benefits__rating-copy{display:grid;gap:1px;font-size:12px;line-height:1.34}
+.sc-benefits__rating-copy strong{font-size:16px;font-weight:800}
+.sc-benefits__rating-copy>span{color:#4c6685}
+@media(max-width:920px){
+ .sc-benefits__list.has-rating{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .sc-benefits__list>li.sc-benefits__rating{grid-column:1/-1;border-inline-start:0;border-top:1px solid #e6edf5}
+ .sc-benefits__rating .sc-benefits__badge{min-height:38px}
+ .sc-benefits__rating-copy{display:flex;gap:8px;align-items:center}
 }
-.sc-benefits [hidden] {display:none!important}
-.sc-benefits__list {
-  list-style:none;
-  display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  margin:0;
-  padding:0;
-  border:1px solid #e0e9f3;
-  border-radius:16px;
-  background:linear-gradient(110deg,#fff,#f9fcff);
+@media(max-width:650px){
+ .sc-benefits{padding-block:0}
+ .sc-benefits .container{width:100%}
+ .sc-benefits__list,.sc-benefits__list.has-rating{display:flex;overflow-x:auto;scroll-snap-type:x proximity;scrollbar-width:thin;border-bottom:1px solid #e6edf5}
+ .sc-benefits__list>li{min-width:max-content;flex:0 0 auto;scroll-snap-align:start}
+ .sc-benefits__badge{padding:10px 17px;min-height:52px;gap:8px}
+ .sc-benefits__label{font-size:13px;white-space:nowrap}
+ .sc-benefits__list>li.sc-benefits__rating{min-width:120px;grid-column:auto;border-top:0;border-inline-start:1px solid #e6edf5}
+ .sc-benefits__rating .sc-benefits__badge{min-height:52px;padding:6px 12px}
+ .sc-benefits__rating-copy{display:grid;gap:1px}
 }
-.sc-benefits__list > li {min-width:0}
-.sc-benefits__list > li + li {border-inline-start:1px solid #e6edf5}
-.sc-benefits__list > li:first-child > a {border-start-start-radius:15px;border-end-start-radius:15px}
-.sc-benefits__list > li:nth-child(4) > a {border-start-end-radius:15px;border-end-end-radius:15px}
-.sc-benefits__list.has-rating {grid-template-columns:repeat(4,minmax(0,1fr)) minmax(0,.87fr)}
-.sc-benefits__badge {
-  display:flex;
-  align-items:center;
-  gap:clamp(8px,1vw,15px);
-  min-height:64px;
-  height:100%;
-  padding:10px clamp(10px,1.35vw,20px);
-  background:transparent;
-  color:var(--scb-ink);
-  text-decoration:none;
-  transition:background .18s ease,color .18s ease;
-}
-.sc-benefits__badge--rating {
-  color:#0f365d;
-  border-start-end-radius:15px;
-  border-end-end-radius:15px;
-  background:#edf5fc;
-}
-.sc-benefits a.sc-benefits__badge:hover {background:#eef5fc;color:#0b417c}
-.sc-benefits a.sc-benefits__badge--price:hover {background:#fff7ef}
-.sc-benefits a:focus-visible {outline:2px solid #14558e;outline-offset:-3px}
-.sc-benefits__icon {
-  --scb-icon-bg:#edf4fb;
-  display:grid;
-  place-items:center;
-  flex:0 0 36px;
-  height:36px;
-  border-radius:10px;
-  color:#285583;
-  background:var(--scb-icon-bg);
-}
-.sc-benefits__badge--price .sc-benefits__icon {--scb-icon-bg:#fff0e1;color:#a14704}
-.sc-benefits__badge--rating .sc-benefits__icon {--scb-icon-bg:#e0edf8;color:#245981}
-.sc-benefits__icon svg {display:block;width:20px;height:20px}
-.sc-benefits__label {font-size:clamp(13px,1.07vw,16px);font-weight:750;line-height:1.32}
-.sc-benefits__rating-copy {display:grid;gap:1px;font-size:12px;line-height:1.34}
-.sc-benefits__rating-copy strong {font-size:16px;font-weight:800}
-.sc-benefits__rating-copy > span {color:#4c6685}
-.sc-benefits__notice {
-  margin-top:9px;
-  min-height:48px;
-  display:grid;
-  grid-template-columns:auto minmax(0,1fr) auto;
-  align-items:center;
-  column-gap:clamp(10px,1.2vw,18px);
-  padding:4px 10px 4px 15px;
-  border:1px solid #14375d;
-  border-radius:12px;
-  color:#eff6ff;
-  background:linear-gradient(103deg,#102e53,#0c2544);
-}
-.sc-benefits__eyebrow {
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding-inline-end:clamp(9px,1.25vw,16px);
-  border-inline-end:1px solid #48617b;
-  color:#ffd0a8;
-  font-size:12px;
-  font-weight:750;
-  line-height:1.4;
-  white-space:nowrap;
-}
-.sc-benefits__eyebrow::before {
-  content:'';
-  display:block;
-  background:#ff790e;
-  width:7px;
-  height:7px;
-  border-radius:50%;
-}
-.sc-benefits__viewport {
-  display:grid;
-  align-items:center;
-  min-width:0;
-  overflow:hidden;
-}
-.sc-benefits__message,.sc-benefits__size {
-  grid-area:1/1;
-  min-width:0;
-  padding-block:5px;
-  margin:0;
-  font-weight:600;
-  color:#eff6ff;
-  overflow-wrap:anywhere;
-  line-height:1.42;
-  font-size:clamp(13px,1.07vw,15px);
-}
-.sc-benefits__size {visibility:hidden;pointer-events:none}
-.sc-benefits__controls {display:flex;align-items:center;gap:3px}
-.sc-benefits__count {
-  margin-inline-end:6px;
-  font-size:11px;
-  font-weight:650;
-  font-variant-numeric:tabular-nums;
-  color:#b8cde4;
-  white-space:nowrap;
-}
-.sc-benefits__nav {
-  display:grid;
-  place-items:center;
-  min-width:35px;
-  min-height:35px;
-  border:1px solid transparent;
-  border-radius:8px;
-  background:transparent;
-  color:#eff6ff;
-  cursor:pointer;
-}
-.sc-benefits__nav svg {display:block;width:16px;height:16px;grid-area:1/1}
-.sc-benefits__nav:hover {background:#244464;border-color:#526f8c}
-.sc-benefits__nav:focus-visible {outline:2px solid #ffbd8f;outline-offset:1px}
-.sc-benefits__play-glyph,
-.sc-benefits__nav[data-paused="true"] .sc-benefits__pause-glyph {display:none!important}
-.sc-benefits__nav[data-paused="true"] .sc-benefits__play-glyph {display:block!important}
-@media(max-width:920px) {
-  .sc-benefits__list.has-rating {grid-template-columns:repeat(4,minmax(0,1fr))}
-  .sc-benefits__list > li.sc-benefits__rating {grid-column:1/-1;border-inline-start:0;border-top:1px solid #e6edf5}
-  .sc-benefits__rating .sc-benefits__badge {justify-content:center;min-height:46px;border-radius:0 0 15px 15px}
-  .sc-benefits__rating-copy {display:flex;gap:8px;align-items:center}
-}
-@media(max-width:650px) {
-  .sc-benefits {padding-block:10px}
-  .sc-benefits__list,.sc-benefits__list.has-rating {grid-template-columns:repeat(2,minmax(0,1fr))}
-  .sc-benefits__list > li:nth-child(3) {border-inline-start:0}
-  .sc-benefits__list > li:nth-child(n+3) {border-top:1px solid #e6edf5}
-  .sc-benefits__list > li > a {border-radius:0!important}
-  .sc-benefits__list {overflow:hidden;border-radius:12px}
-  .sc-benefits__badge {gap:7px;min-height:54px;padding:7px 9px}
-  .sc-benefits__label {font-size:13px}
-  .sc-benefits__icon {flex-basis:29px;height:29px;border-radius:8px}
-  .sc-benefits__icon svg {width:17px;height:17px}
-  .sc-benefits__notice {padding-inline:9px 4px;column-gap:5px;grid-template-columns:minmax(0,1fr) auto}
-  .sc-benefits__eyebrow,.sc-benefits__count {display:none}
-  .sc-benefits__nav {min-width:34px;min-height:40px}
-}
-@media(prefers-reduced-motion:reduce) { .sc-benefits__badge {transition:none} }
+@media(prefers-reduced-motion:reduce){.sc-benefits__badge{transition:none}}
