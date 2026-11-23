@@ -74,6 +74,8 @@
     const example=api.quote($('exampleBase').valueAsNumber,$('exampleFee').valueAsNumber,$('exampleVAT').value==='yes'?api.DEMO_VAT:0,
       $('exampleType').value,buyer(),contract());
     breakdown('billingExampleRows',example?pairs(example,false):[]);
+    const status=$('scBillingLive');
+    if(status)status.textContent=example?pick('ผลคำนวณล่าสุด · '+money(example.gross),'Live total · '+money(example.gross)):pick('กรอกตัวเลขตั้งแต่ 0 ขึ้นไปเพื่อคำนวณใหม่','Enter nonnegative values to calculate');
     text('billingExampleNote',example?reasons()[example.reason]:pick('กรอกยอดและค่าบริหารเป็นตัวเลขตั้งแต่ 0 ขึ้นไป','Enter nonnegative amounts in both fields.'));
     $('printEstimate').disabled=!data.ready;
     text('printEstimate',result?pick('พิมพ์ใบประมาณราคา / บันทึก PDF','Print estimate / Save PDF'):
@@ -110,8 +112,14 @@
     document.body.classList.add('qb-print-active');$('billPrintSheet').hidden=false;
     try{window.print();}catch{clearPrint();}
   });
-  for(const id of ['billBuyer','billContract','exampleType','exampleVAT'])$(id).addEventListener('change',update);
-  for(const id of ['exampleBase','exampleFee'])$(id).addEventListener('input',update);
+  for(const id of ['billBuyer','billContract','exampleType','exampleVAT']){
+    $(id).addEventListener('change',update);
+    $(id).addEventListener('input',update);
+  }
+  for(const id of ['exampleBase','exampleFee']){
+    $(id).addEventListener('input',update);
+    $(id).addEventListener('change',update);
+  }
   $('billingExample').addEventListener('toggle',update);
   window.SCWORK_QUOTE_BILLING_UI={render};
 })();

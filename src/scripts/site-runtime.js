@@ -25,7 +25,7 @@
     '.contact-form-wrap h3':'headings.formTitle',
     '.header-cta':'navigation.quote','.main-nav a[href="#home"]':'navigation.home',
     '.main-nav a[href="#about"]:not(#clientCreditsNav)':'navigation.about','.main-nav a[href="#services"]':'navigation.services',
-    '.main-nav a[href="#blog"]':'navigation.blog','.main-nav a[href="#contact"]':'navigation.contact',
+    '.main-nav a[href="#portfolio"]':'navigation.portfolio','.main-nav a[href="#blog"]':'navigation.blog','.main-nav a[href="#contact"]':'navigation.contact',
     '.pricing-note':'labels.pricingDemoNote',
     '.contact-form-wrap button[type="submit"]':'labels.submit','.form-note':'labels.formNote',
     '.footer-brand > p':'footer.description',

@@ -1,0 +1,23 @@
+/** V2.1.24 scoped regression tests; run with: node qa/validate-v2124.mjs */
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import {join,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=dirname(dirname(fileURLToPath(import.meta.url)));
+const read=f=>readFileSync(join(root,f),'utf8');
+const home=read('index.html'),quote=read('smart-quote.html'),style=read('src/styles/36-portfolio-live-polish.css');
+const site=read('data/site-data.js'),main=read('src/scripts/main.js');
+assert(home.includes('id="portfolioNav"')&&home.includes('href="#portfolio"'),'missing portfolio navigation');
+assert(home.includes('id="portfolio"')&&home.includes('sc-portfolio__grid'),'missing portfolio target');
+assert(home.includes('id="scPortfolioNotice"'),'missing mockup disclosure');
+for(const src of ['quote-product-labels.webp','quote-diecut-stickers.webp','quote-large-format.webp'])assert(existsSync(join(root,'assets/images/quote-choices',src)),src);
+assert(site.includes('"portfolio": "ผลงาน"')&&site.includes('"portfolio": "Portfolio"'),'missing localized nav');
+assert(main.includes('scPortfolioNotice')&&main.includes('scPortfolioLabel3'),'missing localized showcase');
+assert(!home.includes('id="socialProofEyebrow"'),'obsolete eyebrow retained');
+assert(home.includes('id="socialProofTitle"'),'client section accidentally removed');
+assert(style.includes('sc-benefits a.sc-benefits__badge:hover')&&style.includes('background:#ff6900;color:#fff'),'missing orange hover');
+assert(quote.includes('id="scLiveCaption"')&&quote.includes('id="scBillingLive"'),'missing live results');
+assert(read('src/scripts/smart-quote.js').includes("text('scLiveCaption'"),'missing live quote state');
+assert(read('src/scripts/quote-billing-ui.js').includes("status.textContent=example?"),'missing live billing state');
+assert(home.includes('36-portfolio-live-polish.css')&&quote.includes('36-portfolio-live-polish.css'),'new styling not loaded');
+console.log('SCWORK V2.1.24 scoped QA PASS');

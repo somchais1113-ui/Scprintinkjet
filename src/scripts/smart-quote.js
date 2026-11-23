@@ -128,6 +128,7 @@
       }
     }
     text('summaryTitle',t(help?'adviceTitle':result?'summaryTitle':'manualTitle'));
+    text('scLiveCaption',help?pick('ข้อมูลปรึกษาอัปเดตทันที','Consultation details update live'):!valid?pick('กรอกขนาดและจำนวนที่ถูกต้องเพื่อดูผล','Enter valid dimensions and quantity'):result?pick('คำนวณทันทีจากเรทราคาที่มีอยู่','Live calculation from available rate card'):pick('สเปกอัปเดตทันที · ราคานี้ต้องให้ทีมประเมิน','Specifications update live · manual quote needed'));
     text('summaryMaterial',help?($('helpPurpose').selectedIndex>0?$('helpPurpose').selectedOptions[0].textContent:t('advicePending')):matName(selection()));
     text('summarySpecs',help?$('helpBrief').value.trim():valid?number(st.widthCm)+' × '+number(st.heightCm)+' '+t('centimeter')+' · '+number(st.quantity)+' '+t('pieces'):'');
     for(const id of ['priceRows','perPieceRow','totalRow','rateStatus','rateMeta'])hide(id,!result);
@@ -245,7 +246,10 @@
   all('[data-qty]').forEach(b=>b.addEventListener('click',()=>{$('quantity').value=b.dataset.qty;calculate();}));
   all('[data-plan-qty]').forEach(b=>b.addEventListener('click',()=>{$('quantity').value=b.dataset.planQty;calculate();}));
   $('material').addEventListener('change',e=>material(e.target.value));
-  for(const id of ['width','height','quantity','artUrl','helpBrief'])$(id).addEventListener('input',calculate);
+  for(const id of ['width','height','quantity','artUrl','helpBrief']){
+    $(id).addEventListener('input',calculate);
+    $(id).addEventListener('change',calculate);
+  }
   for(const [id,delta] of [['quantityPlus',100],['quantityMinus',-100]])$(id).addEventListener('click',()=>{
     $('quantity').value=Math.max(1,Math.min(1000000,(Number($('quantity').value)||1)+delta));calculate();
   });

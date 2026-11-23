@@ -74,6 +74,7 @@ window.PROCLEANING_SITE = {
         "about": "เกี่ยวกับเรา",
         "services": "บริการสติกเกอร์",
         "blog": "สาระงานพิมพ์",
+        "portfolio": "ผลงาน",
         "contact": "ติดต่อเรา",
         "quote": "ขอใบเสนอราคา"
       },
@@ -209,6 +210,7 @@ window.PROCLEANING_SITE = {
     "about": "About",
     "services": "Sticker Services",
     "blog": "Insights",
+    "portfolio": "Portfolio",
     "contact": "Contact",
     "quote": "Request a Quote"
   },

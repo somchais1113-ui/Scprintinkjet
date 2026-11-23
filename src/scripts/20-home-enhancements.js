@@ -2,7 +2,7 @@
   'use strict';
   const isThai=() => document.documentElement.lang === 'th';
   const t = () => isThai() ? {
-    socialEyebrow:'ขอบคุณจาก SCWork',
+    socialEyebrow:'',
     socialTitle:'ลูกค้าที่ร่วมงานกับเรา',
     socialDescription:'ขอบคุณที่ไว้วางใจให้ SCWork ดูแลงานพิมพ์สติกเกอร์ของคุณ',
     socialNav:'ลูกค้าของเรา',
@@ -29,7 +29,7 @@
     facebook:'Facebook',
     messenger:'Messenger'
   } : {
-    socialEyebrow:'CLIENT CREDITS',
+    socialEyebrow:'',
     socialTitle:'Clients we’ve worked with',
     socialDescription:'Thank you for trusting SCWork with your sticker printing projects.',
     socialNav:'Clients',

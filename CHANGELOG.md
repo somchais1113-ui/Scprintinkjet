@@ -1,3 +1,10 @@
+## V2.1.24 — Navigation, quote feedback and spacing
+
+- New localized Portfolio nav and clearly marked work-type examples.
+- Selected-style orange hover and improved service navigation typography.
+- Live quote state and billing calculation status; existing pricing/tax formulas unchanged.
+- Compact client credits and eyebrow removal.
+
 ## V2.1.21 — Service information editorial redesign
 
 - Four service pages rebuilt as typography-first layouts with contextual photographs, reduced icons, clearer content hierarchy and coherent navigation.

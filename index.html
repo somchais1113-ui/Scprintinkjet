@@ -60,6 +60,7 @@
   <link rel="stylesheet" href="./src/styles/32-services-crossfade.css?v=2.1.17">
   <link rel="stylesheet" href="./src/styles/34-cinematic-hero.css?v=2.1.20">
   <link rel="stylesheet" href="./src/styles/35-editorial-footer.css?v=2.1.22">
+  <link rel="stylesheet" href="./src/styles/36-portfolio-live-polish.css?v=2.1.24">
   <script defer src="./src/scripts/editorial-footer.js?v=2.1.22"></script>
 </head>
 <body>
@@ -79,7 +80,7 @@
       <a class="brand" href="#home" aria-label="SCWORK — home"><img class="brand__logo" src="./assets/icons/scwork-logo.png" alt="SCWORK" width="176" height="58" /></a>
       <button class="menu-toggle" id="menuToggle" aria-controls="mainNav" aria-expanded="false" aria-label="Open navigation"><span></span><span></span><span></span></button>
       <nav class="main-nav" id="mainNav" aria-label="Main navigation">
-        <a class="is-current" href="#home">Home</a><a href="#about" id="clientCreditsNav">Clients</a><a href="#services">Service</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
+        <a class="is-current" href="#home">Home</a><a href="#about" id="clientCreditsNav">Clients</a><a href="#services">Service</a><a href="#portfolio" id="portfolioNav">Portfolio</a><a href="#blog">Blog</a><a href="#contact">Contact</a>
       </nav>
       <div class="sc-locale" id="scLocale" data-language-launcher></div>
       <a class="sc-quote-cta button button--primary header-cta" href="./smart-quote.html">Get a quote</a>
@@ -218,10 +219,25 @@
       </div>
     </section>
 
+
+    <section class="sc-portfolio" id="portfolio" aria-labelledby="scPortfolioTitle">
+      <div class="container">
+        <header class="sc-portfolio__head">
+          <div><span class="eyebrow" id="scPortfolioEyebrow">PORTFOLIO / WORK TYPES</span><h2 id="scPortfolioTitle">ผลงาน</h2></div>
+          <p id="scPortfolioLead">สำรวจรูปแบบงานที่เรารับผลิต ก่อนส่งภาพผลงานจริงมาเพิ่มเติม</p>
+        </header>
+        <div class="sc-portfolio__grid">
+          <figure><img src="./assets/images/quote-choices/quote-product-labels.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ตัวอย่างรูปแบบฉลากสินค้า"/><figcaption id="scPortfolioLabel1">ฉลากสินค้า</figcaption></figure>
+          <figure><img src="./assets/images/quote-choices/quote-diecut-stickers.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ตัวอย่างรูปแบบสติกเกอร์ไดคัท"/><figcaption id="scPortfolioLabel2">สติกเกอร์ไดคัท</figcaption></figure>
+          <figure><img src="./assets/images/quote-choices/quote-large-format.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ตัวอย่างงานสติกเกอร์ขนาดใหญ่"/><figcaption id="scPortfolioLabel3">สติกเกอร์ขนาดใหญ่</figcaption></figure>
+        </div>
+        <p class="sc-portfolio__notice" id="scPortfolioNotice">ภาพประกอบเป็นตัวอย่างประเภทงาน ไม่ใช่ภาพผลงานลูกค้าจริง</p>
+      </div>
+    </section>
+
     <section class="section sc-client-credits" id="about" aria-labelledby="socialProofTitle">
       <div class="container">
         <div class="sc-client-credits__intro">
-          <span class="eyebrow" id="socialProofEyebrow">CLIENT CREDITS</span>
           <h2 id="socialProofTitle">Clients we’ve worked with</h2>
           <p id="socialProofDescription">Thank you for trusting SCWork with your sticker printing projects.</p>
         </div>
