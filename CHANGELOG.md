@@ -1,3 +1,10 @@
+## V2.1.32 — Separate Admin Subdomain Foundation
+- Added `admin-cloud/` as a separately deployable SCWork Pricing Control Admin. Sign-in is real Supabase Auth (not simulated) when user connects credentials; TOTP MFA is enforced by database policies.
+- Added SQL for owner/editor/viewer, private Supplier quotes, evidence bucket, audit history, owner-only approval RPC, and locked public selling-rate table.
+- Added a private cost bridge into the existing local Pricing Workbench, requiring manual review and new Rate Card approval.
+- Kept existing Public Website and its pricing logic unchanged; no secrets, internal costs, or cloud admin files are in release build.
+- **Not yet live**: deployment, Supabase project, domain, actual role/UAT checks, and automatic publishing require external configuration.
+
 ## V2.1.30 — Quote-linked pricing clarity (2026-11-24)
 
 - Corrected the primary issue identified in user screenshots: the unrelated, user-entered THB 1,000 sample/VAT calculator was still visible within Smart Quote.

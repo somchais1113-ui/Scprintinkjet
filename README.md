@@ -1,4 +1,4 @@
-> **V2.1.31:** Private, local-first Pricing Control Center at `tools/pricing-control-center.html`. Evidence from Supplier prices is browser-local; approved costs hand off into Pricing Master drafts. See `START_HERE_V2.1.31.md` and `docs/PRICING-CONTROL-CLOUD-ROADMAP-V2131.md`. This is not an online, authenticated pricing system.
+> **LATEST V2.1.32:** Separate Cloud Admin starter (`admin-cloud/`) with Supabase Auth+MFA, RLS-protected supplier quotes, evidence, owner approval, and manual private cost bridge. Not live until configured. Read `START_HERE_V2.1.32.md`.
 
 **Latest: V2.1.30** — Quote-linked totals replace the standalone example tax calculator. See `START_HERE_V2.1.30.md`.
 

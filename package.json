@@ -1,7 +1,7 @@
 {
   "name": "scwork-inkjet-sticker-storefront",
   "private": true,
-  "version": "2.1.31",
+  "version": "2.1.32",
   "description": "SCWork Inkjet storefront, product-label landing page, quote and private pricing tools",
   "scripts": {
     "dev": "python3 -m http.server 8000",
@@ -48,7 +48,8 @@
     "check:v2122": "node qa/validate-v2122.mjs",
     "check:v2124": "node qa/validate-v2124.mjs",
     "check:v2125": "node qa/validate-v2125.mjs",
-    "check:v2131": "node qa/validate-v2131.mjs"
+    "check:v2131": "node qa/validate-v2131.mjs",
+    "check:v2132": "node qa/validate-v2132.mjs"
   },
   "license": "UNLICENSED"
 }
