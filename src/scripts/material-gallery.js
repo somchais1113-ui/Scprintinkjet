@@ -510,7 +510,6 @@
     text('scMaterialsEyebrow',th?'วัสดุสติกเกอร์และงานป้าย':'Sticker and banner materials');
     text('materials-title',th?'วัสดุงานพิมพ์ 6 ประเภท':'Six print material types');
     text('scMaterialsLead',th?'เปรียบเทียบผิววัสดุ งานพิมพ์ และตัวอย่างการใช้งานทั้ง 6 ประเภท รวมถึงไวนิลสำหรับงานป้าย เพื่อเลือกให้เหมาะกับงานจริง':'Compare material surfaces, printed examples and applications across six materials, including banner vinyl.');
-    text('scMaterialsNote',th?'ภาพที่แสดงเป็นตัวอย่างและภาพจำลองสำหรับช่วยเลือกวัสดุ ไม่ใช่ผลงานลูกค้าจริง และไม่ใช้ยืนยันสเปกหรือคุณสมบัติของวัสดุโดยลำพัง':'Visual references and illustrative mockups, not actual customer projects. Images alone cannot certify a material specification.');
     text('scMaterialsBenefitsTitle',th?'ข้อดีของวัสดุ':'Material benefits');
     text('scMaterialsExampleTitle',th?'ตัวอย่างงานที่เหมาะสม':'Suitable applications');
     text('scMaterialsSlideInfoTitle',th?'รายละเอียดภาพ':'Image details');

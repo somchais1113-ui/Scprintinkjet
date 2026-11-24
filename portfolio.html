@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="ตัวอย่างงานสติกเกอร์และกระบวนการผลิต 20 ภาพ แยกตามฉลากสินค้า ไดคัท งานตกแต่งร้าน และกระบวนการผลิตของ SCWork">
+  <meta name="description" content="รวมภาพตัวอย่างงานสติกเกอร์ 20 ภาพ พร้อม Cinematic Banner 4 สไลด์ ครอบคลุมฉลากสินค้า ไดคัท ตกแต่งร้านและการผลิต">
   <meta name="theme-color" content="#08264F">
   <title>ผลงานและกระบวนการผลิต | SCWork</title>
-  <link rel="icon" href="./favicon.ico?v=2.1.26" sizes="any">
+  <link rel="icon" href="./favicon.ico?v=2.1.28" sizes="any">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,11 +16,13 @@
   <link rel="stylesheet" href="./src/styles/17-language-modal.css?v=2.1.20">
   <link rel="stylesheet" href="./src/styles/18-cta-standard.css?v=2.1.20">
   <link rel="stylesheet" href="./src/styles/38-portfolio-gallery.css?v=2.1.26">
-  <script defer src="./data/site-data.js?v=2.1.23"></script>
+  <link rel="stylesheet" href="./src/styles/39-portfolio-cinema-v2128.css?v=2.1.28">
+  <script defer src="./data/site-data.js?v=2.1.28"></script>
   <script defer src="./data/extra-locales.js?v=2.1.1"></script>
   <script defer src="./src/scripts/i18n.js?v=2.1.23"></script>
   <script defer src="./data/portfolio-data.js?v=2.1.26"></script>
-  <script defer src="./src/scripts/portfolio-gallery.js?v=2.1.26"></script>
+  <script defer src="./src/scripts/portfolio-gallery.js?v=2.1.28"></script>
+  <script defer src="./src/scripts/portfolio-cinema-v2128.js?v=2.1.28"></script>
   <script defer src="./src/scripts/language-modal.js?v=2.1.1"></script>
 </head>
 <body class="portfolio-page">
@@ -37,16 +39,35 @@
     </div>
   </header>
   <main id="portfolioMain">
-    <section class="portfolio-intro portfolio-shell" aria-labelledby="portfolioTitle">
-      <p class="portfolio-crumb" id="portfolioBreadcrumb">หน้าแรก / ผลงาน</p>
-      <div class="portfolio-intro__split">
-        <div>
-          <p class="portfolio-kicker" id="portfolioEyebrow">SCWORK / PRINT & PRODUCTION</p>
-          <h1 id="portfolioTitle">ผลงานและกระบวนการผลิต</h1>
-        </div>
-        <div class="portfolio-intro__aside"><p id="portfolioIntroduction">สำรวจตัวอย่างการใช้งานสติกเกอร์ ตั้งแต่การเตรียมไฟล์ เลือกวัสดุ พิมพ์ ไดคัท ตรวจคุณภาพ ไปจนถึงการติดตั้ง</p><p class="portfolio-intro__count"><strong>20</strong> <span id="portfolioVisualCount">ภาพตัวอย่าง</span></p></div>
+    <section class="portfolio-cinema" id="portfolioCinema" aria-roledescription="carousel" aria-label="ภาพตัวอย่างผลงาน 4 หมวด">
+      <div class="portfolio-cinema__slides" aria-hidden="true">
+        <figure class="portfolio-cinema__slide is-active" data-portfolio-slide="0"><img src="./assets/images/portfolio/hero/portfolio-hero-01.webp" width="1920" height="1080" loading="eager" fetchpriority="high" alt="ทีมงานจำลองตรวจงานพิมพ์ฉลากสินค้าและขวดบรรจุภัณฑ์"></figure>
+        <figure class="portfolio-cinema__slide" data-portfolio-slide="1"><img src="./assets/images/portfolio/hero/portfolio-hero-02.webp" width="1920" height="1080" loading="lazy" alt="บุคลากรจำลองตรวจสติกเกอร์ไดคัทที่เครื่องตัด"></figure>
+        <figure class="portfolio-cinema__slide" data-portfolio-slide="2"><img src="./assets/images/portfolio/hero/portfolio-hero-03.webp" width="1920" height="1080" loading="lazy" alt="ทีมติดตั้งจำลองทำงานติดสติกเกอร์หน้าร้าน"></figure>
+        <figure class="portfolio-cinema__slide" data-portfolio-slide="3"><img src="./assets/images/portfolio/hero/portfolio-hero-04.webp" width="1920" height="1080" loading="lazy" alt="ตรวจคุณภาพแผ่นสติกเกอร์ก่อนส่งมอบ"></figure>
       </div>
-      <div class="portfolio-intro__visual"><img src="./assets/images/portfolio/gallery/work-02.webp" width="1600" height="900" alt="ภาพตัวอย่างเจ้าหน้าที่ลักษณะคนเอเชียตรวจฉลากสินค้า" loading="eager" fetchpriority="high"></div>
+      <div class="portfolio-cinema__shade" aria-hidden="true"></div>
+      <div class="portfolio-shell portfolio-cinema__inner">
+        <div class="portfolio-cinema__copy" id="portfolioCinemaCopy" aria-live="polite" aria-atomic="true">
+          <p class="portfolio-cinema__crumb" id="portfolioBreadcrumb">หน้าแรก / ผลงาน</p>
+          <p class="portfolio-cinema__eyebrow" id="portfolioEyebrow">SCWORK / DESIGN & PRODUCTION</p>
+          <h1 id="portfolioTitle">ผลงานและกระบวนการผลิต</h1>
+          <p id="portfolioIntroduction">สำรวจตัวอย่างงานสติกเกอร์และกระบวนการผลิตในรูปแบบที่เหมาะกับการใช้งานจริง</p>
+          <a class="portfolio-cinema__cta" href="#portfolioBrowseTitle" id="portfolioCinemaCta">ดูผลงานทั้งหมด</a>
+        </div>
+        <div class="portfolio-cinema__controls">
+          <p class="portfolio-cinema__count" id="portfolioCinemaCount"><strong>01</strong><span> / 04</span></p>
+          <button type="button" class="portfolio-cinema__control" id="portfolioCinemaPrev" aria-label="ภาพก่อนหน้า"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 5-7 7 7 7"/></svg></button>
+          <button type="button" class="portfolio-cinema__control" id="portfolioCinemaPause" aria-label="หยุดเล่นสไลด์" aria-pressed="false"><span class="portfolio-cinema__pause-icon" aria-hidden="true"></span></button>
+          <button type="button" class="portfolio-cinema__control" id="portfolioCinemaNext" aria-label="ภาพถัดไป"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 5 7 7-7 7"/></svg></button>
+          <div class="portfolio-cinema__dots" id="portfolioCinemaDots" role="group" aria-label="เลือกสไลด์">
+            <button type="button" class="is-active" data-cinema-dot="0" aria-label="สไลด์ 1" aria-pressed="true"></button>
+            <button type="button" data-cinema-dot="1" aria-label="สไลด์ 2" aria-pressed="false"></button>
+            <button type="button" data-cinema-dot="2" aria-label="สไลด์ 3" aria-pressed="false"></button>
+            <button type="button" data-cinema-dot="3" aria-label="สไลด์ 4" aria-pressed="false"></button>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="portfolio-directory portfolio-shell" aria-labelledby="portfolioBrowseTitle">
@@ -54,7 +75,7 @@
       <div class="portfolio-filter" id="portfolioFilters" role="group" aria-label="หมวดผลงาน"></div>
       <p class="portfolio-results" id="portfolioResults" role="status" aria-live="polite">แสดง 20 รายการ</p>
       <div class="portfolio-gallery" id="portfolioGallery"></div>
-      <p class="portfolio-disclaimer" id="portfolioDisclaimer">หมายเหตุ: ภาพชุดนี้เป็นภาพตัวอย่างและภาพจำลองการผลิต (รวมบุคลากรจำลอง) ไม่ใช่ผลงานลูกค้าหรือภาพทีมงานจริงของ SCWork และไม่ใช่ผลการทดสอบหรือรับประกันคุณภาพวัสดุ</p>
+
     </section>
 
     <section class="portfolio-consult portfolio-shell" aria-labelledby="portfolioConsultTitle">

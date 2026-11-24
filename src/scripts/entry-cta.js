@@ -5,7 +5,7 @@
   function apply(){
     const lang=document.documentElement.lang||'th', th=lang==='th';
     const extra=window.SCWORK_EXTRA_LOCALES?.[lang];
-    const quote=th?'เช็กราคาเบื้องต้น':extra?.navigation?.quote||'Check estimated price';
+    const quote=th?'เช็กราคา':extra?.navigation?.quote||'Check price';
     const advice=th?'ให้ทีมช่วยแนะนำ':extra?.headings?.adviceButton||'Ask for advice';
     const copy=th?{
       quoteEntryKicker:'ขอราคางานสติกเกอร์','quote-entry-title':'เตรียมสเปกก่อนสั่งพิมพ์',
@@ -24,7 +24,7 @@
     };
     for(const [id,value] of Object.entries(copy))if($(id))$(id).textContent=value;
     document.querySelectorAll('a[href*="smart-quote.html"]').forEach(a=>{
-      const url=new URL(a.getAttribute('href'),location.href);
+      const url=new URL(a.getAttribute('href'),document.baseURI||location.href);
       if(!url.pathname.endsWith('/smart-quote.html'))return;
       url.searchParams.set('lang',lang);
       a.setAttribute('href','./smart-quote.html'+url.search+url.hash);

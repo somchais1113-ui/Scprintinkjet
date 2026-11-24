@@ -1,3 +1,14 @@
+## V2.1.28 — Portfolio cinematic banner, clearer copy & six aligned materials (2026-11-24)
+
+- Updated portfolio hero to four *single-scene* photographic slides using Cinematic crossfade (880ms) and slow zoom-in (7.5% over 9s), pause/previous/next/dots and reduced-motion support; the 20-item gallery remains intact.
+- Removed price-related Thai “เบื้องต้น” text from displayed quote CTAs and rate summaries; retained disclosures when a price is not confirmed. Unrelated uses of the Thai word were deliberately left intact.
+- Removed long inline image-mockup notes from the requested homepage material/portfolio positions and the long portfolio gallery note. Retained a short site-level disclosure that illustrative images do not depict verified client work.
+- Replaced the visible client-logo marquee pause phrase with an accessible icon-only pause control; animation controls remain functional.
+- Improved the hierarchy of the 3 service comparison cards by increasing font size/contrast and tightening vertical padding; no artificial price claims.
+- Added **six material shortcuts** near the 3 service categories; reconciled the public quote-material options with the original five gallery substrates plus non-adhesive banner vinyl. Direct material deep links preselect the correct item, never injects a price.
+- Tightened footer row spacing and enlarged regular-weight link text without making everything bold.
+- Does not modify approved print price formulas, Smart Quote billing math or customer information.
+
 ## V2.1.27 — Sixth material: Vinyl banner
 
 # SCWork Inkjet Sticker V2.1.27 — Material Gallery (6 types)

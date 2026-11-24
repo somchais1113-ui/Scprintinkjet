@@ -31,7 +31,7 @@
   <link rel="stylesheet" href="./src/styles/13-spacing-system.css?v=scwork-1.4" />
   <link rel="stylesheet" href="./src/styles/14-sticker-transformation.css?v=scwork-1.4" />
   <link rel="stylesheet" href="./src/styles/15-commerce-enhancements.css?v=2.1.1" />
-  <script src="./data/site-data.js?v=2.1.23" defer></script>
+  <script src="./data/site-data.js?v=2.1.28" defer></script>
   <script src="./src/scripts/config.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/content.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/ui.js?v=2.1.26" defer></script>
@@ -42,7 +42,7 @@
   <script src="./src/scripts/motion.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/commerce-enhancements.js?v=2.1.15" defer></script>
   <script src="./data/client-logos.js?v=2.1.4" defer></script>
-  <script src="./src/scripts/20-home-enhancements.js?v=2.1.4" defer></script>
+  <script src="./src/scripts/20-home-enhancements.js?v=2.1.28" defer></script>
   <link rel="stylesheet" href="./src/styles/17-language-modal.css?v=2.1.1" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" />
   <link rel="stylesheet" href="src/styles/18-cta-standard.css?v=2.1.20" />
@@ -51,7 +51,7 @@
   <link rel="stylesheet" href="./src/styles/26-support-bar.css?v=2.1.20">
   <script defer src="./src/scripts/support-bar.js?v=2.1.5"></script>
   <link rel="stylesheet" href="./src/styles/27-material-gallery.css?v=2.1.27" />
-  <script defer src="./src/scripts/material-gallery.js?v=2.1.27"></script>
+  <script defer src="./src/scripts/material-gallery.js?v=2.1.28"></script>
   <link rel="stylesheet" href="./src/styles/28-hero-footer.css?v=2.1.8" />
 
   <link rel="stylesheet" href="./src/styles/29-benefit-strip.css?v=2.1.21" />
@@ -62,6 +62,7 @@
   <link rel="stylesheet" href="./src/styles/35-editorial-footer.css?v=2.1.22">
   <link rel="stylesheet" href="./src/styles/36-portfolio-live-polish.css?v=2.1.24">
   <link rel="stylesheet" href="./src/styles/37-portfolio-pricing-v2126.css?v=2.1.26">
+  <link rel="stylesheet" href="./src/styles/40-scwork-refinement-v2128.css?v=2.1.28">
   <script defer src="./src/scripts/editorial-footer.js?v=2.1.22"></script>
 </head>
 <body>
@@ -198,7 +199,19 @@
 
     <section class="section pricing-section" id="pricing" aria-labelledby="pricing-title">
       <div class="pricing-section__green" aria-hidden="true"></div>
-      <div class="container pricing-content"><div class="pricing-heading"><span class="eyebrow">POPULAR APPLICATIONS</span><h2 id="pricing-title">Find the Right Sticker Solution</h2></div><div class="sc-price-link-wrap sc-price-link-wrap--lead"><a id="scPriceLink" class="sc-quote-cta button sc-price-link" href="./smart-quote.html">Try instant estimate →</a><p id="scPricingDisclaimer" class="sc-price-disclaimer">For planning only · not an approved sales quotation.</p></div><div class="pricing-grid" id="pricingGrid"></div><p class="pricing-note" id="pricingNote">Prices are based on actual material, quantity, dimensions and finishing requirements.</p></div>
+      <div class="container pricing-content"><div class="pricing-heading"><span class="eyebrow">POPULAR APPLICATIONS</span><h2 id="pricing-title">Find the Right Sticker Solution</h2></div><div class="sc-price-link-wrap sc-price-link-wrap--lead"><a id="scPriceLink" class="sc-quote-cta button sc-price-link" href="./smart-quote.html">Try instant estimate →</a><p id="scPricingDisclaimer" class="sc-price-disclaimer">For planning only · not an approved sales quotation.</p></div><div class="pricing-grid" id="pricingGrid"></div>
+<div class="sc-pricing-materials" id="scPricingMaterials" aria-labelledby="scPricingMaterialsTitle">
+  <div class="sc-pricing-materials__intro"><h3 id="scPricingMaterialsTitle" data-price-mat-th="เลือกวัสดุได้ 6 ประเภท" data-price-mat-en="Six material options">เลือกวัสดุได้ 6 ประเภท</h3><p data-price-mat-th="เลือกชนิดวัสดุให้ตรงกับลักษณะงาน แล้วส่งสเปกเพื่อขอราคา" data-price-mat-en="Select a material based on the application and submit specs for quotation.">เลือกชนิดวัสดุให้ตรงกับลักษณะงาน แล้วส่งสเปกเพื่อขอราคา</p></div>
+  <div class="sc-pricing-materials__grid">
+    <a data-quote-label-preserve data-price-mat-th="กระดาษขาว" data-price-mat-en="White paper" href="./smart-quote.html?material=paper-sticker&amp;lang=th">กระดาษขาว</a>
+    <a data-quote-label-preserve data-price-mat-th="กระดาษคราฟท์" data-price-mat-en="Kraft paper" href="./smart-quote.html?material=kraft-sticker&amp;lang=th">กระดาษคราฟท์</a>
+    <a data-quote-label-preserve data-price-mat-th="PP ขาว" data-price-mat-en="White PP" href="./smart-quote.html?material=pp-white&amp;lang=th">PP ขาว</a>
+    <a data-quote-label-preserve data-price-mat-th="PP ใส" data-price-mat-en="Clear PP" href="./smart-quote.html?material=pp-clear&amp;lang=th">PP ใส</a>
+    <a data-quote-label-preserve data-price-mat-th="PVC สติกเกอร์" data-price-mat-en="Adhesive PVC" href="./smart-quote.html?material=pvc-sqm&amp;lang=th">PVC สติกเกอร์</a>
+    <a data-quote-label-preserve data-price-mat-th="ไวนิลแบนเนอร์" data-price-mat-en="Banner vinyl" href="./smart-quote.html?material=vinyl-banner&amp;lang=th">ไวนิลแบนเนอร์</a>
+  </div>
+  <p class="sc-pricing-materials__notice" data-price-mat-th="ไวนิลแบนเนอร์เป็นวัสดุป้ายทั่วไป ไม่ใช่สติกเกอร์มีกาว และต้องให้ทีมประเมินสเปกก่อนเสนอราคา" data-price-mat-en="Banner vinyl is generally non-adhesive signage stock and requires a project-specific quotation.">ไวนิลแบนเนอร์เป็นวัสดุป้ายทั่วไป ไม่ใช่สติกเกอร์มีกาว และต้องให้ทีมประเมินสเปกก่อนเสนอราคา</p>
+</div><p class="pricing-note" id="pricingNote">Prices are based on actual material, quantity, dimensions and finishing requirements.</p></div>
     </section>
 
     <section class="sc-process" id="how-it-works" aria-labelledby="scProcessTitle">
@@ -233,7 +246,6 @@
           <figure><img src="./assets/images/portfolio/portfolio-installation-process.webp" width="1200" height="800" loading="lazy" decoding="async" alt="เจ้าหน้าที่ลักษณะคนเอเชียติดตั้งสติกเกอร์หน้าร้านพร้อมภาพเครื่องพิมพ์และม้วนวัสดุ"/><figcaption id="scPortfolioLabel3">สติกเกอร์ขนาดใหญ่</figcaption></figure>
         </div>
         <div class="sc-portfolio__bottom">
-          <p class="sc-portfolio__notice" id="scPortfolioNotice">ภาพจำลองขั้นตอนการทำงานและบุคลากร เพื่อแสดงประเภทงาน ไม่ใช่ภาพทีมงานหรือผลงานลูกค้าจริง</p>
           <a class="sc-portfolio__view-all" id="scPortfolioViewAll" href="./portfolio.html?lang=th">ดูผลงานทั้งหมด <span aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -250,7 +262,7 @@
           <div class="sc-client-credits__marquee" id="scClientLogoMarquee">
             <div class="sc-client-credits__track" id="scClientLogoTrack" dir="ltr"></div>
           </div>
-          <button class="sc-client-credits__pause" id="scClientLogoPause" type="button" aria-controls="scClientLogoTrack" hidden>Pause logo animation</button>
+          <button class="sc-client-credits__pause" id="scClientLogoPause" type="button" aria-controls="scClientLogoTrack" aria-label="Pause logo animation" hidden></button>
         </div>
       </div>
     </section>
@@ -312,7 +324,6 @@
             <p class="sc-material__detail">PVC-coated flexible banner stock for signs and large-format displays; normally non-adhesive.</p>
           </article>
         </div>
-        <p class="sc-material__note" id="scMaterialsNote">Images illustrate surface and finish. The supplied material may vary in colour and sheen.</p>
       </div>
       <dialog class="sc-material__dialog" id="scMaterialsPreview" aria-labelledby="scMaterialsPreviewTitle">
         <div class="sc-material__panel">
@@ -384,7 +395,7 @@
             <li><a href="#services" data-footer-th="ฉลากสินค้าและบรรจุภัณฑ์" data-footer-en="Product labels & packaging">ฉลากสินค้าและบรรจุภัณฑ์</a></li>
             <li><a href="#services" data-footer-th="สติกเกอร์ไดคัทตามรูปทรง" data-footer-en="Custom die-cut stickers">สติกเกอร์ไดคัทตามรูปทรง</a></li>
             <li><a href="#services" data-footer-th="สติกเกอร์ติดร้านและกระจก" data-footer-en="Retail & window graphics">สติกเกอร์ติดร้านและกระจก</a></li>
-            <li><a href="./smart-quote.html?lang=th" data-quote-label-preserve data-footer-th="เช็กราคาเบื้องต้น" data-footer-en="Check estimated price">เช็กราคาเบื้องต้น</a></li>
+            <li><a href="./smart-quote.html?lang=th" data-quote-label-preserve data-footer-th="เช็กราคา" data-footer-en="Check price">เช็กราคา</a></li>
           </ul>
         </div>
         <div class="footer-support">
@@ -409,6 +420,6 @@
       <div class="footer-bottom"><span>© <span id="year">2026</span> SCWork. สงวนลิขสิทธิ์</span><span>เว็บไซต์สาธิต · ใช้ภาพประกอบตัวอย่าง ไม่ใช่ผลงานลูกค้าจริง</span></div>
     </div>
   </footer>
-<script src="./config/public-config.js?v=2.1.9"></script><script src="./src/scripts/entry-cta.js?v=2.1.8" defer></script>  <script src="./src/scripts/language-modal.js?v=2.1.1" defer></script>
+<script src="./config/public-config.js?v=2.1.9"></script><script src="./src/scripts/entry-cta.js?v=2.1.28" defer></script><script src="./src/scripts/pricing-material-choices-v2128.js?v=2.1.28" defer></script>  <script src="./src/scripts/language-modal.js?v=2.1.1" defer></script>
 </body>
 </html>

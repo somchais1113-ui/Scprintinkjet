@@ -13,7 +13,7 @@
     footerMiniText:'ส่งขนาด วัสดุ จำนวน หรือรายละเอียดเบื้องต้นทาง LINE ได้เลย',
     secondaryLinksTitle:'วิธีสั่งและข้อมูลช่วยเหลือ',
     howItWorks:'ขั้นตอนขอราคางาน 4 ขั้นตอน',
-    smartRfq:'เช็กราคาเบื้องต้น',
+    smartRfq:'เช็กราคา',
     helpfulArticles:'บทความช่วยเตรียมงานพิมพ์',
     contactCardTitle:'ติดต่อสอบถาม',
     contactCardText:'บอกลักษณะงานเบื้องต้น แล้วให้ทีม SCWORK ช่วยแนะนำ',
@@ -40,7 +40,7 @@
     footerMiniText:'Send size, material, quantity or a short brief on LINE.',
     secondaryLinksTitle:'Ordering & helpful information',
     howItWorks:'4-step quotation flow',
-    smartRfq:'Check estimated price',
+    smartRfq:'Check price',
     helpfulArticles:'Helpful printing articles',
     contactCardTitle:'Contact us',
     contactCardText:'Share a short brief and let SCWORK help with the specifications.',
@@ -99,7 +99,10 @@
     if(note){note.hidden=!isPreview;note.textContent=t().previewLogos;}
     function updatePause(){
       marquee.classList.toggle('is-paused',logosPaused);
-      pause.textContent=logosPaused?t().resumeLogos:t().pauseLogos;
+      pause.textContent='';
+      pause.setAttribute('aria-label',logosPaused?t().resumeLogos:t().pauseLogos);
+      pause.setAttribute('title',logosPaused?t().resumeLogos:t().pauseLogos);
+      pause.setAttribute('aria-pressed',String(logosPaused));
     }
     updatePause();
     const signature=JSON.stringify([isPreview,logos]);

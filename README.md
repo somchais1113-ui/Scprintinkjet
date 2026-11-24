@@ -1,3 +1,7 @@
+## Current release: V2.1.28 (2026-11-24)
+
+See [START_HERE_V2.1.28.md](START_HERE_V2.1.28.md) for this version. Built on the V2.1.27 Full Package with six raw materials, new four-slide Portfolio Cinema, revised quote labels and compact footer.
+
 # Current release: V2.1.27
 
 Material gallery now contains six materials, including non-adhesive banner vinyl. See [START_HERE_V2.1.27.md](START_HERE_V2.1.27.md).

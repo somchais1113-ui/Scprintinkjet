@@ -1,0 +1,37 @@
+/* V2.1.28 — Content hierarchy, six-material quotation entry and compact regular-weight footer. */
+/* Informative comparison cards: improve scanning via size and contrast, not simply boldness. */
+.pricing-grid .price-card--comparison .price-card__subline{font-size:clamp(14px,1.1vw,16px);line-height:1.45;color:#5e718a;font-weight:450}
+.pricing-grid .price-card--comparison .price-card__header{min-height:0;padding-bottom:19px;margin-bottom:8px}
+.pricing-grid .price-card--comparison .price-card__fact{padding:14px 0 15px}
+.pricing-grid .price-card--comparison .price-card__fact dt{font-size:clamp(15px,1.16vw,17px);font-weight:650;line-height:1.45;letter-spacing:0;color:#ae4804;margin-bottom:5px}
+.pricing-grid .price-card--comparison .price-card__fact dd{font-size:clamp(17px,1.34vw,19px);font-weight:450;line-height:1.52;color:#213e60}
+.pricing-grid .price-card--comparison .button{font-size:clamp(16px,1.25vw,18px);font-weight:700}
+/* Material types are not identical to work categories. Link to an explicit, consistent six-material selector. */
+.sc-pricing-materials{margin:28px 0 14px;padding:25px 27px 23px;background:#fff;border-radius:16px;border:1px solid #dce7f3;box-shadow:0 6px 22px #0a2c4f09}
+.sc-pricing-materials__intro{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:7px 20px;margin-bottom:18px}
+.sc-pricing-materials__intro h3{margin:0;color:#0b2b54;font-size:clamp(20px,1.65vw,25px);font-weight:700;line-height:1.35}
+.sc-pricing-materials__intro p{margin:0;color:#526a85;font-size:15px;line-height:1.5}
+.sc-pricing-materials__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.sc-pricing-materials__grid a{display:flex;align-items:center;justify-content:center;min-width:0;min-height:53px;padding:11px 14px;border:1px solid #d6e3f1;background:#f8fbfe;border-radius:9px;font-size:clamp(15px,1.12vw,17px);font-weight:550;line-height:1.32;color:#0b2b54;text-decoration:none;text-align:center;transition:background-color .2s,border-color .2s}
+.sc-pricing-materials__grid a:hover{border-color:#ff6900;background:#fff1e6;color:#a34100}
+.sc-pricing-materials__grid a:focus-visible{outline:3px solid #ff6900;outline-offset:2px}
+.sc-pricing-materials__notice{margin:14px 0 0;color:#5e718a;font-size:13px;line-height:1.52}
+/* Preserve an unobtrusive, accessible logo animation pause with no visible text. */
+.sc-client-credits__pause{width:44px;height:44px;min-height:44px;padding:0;display:inline-grid;place-items:center;border:1px solid #d5e0ed;border-radius:50%;background:#fff;text-decoration:none;margin-top:8px}
+.sc-client-credits__pause::before{content:"";display:block;width:14px;height:17px;border-left:4px solid #102d55;border-right:4px solid #102d55}
+.sc-client-credits__pause[aria-pressed="true"]::before{width:0;height:0;border:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:14px solid #102d55;margin-left:5px}
+.sc-client-credits__pause[hidden]{display:none!important}
+/* Tighten footer rhythm. Keep type regular and lighter than headings. */
+.footer--editorial .footer-grid{padding:clamp(29px,3vw,43px) 0 clamp(36px,4vw,57px);gap:clamp(25px,3vw,52px)}
+.footer--editorial .footer-grid h3{margin-bottom:20px;padding-bottom:15px;font-size:clamp(19px,1.44vw,22px);font-weight:650;line-height:1.33}
+.footer--editorial .footer-grid ul{gap:11px}
+.footer--editorial .footer-grid li{line-height:1.4}
+.footer--editorial .footer-grid li a{font-size:clamp(16px,1.13vw,18px);font-weight:400;line-height:1.4;color:#d0dced}
+.footer--editorial .footer-brand>p{font-size:clamp(15px,1.08vw,17px);font-weight:400;line-height:1.62;max-width:325px;margin-bottom:14px;color:#c7d8ea}
+.footer--editorial .footer-brand__signature{font-size:12px;line-height:1.5}
+.footer--editorial .footer-brand .brand{margin-bottom:18px}
+.footer--editorial .footer-bottom{padding-block:15px 18px}
+/* Remove blank flex segment when the long portfolio disclaimer has been deleted. */
+.sc-portfolio__bottom:has(> .sc-portfolio__view-all:only-child){justify-content:flex-end}
+@media(max-width:820px){.sc-pricing-materials__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sc-pricing-materials{padding:19px}.footer--editorial .footer-grid ul{gap:10px}.footer--editorial .footer-grid li a{font-size:15px;line-height:1.42}}
+@media(max-width:420px){.sc-pricing-materials__grid a{font-size:15px;padding-inline:7px}.sc-pricing-materials__notice{font-size:12px}.pricing-grid .price-card--comparison .price-card__fact dd{font-size:17px}.footer--editorial .footer-grid{gap:27px 17px}.footer--editorial .footer-grid h3{font-size:17px;margin-bottom:16px;padding-bottom:12px}.footer--editorial .footer-grid li a{font-size:15px;line-height:1.38}.footer--editorial .footer-grid ul{gap:9px}}

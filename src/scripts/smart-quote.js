@@ -15,9 +15,9 @@
   const plan=bill?bill.rated(basePlan,window.SCWORK_BILLING_CONFIG):basePlan;
   const strings={
     th:{
-      title:'เช็กราคาสติกเกอร์เบื้องต้น | SCWORK',quoteKicker:'SCWORK / ราคาสติกเกอร์',quoteSkip:'ข้ามไปยังแบบเลือกสเปก',quoteNav:'เมนูหน้าเช็กราคา',backHome:'กลับหน้าเว็บไซต์',
-      pageTitle:'เช็กราคาสติกเกอร์|เบื้องต้น',pageLead:'เลือกวัสดุ ขนาด และจำนวนเพื่อเตรียมขอราคา ไม่ต้องสมัครสมาชิกหรืออัปโหลดไฟล์บนเว็บ',
-      rateNotice:'ราคาที่แสดงเป็นราคาเบื้องต้น ทีม SCWORK ยืนยันหลังตรวจสเปกและไฟล์งาน',noRateNotice:'ทีม SCWORK ประเมินราคาตามสเปกและไฟล์งาน',
+      title:'เช็กราคาสติกเกอร์ | SCWORK',quoteKicker:'SCWORK / ราคาสติกเกอร์',quoteSkip:'ข้ามไปยังแบบเลือกสเปก',quoteNav:'เมนูหน้าเช็กราคา',backHome:'กลับหน้าเว็บไซต์',
+      pageTitle:'เช็กราคาสติกเกอร์|ตามสเปก',pageLead:'เลือกวัสดุ ขนาด และจำนวนเพื่อเตรียมขอราคา ไม่ต้องสมัครสมาชิกหรืออัปโหลดไฟล์บนเว็บ',
+      rateNotice:'ราคาที่แสดงเป็นราคาอ้างอิง ทีม SCWORK ยืนยันหลังตรวจสเปกและไฟล์งาน',noRateNotice:'ทีม SCWORK ประเมินราคาตามสเปกและไฟล์งาน',
       modeTitle:'เริ่มจากสิ่งที่คุณรู้',modeLead:'เลือกวิธีที่สะดวก เราช่วยคุณในขั้นตอนถัดไป',quickTitle:'มีสเปกแล้ว',quickDesc:'เลือกวัสดุ ขนาด และจำนวน',guidedTitle:'ช่วยเลือกวัสดุ',guidedDesc:'แนะนำตามลักษณะการใช้งาน',helpTitle:'ปรึกษาทีมงาน',helpDesc:'บอกความต้องการให้เราช่วย',
       projectQuotePrompt:'มีหลาย SKU วันที่ต้องใช้ หรือเอกสารจัดซื้อที่ต้องขอ?',projectQuoteEntry:'ขอราคาโครงการ',
       purposeLabel:'จะนำสติกเกอร์ไปใช้กับอะไร?',guidedTip:'วัสดุที่แนะนำเป็นจุดเริ่มต้น เปลี่ยนได้ในช่องวัสดุ',helpPurposeLabel:'จะนำไปใช้กับอะไร? (ไม่บังคับ)',helpBriefLabel:'รายละเอียดเพิ่มเติม (ไม่บังคับ)',helpPlaceholder:'เช่น อยากได้ฉลากกันน้ำสำหรับขวด 100 ใบ',unsure:'ยังไม่แน่ใจ',
@@ -26,15 +26,15 @@
       materialLabel:'วัสดุสติกเกอร์',materialHelp:'เลือกตามลักษณะการใช้งาน',sqmHelp:'วัสดุนี้คิดราคาตามพื้นที่ (ตร.ม.)',widthLabel:'กว้าง (ซม.)',heightLabel:'สูง (ซม.)',quantityLabel:'จำนวน (ชิ้น)',sizePresetLabel:'ขนาดยอดนิยม',qtyPresetLabel:'จำนวนยอดนิยม',customSizeButton:'กำหนดเอง',minus:'ลดจำนวน',plus:'เพิ่มจำนวน',
       advancedTitle:'การเคลือบ ไดคัท และบริการออกแบบ',cutLabel:'การตัดสติกเกอร์',cutStandard:'ตัดมาตรฐาน',cutCustom:'ไดคัทตามรูปทรง',lamination:'เคลือบเงา / ด้าน',design:'บริการออกแบบ',perUnit:'ต่อหน่วย',
       artTitle:'คุณมีไฟล์งานพร้อมพิมพ์หรือยัง?',artLead:'ไม่จำเป็นต้องอัปโหลดไฟล์บนเว็บไซต์ เลือกวิธีที่สะดวกได้เลย',artNone:'ยังไม่มีไฟล์',artNoneDesc:'สามารถส่งไฟล์เพิ่มเติมภายหลังได้',artLine:'มีไฟล์แล้ว ส่งผ่าน LINE',artLineDesc:'ส่งไฟล์ให้ทีมหลังจากเช็กราคา',artLink:'มีลิงก์ไฟล์',artLinkDesc:'วางลิงก์ Google Drive, OneDrive หรือ Dropbox',linkLabel:'ลิงก์ไฟล์ (เช่น Google Drive)',linkHelp:'ใช้ลิงก์ที่ทีม SCWORK เปิดได้โดยไม่ต้องขอรหัสผ่าน',
-      summaryEyebrow:'สรุปงาน',summaryTitle:'สรุปราคาเบื้องต้น',manualTitle:'สรุปสเปกขอราคา',adviceTitle:'ขอคำแนะนำ',advicePending:'บอกเท่าที่ทราบได้เลย',sumUnitLabel:'จำนวนที่คิดราคา',sumBaseLabel:'ค่าพิมพ์',sumAddonLabel:'ตัวเลือกเสริม',minimumLabel:'ส่วนต่างถึงยอดขั้นต่ำ',sumTotalLabel:'ยอดประมาณการ',
-      vat:'ภาษีมูลค่าเพิ่ม',perPiece:'เฉลี่ยต่อดวง',rateStatus:'ราคาเบื้องต้น',rateMeta:'ตารางราคา',priced:'',manual:'ส่งสเปกเพื่อให้ทีม SCWork ประเมินราคา',advice:'ทีม SCWork ช่วยแนะนำวัสดุ ขนาด และงานหลังพิมพ์ได้',custom:'งานไดคัทตามรูปทรงต้องให้ทีมประเมินเพิ่มเติม',
+      summaryEyebrow:'สรุปงาน',summaryTitle:'สรุปราคา',manualTitle:'สรุปสเปกขอราคา',adviceTitle:'ขอคำแนะนำ',advicePending:'บอกเท่าที่ทราบได้เลย',sumUnitLabel:'จำนวนที่คิดราคา',sumBaseLabel:'ค่าพิมพ์',sumAddonLabel:'ตัวเลือกเสริม',minimumLabel:'ส่วนต่างถึงยอดขั้นต่ำ',sumTotalLabel:'ยอดประมาณการ',
+      vat:'ภาษีมูลค่าเพิ่ม',perPiece:'เฉลี่ยต่อดวง',rateStatus:'ราคาอ้างอิง',rateMeta:'ตารางราคา',priced:'',manual:'ส่งสเปกเพื่อให้ทีม SCWork ประเมินราคา',advice:'ทีม SCWork ช่วยแนะนำวัสดุ ขนาด และงานหลังพิมพ์ได้',custom:'งานไดคัทตามรูปทรงต้องให้ทีมประเมินเพิ่มเติม',
       labelPricesTitle:'เทียบราคา 3 จำนวน',labelPricesSpec:'PP ขาว · 5 × 5 ซม. · ตัดมาตรฐาน',
       vatIncluded:'รวม VAT {rate}%',vatNotApplied:'ไม่คิด VAT ในยอดนี้',shippingExcluded:'ไม่รวมค่าส่ง',labels:'ดวง',
       manualScope:'สเปกนี้ไม่มีราคาออนไลน์ ส่งรายละเอียดให้ทีมประเมินได้เลย',
       badSpec:'ระบุขนาดตั้งแต่ 0.1 ซม. และจำนวนเต็มมากกว่า 0',badLink:'กรุณาใส่ลิงก์ไฟล์ที่ขึ้นต้นด้วย https:// หรือ http:// หรือเลือกส่งไฟล์ภายหลัง',
       lineHelp:'LINE จะเปิดพร้อมข้อความร่าง กรุณากดส่งในแชตด้วยตัวเอง',lineCtaText:'ส่งสเปกทาง LINE',lineAdvice:'ขอคำแนะนำทาง LINE',lineManual:'เปิดแชต LINE',lineManualHelp:'คัดลอกข้อความก่อนเปิด LINE แล้ววางในแชตเพื่อส่ง',noLine:'ยังไม่เปิดรับข้อความผ่าน LINE จากหน้านี้ คุณคัดลอกรายละเอียดไว้ได้',longLine:'ข้อความยาว กรุณาคัดลอกก่อนเปิด LINE แล้ววางในแชต',
       copyCtaText:'คัดลอกรายละเอียดงาน',manualCopyLabel:'คัดลอกข้อความจากช่องนี้',copied:'คัดลอกแล้ว วางข้อความในแชตได้เลย',privacyText:'ไม่ต้องสมัครสมาชิกหรืออัปโหลดไฟล์บนเว็บ',footerBack:'กลับเว็บไซต์',call:'โทรหา SCWORK',facebook:'ติดต่อทาง Facebook',messenger:'ติดต่อทาง Messenger',
-      mobileTotalLabel:'ราคาเบื้องต้น',mobileAction:'ดูสรุป',request:'ขอประเมิน',centimeter:'ซม.',pieces:'ชิ้น',sheets:'แผ่น A3+',area:'ตร.ม.',fallback:'หน้านี้รองรับภาษาไทยและอังกฤษ กำลังแสดงภาษาอังกฤษ'
+      mobileTotalLabel:'ราคาอ้างอิง',mobileAction:'ดูสรุป',request:'ขอประเมิน',centimeter:'ซม.',pieces:'ชิ้น',sheets:'แผ่น A3+',area:'ตร.ม.',fallback:'หน้านี้รองรับภาษาไทยและอังกฤษ กำลังแสดงภาษาอังกฤษ'
     },
     en:{
       title:'Sticker price estimate | SCWORK',quoteKicker:'SCWORK / STICKER PRICING',quoteSkip:'Skip to quote options',quoteNav:'Quote page navigation',backHome:'Back to website',
@@ -59,7 +59,7 @@
       mobileTotalLabel:'Estimated price',mobileAction:'View summary',request:'Request quote',centimeter:'cm',pieces:'pcs',sheets:'A3+ sheets',area:'m²',fallback:'The quote form is available in Thai and English. English is shown here.'
     }
   };
-  const namesEn={'paper-sticker':'Paper sticker','kraft-sticker':'Kraft paper','pp-white':'White PP (water resistant)','pp-clear':'Clear PP','pp-silver':'Metallic silver PP','pvc-sqm':'PVC vinyl (large format)'};
+  const namesEn={'paper-sticker':'Paper sticker','kraft-sticker':'Kraft paper','pp-white':'White PP (water resistant)','pp-clear':'Clear PP','pp-silver':'Metallic silver PP','pvc-sqm':'Adhesive PVC vinyl (large format)','vinyl-banner':'Banner vinyl (non-adhesive)'};
   let journey='quick',preset='label',materialId='pp-white',result=null,message='';
   const t=k=>(strings[lang]||strings.en)[k];
   const pick=(th,en)=>lang==='th'?th:en;
@@ -114,7 +114,7 @@
     const st=raw(),help=journey==='help',valid=help||validSpec(st);
     const urlOK=art()!=='link'||line.validArtworkLink($('artUrl').value.trim());
     const matches=phase?.matches({...st,preset,standardCut:!customCut()});
-    const showPlan=!!(!help&&matches&&plan);
+    const showPlan=!!(!help&&matches&&plan&&st.materialId!=='vinyl-banner');
     result=showPlan&&valid?plan.options.find(q=>q.quantity===st.quantity)||null:null;
     hide('labelPrices',!showPlan);
     hide('quoteQuantities',showPlan);
@@ -271,6 +271,8 @@
   if(/large|sign|vinyl|glass|retail|outdoor|shop|window/.test(category))presetChoice('large');
   else if(/die.?cut|contour|shape/.test(category))presetChoice('diecut');
   else presetChoice('label');
+  const requestedMaterial=params.get('material');
+  if(baseCatalog.some(m=>m.id===requestedMaterial))material(requestedMaterial);
   if(params.get('mode')==='help')chooseMode('help');
   renderLabels();
 })();
