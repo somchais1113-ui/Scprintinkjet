@@ -9,6 +9,7 @@ function readNumber(value){
   return (typeof value==='number'||typeof value==='string')&&Number.isFinite(Number(value))&&Number(value)>=0&&Number(value)<=max?Number(value):null;
 }
 const costKeys=['materialCost','printCost','finishingCost','setupCost','supplierFee','freightIn','overhead','minCharge','wastePct','marginPct'];
+const businessKeys=['b2bMarginPct','b2bHandlingCost','b2bCreditDays','b2bAnnualFinancePct'];
 const materials=catalog=>catalog.categories.find(c=>c.id==='sticker').materials;
 const uniqueScope=(ids,catalog)=>materials(catalog).filter(m=>ids.includes(m.id)).map(m=>m.id);
 function normalize(raw,catalog,builder){
@@ -18,6 +19,8 @@ function normalize(raw,catalog,builder){
     const incoming=raw.rules[m.id]||{};
     const r=rules[m.id];
     for(const key of costKeys)if(Object.hasOwn(incoming,key))r[key]=readNumber(incoming[key]);
+    // Optional separate B2B policy. Empty margin = use the same approved B2C selling rate.
+    for(const key of businessKeys)r[key]=Object.hasOwn(incoming,key)?readNumber(incoming[key]):(key==='b2bMarginPct'?null:0);
     for(const key of usageKeys)r[key]=Object.hasOwn(incoming,key)?readNumber(incoming[key]):0;
     for(const addon of m.addons||[])if(Object.hasOwn(incoming.addonCosts||{},addon.id))r.addonCosts[addon.id]=readNumber(incoming.addonCosts[addon.id]);
   }
@@ -32,7 +35,7 @@ function normalize(raw,catalog,builder){
     reason,globalRates,selected,rules};
 }
 function fresh(catalog,builder){
-  return normalize({schemaVersion:2,version:'SCW-001',rules:{},selected:[],globalRates:{}},catalog,builder);
+  return normalize({schemaVersion:2,version:'SCW-001',vatPct:0,rules:{},selected:[],globalRates:{}},catalog,builder);
 }
 function validateCosts(r,builder){
   if(!r||costKeys.some(k=>r[k]===null||readNumber(r[k])===null))throw Error('INCOMPLETE_COST');
@@ -48,15 +51,46 @@ function effectiveRule(r,globalRates,builder){
   builder.validateRule(effective);
   return {rule:effective,variable,fixed};
 }
+// Add contract overhead and working-capital carrying cost to corporate unit and order costs.
+// Conservative estimate: finance cost is based on direct expenses advanced by SCWork.
+function businessRule(r){
+  if(r.b2bMarginPct===null||r.b2bMarginPct===undefined)return null;
+  const margin=readNumber(r.b2bMarginPct),ops=readNumber(r.b2bHandlingCost),days=readNumber(r.b2bCreditDays),annual=readNumber(r.b2bAnnualFinancePct);
+  if(margin===null||margin<5||margin>85||ops===null||days===null||days>365||annual===null||annual>100)throw Error('BAD_B2B_POLICY');
+  const multiplier=1+(days/365)*(annual/100);
+  return {...r,marginPct:margin,materialCost:r.materialCost*multiplier,printCost:r.printCost*multiplier,
+    finishingCost:r.finishingCost*multiplier,setupCost:r.setupCost*multiplier,supplierFee:r.supplierFee*multiplier,
+    freightIn:r.freightIn*multiplier,overhead:r.overhead*multiplier+ops};
+}
 function makeCard(master,catalog,builder,approvedAt){
   if(!master.selected.length)throw Error('SELECT_MATERIAL');
+  if(master.vatPct!==0)throw Error('NON_VAT_SELLER'); // SCWork is not VAT-registered.
   if(master.vatPct===null||master.vatPct>20)throw Error('BAD_VAT');
   const sticker=catalog.categories.find(c=>c.id==='sticker');
   const published=sticker.materials.filter(m=>master.selected.includes(m.id));
   const rules=Object.fromEntries(published.map(m=>[m.id,effectiveRule(master.rules[m.id],master.globalRates,builder).rule]));
   const publicCatalog={...catalog,categories:[{...sticker,materials:published.map(m=>({...m,addons:(m.addons||[]).filter(a=>rules[m.id].addonCosts[a.id]!==null)}))}]};
   const card=builder.buildPublic(publicCatalog,rules,{version:master.version,vatRate:master.vatPct/100,approvedAt});
+  // Export separate approved COMPANY sell rates only when the private B2B policy was provided.
   for(const m of card.categories[0].materials){
+    const privateR=rules[m.id],br=businessRule(privateR);
+    if(br){
+      builder.validateRule(br);
+      const source=published.find(x=>x.id===m.id);
+      const company={};
+      if(m.mode==='area_sqm'){
+        company.ratePerSqm=builder.suggestedRate(br,source.minAreaSqm||1);
+        company.tiers=[{min:source.minAreaSqm||1,max:null,price:company.ratePerSqm,label:'B2B area'}];
+      } else {
+        company.tiers=source.tiers.map(t=>({min:t.min,max:Number.isFinite(t.max)?t.max:null,
+          price:builder.suggestedRate(br,t.min),label:t.label}));
+      }
+      company.minimumCharge=br.minCharge;
+      company.addons=(source.addons||[]).filter(a=>br.addonCosts?.[a.id]!=null).map(a=>({id:a.id,name:a.name,type:a.type,
+        price:builder.ceilStep(br.addonCosts[a.id]*(1+br.b2bCreditDays/365*br.b2bAnnualFinancePct/100)/(1-br.marginPct/100),a.type==='per_unit'?.1:1)}));
+      // Privacy: company contains selling rates only. No supplier costs, margins, fees or terms.
+      m.buyerRates={company};
+    }
     if(!m.tiers||m.mode==='area_sqm')continue;
     m.pricingMode='tier_floor';
     for(let i=0;i<m.tiers.length;i++){
@@ -67,6 +101,6 @@ function makeCard(master,catalog,builder,approvedAt){
   }
   return card;
 }
-const api={rateKeys,usageKeys,readNumber,normalize,fresh,effectiveRule,makeCard};
+const api={rateKeys,usageKeys,readNumber,normalize,fresh,effectiveRule,businessRule,makeCard};
 root.SCWORK_PRICING_MASTER=api;if(typeof module!=='undefined'&&module.exports)module.exports=api;
 })(typeof window==='undefined'?globalThis:window);

@@ -77,6 +77,16 @@
       units,unitLabel:material.unitLabel,unitRate,activeTier:tier?.label||null,details,
       basePrint:base,addons:applied,addonsTotal:addOnTotal,minimumSurcharge,subtotal,vat,vatRate:data.vatRate,total:round2(subtotal+vat),demonstrationOnly:data.status!=='approved',rateVersion:data.version||null};
   }
-  global.SCWORK_PRICING_ENGINE={calculate,findTier,tierSubtotal};
-  if(typeof module!=='undefined'&&module.exports) module.exports={calculate,findTier,tierSubtotal};
+  // The public card only exposes APPROVED selling rates, never material costs or margins.
+  // If no explicit corporate rate was approved, a company receives the same published rate.
+  function forBuyer(data,buyer){
+    if(!data||buyer!=='company')return data;
+    return {...data,categories:(data.categories||[]).map(cat=>({...cat,materials:(cat.materials||[]).map(m=>{
+      const company=m.buyerRates?.company;
+      if(!company)return m;
+      return {...m,...company,buyerRates:undefined};
+    })}))};
+  }
+  global.SCWORK_PRICING_ENGINE={calculate,findTier,tierSubtotal,forBuyer};
+  if(typeof module!=='undefined'&&module.exports) module.exports={calculate,findTier,tierSubtotal,forBuyer};
 })(typeof window!=='undefined'?window:globalThis);

@@ -5,6 +5,8 @@
   const $=id=>document.getElementById(id);
   if(!api||!$('printEstimate'))return;
   const cfg=window.SCWORK_BILLING_CONFIG||{};
+  $('exampleVAT').disabled=cfg.vatStatus!=='registered';
+  if(cfg.vatStatus!=='registered')$('exampleVAT').value='no';
   const EN={
     billing:'Buyer details and tax',billingLead:'Review the breakdown and print without using LINE',buyer:'Buyer type',individual:'Individual',
     company:'Thai private-sector legal entity',other:'Other / Needs review',contract:'Withholding contract basis',fullContract:'This is the full contract amount',
@@ -12,7 +14,7 @@
     recipient:'Name on document (optional)',localOnly:'Used only in your printout. Not sent or saved by this page.',
     example:'Try a calculation with your own amount',exampleNote:'Illustration only. This is not an SCWork selling price and does not appear on the printed estimate.',
     sampleBase:'Amount before VAT (THB)',sampleFee:'Management fee (THB)',sampleType:'Example transaction',service:'Service / Hire of work',goods:'Sale of goods',
-    sampleVAT:'Example VAT treatment',vatYes:'7% VAT',vatNo:'No VAT',fee:'Management fee',subtotal:'Subtotal before VAT',
+    sampleVAT:'VAT status for SCWork',vatYes:'7% VAT',vatNo:'VAT not charged (seller not registered)',fee:'Management fee',subtotal:'Subtotal before VAT',
     net:'Estimated bank transfer amount',docSpecs:'Job specifications',
     printNote:'For review before purchase. Not an invoice, receipt, or tax invoice.'
   };
@@ -46,11 +48,11 @@
   const whtLabel=n=>pick('หัก ณ ที่จ่าย','Withholding tax')+(n.reason==='service'?' 3%':'');
   const text=(id,value)=>{$(id).textContent=value;};
   const netLabel=()=>pick('ยอดโอนสุทธิ (ประมาณการ)','Estimated bank transfer amount');
-  const vatLabel=n=>n.vatRate>0?'VAT '+percent(n.vatRate)+'%':pick('ไม่คิด VAT','No VAT applied');
+  const vatLabel=n=>n.vatRate>0?'VAT '+percent(n.vatRate)+'%':pick('VAT ไม่เรียกเก็บ','VAT not charged');
   const grossLabel=()=>pick('ยอดรวมก่อนหัก ณ ที่จ่าย','Gross amount before withholding');
   const pairs=(n,includeBase)=>[
     ...(includeBase?[[pick('ราคางานก่อนค่าบริหาร','Job amount before fee'),n.base],[pick('ค่าบริหารงาน','Management fee'),n.fee]]:[]),
-    [pick('ยอดก่อน VAT','Subtotal before VAT'),n.subtotal],[vatLabel(n),n.vat],[grossLabel(),n.gross],[whtLabel(n),n.wht],[netLabel(),n.net]
+    [pick('มูลค่างาน (ไม่เรียก VAT)','Job value (no VAT charged)'),n.subtotal],[vatLabel(n),n.vat],[grossLabel(),n.gross],[whtLabel(n),n.wht],[netLabel(),n.net]
   ];
   function breakdown(id,rows){
     const box=$(id);
@@ -61,6 +63,22 @@
   }
   function update(){
     if(!data)return;
+    // No VAT toggle is available until SCWork actually registers and the code is re-approved.
+    if(cfg.vatStatus!=='registered')$('exampleVAT').value='no';
+    document.querySelectorAll('[data-buyer-choice]').forEach(btn=>{
+      const selected=btn.dataset.buyerChoice===buyer();
+      btn.classList.toggle('is-selected',selected);btn.setAttribute('aria-pressed',String(selected));
+    });
+    const thLang=data.lang==='th';
+    for(const [id,value] of Object.entries(thLang?{
+      scBuyerTitle:'สั่งซื้อในนามใคร?',scBuyerIntro:'เลือกประเภทผู้ซื้อเพื่อแสดงเงื่อนไขและเอกสารให้เหมาะสม',
+      scBuyerPerson:'บุคคลทั่วไป (B2C)',scBuyerCompany:'นิติบุคคล (B2B)',
+      scBuyerTaxNote:'SCWork ยังไม่จด VAT · ไม่เรียกเก็บ VAT · ราคา B2B ต้องผ่านการอนุมัติ'
+    }:{scBuyerTitle:'Who is purchasing?',scBuyerIntro:'Select a buyer type for applicable rates and documents.',
+      scBuyerPerson:'Individual (B2C)',scBuyerCompany:'Company (B2B)',
+      scBuyerTaxNote:'SCWork is not VAT-registered · no VAT charged · B2B rates must be approved'})){
+      const el=$(id);if(el)el.textContent=value;
+    }
     const focusType=data.result?.billingType;
     $('billContractPanel').hidden=buyer()!=='company'||!(focusType==='service'||$('billingExample').open&&$('exampleType').value==='service');
     const result=cur();
@@ -71,7 +89,7 @@
       text('billingWhtLabel',whtLabel(result));text('billingWhtValue',money(result.wht));
       text('billingNetValue',money(result.net));text('billingPayNote',reasons()[result.reason]);
     }
-    const example=api.quote($('exampleBase').valueAsNumber,$('exampleFee').valueAsNumber,$('exampleVAT').value==='yes'?api.DEMO_VAT:0,
+    const example=api.quote($('exampleBase').valueAsNumber,$('exampleFee').valueAsNumber,cfg.vatStatus==='registered'&&$('exampleVAT').value==='yes'?api.DEMO_VAT:0,
       $('exampleType').value,buyer(),contract());
     breakdown('billingExampleRows',example?pairs(example,false):[]);
     const status=$('scBillingLive');
@@ -111,6 +129,13 @@
     text('docTerms',n?pick('ไม่รวมค่าจัดส่ง ราคาต้องยืนยันหลังตรวจสเปกและไฟล์งาน','Shipping excluded. Pricing is subject to final review of specifications and artwork.'):'');
     document.body.classList.add('qb-print-active');$('billPrintSheet').hidden=false;
     try{window.print();}catch{clearPrint();}
+  });
+  document.querySelectorAll('[data-buyer-choice]').forEach(btn=>btn.addEventListener('click',()=>{
+    $('billBuyer').value=btn.dataset.buyerChoice;
+    update();window.dispatchEvent(new CustomEvent('scwork:buyer-change',{detail:{buyer:buyer()}}));
+  }));
+  $('billBuyer').addEventListener('change',()=>{
+    window.dispatchEvent(new CustomEvent('scwork:buyer-change',{detail:{buyer:buyer()}}));
   });
   for(const id of ['billBuyer','billContract','exampleType','exampleVAT']){
     $(id).addEventListener('change',update);

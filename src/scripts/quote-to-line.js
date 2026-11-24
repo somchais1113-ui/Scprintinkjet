@@ -32,6 +32,7 @@
     const th=lang==='th',pick=(a,b)=>th?a:b;
     const lines=[d.help?pick('SCWORK | ขอคำแนะนำเรื่องสติกเกอร์','SCWORK | Sticker advice'):pick('SCWORK | ขอประเมินราคาสติกเกอร์','SCWORK | Sticker quote inquiry')];
     const put=(a,b,value)=>{if(value!==undefined&&value!==null&&String(value).trim())lines.push(pick(a,b)+': '+value);};
+    put('ประเภทผู้ซื้อ','Buyer type',d.buyerType==='company'?pick('นิติบุคคล (B2B)','Company (B2B)'):d.buyerType==='individual'?pick('บุคคลทั่วไป (B2C)','Individual (B2C)'):'');
     if(d.help){
       put('การใช้งาน','Intended use',d.purpose);
       put('รายละเอียด','Details',d.brief);

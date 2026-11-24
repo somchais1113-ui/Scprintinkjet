@@ -1,3 +1,13 @@
+## V2.1.29 — B2B / B2C pricing policies & seller VAT status (2026-11-24)
+- Confirmed SCWork as **not VAT-registered**, switched billing configuration and blocked unauthorized VAT rate-card exports.
+- Aligned the private material cost catalog with the six public materials (vinyl banner replaces the old PP silver draft entry, without copying costs).
+- Added upfront customer buyer choice (individual/company) and synchronized it to buyer documentation.
+- Extended existing private Cost Master with optional B2B margin, order admin cost and financing/credit-term cost, with a live private margin audit.
+- Approved public price cards may include separate buyer-specific **selling rates only**; no private supplier costs or policy inputs.
+- Continued conservative behavior: no approved rates => manual quote, no estimated sticker selling price fabricated.
+- WHT retains review/conditional application and cannot be decided from B2B status alone.
+- Added separate 2-language/desktop-mobile notes and tests in `START_HERE_V2.1.29.md` and `qa/validate-v2129.mjs`.
+
 ## V2.1.28 — Portfolio cinematic banner, clearer copy & six aligned materials (2026-11-24)
 
 - Updated portfolio hero to four *single-scene* photographic slides using Cinematic crossfade (880ms) and slow zoom-in (7.5% over 9s), pause/previous/next/dots and reduced-motion support; the 20-item gallery remains intact.

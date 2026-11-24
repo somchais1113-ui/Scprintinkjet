@@ -3,7 +3,7 @@
 'use strict';
 const $=id=>document.getElementById(id);
 const all=s=>[...document.querySelectorAll(s)];
-const {SCWORK_PRICING_DEMO:catalog,SCWORK_RATE_CARD_BUILDER:builder,SCWORK_PRICING_MASTER:masterAPI,SCWORK_PRICING_ENGINE:engine}=window;
+const {SCWORK_PRIVATE_COST_CATALOG:catalog,SCWORK_RATE_CARD_BUILDER:builder,SCWORK_PRICING_MASTER:masterAPI,SCWORK_PRICING_ENGINE:engine}=window;
 if(!catalog||!builder||!masterAPI||!engine)return;
 const local=['localhost','127.0.0.1','[::1]'].includes(location.hostname)||location.protocol==='file:';
 if(!local){
@@ -23,6 +23,8 @@ const cardFor=(state,stamp=fixedDate)=>masterAPI.makeCard(state,catalog,builder,
 const msg=id=>({
  SELECT_MATERIAL:'เลือกวัสดุที่จะเปิดราคาอย่างน้อยหนึ่งชนิด',
  BAD_VAT:'ตรวจค่า VAT ที่กำหนด',
+ NON_VAT_SELLER:'SCWork ยังไม่จด VAT: ต้องตั้ง VAT เป็น 0% ก่อนส่งออก ไม่อนุญาตให้บวก VAT',
+ BAD_B2B_POLICY:'ตรวจ Margin B2B (5–85%), ค่าดำเนินการ, เครดิตไม่เกิน 365 วัน และอัตราต้นทุนเงินทุน',
  BAD_VERSION:'ระบุเวอร์ชันด้วยตัวอักษรอังกฤษ ตัวเลข ขีด จุด หรือขีดล่าง',
  INCOMPLETE_COST:'กรอกต้นทุนของวัสดุที่เลือกให้ครบ ใส่ 0 หากไม่มีรายการนั้น',
  INCOMPLETE_SHARED_RATES:'กรอกเรทต้นทุนกลางให้ครบ ใส่ 0 หากไม่ใช้',
@@ -64,6 +66,7 @@ function render(){
  $('priceVersion').value=master.version;$('vatPct').value=master.vatPct??'';$('changeReason').value=master.reason;
  all('[data-shared]').forEach(el=>el.value=master.globalRates[el.dataset.shared]??'');
  all('[data-cost]').forEach(el=>el.value=r[el.dataset.cost]??'');
+ all('[data-business]').forEach(el=>el.value=r[el.dataset.business]??'');
  const nav=$('materialNav');nav.replaceChildren();
  for(const item of materials){
    const b=document.createElement('button');b.type='button';b.textContent=item.name;
@@ -103,6 +106,28 @@ function impact(after){
    }
  }
 }
+function policyAudit(card){
+ const body=$('policyAuditRows');if(!body)return;
+ body.replaceChildren();
+ const mat=materials.find(m=>m.id===current),r=master.rules[current];
+ let retail=null,corp=null;
+ try{retail=masterAPI.effectiveRule(r,master.globalRates,builder).rule;corp=masterAPI.businessRule(retail);}catch{}
+ for(const qty of (mat.mode==='area_sqm'?[1,5,10]:[10,50,100])){
+   const tr=document.createElement('tr');
+   const cost=retail?builder.model(retail):null;
+   const actual=cost?cost.fixed+cost.variable*qty:null;
+   const b2c=retail?Math.max(qty*builder.suggestedRate(retail,qty),retail.minCharge):null;
+   const b2b=corp?Math.max(qty*builder.suggestedRate(corp,qty),corp.minCharge):b2c;
+   // Company margin audit MUST use the company effective cost (includes terms and admin handling).
+   const companyModel=corp?builder.model(corp):cost;
+   const companyCost=companyModel?companyModel.fixed+companyModel.variable*qty:null;
+   const margin=(price,expense)=>price&&expense!==null?((price-expense)/price*100).toFixed(1)+'%':'—';
+   [qty.toLocaleString('th-TH'),fmt(actual),fmt(b2c),margin(b2c,actual),fmt(b2b),margin(b2b,companyCost)].forEach((value,i)=>{
+     const td=document.createElement(i===0?'th':'td');if(i===0)td.scope='row';td.textContent=value;tr.append(td);
+   });body.append(tr);
+ }
+ $('policyNote').textContent=corp?'ใช้ B2B Margin และต้นทุนเอกสาร/เครดิตตามที่ตั้งไว้ · ราคานี้เป็นร่างสำหรับตรวจ':'ยังไม่ตั้ง Margin B2B: ใช้ราคา B2C เดียวกันจนกว่าจะอนุมัติราคาองค์กร';
+}
 function historyUI(){
  const list=$('historyList');list.replaceChildren();
  if(!history.length){list.textContent='ยังไม่มีรายการส่งออก';return;}
@@ -135,7 +160,7 @@ function preview(){
  set('auditResult',error||'ตรวจผลก่อน–หลัง แล้วเลือกอนุมัติเพื่อส่งออก');
  $('auditResult').classList.toggle('ok',!error);
  $('downloadPublic').disabled=!!error||!$('approval').checked;
- impact(card);
+ impact(card);policyAudit(card);
 }
 function download(name,data,mime){
  const url=URL.createObjectURL(new Blob([data],{type:mime}));const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();a.remove();
@@ -143,6 +168,7 @@ function download(name,data,mime){
 }
 all('[data-shared]').forEach(el=>el.addEventListener('input',()=>{master.globalRates[el.dataset.shared]=readNumber(el.value);change();}));
 all('[data-cost]').forEach(el=>el.addEventListener('input',()=>{master.rules[current][el.dataset.cost]=readNumber(el.value);change();}));
+all('[data-business]').forEach(el=>el.addEventListener('input',()=>{master.rules[current][el.dataset.business]=readNumber(el.value);change();}));
 $('includeMaterial').addEventListener('change',e=>{
  master.selected=materials.filter(m=>m.id===current?e.target.checked:master.selected.includes(m.id)).map(m=>m.id);change();
 });

@@ -1,0 +1,33 @@
+/* Build a deploy-only storefront, without legacy forms, workbench or demo data. */
+import {cpSync, mkdirSync, existsSync, readdirSync, readFileSync, writeFileSync} from 'node:fs';
+import {createRequire} from 'node:module';
+import {fileURLToPath} from 'node:url';
+import {dirname, join, resolve} from 'node:path';
+const root=dirname(dirname(fileURLToPath(import.meta.url)));
+const dest=resolve(process.argv[2]||join(root,'public-release'));
+if(existsSync(dest))throw Error('Choose a new output folder to avoid publishing old files.');
+const follow=createRequire(import.meta.url)('../src/scripts/order-followup-core.js');
+const statusFiles=[];
+for(const entry of readdirSync(join(root,'order-status'),{withFileTypes:true})){
+  if(entry.name==='index.html'&&entry.isFile())continue;
+  const code=entry.name.slice(0,-5);
+  if(!entry.isFile()||!entry.name.endsWith('.json')||!follow.validToken(code))throw Error('Unexpected file in order-status. Only public status JSON files belong here.');
+  const raw=readFileSync(join(root,'order-status',entry.name),'utf8');
+  if(raw.length>2048)throw Error('Invalid public status size: '+entry.name);
+  statusFiles.push([entry.name,follow.status(JSON.parse(raw),code)]);
+}
+const items=[
+  'favicon.ico',...['16x16','32x32','48x48','64x64','128x128','180x180','192x192','256x256','512x512'].map(x=>'favicon-'+x+'.png'),'scwork-icon-512.png',
+  'index.html','standard-pricing.html','design-services.html','delivery.html','credit-terms.html','article.html','knowledge.html','portfolio.html','smart-quote.html','product-labels.html','project-quote.html','order-tracking.html','order-status/index.html','.nojekyll','START_HERE_V1.8.1.md','START_HERE_V1.8.2.md','START_HERE_V1.9.md','START_HERE_V2.0.md','START_HERE_V2.1.md','START_HERE_V2.1.1.md','START_HERE_V2.1.2.md','START_HERE_V2.1.3.md','START_HERE_V2.1.4.md','START_HERE_V2.1.5.md','START_HERE_V2.1.6.md','START_HERE_V2.1.7.md','START_HERE_V2.1.8.md','START_HERE_V2.1.9.md','START_HERE_V2.1.10.md','START_HERE_V2.1.11.md','START_HERE_V2.1.12.md','START_HERE_V2.1.18.md','START_HERE_V2.1.19.md','START_HERE_V2.1.20.md','START_HERE_V2.1.21.md','START_HERE_V2.1.22.md','START_HERE_V2.1.23.md','START_HERE_V2.1.24.md','START_HERE_V2.1.25.md','START_HERE_V2.1.26.md','START_HERE_V2.1.27.md','START_HERE_V2.1.28.md','START_HERE_V2.1.29.md',
+  'config/public-config.js','config/billing-config.js',
+  ...['site-data','client-logos','extra-locales','quote-catalog','pricing-public-data','label-evidence','portfolio-data'].map(s=>'data/'+s+'.js'),
+  ...['config','content','ui','site-runtime','i18n','main','motion','commerce-enhancements','20-home-enhancements','language-modal','entry-cta','knowledge-hub','article-page','pricing-engine','label-quote-plan','quote-to-line','smart-quote','product-labels','label-evidence','project-brief','project-quote','order-followup-core','order-tracking','quote-billing','quote-billing-ui','support-bar','material-gallery','footer-utility','benefit-strip','benefit-pages','editorial-footer','portfolio-gallery','portfolio-cinema-v2128','pricing-material-choices-v2128'].map(s=>'src/scripts/'+s+'.js'),
+  ...['00-tokens','01-reset','02-layout','03-components','04-sections','05-responsive','06-editor-overrides','07-language','09-rfq-banner','10-hero-layout-fix','11-motion','12-article','12-blog-upgrade','13-spacing-system','14-sticker-transformation','15-commerce-enhancements','17-language-modal','18-cta-standard','19-smart-quote','19-social-proof-footer','21-product-labels','22-project-quote','23-order-followup','24-quote-billing','25-quote-cta-type','26-support-bar','27-material-gallery','28-hero-footer','29-benefit-strip','30-benefit-pages','31-home-quote-polish','32-services-crossfade','33-quotation-ux-refinement','34-cinematic-hero','35-editorial-footer','30-knowledge','36-portfolio-live-polish','37-portfolio-pricing-v2126','38-portfolio-gallery','39-portfolio-cinema-v2128','40-scwork-refinement-v2128','41-b2b-b2c-pricing-v2129'].map(s=>'src/styles/'+s+'.css'),
+  'assets/icons','assets/images'
+];
+for(const path of items){
+  mkdirSync(dirname(join(dest,path)),{recursive:true});
+  cpSync(join(root,path),join(dest,path),{recursive:true,filter:src=>!/(?:\/source(?:\/|$)|\/README\.md$|\/(manifest\.js|manifest\.json|(?:SCWORK-ASSET-CONTACT-SHEET|asset-contact-sheet)\.jpg)$)/.test(src)});
+}
+for(const [name,status] of statusFiles)writeFileSync(join(dest,'order-status',name),JSON.stringify(status)+'\n','utf8');
+console.log('Public storefront built at '+dest);

@@ -13,15 +13,16 @@
   <link rel="stylesheet" href="pricing-workbench.css?v=2.1.20">
   <link rel="stylesheet" href="pricing-master.css?v=1.7.5">
   <script src="../data/pricing-demo-data.js" defer></script>
+  <script src="pricing-catalog-v2129.js?v=2.1.29" defer></script>
   <script src="../src/scripts/pricing-engine.js?v=1.7.5" defer></script>
-  <script src="../src/scripts/rate-card-builder.js?v=1.7" defer></script>
-  <script src="../src/scripts/pricing-master.js?v=1.7.5" defer></script>
-  <script src="pricing-workbench.js?v=1.7.5" defer></script>
+  <script src="../src/scripts/rate-card-builder.js?v=2.1.29" defer></script>
+  <script src="../src/scripts/pricing-master.js?v=2.1.29" defer></script>
+  <script src="pricing-workbench.js?v=2.1.29" defer></script>
 </head>
 <body>
 <header class="head"><div class="wrap head-inner">
   <a href="index.html"><img src="../assets/icons/scwork-logo.png" width="154" alt="SCWORK"></a>
-  <div><h1>SCWork Pricing Master <small>V1.7.5</small></h1><p>แก้ต้นทุนครั้งเดียว แล้วดูผลก่อนอัปเดตราคาขาย</p></div>
+  <div><h1>SCWork Pricing Master <small>V2.1.29</small></h1><p>ต้นทุนเดียว · ตรวจนโยบายราคาสำหรับ B2C และ B2B ก่อนเผยแพร่</p></div>
   <a class="link" href="../smart-quote.html" target="_blank" rel="noopener">ดูหน้าราคาลูกค้า</a>
 </div></header>
 <main class="wrap">
@@ -53,6 +54,15 @@
         <label>กำไรขั้นต้นเป้าหมาย (%)<input type="number" data-cost="marginPct" min="5" max="85" step="0.1"></label>
         <label>ยอดขายขั้นต่ำ ก่อน VAT (บาท)<input type="number" data-cost="minCharge" min="0" step="0.01"></label>
       </div>
+      <div class="addons"><h4>B2B Policy — เฉพาะงานที่ผ่านการอนุมัติ</h4>
+        <div class="field-grid">
+          <label>Margin เป้าหมาย B2B (%) — เว้นว่าง = ใช้ราคา B2C<input type="number" data-business="b2bMarginPct" min="5" max="85" step="0.1" placeholder="ยังไม่กำหนด"></label>
+          <label>ค่าประสานงาน/เอกสาร B2B (บาท/งาน)<input type="number" data-business="b2bHandlingCost" min="0" step="0.01"></label>
+          <label>เครดิตเทอม B2B (วัน)<input type="number" data-business="b2bCreditDays" min="0" max="365" step="1"></label>
+          <label>ต้นทุนเงินทุนต่อปี (%)<input type="number" data-business="b2bAnnualFinancePct" min="0" max="100" step="0.1"></label>
+        </div>
+        <p class="hint">ราคา B2B ไม่จำเป็นต้องถูกกว่า B2C ต้นทุนเอกสารและเครดิตเทอมมีผลต่อกำไร ตัวเลขเป็นร่างภายใน ต้องอนุมัติก่อนส่งออก</p>
+      </div>
       <div class="addons"><h4>ปริมาณที่อ้างอิงต้นทุนกลาง</h4>
         <div class="field-grid three">
           <label>ไฟเฉลี่ย รวมเผื่อเสีย (kWh/หน่วยคิดราคา)<input type="number" data-cost="kwhPerUnit" min="0" step="0.01"></label>
@@ -66,7 +76,7 @@
     <aside class="publish">
       <p class="eyebrow">03 · ตรวจและส่งออก</p><h3>อัปเดตเรทขาย</h3>
       <label>เวอร์ชันเรท<input id="priceVersion" maxlength="45" spellcheck="false"></label>
-      <label>VAT ที่ใช้ในเรท (%)<input id="vatPct" type="number" min="0" max="20" step="0.1" inputmode="decimal"></label>
+      <label>VAT ที่ใช้ในเรท (%) — ปัจจุบัน SCWork ยังไม่จด VAT<input id="vatPct" type="number" min="0" max="0" step="0.1" inputmode="decimal"></label><p class="hint">ต้องตั้งค่าเป็น 0 เท่านั้นก่อนอนุมัติ · ใบต้นทุนจากผู้ผลิตที่รวม VAT แล้วให้นำยอดรวมเข้า Cost Master (ภาษีซื้อเครดิตไม่ได้)</p>
       <label>หมายเหตุการปรับ (ภายใน)<input id="changeReason" maxlength="160" placeholder="เช่น ผู้ผลิตปรับค่าขนส่งเข้า"></label>
       <div id="auditResult" class="audit" role="status"></div>
       <label class="approval"><input id="approval" type="checkbox"><span>ตรวจแล้วและอนุมัติเรทชุดนี้</span></label>
@@ -76,6 +86,11 @@
       <p class="hint">นำ <code>pricing-public-data.js</code> ไปแทนไฟล์ใน <code>data/</code> ของเว็บลูกค้า แล้วอัปเดตเว็บหนึ่งครั้ง ไม่มีการอัปเดตเว็บอัตโนมัติ</p>
     </aside>
   </div>
+  <section class="panel impact" aria-labelledby="policyTitle"><h2 id="policyTitle">ทดสอบ Margin — B2C vs B2B</h2>
+    <p id="policyNote" class="hint">ใช้ต้นทุนชุดเดียวกัน แยกต้นทุนการขายและเงื่อนไขเครดิต</p>
+    <div class="table-scroll" tabindex="0"><table><thead><tr><th>หน่วย</th><th>ต้นทุน B2C</th><th>ราคาขาย B2C</th><th>Margin</th><th>ราคาขาย B2B</th><th>Margin B2B</th></tr></thead><tbody id="policyAuditRows"></tbody></table></div>
+    <p class="hint">ราคาจำลองจากต้นทุนที่กรอก ไม่ใช่ราคาที่รับประกัน และไม่ใช่ราคาบนหน้าเว็บจนกว่าจะอนุมัติ/Deploy Rate Card</p>
+  </section>
   <section class="panel impact" aria-labelledby="impactTitle">
     <h2 id="impactTitle">ผลก่อน–หลังของวัสดุที่เลือกเปิดราคา</h2>
     <p class="hint" id="baselineLabel">เปรียบเทียบกับเรทชุดล่าสุดที่ส่งออกจาก Master นี้</p>
@@ -90,6 +105,6 @@
     <p class="hint">บันทึกเฉพาะการส่งออก ไม่ใช่สถานะการขึ้นเว็บ เรียกร่างเก่ากลับมาตรวจและส่งออกใหม่ได้</p>
   </section>
 </main>
-<footer class="wrap footer">SCWORK · Pricing Master V1.7.5</footer>
+<footer class="wrap footer">SCWORK · Pricing Master V2.1.29</footer>
 </body>
 </html>

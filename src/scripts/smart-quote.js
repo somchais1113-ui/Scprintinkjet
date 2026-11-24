@@ -10,9 +10,16 @@
   const engine=window.SCWORK_PRICING_ENGINE,line=window.SCWORK_QUOTE_TO_LINE;
   const card=window.SCWORK_PRICING_PUBLIC,baseCatalog=window.SCWORK_QUOTE_CATALOG;
   if(!engine||!line||!Array.isArray(baseCatalog))return;
-  const phase=window.SCWORK_LABEL_QUOTE_PLAN,basePlan=phase?.prepare(card,engine);
+  const phase=window.SCWORK_LABEL_QUOTE_PLAN;
   const bill=window.SCWORK_QUOTE_BILLING,billUI=window.SCWORK_QUOTE_BILLING_UI;
-  const plan=bill?bill.rated(basePlan,window.SCWORK_BILLING_CONFIG):basePlan;
+  let plan=null;
+  function refreshApprovedBuyerPlan(){
+    const buyer=document.getElementById('billBuyer')?.value||'individual';
+    const buyerCard=engine.forBuyer?engine.forBuyer(card,buyer):card;
+    const original=phase?.prepare(buyerCard,engine);
+    plan=bill?bill.rated(original,window.SCWORK_BILLING_CONFIG):original;
+  }
+  refreshApprovedBuyerPlan();
   const strings={
     th:{
       title:'เช็กราคาสติกเกอร์ | SCWORK',quoteKicker:'SCWORK / ราคาสติกเกอร์',quoteSkip:'ข้ามไปยังแบบเลือกสเปก',quoteNav:'เมนูหน้าเช็กราคา',backHome:'กลับหน้าเว็บไซต์',
@@ -105,12 +112,13 @@
     return line.buildMessage({
       help:journey==='help',purpose:hasPurpose?$('helpPurpose').selectedOptions[0].textContent:'',
       brief:$('helpBrief').value.trim(),category:t({label:'presetLabel',diecut:'presetDie',large:'presetLarge'}[preset]),
-      material:matName(selection()),width:st.widthCm,height:st.heightCm,quantity:st.quantity,
+      buyerType:document.getElementById('billBuyer')?.value||'individual',material:matName(selection()),width:st.widthCm,height:st.heightCm,quantity:st.quantity,
       cut:t(customCut()?'cutCustom':'cutStandard'),addons:st.addonIds.map(addonLabel).join(', '),
       result,rateVersion:plan?.version,artwork:t({none:'artNone',line:'artLine',link:'artLink'}[art()]),artworkUrl:art()==='link'?$('artUrl').value.trim():''
     },lang);
   }
   function calculate(){
+    refreshApprovedBuyerPlan();
     const st=raw(),help=journey==='help',valid=help||validSpec(st);
     const urlOK=art()!=='link'||line.validArtworkLink($('artUrl').value.trim());
     const matches=phase?.matches({...st,preset,standardCut:!customCut()});
@@ -141,7 +149,7 @@
     if(result){
       text('sumUnitLabel',t('sumUnitLabel'));text('sumUnits',number(result.units)+' '+t(selection().mode==='area_sqm'?'area':'sheets'));
       text('sumBase',currency(result.basePrint));text('sumAddons',currency(result.addonsTotal));
-      text('sumVatLabel',t('vat')+' '+number(result.vatRate*100)+'%');text('sumVat',currency(result.vat));
+      text('sumVatLabel',result.vatRate>0?t('vat')+' '+number(result.vatRate*100)+'%':pick('VAT ไม่เรียกเก็บ','VAT not charged'));text('sumVat',currency(result.vat));
       hide('minimumRow',!result.minimumSurcharge);text('minimumValue',currency(result.minimumSurcharge));
       text('perPieceLabel',t('perPiece'));
       text('perPieceValue',currency(result.perPiece));text('sumTotal',currency(result.total));
@@ -261,6 +269,7 @@
     catch{const field=$('manualCopy');field.value=message;hide('manualCopyPanel',false);field.focus();field.select();text('quoteFeedback',t('manualCopyLabel'));}
   });
   $('mobileAction').addEventListener('click',()=>{if($('mobileAction').getAttribute('href')==='#quoteSummary')$('quoteSummary').focus({preventScroll:true});});
+  window.addEventListener('scwork:buyer-change',calculate);
   window.addEventListener('scwork:locale-change',e=>{
     if(!languages.includes(e.detail?.code))return;
     lang=e.detail.code;params.set('lang',lang);
