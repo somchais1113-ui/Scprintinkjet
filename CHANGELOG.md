@@ -1,3 +1,12 @@
+## V2.1.30 — Quote-linked pricing clarity (2026-11-24)
+
+- Corrected the primary issue identified in user screenshots: the unrelated, user-entered THB 1,000 sample/VAT calculator was still visible within Smart Quote.
+- Removed that independent simulator from the customer quote flow; Step 04 now shows **the selected job's real material, dimensions, quantity, buyer type, price status, VAT and withholding handling**, updated from one shared quote state.
+- Added `src/scripts/live-quote-engine-v2130.js`: calculates **only** from an explicitly approved public selling-rate card, with a non-VAT seller guard; supports any eligible quantity (not just 100/500/1,000) and validates extras before quoting. **Does not invent prices.**
+- With the present `data/pricing-public-data.js` intentionally `null`, amounts say **รอประเมินราคา**. Changes to quantity/spec are reflected immediately and prices never keep the old unrelated 1,000-baht demo amount.
+- Added focused QA covering no-rate / approved-rate real-time changes in Desktop and Mobile, including B2C/B2B and no VAT charged.
+- Existing costing workbench, approved-rate export, material catalog, portfolio, knowledge, navigation and footer retained.
+
 ## V2.1.29 — B2B / B2C pricing policies & seller VAT status (2026-11-24)
 - Confirmed SCWork as **not VAT-registered**, switched billing configuration and blocked unauthorized VAT rate-card exports.
 - Aligned the private material cost catalog with the six public materials (vinyl banner replaces the old PP silver draft entry, without copying costs).
@@ -429,3 +438,12 @@ Added a separate Thai/English campaign page featuring two coordinated bottle and
 - Fixed article logo being overwritten by JavaScript; matched approved main site PNG logo.
 - Article reader now supports headings, lists, reading contents navigation, caution note, related articles and localized meta information.
 - Scoped changes to knowledge/blog; prior approved Hero, pricing functions, four service pages and footer remain unchanged.
+
+## V2.1.31 — Pricing Control Center (local-first)
+- New private `tools/pricing-control-center.html`, CSS and JS for Supplier monitoring and manual quote evidence.
+- New pure unit-tested core `src/scripts/pricing-control-core-v2131.js`.
+- Supplier normalized cost with explicit material unit, seller VAT treatment, documentary reference and validity.
+- Private evidence stored in local IndexedDB (original file + checksum), optional source URL, audit trail, private JSON and CSV exports.
+- Live B2C/B2B cost and margin impact preview (only where full Master costs are available); approval and explicit transfer to existing Pricing Master **draft**, never to public rates.
+- Private tool added to Admin Workspace. New public builder excludes all tools/internal cost files and includes only `START_HERE_V2.1.31.md` notes.
+- No production cloud monitoring or unapproved price changes; those require connected backend and user-authenticated approvals.

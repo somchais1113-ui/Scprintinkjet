@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="th"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Pricing Control Center | SCWork Internal</title>
+<link rel="icon" href="../favicon-32x32.png" type="image/png">
+<link rel="stylesheet" href="pricing-control-center.css?v=2.1.31">
+<script defer src="../data/pricing-demo-data.js"></script>
+<script defer src="pricing-catalog-v2129.js?v=2.1.31"></script>
+<script defer src="../src/scripts/rate-card-builder.js?v=2.1.31"></script>
+<script defer src="../src/scripts/pricing-master.js?v=2.1.31"></script>
+<script defer src="../src/scripts/pricing-control-core-v2131.js?v=2.1.31"></script>
+<script defer src="pricing-control-center.js?v=2.1.31"></script>
+</head><body>
+<header class="site-header"><div class="frame head-row"><a href="index.html" class="brand" aria-label="SCWork internal home"><img src="../assets/icons/scwork-logo.png" alt="SCWork"></a><span class="head-name">PRICING / CONTROL CENTER <small>v2.1.31</small></span><a class="head-link" href="pricing-workbench.html">Pricing Master</a></div></header>
+<main class="frame">
+<section class="intro"><div><span class="eyebrow">INTERNAL · SUPPLIER COST MONITORING</span><h1>ควบคุมต้นทุน<br><span>ก่อนเปลี่ยนราคาขาย</span></h1><p>บันทึกใบราคา Supplier พร้อมหลักฐาน เปรียบเทียบกำไร B2C / B2B และส่งต้นทุนที่ผ่านการอนุมัติเป็นร่างเข้าสู่ Pricing Master</p></div><div class="intro-aside"><span class="status-dot"></span><strong>Local-first MVP</strong><p>ใช้เฉพาะบน localhost · ไม่มีการดึงราคาจากอินเทอร์เน็ตหรือเผยแพร่ราคาขึ้นเว็บอัตโนมัติ</p></div></section>
+<div id="accessBlock" class="critical" hidden>เครื่องมือนี้ใช้เฉพาะ localhost หรือ 127.0.0.1 เท่านั้น โปรดอย่าเผยแพร่หน้า Admin นี้ขึ้นเว็บไซต์สาธารณะ</div>
+<section class="metrics" aria-label="ภาพรวมต้นทุน"><div><span>กลุ่มวัสดุ</span><strong id="metricMaterial">6</strong><small>รายการใน Pricing Master</small></div><div><span>ใบราคาที่บันทึก</span><strong id="metricQuotes">0</strong><small>บนเบราว์เซอร์เครื่องนี้</small></div><div><span>รอตรวจ / อนุมัติ</span><strong id="metricPending">0</strong><small>ไม่เผยแพร่โดยอัตโนมัติ</small></div><div><span>ต้นทุนที่ส่งเข้าร่างแล้ว</span><strong id="metricApplied">0</strong><small>ยังต้องอนุมัติ Rate Card อีกครั้ง</small></div></section>
+<nav class="step-nav" aria-label="ลำดับงาน"><a href="#supplier-entry">01 / รับราคา Supplier</a><a href="#quotes">02 / ตรวจราคา</a><a href="#review">03 / ผลต่อกำไร</a><a href="#approval">04 / อนุมัติและส่งร่าง</a></nav>
+<div class="content-grid">
+<section class="panel entry-panel" id="supplier-entry"><div class="section-heading"><div><span class="eyebrow">01 / SOURCE PRICE</span><h2>บันทึกราคาต้นทุนใหม่</h2></div><span class="soft-note">ไม่ได้เปลี่ยนราคาลูกค้าทันที</span></div>
+<form id="quoteForm" novalidate>
+<div class="fields double"><label>วัสดุ <span>*</span><select name="materialId" id="materialSelect" required></select></label><label>ชื่อ Supplier <span>*</span><input name="supplier" required maxlength="100" placeholder="เช่น ผู้ผลิต A"></label></div>
+<div class="fields double"><label>ราคาในเอกสาร (บาท) <span>*</span><input name="packPrice" type="number" min="0.01" step="0.01" placeholder="0.00" required></label><label>จำนวนหน่วยที่ราคานี้ครอบคลุม <span>*</span><input name="packUnits" type="number" min="0.0001" step="any" value="1" required></label></div>
+<div class="unit-note" id="unitNote">หน่วยต้นทุนต้องตรงกับวัสดุใน Master ก่อนนำมาเทียบ</div>
+<div class="fields double"><label>VAT ในเอกสารผู้ขาย <span>*</span><select name="taxTreatment" required><option value="" selected disabled>เลือกตามใบราคา Supplier</option><option value="vat-included">รวม VAT 7% แล้ว</option><option value="vat-excluded">ยังไม่รวม VAT 7%</option><option value="no-vat">ไม่มี VAT</option></select></label><label>เลขที่ใบเสนอราคา/เอกสาร <span>*</span><input name="documentNo" maxlength="90" required placeholder="QT-2026-001"></label></div>
+<div class="fields double"><label>วันที่ออกเอกสาร <span>*</span><input name="quoteDate" type="date" required></label><label>ใช้ราคาได้ถึงวันที่<input name="validUntil" type="date"></label></div>
+<div class="fields"><label>ลิงก์อ้างอิง Supplier<input name="sourceURL" type="url" placeholder="https://... (ถ้ามี)"></label><label>แนบหลักฐานเอกสาร (PDF / รูป / Excel) <small>หรือระบุ URL ด้านบน</small><input type="file" id="evidenceFile" accept=".pdf,.png,.jpg,.jpeg,.webp,.xlsx,.xls,.csv,application/pdf,image/png,image/jpeg,image/webp" aria-describedby="evidenceHelp"></label><p class="field-hint" id="evidenceHelp">ไฟล์ไม่เกิน 12 MB เก็บเฉพาะบนเบราว์เซอร์เครื่องนี้ (IndexedDB) ไม่มีการอัปโหลดขึ้น Cloud</p><label>หมายเหตุภายใน<textarea name="notes" rows="2" maxlength="400" placeholder="เช่น Supplier แจ้งปรับราคาตั้งแต่เดือนถัดไป"></textarea></label></div>
+<div class="form-footer"><div><span>ต้นทุนต่อหน่วยหลัง VAT ที่เครดิตไม่ได้</span><strong id="computedUnit">—</strong></div><button class="orange-btn" type="submit" id="saveQuote">บันทึกราคาเป็นร่าง</button></div>
+<p id="formMessage" class="form-msg" role="status" aria-live="polite"></p>
+</form></section>
+<aside class="panel side-panel"><span class="eyebrow">WORKFLOW</span><h2>จากต้นทุนสู่ราคาขาย</h2>
+<div class="steps"><div><span>01</span><div><strong>Receive</strong><p>เก็บราคา หน่วย วันที่ และเอกสาร Supplier</p></div></div><div><span>02</span><div><strong>Review</strong><p>ตรวจราคาใหม่เทียบต้นทุนและ Margin</p></div></div><div><span>03</span><div><strong>Approve Cost</strong><p>อนุมัติเฉพาะต้นทุนพร้อมหลักฐาน</p></div></div><div><span>04</span><div><strong>Publish Selling Rate</strong><p>Pricing Master ตรวจและส่งออก Rate Card อีกขั้น</p></div></div></div>
+<div class="guard"><strong>กฎการทำงาน</strong><p>SCWork ยังไม่จด VAT จึงไม่มีการบวก VAT ในราคาขาย แต่ VAT ที่ Supplier เรียกเก็บและเครดิตไม่ได้ต้องรวมในต้นทุน</p><p>การเลือก B2B ไม่ใช่การอนุมัติส่วนลดอัตโนมัติ</p></div>
+<a class="outline-btn" href="pricing-workbench.html">เปิด Pricing Master</a>
+</aside>
+</div>
+<section class="panel full" id="quotes"><div class="section-heading"><div><span class="eyebrow">02 / SUPPLIER QUOTES</span><h2>รายการราคาที่บันทึก</h2></div><div class="action-row"><label class="filter-label">วัสดุ <select id="filterMaterial"><option value="all">ทั้งหมด</option></select></label><label class="filter-label">สถานะ <select id="filterStatus"><option value="all">ทั้งหมด</option><option value="draft">ร่าง</option><option value="approved">อนุมัติต้นทุน</option><option value="applied">ส่งเข้า Master</option></select></label></div></div>
+<div class="table-wrap"><table><thead><tr><th>วัสดุ / Supplier</th><th>เอกสาร</th><th>ต้นทุนต่อหน่วย</th><th>เปลี่ยนแปลง</th><th>สถานะ</th><th>รายละเอียด</th></tr></thead><tbody id="quoteRows"><tr><td colspan="6">ยังไม่มีข้อมูล Supplier</td></tr></tbody></table></div>
+</section>
+<div class="content-grid bottom-grid">
+<section class="panel review-panel" id="review"><div class="section-heading"><div><span class="eyebrow">03 / IMPACT SIMULATOR</span><h2>ผลกระทบต่อราคาและกำไร</h2></div></div>
+<p class="muted" id="selectedLabel">เลือกใบราคาจากตารางเพื่อเปรียบเทียบกับ Cost Master ที่มีอยู่</p>
+<div id="impactSummary" class="impact-summary empty">ยังไม่ได้เลือกใบราคา</div><div class="table-wrap"><table><thead><tr><th>ปริมาณอ้างอิง</th><th>ต้นทุนใหม่</th><th>B2C: ราคาแนะนำ</th><th>Margin หากไม่ขึ้นราคา</th><th>B2B: ราคาแนะนำ</th></tr></thead><tbody id="impactRows"><tr><td colspan="5">รอเลือกใบราคา</td></tr></tbody></table></div>
+<p class="footnote">ตัวเลขจำลองจาก Cost Master เท่านั้น ไม่ใช่ราคาบนเว็บไซต์หรือใบเสนอราคาที่ยืนยันแล้ว หากต้นทุนอื่นยังไม่ครบ ระบบจะไม่สร้างราคาขายสมมติ</p></section>
+<aside class="panel approval-panel" id="approval"><span class="eyebrow">04 / REVIEW & APPROVE</span><h2>อนุมัติการปรับต้นทุน</h2><p class="muted" id="approvalDesc">เลือกใบราคาที่มีหลักฐาน แล้วตรวจผลกระทบก่อนส่งให้ Pricing Master</p>
+<label>ชื่อผู้ตรวจ/ผู้อนุมัติ <input id="approver" maxlength="80" placeholder="ผู้รับผิดชอบ"></label>
+<label>เหตุผลประกอบการอนุมัติ <textarea id="approvalReason" rows="2" maxlength="220" placeholder="เช่น Supplier แจ้งปรับต้นทุนใหม่"></textarea></label>
+<label class="confirmation"><input type="checkbox" id="checkedEvidence"><span>ตรวจเอกสารอ้างอิง หน่วย และสถานะภาษีแล้ว</span></label>
+<button class="orange-btn" type="button" id="approveCost" disabled>อนุมัติต้นทุน</button>
+<button class="outline-btn" type="button" id="applyMaster" disabled>ส่งต้นทุนเข้าร่าง Pricing Master</button>
+<p class="footnote" id="approvalFeedback" role="status" aria-live="polite">จะไม่เปลี่ยนราคาหน้าเว็บจนกว่าจะมีการอนุมัติและเผยแพร่เรทขาย</p></aside>
+</div>
+<section class="panel backup-panel"><div><span class="eyebrow">BACKUP & CHANGE LOG</span><h2>หลักฐานและประวัติการเปลี่ยนแปลง</h2><p class="muted">ประวัติเก็บอยู่ในเครื่องนี้เท่านั้น การส่งออก JSON ไม่รวมไฟล์แนบต้นฉบับ ให้ดาวน์โหลดไฟล์หลักฐานแยกก่อนย้ายเครื่อง</p></div><div class="action-row"><button class="outline-btn" id="exportJSON" type="button">สำรองข้อมูล (.json)</button><label class="outline-btn file-import">นำเข้าข้อมูล (.json)<input id="importJSON" type="file" accept="application/json,.json"></label><button class="outline-btn" id="exportCSV" type="button">ส่งออกประวัติ (.csv)</button></div><div id="auditLog" class="audit-log">ยังไม่มีประวัติ</div></section>
+<p class="bottom-note">SCWORK PRICING CONTROL CENTER V2.1.31 · Private, local-only · Do not deploy tools/ to a public website</p>
+</main>
+</body></html>

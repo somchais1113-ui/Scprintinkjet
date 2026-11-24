@@ -5,10 +5,9 @@
   const $=id=>document.getElementById(id);
   if(!api||!$('printEstimate'))return;
   const cfg=window.SCWORK_BILLING_CONFIG||{};
-  $('exampleVAT').disabled=cfg.vatStatus!=='registered';
-  if(cfg.vatStatus!=='registered')$('exampleVAT').value='no';
+
   const EN={
-    billing:'Buyer details and tax',billingLead:'Review the breakdown and print without using LINE',buyer:'Buyer type',individual:'Individual',
+    billing:'Buyer details and tax',billingLead:'Review buyer details and your selected order status',buyer:'Buyer type',individual:'Individual',
     company:'Thai private-sector legal entity',other:'Other / Needs review',contract:'Withholding contract basis',fullContract:'This is the full contract amount',
     partialContract:'Partial payment under a service contract of at least THB 1,000 before VAT',unknownContract:'Full contract amount not known',
     recipient:'Name on document (optional)',localOnly:'Used only in your printout. Not sent or saved by this page.',
@@ -64,7 +63,7 @@
   function update(){
     if(!data)return;
     // No VAT toggle is available until SCWork actually registers and the code is re-approved.
-    if(cfg.vatStatus!=='registered')$('exampleVAT').value='no';
+
     document.querySelectorAll('[data-buyer-choice]').forEach(btn=>{
       const selected=btn.dataset.buyerChoice===buyer();
       btn.classList.toggle('is-selected',selected);btn.setAttribute('aria-pressed',String(selected));
@@ -80,7 +79,7 @@
       const el=$(id);if(el)el.textContent=value;
     }
     const focusType=data.result?.billingType;
-    $('billContractPanel').hidden=buyer()!=='company'||!(focusType==='service'||$('billingExample').open&&$('exampleType').value==='service');
+    $('billContractPanel').hidden=buyer()!=='company'||focusType!=='service';
     const result=cur();
     for(const id of ['billingFeeRow','billingSubtotalRow','billingPay'])$(id).hidden=!result;
     if(result){
@@ -89,12 +88,36 @@
       text('billingWhtLabel',whtLabel(result));text('billingWhtValue',money(result.wht));
       text('billingNetValue',money(result.net));text('billingPayNote',reasons()[result.reason]);
     }
-    const example=api.quote($('exampleBase').valueAsNumber,$('exampleFee').valueAsNumber,cfg.vatStatus==='registered'&&$('exampleVAT').value==='yes'?api.DEMO_VAT:0,
-      $('exampleType').value,buyer(),contract());
-    breakdown('billingExampleRows',example?pairs(example,false):[]);
-    const status=$('scBillingLive');
-    if(status)status.textContent=example?pick('ผลคำนวณล่าสุด · '+money(example.gross),'Live total · '+money(example.gross)):pick('กรอกตัวเลขตั้งแต่ 0 ขึ้นไปเพื่อคำนวณใหม่','Enter nonnegative values to calculate');
-    text('billingExampleNote',example?reasons()[example.reason]:pick('กรอกยอดและค่าบริหารเป็นตัวเลขตั้งแต่ 0 ขึ้นไป','Enter nonnegative amounts in both fields.'));
+    // Order-specific amount display: never mix with a user-entered example amount.
+    // No approved public rate -> NO PRICE, even if quantity is valid.
+    const isThai=thLang;
+    const setText=(id,th,en)=>text(id,isThai?th:en);
+    setText('scLinkedKicker','สรุปจากสเปกที่เลือก · อัปเดตทันที','Selected order · live update');
+    setText('scLinkedTitle','ราคาสำหรับออเดอร์นี้','Price for this order');
+    setText('scLinkedBuyerLabel','ประเภทผู้ซื้อ','Buyer type');
+    setText('scLinkedPriceLabel','ราคางานพิมพ์','Print job price');
+    setText('scLinkedVatLabel','VAT · SCWork ยังไม่จดทะเบียน','VAT · SCWork is not registered');
+    setText('scLinkedWhtLabel','หัก ณ ที่จ่าย','Withholding');
+    setText('scLinkedTotalLabel','ยอดประเมินออเดอร์','Order estimate');
+    text('scLinkedBuyer',buyerLabel());
+    text('scLinkedSpec',data.material+' · '+(data.specs||pick('รอข้อมูลสเปก','Awaiting specifications')));
+    const live=$('scLinkedQuote');
+    live.classList.toggle('has-approved-price',!!result);
+    if(result){
+      setText('scLinkedStatus','มีราคาอ้างอิงที่อนุมัติแล้ว','Approved reference rate');
+      text('scLinkedPrice',money(result.subtotal));
+      text('scLinkedVat',money(result.vat));
+      text('scLinkedWht',result.wht===null?pick('รอตรวจตามประเภทงาน','Requires classification'):money(result.wht));
+      text('scLinkedTotal',result.net===null?money(result.gross):money(result.net));
+      text('scLinkedHint',result.net===null?reasons()[result.reason]:pick('ราคาอ้างอิงก่อนตรวจไฟล์และค่าจัดส่ง ทีม SCWork ยืนยันยอดก่อนสั่งผลิต','Reference amount pending artwork, delivery and final review.'));
+    }else{
+      setText('scLinkedStatus','รอประเมินราคา','Awaiting quote');
+      text('scLinkedPrice','—');
+      setText('scLinkedVat','ไม่เรียกเก็บ','Not charged');
+      text('scLinkedWht',buyer()==='individual'?pick('ไม่หักในกรณีทั่วไป','Not applied for typical purchase'):pick('ตรวจตามประเภทงาน','Depends on transaction'));
+      setText('scLinkedTotal','รอประเมินราคา','Awaiting quote');
+      text('scLinkedHint',data.ready?pick('ยังไม่มีเรทราคาอนุมัติสำหรับสเปกนี้ จำนวนและขนาดจะอัปเดตทันที แต่ระบบไม่สร้างยอดสมมติ','No approved rate for these specifications. Quantity and size update live, without inventing a price.'):pick('กรุณากรอกขนาดและจำนวนให้ถูกต้อง','Enter valid dimensions and quantity.'));
+    }
     $('printEstimate').disabled=!data.ready;
     text('printEstimate',result?pick('พิมพ์ใบประมาณราคา / บันทึก PDF','Print estimate / Save PDF'):
       pick('พิมพ์สรุปสเปก / บันทึก PDF','Print specifications / Save PDF'));
@@ -137,14 +160,9 @@
   $('billBuyer').addEventListener('change',()=>{
     window.dispatchEvent(new CustomEvent('scwork:buyer-change',{detail:{buyer:buyer()}}));
   });
-  for(const id of ['billBuyer','billContract','exampleType','exampleVAT']){
+  for(const id of ['billBuyer','billContract']){
     $(id).addEventListener('change',update);
     $(id).addEventListener('input',update);
   }
-  for(const id of ['exampleBase','exampleFee']){
-    $(id).addEventListener('input',update);
-    $(id).addEventListener('change',update);
-  }
-  $('billingExample').addEventListener('toggle',update);
   window.SCWORK_QUOTE_BILLING_UI={render};
 })();

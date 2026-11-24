@@ -14,10 +14,10 @@
 <link rel="stylesheet" href="src/styles/17-language-modal.css?v=2.1.1"><link rel="stylesheet" href="src/styles/19-smart-quote.css?v=2.1.20">
 <script src="data/site-data.js?v=2.1.28" defer></script><script src="config/public-config.js?v=2.1.5" defer></script>
 <script src="data/quote-catalog.js?v=2.1.28" defer></script><script src="data/pricing-public-data.js?v=1.8.2" defer></script><script src="src/scripts/pricing-engine.js?v=2.1.29" defer></script>
-<script src="src/scripts/label-quote-plan.js?v=1.8.2" defer></script><script src="src/scripts/quote-to-line.js?v=1.8.2" defer></script>
-<script src="config/billing-config.js?v=2.1.29" defer></script><script src="src/scripts/quote-billing.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing-ui.js?v=2.1.29" defer></script><script src="src/scripts/smart-quote.js?v=2.1.29" defer></script><script src="src/scripts/language-modal.js?v=2.1.1" defer></script>
+<script src="src/scripts/label-quote-plan.js?v=1.8.2" defer></script><script src="src/scripts/live-quote-engine-v2130.js?v=2.1.30" defer></script><script src="src/scripts/quote-to-line.js?v=1.8.2" defer></script>
+<script src="config/billing-config.js?v=2.1.29" defer></script><script src="src/scripts/quote-billing.js?v=2.1.0" defer></script><script src="src/scripts/quote-billing-ui.js?v=2.1.30" defer></script><script src="src/scripts/smart-quote.js?v=2.1.30" defer></script><script src="src/scripts/language-modal.js?v=2.1.1" defer></script>
   <link rel="stylesheet" href="./src/styles/19-social-proof-footer.css?v=2.1.1" />
-<link rel="stylesheet" href="src/styles/24-quote-billing.css?v=2.1.20"><link rel="stylesheet" href="src/styles/41-b2b-b2c-pricing-v2129.css?v=2.1.29">
+<link rel="stylesheet" href="src/styles/24-quote-billing.css?v=2.1.20"><link rel="stylesheet" href="src/styles/41-b2b-b2c-pricing-v2129.css?v=2.1.29"><link rel="stylesheet" href="src/styles/42-linked-quote-v2130.css?v=2.1.30">
 <link rel="stylesheet" href="src/styles/31-home-quote-polish.css?v=2.1.12">
   <link rel="stylesheet" href="./src/styles/26-support-bar.css?v=2.1.20">
   <script defer src="./src/scripts/support-bar.js?v=2.1.5"></script>
@@ -87,19 +87,26 @@
   <label class="q-art-option"><input type="radio" name="artwork" value="link"><span class="q-art-option__copy"><strong id="artLink">มีลิงก์ไฟล์</strong><small id="artLinkDesc">วางลิงก์ Google Drive, OneDrive หรือ Dropbox</small></span></label>
 </fieldset><div id="artLinkPanel" hidden><label class="q-field"><span id="linkLabel">ลิงก์ Google Drive / OneDrive / Dropbox</span><input id="artUrl" type="url" autocomplete="off" inputmode="url" maxlength="1500" placeholder="https://..."><small id="linkHelp">ตรวจสอบสิทธิ์การเข้าถึงก่อนส่ง และอย่าใส่ลิงก์ที่มีข้อมูลลับ</small></label></div></div>
 <div class="q-card qb-options" id="billOptions">
-<div class="q-section-top"><span class="q-step">04</span><div><h2 data-b="billing">ข้อมูลผู้ซื้อและภาษี</h2><p data-b="billingLead">ดูยอดแยกก่อนพิมพ์เอกสาร โดยไม่ต้องเปิด LINE</p></div></div>
-<div class="q-fields"><label class="q-field q-field--full"><span data-b="buyer">ประเภทผู้ซื้อ</span><select id="billBuyer"><option value="individual" data-b="individual">บุคคลธรรมดา</option><option value="company" data-b="company">นิติบุคคลไทย (ภาคเอกชน)</option><option value="other" data-b="other">อื่น ๆ / ให้ตรวจสอบ</option></select></label>
+<div class="q-section-top"><span class="q-step">04</span><div><h2 data-b="billing">ข้อมูลผู้ซื้อและภาษี</h2><p data-b="billingLead">ดูข้อมูลผู้ซื้อและสถานะราคาของออเดอร์ที่เลือก</p></div></div>
+<div class="q-fields"><label class="q-field q-field--full sc-buyer-field--internal" hidden><span data-b="buyer">ประเภทผู้ซื้อ</span><select id="billBuyer"><option value="individual" data-b="individual">บุคคลธรรมดา</option><option value="company" data-b="company">นิติบุคคลไทย (ภาคเอกชน)</option><option value="other" data-b="other">อื่น ๆ / ให้ตรวจสอบ</option></select></label>
 <label class="q-field q-field--full" id="billContractPanel" hidden><span data-b="contract">ฐานพิจารณาการหัก ณ ที่จ่าย</span><select id="billContract"><option value="this-order" data-b="fullContract">ยอดนี้เป็นยอดทั้งสัญญา</option><option value="qualifying" data-b="partialContract">จ่ายบางส่วนของสัญญาบริการที่มียอดก่อน VAT ตั้งแต่ 1,000 บาท</option><option value="unknown" data-b="unknownContract">ยังไม่ทราบยอดทั้งสัญญา</option></select></label>
 <label class="q-field q-field--full"><span data-b="recipient">ชื่อบนเอกสาร (ไม่บังคับ)</span><input id="billRecipient" type="text" maxlength="120" autocomplete="off"><small data-b="localOnly">ใช้ในหน้าพิมพ์ของคุณเท่านั้น ไม่ส่งหรือบันทึกเข้าระบบ</small></label></div>
-<details class="qb-example" id="billingExample"><summary data-b="example">ทดลองคำนวณจากยอดที่กรอกเอง</summary>
-<p class="qb-example-note" data-b="exampleNote">ตัวอย่างเท่านั้น ไม่ใช่ราคาขายของ SCWork และไม่ถูกนำไปใส่เอกสารจริง</p>
-<div class="q-fields">
-<label class="q-field"><span data-b="sampleBase">มูลค่างาน (บาท)</span><input id="exampleBase" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" value="1000"></label>
-<label class="q-field"><span data-b="sampleFee">ค่าบริหารงาน (บาท)</span><input id="exampleFee" type="number" min="0" max="10000000" step="0.01" inputmode="decimal" value="0"></label>
-<label class="q-field"><span data-b="sampleType">ประเภทงานตัวอย่าง</span><select id="exampleType"><option value="service" data-b="service">ค่าบริการ / รับจ้างทำของ</option><option value="goods" data-b="goods" selected>ซื้อขายสินค้า</option></select></label>
-<label class="q-field"><span data-b="sampleVAT">เงื่อนไข VAT ในตัวอย่าง</span><select id="exampleVAT"><option value="yes" data-b="vatYes">VAT 7% (ตัวอย่างผู้จดทะเบียนเท่านั้น)</option><option value="no" data-b="vatNo" selected>ไม่คิด VAT (ยังไม่จดทะเบียน)</option></select></label>
-</div><p class="sc-billing-live" id="scBillingLive" role="status" aria-live="polite">ผลคำนวณอัปเดตทันทีเมื่อกรอกยอดหรือเปลี่ยนเงื่อนไข</p><dl class="qb-money" id="billingExampleRows" aria-live="polite"></dl><p class="qb-note" id="billingExampleNote"></p>
-</details>
+<section class="sc-linked-quote" id="scLinkedQuote" aria-labelledby="scLinkedTitle" aria-live="polite" aria-atomic="true">
+  <div class="sc-linked-quote__top">
+    <div><p class="sc-linked-quote__kicker" id="scLinkedKicker">สรุปจากสเปกที่เลือก · อัปเดตทันที</p>
+    <h3 id="scLinkedTitle">ราคาสำหรับออเดอร์นี้</h3></div>
+    <span class="sc-linked-quote__status" id="scLinkedStatus">รอประเมินราคา</span>
+  </div>
+  <p class="sc-linked-quote__spec" id="scLinkedSpec">กำลังอ่านข้อมูลวัสดุ ขนาด และจำนวน</p>
+  <dl class="sc-linked-quote__rows">
+    <div><dt id="scLinkedBuyerLabel">ประเภทผู้ซื้อ</dt><dd id="scLinkedBuyer">บุคคลทั่วไป</dd></div>
+    <div><dt id="scLinkedPriceLabel">ราคางานพิมพ์</dt><dd id="scLinkedPrice">—</dd></div>
+    <div><dt id="scLinkedVatLabel">VAT · SCWork ยังไม่จดทะเบียน</dt><dd id="scLinkedVat">ไม่เรียกเก็บ</dd></div>
+    <div><dt id="scLinkedWhtLabel">หัก ณ ที่จ่าย</dt><dd id="scLinkedWht">ตรวจตามประเภทงาน</dd></div>
+    <div class="sc-linked-quote__total"><dt id="scLinkedTotalLabel">ยอดประเมินออเดอร์</dt><dd id="scLinkedTotal">รอประเมินราคา</dd></div>
+  </dl>
+  <p class="sc-linked-quote__hint" id="scLinkedHint">ระบบยังไม่มีเรทราคาที่อนุมัติสำหรับสเปกนี้ จึงไม่แสดงยอดสมมติ</p>
+</section>
 </div>
 </section>
 <aside class="q-summary" id="quoteSummary" tabindex="-1" aria-label="Live quote summary"><div class="q-summary__sticky"><div class="q-summary-head"><div><span id="summaryEyebrow">สรุปงาน</span><h2 id="summaryTitle">สรุปราคา</h2></div><span class="q-demo-pill" id="rateStatus" hidden></span></div><p class="sc-live-caption" id="scLiveCaption" role="status" aria-live="polite">สเปกและผลลัพธ์อัปเดตทันทีเมื่อเปลี่ยนข้อมูล</p><div class="q-product"><strong id="summaryMaterial">สติกเกอร์</strong><p id="summarySpecs">5 × 5 ซม. · 500 ชิ้น</p></div><div class="q-rows" id="priceRows" hidden><div><span id="sumUnitLabel">จำนวนที่คิดราคา</span><strong id="sumUnits">—</strong></div><div><span id="sumBaseLabel">ค่าพิมพ์</span><strong id="sumBase">—</strong></div><div><span id="sumAddonLabel">ตัวเลือกเสริม</span><strong id="sumAddons">—</strong></div><div class="q-extra-cost" id="minimumRow" hidden><span id="minimumLabel">ค่าขั้นต่ำ</span><strong id="minimumValue">—</strong></div><div id="billingFeeRow" hidden><span data-b="fee">ค่าบริหารงาน</span><strong id="billingFeeValue">—</strong></div><div id="billingSubtotalRow" hidden><span data-b="subtotal">มูลค่างาน</span><strong id="billingSubtotalValue">—</strong></div><div><span id="sumVatLabel">VAT</span><strong id="sumVat">—</strong></div></div><div class="q-perpiece" id="perPieceRow" hidden><span id="perPieceLabel">เฉลี่ยต่อชิ้น (ไม่รวม VAT ที่ไม่มีการเรียกเก็บ)</span><strong id="perPieceValue">—</strong></div><div class="q-total" id="totalRow" hidden><span id="sumTotalLabel">ยอดประมาณการ</span><strong id="sumTotal">—</strong></div><section class="qb-settlement" id="billingPay" hidden aria-live="polite"><div><span id="billingWhtLabel">หัก ณ ที่จ่าย</span><strong id="billingWhtValue">—</strong></div><div><span data-b="net">ยอดโอนสุทธิ (ประมาณการ)</span><strong id="billingNetValue">—</strong></div><p class="qb-note" id="billingPayNote"></p></section><p class="q-price-meta" id="rateMeta" hidden></p><p class="q-price-info" id="priceInfo" aria-live="polite">ส่งสเปกเพื่อให้ทีมประเมินราคา</p><p class="q-price-warning" id="priceWarning" role="status" hidden></p><button type="button" id="printEstimate" class="q-cta qb-print" disabled>พิมพ์สรุปสเปก / บันทึก PDF</button><p class="qb-note" data-b="printNote">เอกสารสำหรับตรวจสอบก่อนซื้อ ไม่ใช่ใบแจ้งหนี้ ใบเสร็จ หรือใบกำกับภาษี</p>

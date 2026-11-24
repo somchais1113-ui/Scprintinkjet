@@ -52,6 +52,6 @@ master.vatPct=7;
 assert.throws(()=>privatePricing.makeCard(master,cat,builder,'2026-11-24T02:00:00Z'),/NON_VAT_SELLER/);
 const h=read('smart-quote.html'),u=read('src/scripts/quote-billing-ui.js');
 assert(h.includes('data-buyer-choice="individual"')&&h.includes('data-buyer-choice="company"'));
-assert(u.includes("cfg.vatStatus!=='registered'"));
+assert(read('config/billing-config.js').includes("vatStatus: 'not-registered'"));
 assert(h.includes('41-b2b-b2c-pricing-v2129.css'));
 console.log('PASS V2.1.29: unregistered VAT guard, B2C/B2B cost-based approved policy, corporate financing, no cost leak, WHT review, no invented rate.');

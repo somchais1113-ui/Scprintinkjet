@@ -1,3 +1,7 @@
+> **V2.1.31:** Private, local-first Pricing Control Center at `tools/pricing-control-center.html`. Evidence from Supplier prices is browser-local; approved costs hand off into Pricing Master drafts. See `START_HERE_V2.1.31.md` and `docs/PRICING-CONTROL-CLOUD-ROADMAP-V2131.md`. This is not an online, authenticated pricing system.
+
+**Latest: V2.1.30** — Quote-linked totals replace the standalone example tax calculator. See `START_HERE_V2.1.30.md`.
+
 ## Current release: V2.1.28 (2026-11-24)
 
 See [START_HERE_V2.1.28.md](START_HERE_V2.1.28.md) for this version. Built on the V2.1.27 Full Package with six raw materials, new four-slide Portfolio Cinema, revised quote labels and compact footer.

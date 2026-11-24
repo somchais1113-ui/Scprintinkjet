@@ -10,7 +10,7 @@
   const engine=window.SCWORK_PRICING_ENGINE,line=window.SCWORK_QUOTE_TO_LINE;
   const card=window.SCWORK_PRICING_PUBLIC,baseCatalog=window.SCWORK_QUOTE_CATALOG;
   if(!engine||!line||!Array.isArray(baseCatalog))return;
-  const phase=window.SCWORK_LABEL_QUOTE_PLAN;
+  const phase=window.SCWORK_LABEL_QUOTE_PLAN, liveEstimate=window.SCWORK_LIVE_QUOTE_ENGINE;
   const bill=window.SCWORK_QUOTE_BILLING,billUI=window.SCWORK_QUOTE_BILLING_UI;
   let plan=null;
   function refreshApprovedBuyerPlan(){
@@ -123,7 +123,13 @@
     const urlOK=art()!=='link'||line.validArtworkLink($('artUrl').value.trim());
     const matches=phase?.matches({...st,preset,standardCut:!customCut()});
     const showPlan=!!(!help&&matches&&plan&&st.materialId!=='vinyl-banner');
-    result=showPlan&&valid?plan.options.find(q=>q.quantity===st.quantity)||null:null;
+    // Shared live quote, only when approved rates actually exist for this exact specification.
+    // The separate sample-amount tax calculator has been removed from customer checkout.
+    const buyer=document.getElementById('billBuyer')?.value||'individual';
+    result=(!help&&valid&&liveEstimate)?liveEstimate.estimate({
+      card,engine,billing:bill,billingConfig:window.SCWORK_BILLING_CONFIG,buyer,
+      raw:st,customCut:customCut()
+    }):null;
     hide('labelPrices',!showPlan);
     hide('quoteQuantities',showPlan);
     const terms=vatRate=>(vatRate>0?t('vatIncluded').replace('{rate}',number(vatRate*100)):t('vatNotApplied'))+' · '+t('shippingExcluded');
