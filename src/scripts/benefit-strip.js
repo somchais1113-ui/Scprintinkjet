@@ -7,7 +7,7 @@
   const rating=document.getElementById('scBenefitRating');
   const labels=base.querySelectorAll('[data-scb-label]');
   const words={
-    th:{price:'ราคามาตรฐาน',design:'บริการออกแบบ',shipping:'จัดส่งรวดเร็วและตรงเวลา',credit:'มีการชำระแบบเครดิตเทอม',group:'จุดเด่นบริการ SCWork',count:'ความคิดเห็น'},
+    th:{price:'ราคามาตรฐาน',design:'บริการออกแบบ',shipping:'จัดส่งรวดเร็วและตรงเวลา',credit:'ชำระแบบเครดิตเทอม',group:'จุดเด่นบริการ SCWork',count:'ความคิดเห็น'},
     en:{price:'Standard pricing',design:'Design services',shipping:'Fast, on-time delivery',credit:'Credit terms available',group:'SCWork benefits',count:'reviews'}
   };
   function update(){

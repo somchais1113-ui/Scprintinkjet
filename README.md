@@ -1,3 +1,7 @@
+# Current release: V2.1.27
+
+Material gallery now contains six materials, including non-adhesive banner vinyl. See [START_HERE_V2.1.27.md](START_HERE_V2.1.27.md).
+
 # SCWork V2.1.11
 
 อ่าน [START_HERE_V2.1.11.md](START_HERE_V2.1.11.md) สำหรับหน้ารายละเอียดทั้ง 4 หัวข้อที่เปิดจากแถบจุดเด่นหน้าแรก

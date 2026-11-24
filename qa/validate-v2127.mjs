@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {readFileSync, existsSync} from 'node:fs';
+import {dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=dirname(dirname(fileURLToPath(import.meta.url)));
+const read=f=>readFileSync(join(root,f),'utf8');
+const html=read('index.html'), js=read('src/scripts/material-gallery.js'), css=read('src/styles/27-material-gallery.css');
+const ids=[...html.matchAll(/<article class="sc-material__card" data-material="([a-z-]+)"/g)].map(m=>m[1]);
+assert.deepEqual(ids,['paper-white','kraft-paper','pp-white','pp-clear','pvc-white','vinyl-banner']);
+assert(js.includes("'vinyl-banner':{"),'Sixth material missing localized details');
+assert(js.includes('Vinyl banner (PVC flex)')&&js.includes('ไวนิล (งานป้าย / แบนเนอร์)'));
+assert(js.includes('ทั้ง 6 ประเภท')&&js.includes('six materials'));
+assert(css.includes('repeat(3,minmax(0,1fr))')&&css.includes('repeat(2,minmax(0,1fr))'));
+for (const path of ['assets/images/materials/vinyl-banner.webp','assets/images/materials/vinyl-banner-400.webp','assets/images/material-preview/v216/vinyl-banner-printed.webp','assets/images/material-preview/v216/vinyl-banner-product.webp']) assert(existsSync(join(root,path)),path);
+assert(!read('data/pricing-public-data.js').includes('vinyl-banner'),'Do not advertise an unapproved rate card');
+console.log('SCWORK V2.1.27 material QA PASS: six cards, banner vinyl details, imagery and responsive grid.');

@@ -24,7 +24,18 @@ window.PROCLEANING_UI = {
   priceCard(p,mode,discount){
     const e=this.escape,labels=window.PROCLEANING_SITE?.labels||{};
     const cat=encodeURIComponent(p.category||'Sticker & Label');
-    return `<article class="price-card price-card--sticker"><div><h3>${e(p.name)}</h3><div class="price-card__amount price-card__amount--quote">${e(labels.priceByQuote||(document.documentElement.lang==='th'?'ประเมินราคาตามสเปก':'Custom quotation'))}</div></div><ul class="price-card__features">${(p.features||[]).map(t=>`<li>${e(t)}</li>`).join('')}</ul><a href="./smart-quote.html?category=${cat}" class="button ${p.featured?'button--primary':'button--outline'}">${e(labels.book||'Request a Quote')}</a></article>`;
+    const th=document.documentElement.lang==='th';
+    const name=String(p.name||'').toLowerCase();
+    const kind=/large|retail|signage|ร้าน|หน้าร้าน|กระจก|ใหญ่/.test(name)||/large format/i.test(p.category||'')?'retail':/die.cut|ไดคัท|contour/.test(name)?'diecut':'labels';
+    const details={
+      labels:{th:[['เหมาะกับ','ขวด กระปุก และบรรจุภัณฑ์'],['จุดเด่น','เลือกวัสดุและผิวงานให้รับกับสินค้า'],['ก่อนผลิต','เช็กพื้นผิว ขนาด และจำนวน']],en:[['BEST FOR','Bottles, jars and packaging'],['WHY CHOOSE IT','Select materials and finishes to suit the product'],['CHECK FIRST','Surface, dimensions and quantity']]},
+      diecut:{th:[['เหมาะกับ','ของแจก โปรโมชัน และสติกเกอร์แบรนด์'],['จุดเด่น','ตัดตามรูปทรง เลือกคิสคัทหรือไดคัทขาด'],['ก่อนผลิต','ตรวจเส้นไดคัท วัสดุ และจำนวน']],en:[['BEST FOR','Giveaways, promotions and branding'],['WHY CHOOSE IT','Custom contour, kiss-cut or individual pieces'],['CHECK FIRST','Cutline, material and quantity']]},
+      retail:{th:[['เหมาะกับ','ตกแต่งกระจก หน้าร้าน และพื้นที่ขนาดใหญ่'],['จุดเด่น','สื่อสารแบรนด์ได้เต็มพื้นที่'],['ก่อนผลิต','วัดหน้างาน เลือกฟิล์มและวิธีติดตั้ง']],en:[['BEST FOR','Windows, shops and large surfaces'],['WHY CHOOSE IT','Brand graphics tailored to the installation area'],['CHECK FIRST','Measure site, film and mounting method']]}
+    };
+    const rows=details[kind][th?'th':'en'];
+    const prefix=th?'ราคา: ตามรายละเอียดงาน':'Quoted by job specification';
+    const facts=rows.map(([key,value])=>`<div class="price-card__fact"><dt>${e(key)}</dt><dd>${e(value)}</dd></div>`).join('');
+    return `<article class="price-card price-card--sticker price-card--comparison" data-work-type="${e(kind)}"><header class="price-card__header"><h3>${e(p.name)}</h3><p class="price-card__subline">${e(prefix)}</p></header><dl class="price-card__facts">${facts}</dl><a href="./smart-quote.html?category=${cat}" class="button ${p.featured?'button--primary':'button--outline'}">${e(labels.book||'Request a Quote')}</a></article>`;
   },
   testimonial(t){
     const e=this.escape;

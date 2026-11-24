@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync,statSync} from 'node:fs';
+import {join,dirname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import vm from 'node:vm';
+const root=dirname(dirname(fileURLToPath(import.meta.url)));
+const read=file=>readFileSync(join(root,file),'utf8');
+const home=read('index.html'),portfolio=read('portfolio.html'),main=read('src/scripts/main.js'),ui=read('src/scripts/ui.js');
+const benefit=read('src/scripts/benefit-strip.js'),styling=read('src/styles/37-portfolio-pricing-v2126.css');
+const scope={window:{}};vm.runInNewContext(read('data/portfolio-data.js'),scope);
+const items=scope.window.SCWORK_PORTFOLIO_ITEMS;
+assert.equal(items.length,20,'Portfolio must have 20 images');
+assert.equal(new Set(items.map(x=>x.id)).size,20,'IDs must be unique');
+assert.equal(new Set(items.map(x=>x.image)).size,20,'Photo paths must be unique');
+for(const type of ['labels','diecut','retail','process'])assert.equal(items.filter(x=>x.category===type).length,5,'Category must have 5: '+type);
+for(const item of items){
+ assert(item.title?.th&&item.title?.en&&item.fit?.th&&item.fit?.en&&item.note?.th&&item.note?.en,'Missing localized descriptions '+item.id);
+ const name=item.image.replace(/^\.\//,'');assert(existsSync(join(root,name)),'Missing image '+name);assert(statSync(join(root,name)).size>10000,'Too small image '+name);
+}
+assert(home.includes('id="scPortfolioViewAll"')&&home.includes('./portfolio.html?lang=th'),'No homepage portfolio CTA');
+assert(main.includes('portfolioCategories')&&main.includes('sc-portfolio__tile-link'),'Homepage portfolio cards not clickable');
+assert(/portfolio-card--featured/.test(read('src/styles/38-portfolio-gallery.css')),'No editorial tile sizing');
+assert(portfolio.includes('id="portfolioFilters"')&&portfolio.includes('id="portfolioDialog"'),'Gallery filters or modal absent');
+assert(ui.includes('price-card--comparison')&&!ui.includes('price-card__amount price-card__amount--quote'),'Old giant pricing banner retained');
+assert(ui.includes('เหมาะกับ')&&ui.includes('จุดเด่น')&&ui.includes('ก่อนผลิต'),'Comparison hierarchy absent');
+assert(benefit.includes("credit:'ชำระแบบเครดิตเทอม'"),'Credit term Thai label incorrect');
+assert(!benefit.includes('มีการชำระแบบเครดิตเทอม'),'Old credit term label retained');
+assert(styling.includes('sc-portfolio__view-all')&&styling.includes('price-card__facts'),'Styles missing');
+for(const file of ['src/scripts/portfolio-gallery.js','src/styles/38-portfolio-gallery.css','qa/build-public-v2126.mjs'])assert(existsSync(join(root,file)),'missing '+file);
+console.log('SCWORK V2.1.26 QA PASS: 20 unique images, 4 categories, homepage links, modal, pricing hierarchy, credit label, styles.');

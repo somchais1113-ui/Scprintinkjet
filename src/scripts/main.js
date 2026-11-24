@@ -322,8 +322,23 @@
     window.PROCLEANING_SITE=activeSite;
     window.PROCLEANING_APPLY_SITE(activeSite,window.PROCLEANING_IMAGE_OVERRIDES||{});
     const thai=language==='th';
-    const portfolioCopy=thai?{eyebrow:'ตัวอย่างงาน',title:'ผลงาน',lead:'สำรวจประเภทงานสติกเกอร์ที่เรารับผลิต',notice:'ภาพจำลองขั้นตอนการทำงานและบุคลากร เพื่อแสดงประเภทงาน ไม่ใช่ภาพทีมงานหรือผลงานลูกค้าจริง',labels:['ฉลากสินค้า','สติกเกอร์ไดคัท','สติกเกอร์ขนาดใหญ่']}:{eyebrow:'WORK TYPES',title:'Portfolio',lead:'Explore the sticker work types we can help produce.',notice:'Illustrative AI-generated scenes of workers and processes, not actual SCWork staff or customer projects.',labels:['Product labels','Die-cut stickers','Large-format graphics']};
+    const portfolioCopy=thai?{eyebrow:'ตัวอย่างงาน',title:'ผลงาน',lead:'ตัวอย่างงานและขั้นตอนผลิตที่หลากหลาย',notice:'ภาพประกอบจำลองเพื่อสื่อประเภทงานและขั้นตอน ไม่ใช่ภาพพนักงานหรือผลงานลูกค้าจริง',labels:['ฉลากสินค้า','สติกเกอร์ไดคัท','สติกเกอร์ขนาดใหญ่']}:{eyebrow:'WORK TYPES',title:'Portfolio',lead:'Explore our work types and production stages.',notice:'Illustrative imagery, not photographs of actual SCWork employees or completed client projects.',labels:['Product labels','Die-cut stickers','Large-format graphics']};
     for(const [id,value] of Object.entries({scPortfolioEyebrow:portfolioCopy.eyebrow,scPortfolioTitle:portfolioCopy.title,scPortfolioLead:portfolioCopy.lead,scPortfolioNotice:portfolioCopy.notice,scPortfolioLabel1:portfolioCopy.labels[0],scPortfolioLabel2:portfolioCopy.labels[1],scPortfolioLabel3:portfolioCopy.labels[2]})){const el=byId(id);if(el)el.textContent=value;}
+    const portfolioLink=byId('scPortfolioViewAll');
+    if(portfolioLink){portfolioLink.href=`./portfolio.html?lang=${encodeURIComponent(language)}`;portfolioLink.firstChild.textContent=thai?'ดูผลงานทั้งหมด ':'View all work ';}
+    const portfolioCategories=['labels','diecut','retail'];
+    document.querySelectorAll('.sc-portfolio__grid figure').forEach((figure,index)=>{
+      const img=figure.querySelector('img'),caption=figure.querySelector('figcaption');
+      const previous=figure.querySelector('a.sc-portfolio__tile-link');
+      if(previous) return;
+      const a=document.createElement('a');a.className='sc-portfolio__tile-link';a.href=`./portfolio.html?category=${portfolioCategories[index]}&lang=${encodeURIComponent(language)}`;
+      a.setAttribute('aria-label',thai?`ดูเพิ่มเติม: ${portfolioCopy.labels[index]}`:`Explore ${portfolioCopy.labels[index]}`);
+      img?.parentElement?.insertBefore(a,img);if(img)a.append(img);if(caption)a.append(caption);
+    });
+    document.querySelectorAll('.sc-portfolio__tile-link').forEach((a,index)=>{
+      a.href=`./portfolio.html?category=${portfolioCategories[index]}&lang=${encodeURIComponent(language)}`;
+      a.setAttribute('aria-label',thai?`ดูเพิ่มเติม: ${portfolioCopy.labels[index]}`:`Explore ${portfolioCopy.labels[index]}`);
+    });
     renderServices();
     byId('teamGrid').innerHTML=(activeSite.team||[]).map((p,i)=>ui.teamCard(p,i)).join('');
     const featureGrid=byId('featureGrid');

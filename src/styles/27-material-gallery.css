@@ -30,7 +30,7 @@
   color: var(--scm-body);
   margin: 0;
 }
-.sc-material__grid { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: clamp(12px,1.6vw,24px); }
+.sc-material__grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(16px,1.7vw,26px); }
 .sc-material__card { min-width: 0; }
 .sc-material__zoom {
   position: relative;
@@ -370,3 +370,8 @@
 @media (max-width:640px) {
   .sc-material__panel { height: 91dvh; grid-template-rows: min(38dvh,350px) minmax(0,1fr); }
 }
+
+/* V2.1.27: six balanced gallery items, 3x2 on desktop and 2x3 on phones. */
+.sc-material__card {display:flex; flex-direction:column;}
+.sc-material__detail {flex:1;}
+@media(max-width:640px) { .sc-material__grid{grid-template-columns:repeat(2,minmax(0,1fr));} }

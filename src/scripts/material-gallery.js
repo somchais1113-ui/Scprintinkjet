@@ -210,6 +210,40 @@
           {src:`${base}/application-vinyl-window-large.png?v=2.1.15`,label:'Large-format application',note:'A strong fit for promotional window graphics and larger retail decoration pieces.'}
         ]
       }
+    },
+    'vinyl-banner':{
+      th:{
+        title:'ไวนิล (งานป้าย / แบนเนอร์)',
+        detail:'แผ่นไวนิลเคลือบ PVC สำหรับงานป้ายและสื่อพิมพ์ขนาดใหญ่ โดยทั่วไปเป็นวัสดุแบบไม่มีกาว ต่างจากสติกเกอร์ PVC',
+        alt:'ม้วนแผ่นไวนิลแบนเนอร์สีขาวพร้อมพื้นผิวและชั้นเสริมแรงด้านหลัง',
+        benefits:[
+          'เหมาะกับป้ายโปรโมชัน แบนเนอร์ และงานสื่อสารที่ต้องการพื้นที่แสดงผลขนาดใหญ่',
+          'สามารถเลือกวิธีเก็บขอบ เจาะตาไก่ หรือขึงเข้ากับโครงสร้างตามหน้างานได้',
+          'คุณสมบัติด้านความแข็งแรง แสงแดด ลม และอายุการใช้งานขึ้นอยู่กับเกรดไวนิล หมึก และวิธีติดตั้ง'
+        ],
+        example:'เหมาะกับป้ายหน้าร้าน แบนเนอร์อีเวนต์ ป้ายโปรโมชั่น และงานสื่อขนาดใหญ่ ไม่ใช่ตัวเลือกสำหรับติดลงพื้นผิวโดยตรงเหมือนสติกเกอร์ PVC มีกาว',
+        slides:[
+          {src:`${tbase}/vinyl-banner.webp?v=2.1.27`,label:'ผิววัสดุไวนิลแบนเนอร์',note:'ภาพตัวอย่างแผ่นไวนิลแบบม้วน เห็นผิวด้านหน้าและชั้นเสริมแรงด้านหลัง ไม่ใช่สติกเกอร์มีกาว'},
+          {src:'./assets/images/material-preview/v216/vinyl-banner-printed.webp?v=2.1.27',label:'การพิมพ์งานขนาดใหญ่',note:'ภาพสาธิตกระบวนการพิมพ์ดิจิทัลขนาดใหญ่ ไม่ใช้ยืนยันประเภทหรือเกรดของแผ่นไวนิลจริง'},
+          {src:'./assets/images/material-preview/v216/vinyl-banner-product.webp?v=2.1.27',label:'ภาพจำลองแบนเนอร์ติดตั้ง',note:'Mockup แสดงป้ายแบบเก็บขอบและเจาะตาไก่ ควรตรวจโครงสร้าง แรงลม ตำแหน่งติดตั้ง และสเปกวัสดุก่อนผลิต'}
+        ]
+      },
+      en:{
+        title:'Vinyl banner (PVC flex)',
+        detail:'PVC-coated flexible banner material for large-format signs and displays. Usually non-adhesive, unlike self-adhesive PVC stickers.',
+        alt:'White roll of PVC-coated flexible banner stock showing its reinforced backing',
+        benefits:[
+          'Suitable for promotional banners, signs and large display graphics.',
+          'Can be hemmed, fitted with eyelets or mounted to an appropriate frame depending on site requirements.',
+          'Strength, weathering and expected service life depend on the actual grade, inks, finishing and installation.'
+        ],
+        example:'Useful for storefront banners, events and promotional signs. Unlike adhesive PVC sticker film, regular flex banner is not intended to stick directly onto a surface.',
+        slides:[
+          {src:`${tbase}/vinyl-banner.webp?v=2.1.27`,label:'Banner stock surface',note:'Illustrative roll of flexible banner media showing the surface and reinforced backing. Not a self-adhesive film.'},
+          {src:'./assets/images/material-preview/v216/vinyl-banner-printed.webp?v=2.1.27',label:'Large-format printing process',note:'Illustrative wide-format printing scene; the photograph does not certify the exact substrate grade.'},
+          {src:'./assets/images/material-preview/v216/vinyl-banner-product.webp?v=2.1.27',label:'Finished banner mockup',note:'Illustrative hemmed banner with eyelets. Confirm mounting, wind load and the real media specification before production.'}
+        ]
+      }
     }
   };
 
@@ -473,9 +507,9 @@
   }
   function refreshStaticCopy(){
     const th=lang()==='th';
-    text('scMaterialsEyebrow',th?'วัสดุสติกเกอร์':'Sticker materials');
-    text('materials-title',th?'ประเภทวัสดุที่มีให้เลือก':'Available material types');
-    text('scMaterialsLead',th?'ดูผิววัสดุ งานพิมพ์ และตัวอย่างการใช้งานของสติกเกอร์ทั้ง 5 ประเภท เพื่อเลือกให้เหมาะกับงานจริง':'Compare the material surface, printed result and product application across five sticker materials.');
+    text('scMaterialsEyebrow',th?'วัสดุสติกเกอร์และงานป้าย':'Sticker and banner materials');
+    text('materials-title',th?'วัสดุงานพิมพ์ 6 ประเภท':'Six print material types');
+    text('scMaterialsLead',th?'เปรียบเทียบผิววัสดุ งานพิมพ์ และตัวอย่างการใช้งานทั้ง 6 ประเภท รวมถึงไวนิลสำหรับงานป้าย เพื่อเลือกให้เหมาะกับงานจริง':'Compare material surfaces, printed examples and applications across six materials, including banner vinyl.');
     text('scMaterialsNote',th?'ภาพที่แสดงเป็นตัวอย่างและภาพจำลองสำหรับช่วยเลือกวัสดุ ไม่ใช่ผลงานลูกค้าจริง และไม่ใช้ยืนยันสเปกหรือคุณสมบัติของวัสดุโดยลำพัง':'Visual references and illustrative mockups, not actual customer projects. Images alone cannot certify a material specification.');
     text('scMaterialsBenefitsTitle',th?'ข้อดีของวัสดุ':'Material benefits');
     text('scMaterialsExampleTitle',th?'ตัวอย่างงานที่เหมาะสม':'Suitable applications');
