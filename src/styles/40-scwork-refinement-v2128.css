@@ -417,3 +417,165 @@
   #pricing .sc-design-group summary{padding:12px;gap:9px}
   #pricing .sc-design-group-title strong{font-size:15px}
 }
+
+/* V2.1.56: homepage only. Preserve existing animation and original slide framing. */
+[data-sc-home-hero][data-active-story="branding"] [data-sc-original-hero-cta],
+[data-sc-home-hero]:not([data-active-story="branding"]) #scBrandHeroCta{display:none!important}
+body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="0"] img{object-position:65% center}
+body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="1"] img{object-position:center 53%}
+body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="2"] img{object-position:center 44%}
+body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="3"] img{object-position:center 48%}
+body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="4"] img{object-position:center 51%}
+#pricing.pricing-section--brand{padding-bottom:clamp(16px,2vw,28px)}
+#pricing.pricing-section--brand + #services{padding-top:clamp(24px,3vw,40px)}
+#pricing .sc-brand-suite__hero--split{margin-bottom:clamp(20px,2vw,30px)}
+#pricing .sc-design-cards .sc-brand-card__body{padding-top:14px}
+#pricing .sc-design-cards .sc-brand-card__summary{margin-bottom:12px}
+#pricing .sc-design-cards .sc-brand-card__features{padding-top:12px}
+#pricing .sc-design-from{margin-top:12px}
+#pricing .sc-brand-suite__footnote{margin-top:18px}
+#pricing .sc-brand-compare{margin-top:18px}
+#pricing .sc-design-group:last-child{margin-bottom:0}
+@media(max-width:780px){
+ body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="0"] img{object-position:70% center}
+ body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="1"] img{object-position:61% center}
+ body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="2"] img{object-position:54% center}
+ body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="3"] img{object-position:58% center}
+ body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[data-hero-slide="4"] img{object-position:59% center}
+ #pricing .sc-design-cards{gap:22px}
+}
+
+
+/* V2.1.58 — Interactive hover refinement */
+@media (pointer:fine) {
+  #pricing .sc-design-group{
+    transition:border-color .28s ease, box-shadow .28s ease, background-color .28s ease, transform .28s ease;
+  }
+  #pricing .sc-design-group summary{
+    position:relative;
+    overflow:hidden;
+    transition:background-color .28s ease, border-color .28s ease, box-shadow .28s ease;
+  }
+  #pricing .sc-design-group summary::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    background:
+      radial-gradient(circle at 18% 50%, rgba(255,105,0,.14) 0, rgba(255,105,0,.08) 18%, rgba(255,255,255,0) 52%),
+      linear-gradient(90deg, rgba(255,105,0,.035), rgba(255,255,255,0) 38%);
+    transition:opacity .28s ease;
+  }
+  #pricing .sc-design-group summary::after{
+    transition:transform .28s ease, color .28s ease, text-shadow .28s ease;
+  }
+  #pricing .sc-design-group .sc-design-group-index,
+  #pricing .sc-design-group .sc-design-group-title strong,
+  #pricing .sc-design-group .sc-design-group-title > span{
+    position:relative;
+    z-index:1;
+    transition:color .28s ease;
+  }
+  #pricing .sc-design-group:hover,
+  #pricing .sc-design-group:focus-within{
+    border-color:rgba(255,105,0,.34);
+    box-shadow:0 10px 26px rgba(13,39,70,.06), 0 0 0 1px rgba(255,105,0,.10);
+  }
+  #pricing .sc-design-group:hover summary,
+  #pricing .sc-design-group:focus-within summary{
+    background:linear-gradient(100deg, rgba(255,247,239,.95), rgba(255,255,255,.98) 55%, rgba(255,249,244,.94));
+  }
+  #pricing .sc-design-group:hover summary::before,
+  #pricing .sc-design-group:focus-within summary::before{
+    opacity:1;
+  }
+  #pricing .sc-design-group:hover summary::after,
+  #pricing .sc-design-group:focus-within summary::after{
+    color:var(--sc-design-orange);
+    transform:scale(1.12);
+    text-shadow:0 0 12px rgba(255,105,0,.22);
+  }
+  #pricing .sc-design-group:hover .sc-design-group-index,
+  #pricing .sc-design-group:focus-within .sc-design-group-index{
+    color:var(--sc-design-orange);
+  }
+  #pricing .sc-design-group:hover .sc-design-group-title strong,
+  #pricing .sc-design-group:focus-within .sc-design-group-title strong{
+    color:#072a57;
+  }
+  #pricing .sc-design-group:hover .sc-design-group-title > span,
+  #pricing .sc-design-group:focus-within .sc-design-group-title > span{
+    color:#4b6078;
+  }
+
+  #pricing .sc-design-cards .sc-brand-card{
+    transition:transform .28s ease;
+  }
+  #pricing .sc-design-cards .sc-brand-card__image{
+    position:relative;
+    overflow:hidden;
+    transition:box-shadow .3s ease, filter .3s ease;
+  }
+  #pricing .sc-design-cards .sc-brand-card__image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    opacity:0;
+    background:linear-gradient(180deg, rgba(4,20,40,.06), rgba(4,20,40,.12));
+    transition:opacity .3s ease;
+  }
+  #pricing .sc-design-cards .sc-brand-card__image img{
+    transition:filter .3s ease;
+  }
+  #pricing .sc-design-cards .sc-brand-card:hover .sc-brand-card__image,
+  #pricing .sc-design-cards .sc-brand-card:focus-within .sc-brand-card__image{
+    box-shadow:0 14px 28px rgba(13,39,70,.10);
+  }
+  #pricing .sc-design-cards .sc-brand-card:hover .sc-brand-card__image::after,
+  #pricing .sc-design-cards .sc-brand-card:focus-within .sc-brand-card__image::after{
+    opacity:1;
+  }
+  #pricing .sc-design-cards .sc-brand-card:hover .sc-brand-card__image img,
+  #pricing .sc-design-cards .sc-brand-card:focus-within .sc-brand-card__image img{
+    filter:brightness(.90);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #pricing .sc-design-group,
+  #pricing .sc-design-group summary,
+  #pricing .sc-design-group summary::before,
+  #pricing .sc-design-group summary::after,
+  #pricing .sc-design-group .sc-design-group-index,
+  #pricing .sc-design-group .sc-design-group-title strong,
+  #pricing .sc-design-group .sc-design-group-title > span,
+  #pricing .sc-design-cards .sc-brand-card,
+  #pricing .sc-design-cards .sc-brand-card__image,
+  #pricing .sc-design-cards .sc-brand-card__image::after,
+  #pricing .sc-design-cards .sc-brand-card__image img {
+    transition:none !important;
+  }
+}
+
+
+/* V2.1.59 — Slow zoom on the four Design Service images only. */
+#pricing .sc-design-cards .sc-brand-card .sc-brand-card__image img {
+  transform: scale(1);
+  transform-origin: center center;
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  #pricing .sc-design-cards .sc-brand-card .sc-brand-card__image img {
+    transition: transform 2.5s cubic-bezier(.2,.6,.3,1), filter .3s ease;
+  }
+  #pricing .sc-design-cards .sc-brand-card .sc-brand-card__image:hover img {
+    transform: scale(1.07);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  #pricing .sc-design-cards .sc-brand-card .sc-brand-card__image img {
+    transform: none;
+    transition: none !important;
+  }
+}

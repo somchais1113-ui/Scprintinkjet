@@ -1,3 +1,9 @@
+# V2.1.56 — Branding banner and design refinement
+
+- Five homepage cinematic slides; branding first, all four originals preserved.
+- Design card imagery updated; Brand Solutions shortened; section spacing reduced.
+- Existing prices, scopes, backend and admin unchanged.
+
 # V2.1.55 — Design package visual refinement
 
 - Standardise catalogue orange to #FF6900, enlarge numbers, align package count and starting price, reduce masthead padding.

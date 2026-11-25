@@ -54,21 +54,26 @@
     function setHeroCopy(){
       const current=slides[heroIndex];
       const language=locale();
-      const first=heroIndex===0;
+      const first=current.dataset.heroStory==='inkjet';
+      const branding=current.dataset.heroStory==='branding';
+      hero.dataset.activeStory=branding?'branding':'original';
+      const brandCta=byId('scBrandHeroCta');
+      if(brandCta)brandCta.textContent=language==='th'?'ดูแพ็กเกจออกแบบ':'Explore design packages';
       const extendedLocale=language!=='th'&&language!=='en';
       const siteHero=activeSite?.hero||{};
       const defaultEyebrow=language==='th'?'SCWORK / งานพิมพ์สติกเกอร์ Inkjet':'SCWORK / INKJET STICKER PRINTING';
-      eyebrow.textContent=(first||extendedLocale) ? (siteHero.eyebrow||(language==='th'?'SCWORK / งานพิมพ์สติกเกอร์ Inkjet':'SCWORK / INKJET PRINT PRODUCTION')) : (storyField(current,'label',language)||defaultEyebrow);
-      title.textContent=(first||extendedLocale) ? (siteHero.title||storyField(current,'title',language)||'Stickers that make your brand stand out') : storyField(current,'title',language);
-      desc.textContent=(first||extendedLocale) ? (siteHero.description||storyField(current,'desc',language)||'Custom sticker production with practical design and materials') : storyField(current,'desc',language);
+      eyebrow.textContent=(first||(!branding&&extendedLocale)) ? (siteHero.eyebrow||(language==='th'?'SCWORK / งานพิมพ์สติกเกอร์ Inkjet':'SCWORK / INKJET PRINT PRODUCTION')) : (storyField(current,'label',language)||defaultEyebrow);
+      title.textContent=(first||(!branding&&extendedLocale)) ? (siteHero.title||storyField(current,'title',language)||'Stickers that make your brand stand out') : storyField(current,'title',language);
+      desc.textContent=(first||(!branding&&extendedLocale)) ? (siteHero.description||storyField(current,'desc',language)||'Custom sticker production with practical design and materials') : storyField(current,'desc',language);
       const format=i=>String(i+1).padStart(2,'0');
       if(count){
         const strong=count.querySelector('strong'); if(strong)strong.textContent=format(heroIndex);
+        const suffix=count.querySelector('span'); if(suffix)suffix.textContent=' / '+String(total).padStart(2,'0');
         count.setAttribute('aria-label',language==='th'?`สไลด์ ${heroIndex+1} จาก ${total}`:`Slide ${heroIndex+1} of ${total}`);
       }
       dots.forEach((dot,i)=>{const active=i===heroIndex;dot.classList.toggle('is-active',active);dot.setAttribute('aria-pressed',String(active));dot.setAttribute('aria-label',language==='th'?`แสดงภาพที่ ${i+1}`:`Show image ${i+1}`);});
       scroll.querySelector('span').textContent=language==='th'?'เลื่อนดูบริการ':(extendedLocale?(activeSite?.navigation?.services||'Explore Services'):'SCROLL TO EXPLORE');
-      scroll.setAttribute('aria-label',language==='th'?'เลื่อนไปดูบริการสติกเกอร์':'Scroll down to sticker services');
+      scroll.setAttribute('aria-label',language==='th'?'เลื่อนไปดูบริการ':'Scroll down to services');
       prev.setAttribute('aria-label',language==='th'?'สไลด์ก่อนหน้า':'Previous slide');
       next.setAttribute('aria-label',language==='th'?'สไลด์ถัดไป':'Next slide');
       playPause.setAttribute('aria-label',manualPause?(language==='th'?'เล่นสไลด์ต่อ':'Resume slideshow'):(language==='th'?'หยุดสไลด์ชั่วคราว':'Pause slideshow'));
