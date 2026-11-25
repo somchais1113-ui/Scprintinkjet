@@ -92,17 +92,19 @@
   }
   function renderClientLogos(){
     const track=byId('scClientLogoTrack'),logosArea=byId('client-logos'),marquee=byId('scClientLogoMarquee'),pause=byId('scClientLogoPause'),note=byId('scClientLogoPreviewNote');
-    if(!track||!logosArea||!marquee||!pause)return;
+    if(!track||!logosArea||!marquee)return;
     const actual=availableLogos(window.SCWORK_CLIENT_LOGOS,validLogo);
     const logos=actual.length?actual:availableLogos(window.SCWORK_CLIENT_LOGO_MOCKUPS,validMockup);
     const isPreview=!actual.length&&logos.length>0;
     if(note){note.hidden=!isPreview;note.textContent=t().previewLogos;}
     function updatePause(){
       marquee.classList.toggle('is-paused',logosPaused);
-      pause.textContent='';
-      pause.setAttribute('aria-label',logosPaused?t().resumeLogos:t().pauseLogos);
-      pause.setAttribute('title',logosPaused?t().resumeLogos:t().pauseLogos);
-      pause.setAttribute('aria-pressed',String(logosPaused));
+      if(pause){
+        pause.textContent='';
+        pause.setAttribute('aria-label',logosPaused?t().resumeLogos:t().pauseLogos);
+        pause.setAttribute('title',logosPaused?t().resumeLogos:t().pauseLogos);
+        pause.setAttribute('aria-pressed',String(logosPaused));
+      }
     }
     updatePause();
     const signature=JSON.stringify([isPreview,logos]);
@@ -110,9 +112,11 @@
     logoSignature=signature;
     const moves=logos.length>1;
     logosArea.hidden=!logos.length;
-    pause.hidden=!moves;
+    if(pause){
+      pause.hidden=true;
+      pause.onclick=()=>{logosPaused=!logosPaused;updatePause();};
+    }
     marquee.classList.toggle('has-loop',moves);
-    pause.onclick=()=>{logosPaused=!logosPaused;updatePause();};
     const groups=[];
     // Equal-width strips include the final gap, so -50% lands exactly on the next strip.
     const repeats=moves?Math.ceil(8/logos.length):1;
