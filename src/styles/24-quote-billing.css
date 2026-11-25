@@ -38,3 +38,6 @@ body:has(.qb-options){font-size:17px;line-height:1.62}
  #billPrintSheet .qb-money,.qb-doc-status{break-inside:avoid}
  #billPrintSheet footer{font-size:10pt;margin-top:18pt;padding-top:8pt;border-top:1pt solid #c5cfda}
 }
+
+/* Printing Solutions logo; seller text remains separately populated by billing UI. */
+.qb-doc-logo{display:block;width:180px;max-width:100%;height:auto;margin:0 0 8px}

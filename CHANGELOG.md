@@ -1,3 +1,7 @@
+# V2.1.33 — About SCWork
+
+Added standalone responsive Thai/English About page, homepage links, and public build allowlist. Existing Clients section and private systems preserved.
+
 ## V2.1.32 — Separate Admin Subdomain Foundation
 - Added `admin-cloud/` as a separately deployable SCWork Pricing Control Admin. Sign-in is real Supabase Auth (not simulated) when user connects credentials; TOTP MFA is enforced by database policies.
 - Added SQL for owner/editor/viewer, private Supplier quotes, evidence bucket, audit history, owner-only approval RPC, and locked public selling-rate table.

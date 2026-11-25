@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {readFileSync,existsSync} from 'node:fs';
+import {fileURLToPath} from 'node:url';
+import {dirname,join} from 'node:path';
+const root=join(dirname(fileURLToPath(import.meta.url)),'..');
+const read=p=>readFileSync(join(root,p),'utf8');
+const page=read('about.html'), home=read('index.html');
+for(const label of ['About SCWork','Who We Are','Our Philosophy','Good Design Must Work.','Our Expertise','Design Solutions','Printing &amp; Production Solutions','Technology &amp; Innovation','Our Approach','We Think.','We Design.','We Make It Work.','Our Commitment','Ritthee Kolakij Co., Ltd.']) assert(page.includes(label)||page.replace(/<[^>]+>/g,' ').includes(label),label);
+assert(home.includes('href="./about.html" data-sc-about-link'));
+assert(home.includes('id="clientCreditsNav"')&&home.includes('id="about"'));
+for(const m of page.matchAll(/(?:src|href)="\.\/([^"#?]+)(?:[?#][^"]*)?"/g))assert(existsSync(join(root,m[1])),m[1]);
+for(const s of ['about.html','about-page','43-about-v2133']) assert(read('qa/build-public-v2133.mjs').includes("'"+s+"'"));
+assert(!read('qa/build-public-v2133.mjs').includes("'admin-cloud'"));
+assert.equal(JSON.parse(read('package.json')).version,'2.1.33');
+console.log('V2.1.33 PASS: About content, navigation, local assets, public build boundary');
