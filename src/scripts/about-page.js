@@ -104,6 +104,11 @@
   function show(i){if(i===current)return;const old=current;current=i;clearTimeout(exitTimer);frames.forEach((f,j)=>{f.classList.toggle('is-exiting',j===old&&!reduce.matches);f.classList.toggle('is-active',j===i);f.setAttribute('aria-hidden',String(j!==i));});exitTimer=setTimeout(()=>frames.forEach(f=>f.classList.remove('is-exiting')),930);dots.forEach((d,j)=>d.setAttribute('aria-pressed',String(j===i)));count.textContent=String(i+1).padStart(2,'0');}
   function restart(){clearInterval(timer);if(!paused&&visible&&!hover&&!focus&&!document.hidden&&!reduce.matches)timer=setInterval(()=>show((current+1)%frames.length),7400)}
   dots.forEach((d,i)=>{d.setAttribute('aria-label',th?`แสดงภาพที่ ${i+1}`:`Show image ${i+1}`);d.addEventListener('click',()=>{show(i);restart()})});
+  const prev=g.querySelector('.ab-gallery-prev'),next=g.querySelector('.ab-gallery-next');
+  function navigateGallery(delta){show((current+delta+frames.length)%frames.length);restart()}
+  if(prev){prev.setAttribute('aria-label',th?'ภาพก่อนหน้า':'Previous image');prev.addEventListener('click',()=>navigateGallery(-1))}
+  if(next){next.setAttribute('aria-label',th?'ภาพถัดไป':'Next image');next.addEventListener('click',()=>navigateGallery(1))}
+  g.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();navigateGallery(e.key==='ArrowRight'?1:-1)}});
   function pauseLabel(){pause.textContent=paused?'▶':'Ⅱ';pause.setAttribute('aria-pressed',String(paused));pause.setAttribute('aria-label',paused?(th?'เล่นภาพต่อ':'Resume slideshow'):(th?'หยุดภาพชั่วคราว':'Pause slideshow'))}
   pause.addEventListener('click',()=>{paused=!paused;pauseLabel();restart()});pauseLabel();
   g.addEventListener('mouseenter',()=>{hover=true;restart()});g.addEventListener('mouseleave',()=>{hover=false;restart()});g.addEventListener('focusin',()=>{focus=true;restart()});g.addEventListener('focusout',e=>{if(!g.contains(e.relatedTarget)){focus=false;restart()}});

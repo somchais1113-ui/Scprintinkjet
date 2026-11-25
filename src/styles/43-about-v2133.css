@@ -256,3 +256,68 @@ body.sc-about-page:has(> #main) section.hero.hero--cinematic .sc-cinema__count s
 .sc-about-page #who-we-are .ab-leadership::before{content:none;}
 .sc-about-page #who-we-are .ab-leadership img{object-fit:contain;object-position:90% center;}
 @media(max-width:700px){.sc-about-page #who-we-are .ab-leadership{height:auto;aspect-ratio:15/11;}.sc-about-page #who-we-are .ab-leadership img{object-position:center;}}
+
+/* V2.1.38 — Design & Production Showcase: full-bleed editorial panels, diagonal glazing. */
+.sc-about-page #who-we-are,.sc-about-page #philosophy{--showcase-blue:#e3effb;position:relative;isolation:isolate;overflow:hidden;background:linear-gradient(115deg,#f8fbfd 0%,#edf5fc 47%,#d3e5f7 100%);padding:0;}
+.sc-about-page #who-we-are::before,.sc-about-page #philosophy::before{content:"";position:absolute;inset:0;background:linear-gradient(128deg,transparent 0 34%,#fff6 34% 42%,transparent 42% 100%);z-index:-1;pointer-events:none;}
+.sc-about-page #who-we-are .ab-wrap,.sc-about-page #philosophy .ab-feature{width:min(1520px,calc(100% - clamp(40px,8vw,128px)));max-width:none;}
+.sc-about-page #who-we-are .ab-wrap{position:relative;padding:clamp(26px,3vw,46px) 0 clamp(22px,2.8vw,40px);}
+.sc-about-page #who-we-are .ab-intro-grid{display:block;position:static;min-height:clamp(340px,29vw,450px);}
+.sc-about-page #who-we-are .ab-intro-copy{width:54%;max-width:790px;padding:0 0 20px;z-index:3;position:relative;}
+.sc-about-page #who-we-are .ab-heading,.sc-about-page #philosophy .ab-heading{margin-bottom:clamp(14px,1.5vw,23px);}
+.sc-about-page #who-we-are .ab-heading h2{font-size:clamp(39px,4.8vw,74px);font-weight:800;line-height:1.06;letter-spacing:-.055em;}
+.sc-about-page #philosophy .ab-heading h2{font-size:clamp(34px,3.7vw,59px);font-weight:800;line-height:1.1;letter-spacing:-.05em;}
+.sc-about-page #who-we-are .ab-sub,.sc-about-page #philosophy .ab-sub{font-size:clamp(15px,1.5vw,23px);line-height:1.35;margin:4px 0 0;}
+.sc-about-page .ab-editorial-kicker{display:flex;align-items:center;gap:12px;margin-bottom:clamp(12px,1.4vw,20px);line-height:1.2;font-size:clamp(13px,1.2vw,18px);font-weight:500;color:#697d94;}
+.sc-about-page #who-we-are .ab-editorial-kicker .ab-index,.sc-about-page #philosophy .ab-editorial-kicker .ab-index{margin:0;color:#c44b00;font-size:1em;font-weight:800;letter-spacing:.03em;}
+.sc-about-page .ab-kicker-rule{width:clamp(24px,3.2vw,48px);height:1px;background:linear-gradient(90deg,#13365c,#ff6900);flex:none;}
+.sc-about-page #who-we-are .ab-intro-copy .ab-statement{font-size:clamp(24px,2.55vw,39px);line-height:1.26;font-weight:800;letter-spacing:-.035em;margin:0 0 22px;}
+.sc-about-page .ab-statement-accent{display:block;color:#c84b00;position:relative;width:fit-content;}
+.sc-about-page .ab-statement-accent::after{content:"";position:absolute;left:102%;bottom:0;width:clamp(25px,5vw,76px);height:12px;border-top:2px solid #ff6900;border-radius:50%;transform:rotate(-12deg);pointer-events:none;}
+.sc-about-page #who-we-are .ab-intro-copy>p,.sc-about-page #philosophy .ab-philosophy-copy>p{font-size:clamp(14px,1.1vw,17px);line-height:1.65;margin:0 0 14px;color:#142b44;max-width:740px;}
+.sc-about-page #who-we-are .ab-intro-copy>p{padding-left:20px;position:relative;}
+.sc-about-page #who-we-are .ab-intro-copy>p:first-of-type::before{content:"";position:absolute;left:0;top:.15em;bottom:.15em;width:3px;background:#ff6900;}
+.sc-about-page #who-we-are .ab-leadership{position:absolute;z-index:0;top:0;right:calc(-1 * clamp(20px,4vw,64px));width:62%;height:calc(100% - clamp(58px,5.5vw,83px));max-width:none;overflow:hidden;background:linear-gradient(90deg,transparent,#d3e5f7);aspect-ratio:auto;}
+.sc-about-page #who-we-are .ab-leadership::before{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(90deg,#e9f2fb 0%,transparent 60%),url('../../assets/images/hero/inkjet-print-v218.webp') left center/cover no-repeat;filter:blur(3px);opacity:.55;mask-image:linear-gradient(90deg,transparent,#000 30%);}
+.sc-about-page #who-we-are .ab-leadership img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:right top;mask-image:linear-gradient(90deg,transparent 0%,#000 35%,#000 100%),linear-gradient(0deg,transparent,#000 12%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 35%,#000 100%),linear-gradient(0deg,transparent,#000 12%);mask-composite:intersect;-webkit-mask-composite:source-in;}
+.sc-about-page #who-we-are .ab-leadership::after{content:"";position:absolute;inset:0;height:auto;transform:none;border:0;border-radius:0;background:linear-gradient(120deg,#f8fbfd 0%,#edf5fcbb 15%,transparent 38%);z-index:1;pointer-events:none;}
+.sc-about-page .ab-portrait-sweep{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;}
+.sc-about-page #who-we-are .ab-jump{position:relative;z-index:4;margin:0 auto;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.25vw,20px);}
+.sc-about-page #who-we-are .ab-jump a{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:clamp(8px,1.4vw,20px);align-items:center;min-height:clamp(68px,5.7vw,90px);padding:clamp(10px,1.3vw,20px);border:1px solid #fff;border-radius:clamp(12px,1.3vw,20px);background:linear-gradient(145deg,#ffffffef,#f6faffd9);box-shadow:0 10px 20px #163b6510;color:#09295b;}
+.sc-about-page #who-we-are .ab-jump a:hover,.sc-about-page #who-we-are .ab-jump a:focus-visible,.sc-about-page #who-we-are .ab-jump a.is-selected{background:linear-gradient(145deg,#fff7ed,#ffd1ad);border-color:#fff;box-shadow:0 9px 20px #be570821;color:#09295b;}
+.sc-about-page .ab-jump-icon{width:clamp(28px,3.5vw,52px);height:auto;flex:none;color:#09295b;}
+.sc-about-page .ab-jump-arrow{width:22px;height:22px;transition:transform .2s ease;color:#09295b;}
+.sc-about-page #who-we-are .ab-jump a:hover .ab-jump-icon,.sc-about-page #who-we-are .ab-jump a:focus-visible .ab-jump-icon,.sc-about-page #who-we-are .ab-jump a.is-selected .ab-jump-icon,.sc-about-page #who-we-are .ab-jump a:hover .ab-jump-arrow,.sc-about-page #who-we-are .ab-jump a.is-selected .ab-jump-arrow{color:#c74c00;}
+.sc-about-page #who-we-are .ab-jump a:hover .ab-jump-arrow{transform:translateX(3px)}
+.sc-about-page .ab-jump-label{min-width:0;line-height:1.35;}
+.sc-about-page .ab-jump-label strong{display:block;font-family:'Be Vietnam Pro','Noto Sans Thai',sans-serif;font-size:clamp(13px,1.25vw,19px);font-weight:800;letter-spacing:-.025em;}
+.sc-about-page .ab-jump-label small{display:block;font-size:clamp(11px,1.02vw,15px);font-weight:400;margin-top:3px;}
+.sc-about-page #philosophy{border-top:1px solid #fff;padding-block:clamp(26px,2.5vw,40px);}
+.sc-about-page #philosophy .ab-feature{background:none;border-radius:0;padding:0;overflow:visible;isolation:auto;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:clamp(12px,2vw,30px);}
+.sc-about-page #philosophy .ab-feature::before,.sc-about-page #philosophy .ab-feature::after{content:none;}
+.sc-about-page #philosophy .ab-philosophy-copy{padding:0;align-self:center;}
+.sc-about-page #philosophy blockquote{font-size:clamp(25px,2.75vw,42px);line-height:1.22;font-style:italic;font-weight:800;white-space:normal;margin:0 0 clamp(18px,2vw,30px);}
+.sc-about-page #philosophy blockquote em{color:#c74c00;font-style:inherit;position:relative;display:inline-block;}
+.sc-about-page #philosophy blockquote em::after{content:"";position:absolute;left:32%;right:0;bottom:-6px;height:10px;border-top:2px solid #ff6900;border-radius:50%;transform:rotate(-4deg);}
+.sc-about-page #philosophy .ab-philosophy-copy>p{padding-left:20px;border-left:2px solid #315e94;max-width:660px;}
+.sc-about-page #philosophy .ab-philosophy-copy>p:last-child{border-color:#a3bedb;}
+.sc-about-page #philosophy .ab-gallery{position:relative;padding-bottom:26px;min-width:0;}
+.sc-about-page #philosophy .ab-gallery-media{height:clamp(280px,26vw,400px);position:relative;border-radius:clamp(18px,2.4vw,35px);background:#dceaf8;mask-image:linear-gradient(90deg,transparent,#000 16%);-webkit-mask-image:linear-gradient(90deg,transparent,#000 16%);mask-composite:add;-webkit-mask-composite:source-over;clip-path:polygon(18% 0,100% 0,100% 24%,80% 100%,0 100%,0 78%);border:1px solid #ffffffc9;}
+.sc-about-page #philosophy .ab-gallery-media::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:3;background:linear-gradient(90deg,#e8f2fb80,transparent 35%),linear-gradient(130deg,transparent 78%,#ffe0c640 95%);}
+.sc-about-page #philosophy .ab-gallery-frame{object-position:65% center;}
+.sc-about-page #philosophy .ab-gallery-controls{left:11%;right:auto;bottom:0;width:70%;max-width:none;min-height:46px;padding:4px 12px 4px 18px;background:linear-gradient(120deg,#ffffffb3,#f2f8ff55);border:1px solid #ffffffd9;box-shadow:0 6px 18px #214b7410,inset 0 1px 1px #fff;backdrop-filter:blur(9px) saturate(125%);-webkit-backdrop-filter:blur(9px) saturate(125%);color:#062954;}
+.sc-about-page #philosophy .ab-gallery-count strong{font-size:16px;}
+.sc-about-page #philosophy .ab-gallery-pause{width:32px;height:32px;background:#ffffff38;border:0;}
+.sc-about-page .ab-gallery-arrows{position:absolute;bottom:0;right:0;display:flex;gap:8px;z-index:5;}
+.sc-about-page .ab-gallery-arrows button{border:1px solid #fff;background:#ffffffe0;border-radius:50%;color:#09295b;width:42px;height:42px;display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 15px #0a356212;transition:background .2s,color .2s;}
+.sc-about-page .ab-gallery-arrows button:hover,.sc-about-page .ab-gallery-arrows button:focus-visible{background:#ffe3cb;color:#a43c00;}
+.sc-about-page .ab-gallery-arrows svg{width:20px;height:20px;}
+@media(max-width:1050px){.sc-about-page #who-we-are .ab-jump a{gap:8px;padding:12px}.sc-about-page .ab-jump-icon{width:30px}.sc-about-page .ab-jump-arrow{width:17px}.sc-about-page #philosophy .ab-gallery-controls{left:3%;width:73%;padding-inline:10px;gap:4px}.sc-about-page .ab-gallery-arrows button{width:36px;height:36px}.sc-about-page #philosophy .ab-gallery-dots button{width:22px}}
+@media(max-width:850px){.sc-about-page #who-we-are .ab-jump{grid-template-columns:repeat(2,minmax(0,1fr))}.sc-about-page #who-we-are .ab-intro-copy{width:58%}.sc-about-page #who-we-are .ab-leadership{width:58%;height:calc(100% - 146px)}.sc-about-page #philosophy .ab-feature{gap:16px;grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media(max-width:700px){.sc-about-page #who-we-are .ab-wrap,.sc-about-page #philosophy .ab-feature{width:calc(100% - 32px)}.sc-about-page #who-we-are .ab-intro-grid{display:flex;flex-direction:column;min-height:0;gap:4px}.sc-about-page #who-we-are .ab-intro-copy{width:100%;padding-bottom:0}.sc-about-page #who-we-are .ab-leadership{position:relative;inset:auto;width:100%;height:clamp(250px,80vw,380px);aspect-ratio:auto}.sc-about-page #who-we-are .ab-leadership img{object-position:center top;mask-image:linear-gradient(0deg,transparent,#000 9%);-webkit-mask-image:linear-gradient(0deg,transparent,#000 9%);mask-composite:add;-webkit-mask-composite:source-over}.sc-about-page #who-we-are .ab-leadership::after{background:linear-gradient(90deg,#edf5fc66,transparent 24%)}.sc-about-page #who-we-are .ab-jump{gap:8px}.sc-about-page #who-we-are .ab-jump a{padding:10px 8px;min-height:68px;gap:7px}.sc-about-page .ab-jump-icon{width:24px}.sc-about-page .ab-jump-arrow{width:15px}.sc-about-page .ab-jump-label strong{font-size:12px}.sc-about-page .ab-jump-label small{font-size:10px}.sc-about-page .ab-statement-accent::after{display:none}.sc-about-page #philosophy .ab-feature{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}.sc-about-page #philosophy .ab-gallery-media{height:clamp(230px,65vw,330px);clip-path:polygon(11% 0,100% 0,100% 30%,85% 100%,0 100%,0 65%)}.sc-about-page #philosophy .ab-gallery-controls{left:0;width:calc(100% - 86px);min-height:44px}.sc-about-page #philosophy .ab-gallery-dots button{width:24px}.sc-about-page .ab-gallery-arrows{gap:6px}.sc-about-page .ab-gallery-arrows button{width:38px;height:38px}.sc-about-page #philosophy .ab-gallery-count strong{font-size:14px}}
+@media(max-width:360px){.sc-about-page #who-we-are .ab-jump{grid-template-columns:1fr}.sc-about-page .ab-jump-label strong{font-size:14px}.sc-about-page #philosophy .ab-gallery-controls{padding-inline:7px}.sc-about-page #philosophy .ab-gallery-dots button{width:19px}}
+@media(prefers-reduced-motion:reduce){.sc-about-page .ab-jump-arrow,.sc-about-page .ab-gallery-arrows button{transition:none!important;transform:none!important}}
+/* Keep the complete first product composition visible within the sloping edge. */
+.sc-about-page #philosophy .ab-gallery-frame[data-ab-frame="0"]{object-fit:contain;object-position:35% center;}
+.sc-about-page #philosophy .ab-gallery-media{clip-path:polygon(18% 0,100% 0,100% 24%,85% 100%,0 100%,0 78%);}
+@media(max-width:700px){.sc-about-page #philosophy .ab-gallery-media{clip-path:polygon(11% 0,100% 0,100% 30%,88% 100%,0 100%,0 65%)}.sc-about-page #philosophy .ab-gallery-frame[data-ab-frame="0"]{object-fit:cover;object-position:48% center;}}
