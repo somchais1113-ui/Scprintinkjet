@@ -178,7 +178,7 @@
     const map={
       '#home':'.hero',
       '#services':'#services-title',
-      '#about':'#about-title',
+      '#about':'#socialProofTitle',
       '#pricing':'#scBrandTitle',
       '#blog':'#blog-title',
       '#contact':'#contact-title',
