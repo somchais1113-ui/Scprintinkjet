@@ -1,3 +1,10 @@
+# V2.1.36 — Compact editorial About us / Liquid Glass
+
+- Who We Are and Our Philosophy use matching compact layouts, with sharp photographs and edge-only gradient masks.
+- Removed the portrait caption from the hero area; kept the page-footer imagery disclosure and illustrative alt text.
+- Philosophy control bar uses translucent glass, contrast-friendly controls and progressive enhancement.
+- Preserved bilingual content, four-slide crossfade, navigation and unrelated systems.
+
 # V2.1.35 — About us refined interaction
 
 - Reduced decorative accent rules and process card top borders; increased numeric markers 15%.

@@ -151,3 +151,68 @@ html[lang="en"] .sc-about-page .ab-sub{display:none}
 body.sc-about-page:has(> #main) section.hero.hero--cinematic .sc-cinema__count{font-size:13.8px}
 body.sc-about-page:has(> #main) section.hero.hero--cinematic .sc-cinema__count strong{font-size:19.55px}
 @media(max-width:700px){body.sc-about-page:has(> #main) section.hero.hero--cinematic .sc-cinema__count{font-size:12.65px}body.sc-about-page:has(> #main) section.hero.hero--cinematic .sc-cinema__count strong{font-size:17.25px}}
+
+
+/* V2.1.36 — editorial banners, sharp imagery with edge-only blending, restrained liquid glass. */
+.sc-about-page #who-we-are,.sc-about-page #philosophy{
+  position:relative;overflow:hidden;isolation:isolate;text-align:left;
+  background:radial-gradient(ellipse at 88% 5%,#dceafa 0,transparent 57%),linear-gradient(125deg,#f8fbfe 6%,#edf4fb 54%,#e0edf9 100%);
+  padding-block:clamp(30px,4vw,52px);
+}
+.sc-about-page #who-we-are::before,.sc-about-page #philosophy::before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(143deg,transparent 0 32%,#ffffff42 32% 48%,transparent 48% 100%);
+}
+.sc-about-page #who-we-are .ab-intro-grid,.sc-about-page #philosophy .ab-feature{
+  display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:clamp(16px,3vw,38px);align-items:center;text-align:left;
+}
+.sc-about-page #who-we-are .ab-intro-copy,.sc-about-page #philosophy .ab-philosophy-copy{position:relative;z-index:2;min-width:0;padding-block:14px}
+.sc-about-page #who-we-are .ab-heading,.sc-about-page #philosophy .ab-heading{margin-bottom:clamp(16px,2.4vw,28px)}
+.sc-about-page #who-we-are .ab-index,.sc-about-page #philosophy .ab-index{margin-bottom:8px;color:#a94000}
+.sc-about-page #who-we-are .ab-intro-copy .ab-statement,.sc-about-page #philosophy blockquote{font-size:clamp(24px,2.85vw,38px);line-height:1.38;margin:0 0 18px;letter-spacing:-.035em}
+.sc-about-page #who-we-are .ab-intro-copy>p,.sc-about-page #philosophy .ab-philosophy-copy>p{font-size:clamp(14px,1.25vw,16px);line-height:1.8;margin:0 0 12px}
+.sc-about-page #who-we-are .ab-intro-copy>p:last-child,.sc-about-page #philosophy .ab-philosophy-copy>p:last-child{margin-bottom:0}
+.sc-about-page #who-we-are .ab-leadership{margin:0;max-width:none;width:100%;height:clamp(330px,33vw,438px);background:transparent;border-radius:0;overflow:visible;justify-self:end}
+.sc-about-page #who-we-are .ab-leadership img{width:100%;height:100%;aspect-ratio:auto;object-fit:cover;object-position:50% 30%;border-radius:0;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 25%,#000 100%);mask-image:linear-gradient(to right,transparent 0%,#000 25%,#000 100%);
+}
+.sc-about-page #philosophy .ab-gallery{background:transparent;border-radius:0;overflow:visible;width:100%;min-width:0}
+.sc-about-page #philosophy .ab-gallery-media{height:clamp(310px,31vw,422px);aspect-ratio:auto;border-radius:0;
+  -webkit-mask-image:linear-gradient(to right,transparent 0%,#000 22%,#000 100%);mask-image:linear-gradient(to right,transparent 0%,#000 22%,#000 100%);
+}
+@supports (mask-composite:intersect){
+  .sc-about-page #who-we-are .ab-leadership img,.sc-about-page #philosophy .ab-gallery-media{
+    mask-image:linear-gradient(to right,transparent 0%,#000 23%,#000 95%,transparent 100%),linear-gradient(to bottom,transparent 0%,#000 8%,#000 87%,transparent 100%);mask-composite:intersect;
+  }
+}
+.sc-about-page #who-we-are .ab-jump{margin-top:clamp(18px,2.7vw,34px)}
+.sc-about-page #who-we-are .ab-jump a{min-height:52px;padding-block:11px}
+/* Glass effect confined to the control surface; never blur the actual gallery imagery. */
+.sc-about-page #philosophy .ab-gallery-controls{
+  left:auto;right:5%;bottom:12px;width:min(85%,410px);min-height:44px;gap:8px;padding:4px 10px 4px 15px;
+  color:#062a52;background:linear-gradient(115deg,rgba(255,255,255,.68),rgba(237,246,255,.51));
+  border:1px solid rgba(255,255,255,.83);border-radius:999px;
+  -webkit-backdrop-filter:blur(11px) saturate(135%);backdrop-filter:blur(11px) saturate(135%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.85),0 4px 15px rgba(1,42,98,.09);
+  font-weight:600;
+}
+.sc-about-page #philosophy .ab-gallery-count{white-space:nowrap}
+.sc-about-page #philosophy .ab-gallery-dots{gap:0}
+.sc-about-page #philosophy .ab-gallery-dots button{width:30px;height:36px}
+.sc-about-page #philosophy .ab-gallery-dots button::after{inset:auto;top:50%;left:50%;width:7px;height:7px;transform:translate(-50%,-50%);background:#58708a}
+.sc-about-page #philosophy .ab-gallery-dots button[aria-pressed="true"]::after{background:#ff6900;width:9px;height:9px}
+.sc-about-page #philosophy .ab-gallery-pause{width:36px;height:36px;border-radius:50%;background:#ffffff28;border:1px solid #ffffffb0;color:#062a52;flex:none}
+.sc-about-page #philosophy .ab-gallery-pause:hover{background:#ffffffaa}
+@supports not (backdrop-filter:blur(1px)){.sc-about-page #philosophy .ab-gallery-controls{background:#edf4fbe8}}
+@media(max-width:900px){.sc-about-page #who-we-are .ab-intro-grid,.sc-about-page #philosophy .ab-feature{gap:18px;grid-template-columns:minmax(0,1fr) minmax(0,.9fr)}}
+@media(max-width:700px){
+  .sc-about-page #who-we-are,.sc-about-page #philosophy{padding-block:30px}
+  .sc-about-page #who-we-are .ab-intro-grid,.sc-about-page #philosophy .ab-feature{grid-template-columns:minmax(0,1fr);gap:12px}
+  .sc-about-page #who-we-are .ab-intro-copy,.sc-about-page #philosophy .ab-philosophy-copy{padding-block:0}
+  .sc-about-page #who-we-are .ab-leadership{height:clamp(270px,83vw,390px)}
+  .sc-about-page #who-we-are .ab-leadership img{object-fit:contain;object-position:center}
+  .sc-about-page #philosophy .ab-gallery-media{height:clamp(235px,70vw,340px)}
+  .sc-about-page #who-we-are .ab-leadership img,.sc-about-page #philosophy .ab-gallery-media{-webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 7%,#000 88%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0%,#000 7%,#000 88%,transparent 100%);mask-composite:add}
+  .sc-about-page #philosophy .ab-gallery-controls{right:3%;width:94%;bottom:7px;max-width:360px}
+  .sc-about-page #who-we-are .ab-jump a{min-height:48px}
+}
