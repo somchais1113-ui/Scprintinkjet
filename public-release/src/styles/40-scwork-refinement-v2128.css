@@ -212,3 +212,99 @@
  #pricing .sc-brand-card__body{padding:20px}
  #pricing .sc-brand-compare__table{min-width:690px}
 }
+
+/* V2.1.44 — brand intro heading adopts editorial split layout */
+.sc-brand-suite__hero--split{
+  display:grid;
+  grid-template-columns:minmax(0,1.65fr) minmax(300px,.95fr);
+  gap:clamp(24px,4vw,56px);
+  align-items:start;
+  padding:0 0 28px;
+  margin-bottom:22px;
+  background:transparent !important;
+  color:inherit !important;
+  border-radius:0 !important;
+  border-bottom:1px solid #d9e2ee;
+  box-shadow:none !important;
+}
+.sc-brand-suite__hero--split .sc-brand-suite__hero-main,
+.sc-brand-suite__hero--split .sc-brand-suite__hero-side{min-width:0}
+.sc-brand-suite__hero--split h3{
+  margin:0;
+  color:#10356f !important;
+  font-size:clamp(38px,4.8vw,64px) !important;
+  line-height:1.16;
+  letter-spacing:-0.03em;
+  max-width:9.5ch;
+}
+.sc-brand-suite__hero--split .sc-brand-suite__eyebrow{
+  margin:6px 0 10px;
+  color:#ff6b00 !important;
+  font-size:clamp(17px,1.45vw,20px);
+  font-weight:800;
+  letter-spacing:.02em;
+  text-transform:none;
+}
+.sc-brand-suite__hero--split .sc-brand-suite__lead{
+  margin:0;
+  color:#617691;
+  font-size:clamp(18px,1.4vw,20px);
+  line-height:1.75;
+  max-width:28ch;
+}
+#pricing .sc-brand-suite__hero--split{padding-bottom:30px;border-radius:0}
+@media(max-width:980px){
+  .sc-brand-suite__hero--split{grid-template-columns:1fr;gap:16px;padding-bottom:22px;margin-bottom:18px}
+  .sc-brand-suite__hero--split h3{max-width:12ch;font-size:clamp(34px,7vw,52px)!important}
+  .sc-brand-suite__hero--split .sc-brand-suite__lead{max-width:unset;font-size:17px;line-height:1.65}
+}
+@media(max-width:640px){
+  .sc-brand-suite__hero--split{padding-bottom:18px;margin-bottom:16px}
+  .sc-brand-suite__hero--split h3{max-width:100%;font-size:clamp(30px,9vw,42px)!important}
+  .sc-brand-suite__hero--split .sc-brand-suite__eyebrow{font-size:18px}
+  .sc-brand-suite__hero--split .sc-brand-suite__lead{font-size:16px;line-height:1.6}
+}
+
+/* V2.1.45 — image-led brand packages, aligned with the service cards above. */
+#pricing.pricing-section--brand{background:#fff}
+#pricing .sc-brand-suite__cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.7vw,32px);margin-top:28px;align-items:stretch}
+#pricing .sc-brand-card{display:flex;flex-direction:column;border:0;border-radius:0;background:transparent;box-shadow:none;overflow:visible;min-width:0}
+#pricing .sc-brand-card__image{aspect-ratio:370/263;min-height:0;overflow:hidden;border-radius:clamp(20px,2.4vw,30px);background:#f2f6fc;position:relative}
+#pricing .sc-brand-card__image img{width:100%;height:100%;object-fit:cover;transition:transform .45s ease}
+#pricing .sc-brand-card__body{flex:1;padding:18px 0 0;min-width:0;background:transparent}
+#pricing .sc-brand-card__eyebrow{margin:0 0 8px;font-size:12px;letter-spacing:.09em}
+#pricing .sc-brand-card h4{margin:0 0 7px;font-size:clamp(21px,2.1vw,29px);line-height:1.28;color:#0b2d5c;letter-spacing:-.025em;overflow-wrap:anywhere}
+#pricing .sc-brand-card__subtitle{font-size:clamp(15px,1.25vw,18px);margin:0 0 10px;color:#183653}
+#pricing .sc-brand-card__summary{font-size:16px;line-height:1.65;min-height:0;margin:0 0 17px;color:#536981}
+#pricing .sc-brand-card__features{flex:1;gap:7px;padding-top:15px;font-size:15px;border-top:1px solid #dce6f2}
+#pricing .sc-brand-card__features li{line-height:1.55}
+#pricing .sc-brand-card__cta{align-self:flex-start;width:auto;max-width:100%;min-height:48px;margin-top:22px;padding:11px 22px;border-radius:8px}
+#pricing .sc-brand-card--recommended{border:0;background:transparent;box-shadow:none}
+#pricing .sc-brand-card--recommended .sc-brand-card__body{background:transparent}
+#pricing .sc-brand-card--recommended .sc-brand-card__image::after{content:'';position:absolute;inset:0;border:3px solid #ff6900;border-radius:inherit;pointer-events:none}
+#pricing .sc-brand-card--recommended .sc-brand-card__features{border-top:2px solid #ff6900}
+#pricing .sc-brand-card__recommendation{top:14px;right:14px;left:auto;max-width:calc(100% - 28px);border-radius:8px;background:#b54700;color:#fff;padding:9px 13px;z-index:2}
+#pricing .sc-brand-suite__footnote{margin-top:24px}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){#pricing .sc-brand-card:hover .sc-brand-card__image img{transform:scale(1.035)}}
+@media(min-width:981px){#pricing .sc-brand-card__summary{min-height:3.4em}}
+@media(max-width:980px){
+ #pricing .sc-brand-suite__cards{grid-template-columns:1fr;gap:28px}
+ #pricing .sc-brand-card{display:grid;grid-template-columns:minmax(0,39%) minmax(0,1fr);gap:20px;align-items:start}
+ #pricing .sc-brand-card__body{padding:0}
+ #pricing .sc-brand-card__image{aspect-ratio:370/263;min-height:0}
+ #pricing .sc-brand-card__recommendation{left:10px;right:auto;top:10px;max-width:calc(39% - 20px);font-size:11px}
+}
+@media(max-width:640px){
+ #pricing .sc-brand-suite__cards{margin-top:20px;gap:32px}
+ #pricing .sc-brand-card{display:flex;gap:0}
+ #pricing .sc-brand-card__body{padding-top:16px;width:100%}
+ #pricing .sc-brand-card__image{width:100%;border-radius:24px}
+ #pricing .sc-brand-card__recommendation{left:auto;right:12px;top:12px;max-width:calc(100% - 24px)}
+ #pricing .sc-brand-card__summary{font-size:15px}
+}
+/* Keep the approved split heading readable on the new white surface. */
+#pricing .sc-brand-suite__hero--split{padding:0 0 28px;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+#pricing .sc-brand-suite__hero--split h3{max-width:none;font-size:clamp(34px,4.1vw,55px)!important;line-height:1.23;letter-spacing:-.025em}
+#pricing .sc-brand-suite__hero--split .sc-brand-suite__lead{color:#536981;font-size:clamp(16px,1.4vw,19px);max-width:none;line-height:1.7;margin:8px 0 0}
+@media(max-width:780px){#pricing .sc-brand-suite__hero--split{grid-template-columns:1fr;gap:12px;padding-bottom:20px}#pricing .sc-brand-suite__hero--split h3{font-size:clamp(30px,6vw,42px)!important}}
+#pricing .sc-brand-suite__hero--split h3{text-wrap:balance;word-break:normal;overflow-wrap:normal}
