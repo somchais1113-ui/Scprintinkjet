@@ -1,0 +1,310 @@
+[
+  {
+    "file": "assets/images/about/leadership-editorial-v2137.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      1147,
+      596,
+      120,
+      38
+    ]
+  },
+  {
+    "file": "assets/images/about/leadership-illustration-v2135.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      688,
+      759,
+      153,
+      49
+    ]
+  },
+  {
+    "file": "assets/images/about/thai-design-v2134.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      507,
+      247,
+      76,
+      24
+    ]
+  },
+  {
+    "file": "assets/images/about/thai-proof-v2134.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      1135,
+      357,
+      81,
+      26
+    ]
+  },
+  {
+    "file": "assets/images/about/thai-quality-v2134.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      1275,
+      498,
+      113,
+      36
+    ]
+  },
+  {
+    "file": "assets/images/benefits/design.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      362,
+      525,
+      40,
+      12
+    ]
+  },
+  {
+    "file": "assets/images/knowledge/artwork-preflight.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      267,
+      391,
+      73,
+      23
+    ]
+  },
+  {
+    "file": "assets/images/knowledge/photo-white-ink.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      196,
+      675,
+      25,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/knowledge/white-ink-clear-labels.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      196,
+      675,
+      25,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-01.webp",
+    "status": "updated",
+    "detect": "template",
+    "bbox": [
+      380,
+      69,
+      24,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-02.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      472,
+      447,
+      96,
+      31
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-06.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      418,
+      268,
+      62,
+      20
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-08.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      605,
+      315,
+      198,
+      64
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-11.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      322,
+      236,
+      26,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-12.webp",
+    "status": "updated",
+    "detect": "template",
+    "bbox": [
+      735,
+      314,
+      26,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-14.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      979,
+      454,
+      91,
+      29
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-16.webp",
+    "status": "updated",
+    "detect": "template",
+    "bbox": [
+      757,
+      194,
+      27,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-17.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      362,
+      525,
+      40,
+      12
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/gallery/work-19.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      169,
+      845,
+      41,
+      13
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/hero/portfolio-hero-01.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      1247,
+      568,
+      107,
+      34
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/hero/portfolio-hero-02.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      1028,
+      782,
+      238,
+      76
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/hero/portfolio-hero-03.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      1408,
+      400,
+      25,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/hero/portfolio-hero-04.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      212,
+      886,
+      48,
+      15
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/portfolio-diecut-production-process.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      418,
+      267,
+      62,
+      20
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/portfolio-installation-process.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      322,
+      236,
+      26,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/portfolio/portfolio-label-quality-process.webp",
+    "status": "updated",
+    "detect": "template",
+    "bbox": [
+      380,
+      69,
+      24,
+      8
+    ]
+  },
+  {
+    "file": "assets/images/quote-choices/quote-large-format.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      979,
+      454,
+      91,
+      29
+    ]
+  },
+  {
+    "file": "assets/images/team/finishing-handover-v217.webp",
+    "status": "updated",
+    "detect": "component",
+    "bbox": [
+      428,
+      938,
+      139,
+      44
+    ]
+  }
+]
