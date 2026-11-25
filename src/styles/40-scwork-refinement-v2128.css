@@ -349,3 +349,71 @@
 
 /* V2.1.51 — remove the visible pause control from client logo carousel. */
 .sc-client-credits__pause{display:none!important}
+
+/* V2.1.54 — service catalogue */
+#pricing .sc-design-cards{grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(16px,2vw,26px)}
+#pricing .sc-design-cards .sc-brand-card h4{font-size:clamp(19px,1.8vw,25px);overflow-wrap:normal}
+#pricing .sc-design-cards .sc-brand-card__image{aspect-ratio:1.4}
+#pricing .sc-design-cards .sc-brand-card__summary{font-size:14px;min-height:0}
+#pricing .sc-design-cards .sc-brand-card__subtitle{font-size:15px}
+#pricing .sc-design-cards .sc-brand-card__features{font-size:14px;gap:5px}
+#pricing .sc-design-from{display:flex;align-items:baseline;gap:8px;margin:18px 0 0;color:#536981;font-size:13px}
+#pricing .sc-design-from strong{color:#0b2d5c;font-size:24px;font-weight:800;white-space:nowrap}
+#pricing .sc-design-cards .sc-brand-card__cta{margin-top:12px;min-height:42px;padding:9px 16px}
+#pricing .sc-design-compare-intro{color:#536981;font-size:15px;margin:0 0 14px}
+#pricing .sc-design-group{border:1px solid #dce6f2;border-radius:14px;background:#fff;margin:0 0 10px;scroll-margin-top:110px;overflow:hidden}
+#pricing .sc-design-group summary{display:flex;align-items:center;gap:14px;cursor:pointer;padding:16px 20px;list-style:none;color:#0b2d5c}
+#pricing .sc-design-group summary::-webkit-details-marker{display:none}
+#pricing .sc-design-group summary::after{content:'+';margin-left:auto;font-size:24px;font-weight:600;color:#a94300;line-height:1}
+#pricing .sc-design-group[open] summary::after{content:'−'}
+#pricing .sc-design-group[open] summary{border-bottom:1px solid #dce6f2;background:#f7fafe}
+#pricing .sc-design-group-index{color:#a94300;font-size:13px;font-weight:750}
+#pricing .sc-design-group-title{display:flex;flex:1;flex-wrap:wrap;align-items:baseline;gap:3px 16px;min-width:0}
+#pricing .sc-design-group-title strong{font-size:17px}
+#pricing .sc-design-group-title>span{font-size:13px;color:#536981}
+#pricing .sc-design-group-content{padding:14px}
+#pricing .sc-design-group .sc-brand-compare__table-wrap{box-shadow:none;border-radius:10px;overflow-x:auto}
+#pricing .sc-design-group .sc-brand-compare__table{min-width:640px;table-layout:fixed}
+#pricing .sc-design-group .sc-brand-compare__table th:first-child{width:25%;white-space:normal}
+#pricing .sc-design-group .sc-brand-compare__table th,#pricing .sc-design-group .sc-brand-compare__table td{padding:10px 12px;font-size:13px;overflow-wrap:anywhere}
+#pricing .sc-design-group .sc-brand-compare__table tbody td:nth-child(3){background:inherit;color:#4e617a;font-weight:400}
+#pricing .sc-design-group .sc-brand-compare__table tbody tr:nth-child(even) td{background:#f8fafc}
+#pricing .sc-design-code{display:block;color:#536981;font-size:10px;font-weight:650;margin-bottom:3px}
+#pricing .sc-design-table-price{display:block;color:#a94300;font-size:19px;margin-top:6px;white-space:nowrap}
+#pricing .sc-design-select{display:inline-block;color:#0b2d5c;text-decoration:underline;text-underline-offset:3px;font-weight:700}
+#pricing .sc-design-note{font-size:13px;color:#536981;line-height:1.65;margin:12px 4px 0}
+@media(max-width:1100px){#pricing .sc-design-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}#pricing .sc-design-cards .sc-brand-card{display:flex;gap:0}#pricing .sc-design-cards .sc-brand-card__image{width:100%;min-height:0}#pricing .sc-design-cards .sc-brand-card__body{padding:16px 0 0;width:100%}}
+@media(max-width:600px){#pricing .sc-design-cards{grid-template-columns:1fr;gap:30px}#pricing .sc-design-group summary{padding:13px 12px;gap:9px}#pricing .sc-design-group-title{flex-direction:column;gap:3px}#pricing .sc-design-group-title strong{font-size:15px}#pricing .sc-design-group-content{padding:8px}#pricing .sc-design-group .sc-brand-compare__table{min-width:600px}}
+
+#pricing .sc-design-brief label{display:block;font-size:14px;font-weight:650;color:#0b2d5c;margin:8px 0 6px}#pricing .sc-design-brief select,#pricing .sc-design-brief textarea{display:block;width:100%;max-width:100%;padding:10px;border:1px solid #cbd9e8;border-radius:8px;background:#fff;color:#132544;font:inherit}#pricing .sc-design-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:12px}#pricing .sc-design-actions button{margin:0;background:#ff6900;color:#fff;cursor:pointer}#pricing .sc-design-brief .sc-design-note{margin-left:0}
+
+/* V2.1.55 — Design catalogue visual refinement; homepage only. */
+#pricing.pricing-section--brand{--sc-design-orange:#FF6900}
+#pricing .sc-brand-suite__hero--split{padding:clamp(24px,2.8vw,44px) 0!important;align-items:center}
+#pricing .sc-brand-suite__hero--split .sc-brand-suite__eyebrow{color:var(--sc-design-orange)!important}
+#pricing .sc-design-cards .sc-brand-card__eyebrow{gap:9px;align-items:baseline}
+#pricing .sc-design-cards .sc-brand-card__eyebrow span:first-child{color:var(--sc-design-orange);font-size:19px;font-weight:800;line-height:1.2;letter-spacing:.025em;font-variant-numeric:tabular-nums}
+#pricing .sc-design-cards .sc-brand-card__cta,#pricing .sc-design-actions button{background:var(--sc-design-orange);border-color:var(--sc-design-orange);color:#fff}
+#pricing .sc-design-cards .sc-brand-card__cta:hover,#pricing .sc-design-actions button:hover{background:var(--sc-design-orange);border-color:var(--sc-design-orange);filter:brightness(.94)}
+#pricing .sc-design-group summary{display:grid;grid-template-columns:36px minmax(0,1fr) 24px;align-items:center;gap:14px;min-height:62px}
+#pricing .sc-design-group summary::after{color:var(--sc-design-orange);margin-left:0;text-align:center;justify-self:center}
+#pricing .sc-design-group-index{color:var(--sc-design-orange);font-size:20px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1.2}
+#pricing .sc-design-group-title{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:center;gap:16px;min-width:0}
+#pricing .sc-design-group-title strong{min-width:0;overflow-wrap:normal}
+#pricing .sc-design-group-title>span{justify-self:start;text-align:left;min-width:0;font-size:15px;font-variant-numeric:tabular-nums}
+#pricing .sc-design-brief .sc-design-group-title{grid-template-columns:minmax(0,1fr)}
+#pricing .sc-design-table-price{color:var(--sc-design-orange);font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+#pricing .sc-design-group summary:focus-visible{outline:2px solid #012A62;outline-offset:-4px;border-radius:12px}
+@media(max-width:780px){
+  #pricing .sc-brand-suite__hero--split{padding:26px 0!important;gap:12px}
+  #pricing .sc-brand-suite__hero--split .sc-brand-suite__hero-side{padding-top:12px}
+  #pricing .sc-design-group summary{grid-template-columns:30px minmax(0,1fr) 20px;gap:10px;padding:13px 14px}
+  #pricing .sc-design-group-title{grid-template-columns:minmax(0,1fr);gap:4px}
+  #pricing .sc-design-group-index{font-size:19px}
+  #pricing .sc-design-group-title>span{font-size:13px}
+}
+@media(max-width:600px){
+  #pricing .sc-brand-suite__hero--split{padding:22px 0!important}
+  #pricing .sc-design-group summary{padding:12px;gap:9px}
+  #pricing .sc-design-group-title strong{font-size:15px}
+}

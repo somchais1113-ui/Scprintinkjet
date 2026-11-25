@@ -1,3 +1,12 @@
+# V2.1.55 — Design package visual refinement
+
+- Standardise catalogue orange to #FF6900, enlarge numbers, align package count and starting price, reduce masthead padding.
+- No package, pricing or logic changes.
+
+# V2.1.54 — Design service catalogue
+
+- Four groups / twelve packages, indicative prices, expandable comparisons and local package brief.
+
 # V2.1.43 — Recommended brand package
 
 - Removed homepage Additional Services; explicitly hide legacy standalone pricing CTA and keep other quote links.
