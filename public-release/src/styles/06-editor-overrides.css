@@ -1,0 +1,10 @@
+/* Site Manager dynamic design tokens; headingScale defaults to 1. */
+:root{--pc-heading-scale:1;--pc-hero-desktop:url('../../assets/images/hero/hero-scene.webp');--pc-hero-mobile:url('../../assets/images/hero/hero-mobile.webp')}
+
+.hero h1{font-size:calc(54px * var(--pc-heading-scale))}
+.section-intro h2,.quote-copy h2,.about-copy h2,.pricing-heading h2,.testimonial-intro h2,.contact-info h2{font-size:calc(44px * var(--pc-heading-scale))}
+h1,h2{white-space:pre-line}
+@media(max-width:767px){.hero h1{font-size:calc(34px * var(--pc-heading-scale))}.section-intro h2,.quote-copy h2,.about-copy h2,.pricing-heading h2,.testimonial-intro h2,.contact-info h2{font-size:calc(31px * var(--pc-heading-scale))}}
+
+/* Highlight the package selected by featured=true, instead of always the second card. */
+.price-card:nth-child(2) .button--outline{background:transparent;color:var(--color-ink);border-color:var(--color-border)}

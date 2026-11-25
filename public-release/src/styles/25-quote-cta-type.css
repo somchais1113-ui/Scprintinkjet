@@ -1,0 +1,14 @@
+/* Enlarge estimate entry labels, not contact/help actions or calculation results. */
+a.sc-quote-cta,
+a.sc-quote-cta:is(.button,.cta,.article-button) {
+  font-size: clamp(18px,1.65vw,23px);
+  font-weight: 700;
+  line-height: 1.3;
+  white-space: normal;
+  max-inline-size: 100%;
+  overflow-wrap: break-word;
+}
+a.sc-quote-cta.header-cta,
+.footer a.sc-quote-cta {
+  font-size: clamp(17px,1.4vw,19px);
+}

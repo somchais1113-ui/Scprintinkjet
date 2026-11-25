@@ -1,0 +1,38 @@
+/* V2.1.17 — full-card services carousel crossfade (640–740 ms). */
+.services__viewport{position:relative;isolation:isolate;}
+.services__viewport--crossfade{overflow:hidden;}
+.services__viewport--crossfade .services__grid--incoming{
+  opacity:0;
+  transform:translate3d(16px,0,0);
+  /* The newly rendered grid begins fully hidden, not transitioning from the previous state. */
+  transition:none;
+}
+.services__viewport--crossfade.services__viewport--active .services__grid--incoming{
+  opacity:1;transform:translate3d(0,0,0);
+  transition:opacity 670ms cubic-bezier(.25,.12,.25,1),transform 670ms cubic-bezier(.2,.67,.16,1);
+}
+.services__grid--outgoing{
+  position:absolute;
+  z-index:1;
+  inset:0;
+  width:100%;
+  pointer-events:none;
+  opacity:1;
+  transform:translate3d(0,0,0);
+  transition:opacity 670ms cubic-bezier(.25,.12,.25,1),transform 670ms cubic-bezier(.2,.67,.16,1);
+}
+.services__viewport--active .services__grid--outgoing{
+  opacity:0;transform:translate3d(-12px,0,0);
+}
+/* Prevent a second entrance reveal from interrupting a complete-set crossfade. */
+html.pc-motion-ready .services__viewport--crossfade .service-card,
+html.pc-motion-ready .services__viewport--crossfade .service-card.pc-reveal{
+  opacity:1!important;
+  transform:none!important;
+  transition:none!important;
+}
+.services__next:disabled{cursor:default;}
+@media(prefers-reduced-motion:reduce){
+ .services__viewport--crossfade .services__grid--incoming,
+ .services__grid--outgoing{transition:none!important;transform:none!important;}
+}

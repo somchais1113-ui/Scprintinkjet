@@ -1,0 +1,37 @@
+/* V2.1.28: Portfolio cinematic banner matches the approved Main Page visual behaviour. */
+.portfolio-cinema{position:relative;isolation:isolate;background:#08254d;color:#fff;overflow:hidden;height:clamp(610px,52vw,735px);min-height:610px;margin:0 0 clamp(34px,4vw,62px)}
+.portfolio-cinema__slides,.portfolio-cinema__shade{position:absolute;inset:0;overflow:hidden}
+.portfolio-cinema__slide{position:absolute;inset:0;opacity:0;margin:0;transition:opacity 880ms cubic-bezier(.35,.05,.22,1);pointer-events:none}
+.portfolio-cinema__slide.is-active{opacity:1;z-index:1}
+.portfolio-cinema__slide img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 48%;transform:scale(1);filter:saturate(1.02) contrast(1.025);backface-visibility:hidden}
+.portfolio-cinema__slide[data-portfolio-slide="1"] img{object-position:center 48%}
+.portfolio-cinema__slide[data-portfolio-slide="2"] img{object-position:center 50%}
+.portfolio-cinema__slide[data-portfolio-slide="3"] img{object-position:center 51%}
+@media(prefers-reduced-motion:no-preference){.portfolio-cinema__slide:is(.is-active,.is-exiting) img{animation:scwork-portfolio-zoom 9s linear both;will-change:transform}}
+@keyframes scwork-portfolio-zoom{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(0,0,0) scale(1.075)}}
+.portfolio-cinema__shade{z-index:2;pointer-events:none;background:linear-gradient(0deg,rgba(4,19,43,.95),rgba(5,23,46,.70) 27%,rgba(8,29,56,.24) 67%,rgba(5,20,39,.10)),linear-gradient(90deg,rgba(4,20,46,.63),transparent 78%)}
+.portfolio-cinema__inner{position:relative;z-index:3;display:flex;flex-direction:column;justify-content:flex-end;gap:clamp(26px,3.5vw,44px);height:100%;padding-block:clamp(42px,5vw,75px) 31px}
+.portfolio-cinema__copy{max-width:785px}
+.portfolio-cinema__crumb{font-size:13px;letter-spacing:.03em;color:#e0eafa;margin:0 0 clamp(22px,3vw,36px)}
+.portfolio-cinema__eyebrow{font-size:13px;letter-spacing:.11em;text-transform:uppercase;color:#e1eafb;font-weight:700;margin:0 0 15px}
+.portfolio-cinema h1{font-size:clamp(37px,3.55vw,55px);line-height:1.18;letter-spacing:-.03em;font-weight:800;max-width:785px;margin:0;color:#fff;text-shadow:0 3px 18px #07162f66}
+.portfolio-cinema__copy>p#portfolioIntroduction{max-width:690px;margin:19px 0 0;font-size:clamp(16px,1.3vw,20px);font-weight:450;line-height:1.72;color:#e8f0fa}
+.portfolio-cinema__cta{display:inline-flex;min-height:54px;align-items:center;justify-content:center;padding:13px 24px;margin-top:27px;border-radius:10px;background:#ff6900;color:white!important;text-decoration:none;font-weight:750;font-size:16px;transition:background-color .2s,transform .2s}
+.portfolio-cinema__cta:hover{background:#e76000;transform:translateY(-2px)}
+.portfolio-cinema__cta:focus-visible,.portfolio-cinema__control:focus-visible,.portfolio-cinema__dots button:focus-visible{outline:3px solid #ffb17c;outline-offset:3px}
+.portfolio-cinema__controls{display:flex;align-items:center;gap:12px;min-height:52px}
+.portfolio-cinema__count{display:flex;align-items:baseline;gap:5px;color:#bbcce1;margin:0 17px 0 0;font-size:15px}
+.portfolio-cinema__count strong{color:#fff;font-size:23px;font-weight:800}
+.portfolio-cinema__control{width:47px;height:47px;border:1px solid #ffffff7a;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;color:#fff;background:#08274e9c;cursor:pointer;flex:none}
+.portfolio-cinema__control svg{width:22px;height:22px}
+.portfolio-cinema__control:hover{border-color:white;background:#193a63}
+.portfolio-cinema__pause-icon{display:block;width:15px;height:19px;border-left:4px solid currentColor;border-right:4px solid currentColor}
+.portfolio-cinema__control.is-paused .portfolio-cinema__pause-icon{width:0;height:0;border-top:10px solid transparent;border-bottom:10px solid transparent;border-left:15px solid currentColor;border-right:0;margin-left:4px}
+.portfolio-cinema__dots{display:flex;align-items:center;gap:5px;margin-left:12px}
+.portfolio-cinema__dots button{width:22px;height:40px;display:grid;place-items:center;background:transparent;padding:0;border:0;cursor:pointer}
+.portfolio-cinema__dots button::before{content:"";display:block;width:9px;height:9px;border-radius:100px;background:#a6b5c7;transition:background .22s,width .22s}
+.portfolio-cinema__dots button.is-active{width:32px}
+.portfolio-cinema__dots button.is-active::before{width:26px;height:7px;background:#ff6900}
+@media(max-width:720px){.portfolio-cinema{height:clamp(595px,130vw,730px);min-height:595px;margin-bottom:26px}.portfolio-cinema__inner{padding-block:28px 23px;gap:24px}.portfolio-cinema__crumb{margin-bottom:20px}.portfolio-cinema h1{font-size:clamp(34px,8vw,46px)}.portfolio-cinema__eyebrow{font-size:11px}.portfolio-cinema__copy>p#portfolioIntroduction{font-size:16px;line-height:1.62}.portfolio-cinema__control{width:42px;height:42px}.portfolio-cinema__controls{gap:7px}.portfolio-cinema__count{margin-right:5px}.portfolio-cinema__dots{margin-left:7px}.portfolio-cinema__slide img{object-position:56% center}.portfolio-cinema__slide[data-portfolio-slide="1"] img{object-position:64% center}.portfolio-cinema__slide[data-portfolio-slide="2"] img{object-position:60% center}}
+@media(max-width:365px){.portfolio-cinema{height:630px}.portfolio-cinema__count strong{font-size:19px}.portfolio-cinema__dots button{width:18px}.portfolio-cinema__controls{gap:5px}}
+@media(prefers-reduced-motion:reduce){.portfolio-cinema__slide{transition:none}.portfolio-cinema__slide img{animation:none!important}.portfolio-cinema__cta{transition:none;transform:none!important}}

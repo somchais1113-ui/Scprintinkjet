@@ -7,9 +7,13 @@
    const lang=supported.includes(document.documentElement.lang)?document.documentElement.lang:'en';
    const th=lang==='th';
    root.querySelectorAll('[data-price-mat-th]').forEach(el=>el.textContent=el.dataset[th?'priceMatTh':'priceMatEn']);
-   root.querySelectorAll('a[href*="smart-quote.html"]').forEach(a=>{
-     const u=new URL(a.getAttribute('href'),document.baseURI||location.href);u.searchParams.set('lang',lang);
-     a.setAttribute('href','./smart-quote.html'+u.search);
+   root.querySelectorAll('[data-price-mat-alt-th]').forEach(el=>el.setAttribute('alt',el.dataset[th?'priceMatAltTh':'priceMatAltEn']));
+   root.querySelectorAll('a[data-price-link-preserve],a[href*="smart-quote.html"],a[href*="project-quote.html"],a[href*="design-services.html"]').forEach(a=>{
+     const raw=a.getAttribute('href'); if(!raw) return;
+     const u=new URL(raw,document.baseURI||location.href);
+     u.searchParams.set('lang',lang);
+     const local=(u.pathname.split('/').pop()||'');
+     a.setAttribute('href','./'+local+u.search+(u.hash||''));
    });
  }
  window.addEventListener('scwork:locale-applied',paint);

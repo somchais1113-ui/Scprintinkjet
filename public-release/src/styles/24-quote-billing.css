@@ -1,0 +1,43 @@
+/* Readable estimator controls and local A4 print. */
+body:has(.qb-options){font-size:17px;line-height:1.62}
+.qb-options h2,.q-workspace .q-section-top h2,.q-summary .q-summary-head h2{font-size:clamp(20px,2.2vw,26px);line-height:1.32}
+.q-workspace .q-section-top p,.q-mode small,.q-field small,.q-summary .q-note,.q-summary .q-privacy,.q-help{font-size:15px;line-height:1.58}
+.q-mode{font-size:17px}.q-mode strong{font-size:17px}.q-mode small{display:block}
+.q-fields .q-field>span,.q-field input,.q-field select,.q-field textarea,.q-mode,.q-size-presets button,.q-qty-presets button{font-size:16px}
+.q-label-prices .q-label-prices__quantity,.q-label-prices .q-label-prices__grid small{font-size:14px}
+.q-label-prices .q-label-prices__terms,.q-label-prices .q-label-prices__head p{font-size:14px}
+.q-mobile-bar small,.q-mobile-bar strong,.q-mobile-bar .q-mobile-link{font-size:14px}
+.q-summary .q-total strong{font-size:clamp(25px,3vw,32px)}
+.qb-options{margin-top:15px}
+.qb-example{margin-top:17px;border:1px solid #c9d9ec;border-radius:9px;background:#f4f8fe;padding:12px}
+.qb-example summary{font-weight:800;cursor:pointer;font-size:16px}
+.qb-example-note,.qb-note{color:#405675;font-size:14px;margin:7px 0;line-height:1.5}
+.qb-example-note{font-weight:700}
+.qb-money{margin:10px 0}
+.qb-money>div,.qb-settlement>div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px;padding-block:6px;border-bottom:1px solid #d8e4f1}
+.qb-money dd{margin:0;font-weight:800}
+.qb-settlement{margin:14px 0;padding:10px 12px;background:#edf5ff;border:1px solid #ccddef;border-radius:9px;color:#132f54}
+.qb-settlement>div:nth-child(2){font-weight:800;border-bottom:0}
+.qb-settlement>div:nth-child(2) strong{font-size:clamp(18px,2vw,24px)}
+.q-summary .qb-print{display:block;width:100%;border:0;min-height:50px;font:inherit;font-weight:800;text-align:center;cursor:pointer;background:#ff6900;color:#fff;border-radius:9px;padding:11px}
+.q-summary .qb-print:disabled{opacity:.6;cursor:not-allowed}
+.q-summary #lineCta{background:#fff;border:1px solid #b6cae4;color:#012a62}
+.qb-print-sheet{display:none}
+@media(max-width:440px){.qb-options .q-fields{grid-template-columns:1fr}.qb-money>div,.qb-settlement>div{overflow-wrap:anywhere}}
+@page{size:A4;margin:18mm}
+@media print{
+ html,body{background:#fff!important;margin:0!important;color:#13243a;font-size:11pt!important}
+ body.qb-print-active>*:not(#billPrintSheet){display:none!important}
+ body.qb-print-active #billPrintSheet{display:block!important;font-family:"Noto Sans Thai",Tahoma,system-ui,sans-serif;line-height:1.5}
+ #billPrintSheet header{padding-bottom:12pt;border-bottom:2pt solid #12345a}
+ #billPrintSheet h1{margin:3pt 0 0;font-size:23pt}
+ #billPrintSheet h2{font-size:13pt;margin:12pt 0 3pt}
+ #billPrintSheet p{margin:3pt 0;white-space:pre-wrap;overflow-wrap:anywhere}
+ .qb-doc-brand{font-size:15pt;font-weight:800}
+ .qb-doc-meta{margin-top:10pt}
+ #billPrintSheet .qb-money,.qb-doc-status{break-inside:avoid}
+ #billPrintSheet footer{font-size:10pt;margin-top:18pt;padding-top:8pt;border-top:1pt solid #c5cfda}
+}
+
+/* Printing Solutions logo; seller text remains separately populated by billing UI. */
+.qb-doc-logo{display:block;width:180px;max-width:100%;height:auto;margin:0 0 8px}

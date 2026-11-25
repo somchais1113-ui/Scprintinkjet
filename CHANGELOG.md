@@ -1,3 +1,9 @@
+# V2.1.41 — Homepage brand design package refinement
+
+- Reused existing illustrative portfolio imagery; reduced decoration and improved card alignment and responsive layout.
+- Preserved package scopes, existing quote links and comparison table; added comparison shortcut and corrected customer-facing intro.
+- Updated package metadata and stylesheet cache key. Pricing, admin, Supabase and other pages unchanged. See START_HERE_V2.1.41.md for QA limits.
+
 # V2.1.36 — Compact editorial About us / Liquid Glass
 
 - Who We Are and Our Philosophy use matching compact layouts, with sharp photographs and edge-only gradient masks.

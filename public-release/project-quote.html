@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <link rel="icon" href="./favicon.ico?v=2.1.17&amp;brand=printing-solutions" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png?v=2.1.17&amp;brand=printing-solutions">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png?v=2.1.17&amp;brand=printing-solutions">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon-180x180.png?v=2.1.17&amp;brand=printing-solutions">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ขอราคาโครงการฉลากสินค้า | SCWork</title>
+  <meta name="description" content="เตรียมบรีฟงานฉลากหลาย SKU กำหนดวันที่ต้องใช้ และขอเอกสารจัดซื้อพร้อมเลขอ้างอิงโครงการ">
+  <meta name="theme-color" content="#f1f6fb">
+  
+  <link rel="stylesheet" href="./src/styles/22-project-quote.css?v=2.1.20">
+  <link rel="stylesheet" href="./src/styles/23-order-followup.css?v=2.0.0">
+  <script defer src="./data/site-data.js?v=2.1.28"></script>
+  <script defer src="./config/public-config.js?v=2.1.5"></script>
+  <script defer src="./src/scripts/quote-to-line.js?v=1.8.2"></script>
+  <script defer src="./src/scripts/project-brief.js?v=2.0.0"></script>
+  <script defer src="./src/scripts/order-followup-core.js?v=2.0.0"></script>
+  <script defer src="./src/scripts/project-quote.js?v=2.1.1"></script>
+  <link rel="stylesheet" href="./src/styles/26-support-bar.css?v=2.1.20">
+  <script defer src="./src/scripts/support-bar.js?v=2.1.5"></script>
+</head>
+<body>
+  <a class="p-skip" href="#main" data-i="skip">ข้ามไปยังเนื้อหา</a>
+  <header class="p-header"><div class="p-wrap p-nav">
+    <a class="p-brand" href="./product-labels.html?lang=th" data-back="labels" aria-label="SCWork"><img src="./assets/icons/scwork-logo.png" width="136" height="45" alt="SCWork"></a>
+    <div class="p-nav-actions">
+      <a href="./smart-quote.html?category=label&amp;lang=th" data-back="standard" data-i="standard">เช็กราคางานมาตรฐาน</a>
+      <div class="p-lang" role="group" aria-label="ภาษา / Language"><button type="button" data-lang="th" lang="th" aria-pressed="true">TH</button><button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button></div>
+    </div>
+  </div></header>
+  <main id="main" class="p-wrap">
+    <section class="p-intro" aria-labelledby="title">
+      <p class="p-kicker">SCWORK / PROJECT QUOTE</p>
+      <h1 id="title" data-i="title">ขอราคาโครงการฉลากสินค้า</h1>
+      <p class="p-lede" data-i="lead">รวมสเปกหลาย SKU วันที่ต้องใช้ และเอกสารที่ฝ่ายจัดซื้อต้องการในบรีฟเดียว ทีม SCWork ใช้เลขอ้างอิงเดียวกันตั้งแต่คุยสเปกไปจนถึงตรวจแบบก่อนผลิต</p>
+      <ol class="p-steps" role="list">
+        <li><span aria-hidden="true">01</span><strong data-i="step1">เตรียมบรีฟ</strong></li>
+        <li><span aria-hidden="true">02</span><strong data-i="step2">ทีมตรวจสเปกและเสนอราคา</strong></li>
+        <li><span aria-hidden="true">03</span><strong data-i="step3">ยืนยันแบบก่อนผลิต</strong></li>
+      </ol>
+    </section>
+    <details class="p-card o-import" id="repeatOptions">
+      <summary data-i="repeatTitle">สั่งซ้ำจากไฟล์สเปกของ SCWork</summary>
+      <label class="p-field"><span data-i="repeatFile">เปิดไฟล์สเปกสั่งซ้ำ (JSON)</span><input type="file" id="repeatFile" accept=".json,application/json"></label>
+      <p class="p-help" data-i="repeatNote">อ่านไฟล์ในเครื่อง ไม่อัปโหลด ไฟล์จะเติมเฉพาะรายการฉลากและเลขอ้างอิงเดิม ปรับจำนวนและตรวจเงื่อนไขกับทีมอีกครั้งก่อนสั่ง</p>
+      <p class="p-help" id="repeatFeedback" role="status"></p><div class="p-ref" id="repeatOrigin" hidden></div>
+    </details>
+    <div class="p-layout">
+      <form class="p-form" id="projectForm">
+        <section class="p-card" aria-labelledby="overviewTitle">
+          <h2 id="overviewTitle" data-i="overview">รายละเอียดโครงการ</h2>
+          <div class="p-fields">
+            <label class="p-full"><span data-i="name">ชื่อโครงการ *</span><input id="projectName" required maxlength="100"></label>
+            <label><span data-i="org">บริษัท / องค์กร (ถ้ามี)</span><input id="projectOrg" maxlength="110" autocomplete="organization"></label>
+            <label><span data-i="due">วันที่ต้องการใช้งาน (ถ้ามี)</span><input id="projectDue" type="date" min="2000-01-01" max="2099-12-31"></label>
+          </div>
+          <p class="p-help" data-i="dueNote">วันที่ที่ระบุใช้สำหรับประเมินงาน ทีมจะยืนยันกำหนดส่งอีกครั้งหลังตรวจสเปก</p>
+        </section>
+        <section class="p-card" aria-labelledby="itemsTitle">
+          <div class="p-card-head"><h2 id="itemsTitle" data-i="itemsTitle">รายการฉลาก / SKU</h2><button type="button" class="p-button p-small" id="addSKU" disabled data-i="add">+ เพิ่ม SKU</button></div>
+          <p class="p-help" data-i="itemsNote">ใส่ชื่อและจำนวนของแต่ละแบบ หากยังไม่ทราบขนาดหรือวัสดุ ข้ามไว้ให้ทีมช่วยดูได้</p>
+          <div id="items"></div>
+          <template id="skuTemplate">
+            <fieldset class="p-sku">
+              <legend class="p-sku-title"></legend>
+              <div class="p-fields">
+                <label class="p-full"><span data-i="sku">ชื่อแบบ / รหัส SKU *</span><input data-key="name" required maxlength="80"></label>
+                <label><span data-i="qty">จำนวน (ดวง) *</span><input data-key="qty" required type="number" inputmode="numeric" min="1" max="1000000" step="1"></label>
+                <label><span data-i="material">วัสดุ</span><select data-key="material"><option value="undecided" data-i="mat0">ให้ทีมช่วยเลือก</option><option value="pp-white" data-i="mat1">PP ขาว</option><option value="pp-clear" data-i="mat2">PP ใส</option><option value="paper" data-i="mat3">กระดาษ</option><option value="other" data-i="mat4">อื่น ๆ</option></select></label>
+                <label><span data-i="width">กว้าง (มม.)</span><input data-key="width" type="number" min="1" max="10000" step="0.1" inputmode="decimal"></label>
+                <label><span data-i="height">สูง (มม.)</span><input data-key="height" type="number" min="1" max="10000" step="0.1" inputmode="decimal"></label>
+                <label class="p-full"><span data-i="itemNote">หมายเหตุเฉพาะแบบ (ถ้ามี)</span><input data-key="note" maxlength="110"></label>
+              </div>
+              <button type="button" class="p-button p-remove" data-remove data-i="remove">ลบ SKU นี้</button>
+            </fieldset>
+          </template>
+        </section>
+        <section class="p-card" aria-labelledby="docsTitle">
+          <h2 id="docsTitle" data-i="docsTitle">ไฟล์งานและเอกสารจัดซื้อ</h2>
+          <fieldset class="p-docset"><legend data-i="docsLegend">เอกสารที่ต้องการให้ทีมตรวจสอบ</legend>
+            <label><input type="checkbox" data-doc="quote" checked><span data-i="docQuote">ใบเสนอราคา</span></label>
+            <label><input type="checkbox" data-doc="tax"><span data-i="docTax">ใบกำกับภาษี</span></label>
+            <label><input type="checkbox" data-doc="company"><span data-i="docCompany">เอกสารขึ้นทะเบียนผู้ขาย</span></label>
+            <label><input type="checkbox" data-doc="other"><span data-i="docOther">เอกสารอื่น ๆ</span></label>
+          </fieldset>
+          <p class="p-help" data-i="docsNote">รายการนี้เป็นคำขอ ทีม SCWork จะแจ้งว่าออกเอกสารใดได้และมีเงื่อนไขอะไร</p>
+          <div class="p-fields">
+            <label class="p-full" id="otherDocGroup" hidden><span data-i="otherDoc">ระบุชื่อเอกสารอื่น ๆ</span><input id="projectOtherDoc" maxlength="120"></label>
+            <label class="p-full"><span data-i="artwork">ลิงก์ไฟล์งาน (ถ้ามี)</span><input id="projectArtwork" type="url" maxlength="1000" placeholder="https://…" inputmode="url"></label>
+            <label class="p-full"><span data-i="notes">รายละเอียดเพิ่มเติม (ถ้ามี)</span><textarea id="projectNotes" maxlength="440" rows="3"></textarea></label>
+          </div>
+        </section>
+        <button class="p-button p-primary p-prepare" type="button" id="prepare" disabled data-i="prepare">เตรียมบรีฟและเลขอ้างอิง</button>
+        <div id="formError" class="p-error" role="alert"></div>
+        <noscript>ต้องเปิด JavaScript เพื่อเตรียมบรีฟ / Enable JavaScript to prepare a brief.</noscript>
+      </form>
+      <aside class="p-aside" id="summary" aria-labelledby="summaryTitle" tabindex="-1">
+        <p class="p-kicker">PROJECT BRIEF</p>
+        <h2 id="summaryTitle" data-i="summary">บรีฟสำหรับส่งให้ทีม</h2>
+        <p class="p-help" id="summaryState" role="status" data-i="start">กรอกชื่อโครงการและอย่างน้อยหนึ่ง SKU แล้วกดเตรียมบรีฟ</p>
+        <div id="summaryActions" hidden>
+          <div class="p-ref" id="projectRef"></div>
+          <label class="p-preview"><span data-i="preview">ตรวจข้อความก่อนส่ง</span><textarea id="briefText" rows="9" readonly></textarea></label>
+          <a class="p-button p-primary" id="projectLine" target="_blank" rel="noopener noreferrer" hidden></a>
+          <button class="p-button" id="copyBrief" type="button" data-i="copy">คัดลอกบรีฟ</button>
+          <p class="p-help" id="contactState"></p>
+          <details class="p-details"><summary data-i="saveOptions">เก็บไฟล์บรีฟสำหรับส่งต่อ</summary><p class="p-help" data-i="saveNote">ไฟล์ JSON นี้ทีม SCWork เปิดดูสเปกต่อได้โดยไม่ต้องกรอกใหม่</p><button class="p-button p-small" type="button" id="saveBrief" data-i="save">ดาวน์โหลดบรีฟ JSON</button></details>
+          <p class="p-help" id="copyFeedback" role="status"></p>
+        </div>
+        <div class="p-coordinator"><strong data-i="coordinator">ผู้ประสานงานโครงการ SCWork</strong><p data-i="coordinatorNote">หลังส่งบรีฟ ให้ใช้เลขอ้างอิงนี้เมื่อคุยกับทีม ทีมจะแจ้งชื่อผู้ดูแล เอกสารที่ออกได้ และขั้นตอนถัดไป</p></div>
+        <p class="p-help" data-i="privacy">หน้านี้ไม่เก็บบรีฟบนเซิร์ฟเวอร์และไม่ส่งให้อัตโนมัติ เก็บสำเนาก่อนปิดหน้า</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="p-wrap p-footer"><span>SCWork — Design &amp; Production Consultant</span><a data-back="tracking" href="./order-tracking.html?lang=th" data-i="trackingPage">ติดตามงานและสั่งซ้ำ</a><a data-back="labels" href="./product-labels.html?lang=th" data-i="labelsPage">กลับหน้าฉลากสินค้า</a></footer>
+</body>
+</html>

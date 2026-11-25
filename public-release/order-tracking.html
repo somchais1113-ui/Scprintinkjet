@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <link rel="icon" href="./favicon.ico?v=2.1.17&amp;brand=printing-solutions" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png?v=2.1.17&amp;brand=printing-solutions">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png?v=2.1.17&amp;brand=printing-solutions">
+  <link rel="apple-touch-icon" sizes="180x180" href="./favicon-180x180.png?v=2.1.17&amp;brand=printing-solutions">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="robots" content="noindex,nofollow">
+  <title>ติดตามงานฉลาก | SCWork</title>
+  <meta name="theme-color" content="#f1f6fb">
+  
+  <link rel="stylesheet" href="./src/styles/22-project-quote.css?v=2.1.20">
+  <link rel="stylesheet" href="./src/styles/23-order-followup.css?v=2.0.0">
+  <script defer src="./src/scripts/project-brief.js?v=2.0.0"></script>
+  <script defer src="./src/scripts/order-followup-core.js?v=2.0.0"></script>
+  <script defer src="./src/scripts/order-tracking.js?v=2.1.1"></script>
+  <link rel="stylesheet" href="./src/styles/26-support-bar.css?v=2.1.20">
+  <script defer src="./config/public-config.js?v=2.1.5"></script>
+  <script defer src="./src/scripts/support-bar.js?v=2.1.5"></script>
+</head>
+<body>
+  <a class="p-skip" href="#main" data-track="skip">ข้ามไปยังเนื้อหา</a>
+  <header class="p-header"><div class="p-wrap p-nav">
+    <a class="p-brand" href="./product-labels.html?lang=th" id="logo" aria-label="SCWork"><img src="./assets/icons/scwork-logo.png" width="136" height="45" alt="SCWork"></a>
+    <div class="p-nav-actions"><a id="return" href="./product-labels.html?lang=th" data-track="back">หน้าฉลากสินค้า</a>
+    <div class="p-lang" role="group" aria-label="ภาษา / Language"><button type="button" data-lang="th" lang="th" aria-pressed="true">TH</button><button type="button" data-lang="en" lang="en" aria-pressed="false">EN</button></div></div>
+  </div></header>
+  <main id="main" class="p-wrap">
+    <section class="p-intro" aria-labelledby="title">
+      <p class="p-kicker">SCWORK / ORDER FOLLOW-UP</p>
+      <h1 id="title" data-track="title">ติดตามงานและสั่งซ้ำ</h1>
+      <p class="p-lede" data-track="lead">ดูลำดับงานและเวลาที่ทีม SCWork อัปเดตล่าสุดจากลิงก์เฉพาะโครงการ หากต้องการสั่งซ้ำ ใช้ไฟล์สเปกที่ทีมส่งให้เพื่อเปิดคำขอใหม่ได้</p>
+    </section>
+    <div class="p-layout o-layout">
+      <section class="p-card" aria-labelledby="statusTitle">
+        <h2 id="statusTitle" data-track="statusTitle">สถานะล่าสุดของโครงการ</h2>
+        <p id="trackMessage" class="p-help" role="status" data-track="idle">เปิดลิงก์ติดตามงานที่ได้รับจากทีม SCWork หรือใส่รหัสจากลิงก์ด้านล่าง</p>
+        <div id="statusPanel" hidden>
+          <div id="trackRef" class="p-ref"></div>
+          <p class="o-state" id="currentStage"></p>
+          <p class="o-hold" id="holdNote" data-track="hold" hidden>ระหว่างประสานงานเพิ่มเติม โปรดติดต่อผู้ประสานงานก่อนยึดกำหนดเดิม</p>
+          <ol id="stepList" class="o-steps" role="list"></ol>
+          <p class="p-help" id="trackTarget"></p>
+          <p class="p-help" id="trackUpdated"></p>
+          <button type="button" class="p-button p-small" id="refreshStatus" data-track="refresh">โหลดสถานะอีกครั้ง</button>
+        </div>
+        <div class="o-token">
+          <label class="p-field"><span data-track="tokenLabel">รหัสติดตามจากลิงก์ของทีม</span><input id="trackToken" maxlength="32" autocomplete="off" spellcheck="false"></label>
+          <button class="p-button" type="button" id="trackOpen" disabled data-track="open">เปิดสถานะ</button>
+        </div>
+        <noscript>ต้องเปิด JavaScript เพื่อแสดงสถานะ / Enable JavaScript to view status.</noscript>
+      </section>
+      <aside class="p-card" aria-labelledby="reorderTitle">
+        <p class="p-kicker">REORDER</p>
+        <h2 id="reorderTitle" data-track="reorderTitle">สั่งซ้ำจากสเปกเดิม</h2>
+        <p class="p-help" data-track="reorderLead">เปิดไฟล์สเปก JSON ที่ทีมส่งให้ เลือก SKU และจำนวนที่จะสั่งใหม่ ระบบจะเตรียมบรีฟใหม่ให้ตรวจอีกครั้ง แต่วัสดุ ราคา และวันส่งต้องให้ทีมยืนยันใหม่</p>
+        <a class="p-button p-primary o-reorder" href="./project-quote.html?mode=reorder&amp;lang=th" id="reorder" data-track="reorder">เปิดไฟล์สเปกสั่งซ้ำ</a>
+        <p class="p-help" data-track="privateNote">ลิงก์นี้แชร์ได้เฉพาะผู้เกี่ยวข้อง ผู้ที่มีลิงก์สามารถดูสถานะได้ หน้านี้ไม่แสดงชื่อผู้ติดต่อ ที่อยู่ ราคา หรือไฟล์งาน</p>
+      </aside>
+    </div>
+  </main>
+  <footer class="p-wrap p-footer"><span>SCWork — Design &amp; Production Consultant</span></footer>
+</body>
+</html>

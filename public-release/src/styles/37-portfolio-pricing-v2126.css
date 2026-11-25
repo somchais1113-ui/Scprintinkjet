@@ -1,0 +1,26 @@
+/* SCWork V2.1.26: compact worktype cards and decisive pricing hierarchy */
+.sc-portfolio__grid .sc-portfolio__tile-link{display:block;color:inherit;text-decoration:none;overflow:hidden;height:100%}
+.sc-portfolio__grid figure:has(.sc-portfolio__tile-link):hover{box-shadow:0 12px 28px #102a5518;transform:translateY(-2px)}
+.sc-portfolio__grid figure{transition:box-shadow .22s,transform .22s}
+.sc-portfolio__grid .sc-portfolio__tile-link:focus-visible{outline:3px solid #ff6900;outline-offset:-3px}
+.sc-portfolio__bottom{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:22px}
+.sc-portfolio__notice{margin:0;max-width:780px;line-height:1.55}
+.sc-portfolio__view-all{display:inline-flex;gap:18px;align-items:center;justify-content:center;flex:none;min-height:55px;padding:14px 23px;border-radius:9px;background:#ff6900!important;color:#fff!important;font-size:16px;font-weight:800;text-decoration:none;transition:filter .2s}
+.sc-portfolio__view-all:hover{filter:brightness(1.07)}
+.sc-portfolio__view-all:focus-visible{outline:3px solid #0b2b54;outline-offset:4px}
+/* Original proposal cards were too tall and used a large orange pricing banner. Avoid faux price claims. */
+.pricing-grid .price-card--comparison{gap:0;min-height:0!important;border-radius:18px;padding:28px 28px 30px;box-shadow:0 10px 30px rgba(6,31,63,.08);border:1px solid #e3ebf5}
+.price-card--comparison .price-card__header{min-height:96px;border-bottom:1px solid #e7edf5;padding-bottom:18px;margin-bottom:16px}
+.price-card--comparison .price-card__header h3{text-align:left;text-transform:none;min-height:0;margin:0;color:#0b2b54;font-size:clamp(24px,2.2vw,30px);line-height:1.35;font-weight:800;letter-spacing:-.025em}
+.price-card--comparison .price-card__subline{font-size:12px;font-weight:600;color:#7a889d;line-height:1.4;margin:9px 0 0}
+.price-card--comparison .price-card__facts{margin:0 0 24px;display:grid;gap:0;flex:1}
+.price-card--comparison .price-card__fact{padding:12px 0 14px;border-bottom:1px solid #eff2f7}
+.price-card--comparison .price-card__fact dt{color:#c35608;font-weight:800;line-height:1.45;font-size:12px;letter-spacing:.035em;margin-bottom:5px}
+.price-card--comparison .price-card__fact dd{margin:0;color:#244362;font-size:clamp(14px,1.1vw,16px);line-height:1.65;font-weight:550}
+.price-card--comparison .button{min-height:52px;margin-top:auto;font-weight:800;font-size:15px}
+@media(max-width:780px){.pricing-grid .price-card--comparison{padding:24px}.price-card--comparison .price-card__header{min-height:0}}
+@media(max-width:650px){.sc-portfolio__bottom{flex-direction:column;align-items:stretch}.sc-portfolio__view-all{width:100%}.sc-portfolio__grid .sc-portfolio__tile-link img{aspect-ratio:1.7}.price-card--comparison .price-card__fact dd{font-size:15px}}
+/* Let the navy backdrop end nearer the compact comparison cards. */
+.pricing-section__green{height:clamp(280px,35vw,455px)!important}
+@media(max-width:780px){.pricing-section__green{height:420px!important}}
+@media(max-width:520px){.pricing-section__green{height:400px!important}}
