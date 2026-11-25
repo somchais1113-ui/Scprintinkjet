@@ -1,3 +1,19 @@
+# V2.1.35 — About us refined interaction
+
+- Reduced decorative accent rules and process card top borders; increased numeric markers 15%.
+- Who We Are split layout with a clearly labelled illustrative Thai executive-style portrait in a navy/orange polo. Not a real CEO photograph.
+- Four orange-hover anchor links with selected state and smooth scrolling.
+- Four hero slides and independent four-image Our Philosophy slideshow, 880 ms fade, 7.4 s interval and 9 s slow zoom; accessible pause and reduced-motion support.
+- Subtle scroll reveal for content and process steps. No changes to pricing/admin/Supabase.
+
+# V2.1.34 — About us / Industrial Corporate
+
+- Moved About us before Contact in homepage and About page navigation; preserved Clients anchor.
+- Redesigned About with full-width cinematic banner, editorial sections, alternating expertise rows, process graphics, and bilingual industrial copy.
+- Imported the homepage cinematic stylesheet unchanged (880 ms fade; 7.4 s rotation; 9 s 100–107.5% zoom). About keeps its headline fixed and adds accessible controls.
+- Added illustrative Thai/Asian-context design, print-proof and inspection photography; imagery is not documentary evidence of staff or facilities.
+- Public build allowlist unchanged. No changes to pricing, quotation logic, admin or Supabase configuration.
+
 # V2.1.33 — About SCWork
 
 Added standalone responsive Thai/English About page, homepage links, and public build allowlist. Existing Clients section and private systems preserved.
