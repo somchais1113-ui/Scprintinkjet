@@ -171,3 +171,44 @@
 .pricing-section--brand #pricingGrid,
 .pricing-section--brand #pricingNote,
 .pricing-section--brand .pricing-heading--sr-only{display:none !important}
+
+/* V2.1.43 — package hierarchy and recommended scope */
+#pricing.pricing-section--brand .sc-legacy-pricing-cta{display:none!important}
+#pricing .sc-brand-layout{min-width:0}
+#pricing .sc-brand-suite{min-width:0}
+#pricing .sc-brand-suite__hero{padding:clamp(24px,3vw,40px);border-radius:18px}
+#pricing .sc-brand-suite__cards{gap:clamp(14px,1.7vw,24px);margin-top:22px}
+#pricing .sc-brand-card{position:relative;border-radius:18px;border:1px solid #dce5ef;background:#fff;box-shadow:0 7px 22px rgba(11,45,92,.055)}
+#pricing .sc-brand-card__body{padding:clamp(18px,2vw,26px)}
+#pricing .sc-brand-card__image{aspect-ratio:1.85}
+#pricing .sc-brand-card__eyebrow{margin-bottom:8px}
+#pricing .sc-brand-card h4{font-size:clamp(20px,1.8vw,25px);letter-spacing:-.025em;line-height:1.28}
+#pricing .sc-brand-card__subtitle{margin-bottom:8px}
+#pricing .sc-brand-card__summary{min-height:3.4em;margin-bottom:16px;line-height:1.65;color:#4c607a}
+#pricing .sc-brand-card__features{gap:9px;padding-top:15px}
+#pricing .sc-brand-card__features li{padding-left:18px}
+#pricing .sc-brand-card__cta{margin-top:22px;min-height:50px;border-radius:9px}
+#pricing .sc-brand-card--recommended{border:2px solid #ff6900;background:#fff8f2;box-shadow:0 12px 30px rgba(155,65,4,.13)}
+#pricing .sc-brand-card--recommended .sc-brand-card__body{background:linear-gradient(180deg,#fffaf5,#fff)}
+#pricing .sc-brand-card--recommended .sc-brand-card__eyebrow,#pricing .sc-brand-card--recommended .sc-brand-card__features li::before{color:#a94300}
+#pricing .sc-brand-card--recommended .sc-brand-card__features{border-top-color:#f2d6c2}
+#pricing .sc-brand-card__recommendation{position:absolute;top:12px;right:12px;z-index:1;background:#ff6900;color:#fff;font-weight:750;font-size:12px;line-height:1.4;letter-spacing:.015em;padding:8px 13px;border-radius:7px;box-shadow:0 3px 12px #14233b22;max-width:calc(100% - 24px);text-align:center}
+#pricing .sc-brand-compare{margin-top:26px}
+#pricing .sc-brand-compare__table-wrap{overflow-x:auto;max-width:100%;overscroll-behavior-inline:contain}
+#pricing .sc-brand-compare__table thead th.sc-brand-compare__recommended{background:#fff0e3;color:#9c3a00;border-top:3px solid #ff6900}
+#pricing .sc-brand-compare__recommended small{display:block;font-size:11px;font-weight:700;margin-top:3px;color:#9c3a00}
+#pricing .sc-brand-compare__table tbody tr td:nth-child(3){background:#fff7ef;color:#72370f;font-weight:650}
+#pricing .sc-brand-compare__table tbody tr:nth-child(even) td:nth-child(3){background:#ffefe2}
+#pricing .sc-brand-suite__footnote{line-height:1.6;margin-top:16px}
+@media(max-width:980px){
+ #pricing .sc-brand-card__image{aspect-ratio:auto}
+ #pricing .sc-brand-card__summary{min-height:0}
+ #pricing .sc-brand-card__recommendation{left:12px;right:auto;max-width:calc(36% - 24px)}
+}
+@media(max-width:640px){
+ #pricing .sc-brand-card__image{aspect-ratio:1.85}
+ #pricing .sc-brand-card__recommendation{left:auto;right:12px;max-width:calc(100% - 24px)}
+ #pricing .sc-brand-suite__cards{margin-top:16px;gap:16px}
+ #pricing .sc-brand-card__body{padding:20px}
+ #pricing .sc-brand-compare__table{min-width:690px}
+}

@@ -179,7 +179,7 @@
       '#home':'.hero',
       '#services':'#services-title',
       '#about':'#about-title',
-      '#pricing':'#pricing-title',
+      '#pricing':'#scBrandTitle',
       '#blog':'#blog-title',
       '#contact':'#contact-title',
       '#team':'#team-title'

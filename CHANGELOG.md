@@ -1,3 +1,9 @@
+# V2.1.43 — Recommended brand package
+
+- Removed homepage Additional Services; explicitly hide legacy standalone pricing CTA and keep other quote links.
+- Highlight Brand Development by scope, not by price; simplify card spacing and comparison table.
+- Restore package locale and anchor target.
+
 # V2.1.41 — Homepage brand design package refinement
 
 - Reused existing illustrative portfolio imagery; reduced decoration and improved card alignment and responsive layout.
