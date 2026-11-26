@@ -579,3 +579,21 @@ body:has(> #main) section.hero.hero--cinematic[data-sc-home-hero] .hero__slide[d
     transition: none !important;
   }
 }
+
+/* V2.1.60 — Scoped mobile swipe, image clipping and process background. */
+section.hero.hero--cinematic { touch-action: pan-y pinch-zoom; }
+#pricing .sc-design-cards .sc-brand-card .sc-brand-card__image {
+  /* Supplied images already have rounded edges; proportional clipping follows
+     their 1.4:1 aspect ratio at every responsive size. */
+  border-radius: 12.5% / 17.5%;
+  background: transparent;
+  overflow: hidden;
+  isolation: isolate;
+}
+#pricing .sc-design-cards .sc-brand-card .sc-brand-card__image img {
+  border-radius: 0;
+}
+#pricing .sc-design-cards .sc-brand-card .sc-brand-card__image::after {
+  border-radius: inherit;
+}
+#how-it-works::before { opacity: .15; }

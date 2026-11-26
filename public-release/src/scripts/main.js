@@ -39,7 +39,7 @@
     if(!slides.length||!dots.length||!story||!prev||!next||!playPause)return;
     const total=slides.length;
     const reduceMotion=window.matchMedia?.('(prefers-reduced-motion: reduce)');
-    let isHovered=false,isFocusWithin=false,manualPause=false,isVisible=true;
+    let isHovered=false,isFocusWithin=false,manualPause=false,isVisible=true,isTouching=false;
     let isSwitching=false,copyTimer=null;
     const duration=7400;
     // Keep the outgoing image slowly zooming until opacity crossfade completes.
@@ -141,10 +141,39 @@
     function stopTimer(){if(heroTimer){window.clearInterval(heroTimer);heroTimer=null;}}
     function restart(){
       stopTimer();
-      if(document.hidden||!isVisible||manualPause||reduceMotion?.matches||isHovered||isFocusWithin)return;
+      if(document.hidden||!isVisible||manualPause||reduceMotion?.matches||isHovered||isFocusWithin||isTouching)return;
       heroTimer=window.setInterval(()=>goTo(heroIndex+1),duration);
     }
     function navigate(i){goTo(i);restart();}
+    // V2.1.60: single-finger horizontal swipe, using the existing slide navigation.
+    // Passive listeners leave vertical scrolling and pinch zoom to the browser.
+    let swipeStart=null;
+    function finishTouch(){swipeStart=null;isTouching=false;restart();}
+    hero.addEventListener('touchstart',event=>{
+      if(event.touches.length!==1){if(isTouching)finishTouch();return;}
+      if(event.target.closest('a,button,input,textarea,select,[role="button"]'))return;
+      const t=event.touches[0];
+      swipeStart={id:t.identifier,x:t.clientX,y:t.clientY,vertical:false};
+      isTouching=true;stopTimer();
+    },{passive:true});
+    hero.addEventListener('touchmove',event=>{
+      if(!swipeStart)return;
+      if(event.touches.length!==1){finishTouch();return;}
+      const t=event.touches[0];
+      if(t.identifier!==swipeStart.id)return;
+      const dx=Math.abs(t.clientX-swipeStart.x),dy=Math.abs(t.clientY-swipeStart.y);
+      if(dy>12&&dy>dx*1.2)swipeStart.vertical=true;
+    },{passive:true});
+    hero.addEventListener('touchend',event=>{
+      if(!swipeStart)return;
+      const t=Array.from(event.changedTouches).find(t=>t.identifier===swipeStart.id);
+      if(!t)return;
+      const dx=t.clientX-swipeStart.x,dy=t.clientY-swipeStart.y;
+      const horizontal=!swipeStart.vertical&&event.touches.length===0&&Math.abs(dx)>=50&&Math.abs(dx)>Math.abs(dy)*1.5;
+      finishTouch();
+      if(horizontal)navigate(heroIndex+(dx<0?1:-1));
+    },{passive:true});
+    hero.addEventListener('touchcancel',()=>{if(isTouching)finishTouch();},{passive:true});
     prev.addEventListener('click',()=>navigate(heroIndex-1));
     next.addEventListener('click',()=>navigate(heroIndex+1));
     dots.forEach((dot,i)=>dot.addEventListener('click',()=>navigate(i)));
