@@ -1,3 +1,9 @@
+# V2.1.72 — Release stabilization
+
+- Replaced stale build entrypoint with an explicit, reviewed public file manifest from V2.1.71, atomic new-folder build, validated public status schema and no overwrite. No private/demo/admin files copied.
+- Restored four Design Services public images to source-original resolution; removed three public .DS_Store files.
+- Added release validation (file parity, HTML references/IDs, classic JS syntax, project and article counts, assets, reflection selection and timeline reversal) and optional Chromium/WebKit browser regression script. No design or pricing logic changes. Full filesystem build and browser run still pending in the execution environment.
+
 # V2.1.71 — Homepage wording and reflection
 
 - Simplifies logo-strip heading and removes the redundant subtitle. Approved actual customer entries use Trusted by / ได้รับความไว้วางใจจาก; otherwise neutral Brands & design concepts / แบรนด์และงานออกแบบ. No real approved logos are currently registered.
