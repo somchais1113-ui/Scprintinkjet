@@ -1,3 +1,9 @@
+# V2.1.71 — Homepage wording and reflection
+
+- Simplifies logo-strip heading and removes the redundant subtitle. Approved actual customer entries use Trusted by / ได้รับความไว้วางใจจาก; otherwise neutral Brands & design concepts / แบรนด์และงานออกแบบ. No real approved logos are currently registered.
+- Decorative upright card echoes below the final card in each visible portfolio column, 24px separation, 6px blur, 29% opacity, gradient mask and section clipping. Responsive two-column support; disabled on narrow mobile. Copies are inert, aria-hidden and not links.
+- Existing six project cards, navy background, hover and scroll reveal preserved. Source/public-release mirrored. Browser visual QA pending.
+
 # V2.1.70 — Cinematic Knowledge Hero
 
 - Replaces the split Knowledge banner with full-width five-slide editorial photography, navy gradient, left-aligned copy and orange directory CTA.

@@ -99,8 +99,11 @@
     const logos=actual.length?actual:availableLogos(conceptLogos,validConcept);
     const isPreview=!actual.length&&logos.length>0;
     const th=document.documentElement.lang==='th';
-    setText('socialProofTitle',actual.length?t().socialTitle:(th?'อัตลักษณ์จาก Concept Projects':'Identities from concept projects'));
-    if(note){note.hidden=!isPreview;note.textContent=th?'โลโก้จากโครงการจำลอง':'Concept project identities';}
+    setText('socialProofTitle',actual.length?t().socialTitle:(th?'แบรนด์และงานออกแบบ':'Brands & design concepts'));
+    if(note){note.hidden=true;note.textContent='';}
+    const navLabel=actual.length?t().socialNav:(th?'แบรนด์และงานออกแบบ':'Brands & design concepts');
+    setText('clientCreditsNav',navLabel);setText('clientCreditsFooter',navLabel);
+    marquee.setAttribute('aria-label',actual.length?(th?'โลโก้ลูกค้าที่ได้รับการยืนยัน':'Approved client logos'):(th?'โลโก้จากแนวคิดการออกแบบ':'Concept brand identities'));
     const section=byId('about');if(section?.classList.contains('sc-client-credits'))section.hidden=!logos.length;
     function updatePause(){
       marquee.classList.toggle('is-paused',logosPaused);
