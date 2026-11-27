@@ -1,3 +1,10 @@
+# V2.1.69 — Typography & interaction refinement
+
+- Increased all case timeline headings by 18% and English eyebrow by 13.6%, preserving icons, content and scroll-linked rail.
+- Removed repetitive per-card concept labels from homepage, portfolio directory and related projects. Retained accurate concept framing at collection level and Design Concept / แนวคิดการออกแบบ on individual case hero.
+- Knowledge Hub article covers reveal the localized title with 60% navy dimming, 4% image zoom and 350ms reversible transitions on pointer hover; keyboard focus also reveals title. Touch retains the existing visible title below the cover; reduced motion supported.
+- Existing six homepage projects, ten case studies, 15 articles, hero and pricing/admin sources unchanged. Source/public-release mirrored; browser visual QA pending.
+
 # V2.1.68 — Brand-led editorial heroes
 
 - Increased project card logo size approximately 12.5%. Soft grayscale logo strip returns to colour on hover/focus/touch. No approved customer logos exist in source; clearly labelled concept identities replace sample placeholders until real assets are registered.

@@ -1,0 +1,25 @@
+
+/* SCWork V2.1.69 — scoped timeline typography, card cleanup and knowledge cover hover. */
+/* Original timeline clamp 20/2vw/29; 18% increase. Original eyebrow 11px; +13.6%. */
+.sc-deep-case .sc-case-heading{font-size:clamp(23.6px,2.36vw,34.22px);line-height:1.38}
+.sc-deep-case .sc-case-heading small{font-size:12.5px;line-height:1.55;letter-spacing:.09em;margin-bottom:5px}
+.sc-deep-case .sc-case-heading>span:last-child{min-width:0;overflow-wrap:anywhere;word-break:normal}
+#portfolio .sc-concept-grid .sc-portfolio__tile-link>.sc-project-summary:last-child{margin-bottom:0}
+.portfolio-card .sc-gallery-project-description .sc-project-summary:last-child,.sc-work-related-grid>a>p:last-child{margin-bottom:0}
+/* Keep the article title below the cover accessible at all times; the duplicate visual title is aria-hidden. */
+.knowledge-card .knowledge-card__image{position:relative;isolation:isolate}
+.knowledge-card .knowledge-card__image img{display:block;transition:transform 350ms ease;transform:none}
+.knowledge-card .knowledge-card__image::after{content:"";position:absolute;inset:0;z-index:1;background:rgba(8,38,79,.60);opacity:0;pointer-events:none;transition:opacity 350ms ease}
+.knowledge-card .knowledge-card__cover-title{position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;text-align:center;padding:clamp(14px,2vw,28px);color:#fff;font-size:clamp(17px,1.65vw,24px);font-weight:800;line-height:1.45;overflow-wrap:anywhere;text-shadow:0 1px 3px #0009;opacity:0;transform:translateY(9px);pointer-events:none;transition:opacity 350ms ease,transform 350ms ease}
+@media(hover:hover) and (pointer:fine){
+ .knowledge-card:hover .knowledge-card__image img{transform:none}
+ .knowledge-card .knowledge-card__image:hover img{transform:scale(1.04)}
+ .knowledge-card .knowledge-card__image:hover::after{opacity:1}
+ .knowledge-card .knowledge-card__image:hover .knowledge-card__cover-title{opacity:1;transform:translateY(0)}
+}
+.knowledge-card .knowledge-card__image:focus-visible{outline:3px solid #ff6900;outline-offset:-3px}
+.knowledge-card .knowledge-card__image:focus-visible img{transform:scale(1.04)}
+.knowledge-card .knowledge-card__image:focus-visible::after{opacity:1}
+.knowledge-card .knowledge-card__image:focus-visible .knowledge-card__cover-title{opacity:1;transform:translateY(0)}
+@media(hover:none),(pointer:coarse){.knowledge-card:hover .knowledge-card__image img{transform:none}}
+@media(prefers-reduced-motion:reduce){.knowledge-card .knowledge-card__image img,.knowledge-card .knowledge-card__image::after,.knowledge-card .knowledge-card__cover-title{transition:none!important;transform:none!important}}
