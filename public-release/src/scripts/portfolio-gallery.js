@@ -43,14 +43,17 @@
     button.setAttribute('aria-label',`${item.title[l]} — ${locale[l].see}`);
     const imageWrap=document.createElement('span');imageWrap.className='portfolio-card__media';
     const img=document.createElement('img');img.src=item.cover||item.image;img.alt=item.title[l];img.loading=index<3?'eager':'lazy';img.decoding='async';img.addEventListener('error',()=>{if(!img.src.includes('placeholder.svg'))img.src='./assets/images/placeholder.svg';},{once:true});
-    imageWrap.append(img);const top=document.createElement('span');top.className='sc-gallery-project-top';const code=document.createElement('span');code.className='portfolio-card__category';code.textContent='SCWORK / '+item.id.slice(-2);top.append(code);if(item.mockBrand){const brand=document.createElement('span');brand.className='sc-mock-brand';const logo=document.createElement('img');logo.src=item.mockBrand.logo;logo.alt=item.mockBrand.name;logo.width=168;logo.height=48;const label=document.createElement('small');label.textContent='BRAND MOCKUP';brand.append(logo,label);top.append(brand);}button.append(top,imageWrap);
-    const body=document.createElement('span');body.className='portfolio-card__body';
-    const kicker=document.createElement('span');kicker.className='portfolio-card__category';kicker.textContent=`${String(index+1).padStart(2,'0')} / ${categories[l][item.category]}`;
-    const title=document.createElement('h3');title.textContent=item.title[l];
-    const fit=document.createElement('p');fit.className='portfolio-card__fit';fit.textContent=item.fit[l];
-    const more=document.createElement('span');more.className='portfolio-card__more';more.textContent=locale[l].see;
-    const arrow=document.createElement('span');arrow.textContent='→';arrow.setAttribute('aria-hidden','true');more.append(arrow);
-    const summary=document.createElement('p');summary.className='sc-project-summary';summary.textContent=item.summary?.[l]||'';body.append(kicker,title,fit,summary,more);button.append(body);art.append(button);return art;
+    imageWrap.append(img);
+    const top=document.createElement('span');top.className='sc-gallery-project-top';
+    if(item.mockBrand){const brand=document.createElement('span');brand.className='sc-mock-brand';const mark=document.createElement('img');mark.src=item.mockBrand.logo;mark.alt=item.mockBrand.name;mark.width=168;mark.height=48;brand.append(mark);top.append(brand);}
+    const arrow=document.createElement('span');arrow.className='sc-work-arrow';arrow.textContent='→';arrow.setAttribute('aria-hidden','true');top.append(arrow);
+    const body=document.createElement('span');body.className='portfolio-card__body sc-gallery-project-heading';
+    const kicker=document.createElement('span');kicker.className='sc-project-service';kicker.textContent=item.service||categories[l][item.category];
+    const title=document.createElement('h3');title.textContent=item.mockBrand?.name||item.title[l];
+    const name=document.createElement('span');name.className='sc-project-name';name.textContent=item.title[l];
+    const desc=document.createElement('span');desc.className='sc-gallery-project-description';
+    const summary=document.createElement('span');summary.className='sc-project-summary';summary.textContent=item.summary?.[l]||item.fit[l];desc.append(summary);
+    body.append(kicker,title,name);button.append(top,body,imageWrap,desc);art.append(button);return art;
   }
   function paint(){
     const l=language(),d=locale[l];document.documentElement.lang=lang;

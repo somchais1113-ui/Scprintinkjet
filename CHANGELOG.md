@@ -1,3 +1,10 @@
+# V2.1.65 — Brand-led portfolio and continuous case timeline
+
+- Moved existing brand logos to upper left; removed visible BRAND MOCKUP label from rendered cards and case hero. Display service category, illustrative brand name, project title, single cover and concise description; retain clear study disclosure.
+- Expanded all 20 TH/EN cases with project-specific production techniques, validation plans and supporting imagery where available. No claimed client outcomes or fabricated legal company names.
+- Six-section case detail: left icons and heading, right text and imagery; one continuous track measured from first to last icon, real-time orange fill and reversible active states. Mobile stacks content while retaining the rail.
+- Source/public-release mirrored. Browser visual QA pending; no pricing/admin changes.
+
 # V2.1.64 — Expanded project content and brand mockups
 
 - Expanded all 20 illustrative studies in Thai and English with specific briefs, design approaches, production considerations and proposed deliverables; homepage retains six featured cards.
