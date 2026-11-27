@@ -57,7 +57,8 @@
     "check:v2137": "node qa/validate-v2137.mjs",
     "check:v2138": "node qa/validate-v2138.mjs",
     "check:release": "node qa/validate-release-v2172.mjs",
-    "check:browser": "node qa/browser-v2172.cjs"
+    "check:browser": "node qa/browser-v2172.cjs",
+    "check:browser:release": "node qa/browser-release-v2174.cjs"
   },
   "license": "UNLICENSED"
 }
