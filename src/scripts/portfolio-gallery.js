@@ -42,15 +42,15 @@
     const button=document.createElement('a');button.href=withLang('./portfolio-detail.html?work='+encodeURIComponent(item.id));button.className='portfolio-card__open';
     button.setAttribute('aria-label',`${item.title[l]} — ${locale[l].see}`);
     const imageWrap=document.createElement('span');imageWrap.className='portfolio-card__media';
-    const img=document.createElement('img');img.src=item.image;img.alt=item.title[l];img.loading=index<3?'eager':'lazy';img.decoding='async';img.addEventListener('error',()=>{if(!img.src.includes('placeholder.svg'))img.src='./assets/images/placeholder.svg';},{once:true});
-    imageWrap.append(img);button.append(imageWrap);
+    const img=document.createElement('img');img.src=item.cover||item.image;img.alt=item.title[l];img.loading=index<3?'eager':'lazy';img.decoding='async';img.addEventListener('error',()=>{if(!img.src.includes('placeholder.svg'))img.src='./assets/images/placeholder.svg';},{once:true});
+    imageWrap.append(img);const top=document.createElement('span');top.className='sc-gallery-project-top';const code=document.createElement('span');code.className='portfolio-card__category';code.textContent='SCWORK / '+item.id.slice(-2);top.append(code);if(item.mockBrand){const brand=document.createElement('span');brand.className='sc-mock-brand';const logo=document.createElement('img');logo.src=item.mockBrand.logo;logo.alt=item.mockBrand.name;logo.width=168;logo.height=48;const label=document.createElement('small');label.textContent='BRAND MOCKUP';brand.append(logo,label);top.append(brand);}button.append(top,imageWrap);
     const body=document.createElement('span');body.className='portfolio-card__body';
     const kicker=document.createElement('span');kicker.className='portfolio-card__category';kicker.textContent=`${String(index+1).padStart(2,'0')} / ${categories[l][item.category]}`;
     const title=document.createElement('h3');title.textContent=item.title[l];
     const fit=document.createElement('p');fit.className='portfolio-card__fit';fit.textContent=item.fit[l];
     const more=document.createElement('span');more.className='portfolio-card__more';more.textContent=locale[l].see;
     const arrow=document.createElement('span');arrow.textContent='→';arrow.setAttribute('aria-hidden','true');more.append(arrow);
-    body.append(kicker,title,fit,more);button.append(body);art.append(button);return art;
+    const summary=document.createElement('p');summary.className='sc-project-summary';summary.textContent=item.summary?.[l]||'';body.append(kicker,title,fit,summary,more);button.append(body);art.append(button);return art;
   }
   function paint(){
     const l=language(),d=locale[l];document.documentElement.lang=lang;

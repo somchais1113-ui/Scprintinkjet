@@ -1,0 +1,30 @@
+
+/* Scoped V2.1.64 brand concept marks and richer case-study content */
+.sc-mock-brand{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:#fff;color:#5b6e84;min-width:0;max-width:120px;flex:none;padding:5px 7px;border:1px solid #e4eaf1;border-radius:9px;line-height:1.2}
+#portfolio .sc-portfolio__grid .sc-mock-brand img,.portfolio-gallery .sc-mock-brand img,.sc-work-related-grid .sc-mock-brand img,.sc-hero-brand .sc-mock-brand img{display:block;width:100%;max-width:104px;height:30px;aspect-ratio:auto;object-fit:contain;border-radius:0;transform:none!important}
+.sc-mock-brand small{font-size:8px;letter-spacing:.07em;font-weight:700;white-space:nowrap;color:#64748b}
+.sc-project-tools{display:flex;align-items:center;gap:8px;flex:none}
+#portfolio .sc-work-top{align-items:center;flex-wrap:nowrap}
+#portfolio .sc-work-top>span:first-child{font-size:10px;white-space:nowrap}
+#portfolio .sc-project-summary,.portfolio-card__body .sc-project-summary{margin:0;color:#52677f;font-size:14px;line-height:1.65;font-weight:400;overflow-wrap:anywhere}
+#portfolio .sc-work-fit{min-height:0;font-weight:700}
+#portfolio .sc-portfolio__grid figcaption{min-height:2.8em}
+.sc-gallery-project-top{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;width:100%;box-sizing:border-box}
+.sc-related-brand-row{display:flex;align-items:center;justify-content:space-between;width:100%;gap:10px}
+.sc-work-detail .sc-study-hero{position:relative}
+.sc-hero-brand{position:absolute;right:max(20px,calc((100% - 1320px)/2));top:24px;z-index:2}
+.sc-hero-brand .sc-mock-brand{max-width:160px;padding:8px 12px;border:0}
+.sc-hero-brand .sc-mock-brand img{max-width:134px;height:42px}
+.sc-hero-brand .sc-mock-brand small{font-size:10px}
+.sc-project-overview{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(20px,5vw,64px);background:#f2f5f9;border-radius:20px;padding:clamp(24px,4vw,48px);margin-top:clamp(30px,5vw,70px);box-sizing:border-box}
+.sc-project-overview h2{font-size:clamp(21px,2.5vw,32px);margin:0 0 12px;color:#08264f}
+.sc-project-overview p,.sc-project-overview dd{margin:0;font-size:16px;line-height:1.75;color:#304968}
+.sc-project-overview dl{display:grid;gap:14px;margin:0;align-content:center}
+.sc-project-overview dt{font-size:12px;font-weight:700;color:#65788e}
+.sc-project-overview dd{font-weight:700}
+.sc-work-detail .sc-study-step{min-height:230px}
+.sc-work-detail .sc-study-step h2{overflow-wrap:anywhere}
+@media(max-width:1100px) and (min-width:851px){#portfolio .sc-project-tools{gap:5px}#portfolio .sc-mock-brand{max-width:86px;padding:4px}#portfolio .sc-work-arrow{width:30px;height:30px}}
+@media(max-width:850px){.sc-project-overview{grid-template-columns:1fr;gap:20px}.sc-work-detail .sc-study-step{min-height:0}.sc-hero-brand{right:18px;top:16px}.sc-work-detail .sc-study-hero .sc-work-hero-copy{padding-top:105px}}
+@media(max-width:560px){#portfolio .sc-portfolio__grid figcaption{min-height:0}#portfolio .sc-project-summary{font-size:13px}.sc-hero-brand .sc-mock-brand{max-width:125px}.sc-hero-brand .sc-mock-brand img{height:32px}}
+@media(max-width:355px){#portfolio .sc-project-tools{gap:4px}#portfolio .sc-mock-brand{max-width:78px}#portfolio .sc-work-arrow{width:28px;height:28px}}

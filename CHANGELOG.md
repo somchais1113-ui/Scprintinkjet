@@ -1,3 +1,9 @@
+# V2.1.64 — Expanded project content and brand mockups
+
+- Expanded all 20 illustrative studies in Thai and English with specific briefs, design approaches, production considerations and proposed deliverables; homepage retains six featured cards.
+- Added scoped SVG concept wordmarks for related study families, visibly labelled BRAND MOCKUP, to homepage, gallery, detail hero and related cards; not client logos or testimonials.
+- Retained current single-scene homepage covers, navigation, scroll rails, staggered reveal and prior approved site sections. No pricing/admin changes.
+
 # V2.1.63 — Project studies and scroll storytelling
 
 - Six homepage cards now describe illustrative project briefs, with single-scene covers selected from the existing gallery; all 20 IDs and original image references retained.

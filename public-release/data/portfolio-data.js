@@ -1,4 +1,4 @@
-/* SCWork V2.1.63 — illustrative project studies; original entries and image references retained. */
+/* SCWork V2.1.64 — 20 illustrative project studies and concept brand identities; not verified client work. */
 window.SCWORK_PORTFOLIO_ITEMS = [
   {
     "id": "work-01",
@@ -17,7 +17,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "en": "Illustrative labels on product packaging"
     },
     "featured": false,
-    "cover": "./assets/images/portfolio/gallery/work-03.webp"
+    "cover": "./assets/images/portfolio/gallery/work-03.webp",
+    "mockBrand": {
+      "name": "NATURAL",
+      "logo": "./assets/images/portfolio/brand-mockups/natural.svg"
+    },
+    "summary": {
+      "th": "ฉลากสกินแคร์ที่อ่านง่ายและสะท้อนบุคลิกผลิตภัณฑ์",
+      "en": "Skincare labels with clear information and a natural character"
+    },
+    "project": {
+      "brief": {
+        "th": "แบรนด์สมมติต้องการฉลากสำหรับผลิตภัณฑ์ดูแลผิวที่มีทั้งขวดและกระปุก โดยต้องสื่อสารชื่อสูตรและวิธีใช้อย่างชัดเจนแม้พื้นที่ฉลากจำกัด",
+        "en": "A hypothetical skincare range needs clear formula names and instructions across bottles and jars despite limited label space."
+      },
+      "approach": {
+        "th": "จัดลำดับชื่อสินค้า สูตร และข้อมูลจำเป็น ใช้ระบบสีและกราฟิกพฤกษศาสตร์ร่วมกัน ปรับสัดส่วนตามขนาดภาชนะโดยไม่ย่อทุกองค์ประกอบเท่ากัน",
+        "en": "Set a hierarchy for product, formula and essential copy; share botanical graphics and colours while adapting the layout to each container."
+      },
+      "considerations": {
+        "th": "เทียบกระดาษผิวด้านกับฟิล์ม PP ตามความชื้นและการสัมผัสผลิตภัณฑ์ ตรวจขนาดตัวอักษร การยกขอบ และความอ่านง่ายบนผิวโค้ง",
+        "en": "Compare matte paper and PP film for moisture and handling; check type size, edge lift and legibility on curved surfaces."
+      },
+      "deliverable": {
+        "th": "Artwork แยก SKU และแบบจำลองบนภาชนะ พร้อมสเปกที่เสนอและจุดตรวจแบบ",
+        "en": "SKU-specific artwork, container mockups, proposed specifications and proof checks."
+      }
+    }
   },
   {
     "id": "work-02",
@@ -39,22 +65,30 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "cover": "./assets/images/portfolio/gallery/work-03.webp",
     "project": {
       "brief": {
-        "th": "เมื่อแบรนด์มีบรรจุภัณฑ์หลายขนาด ความสม่ำเสมอของสี ตำแหน่งโลโก้ และลำดับข้อมูลสำคัญต่อการจดจำสินค้า",
-        "en": "A range of containers needs consistent colour, logo placement and information hierarchy to build recognition."
+        "th": "โจทย์จำลองคือการขยายไลน์สกินแคร์โดยให้สินค้าทุกสูตรดูเป็นครอบครัวเดียวกัน แต่ลูกค้ายังแยกประเภทได้ง่ายเมื่อวางบนชั้นขาย ความท้าทายคือสีของขวดและพื้นที่ฉลากต่างกัน",
+        "en": "This study explores a skincare range that must look unified yet distinguish each formula on shelf, despite different container colours and label areas."
       },
       "approach": {
-        "th": "วางระบบกราฟิกหลักและปรับสัดส่วนฉลากตามพื้นที่ติดจริง เลือกผิววัสดุให้เข้ากับบุคลิกแบรนด์และสภาพการใช้งาน",
-        "en": "Develop a shared visual system, adapt label proportions to each container and evaluate finishes against the brand and usage."
+        "th": "วาง Visual Hierarchy ที่คงตำแหน่งโลโก้ ชื่อสูตร และข้อมูลหลัก ใช้สีรองแยกสูตร สร้างแม่แบบกราฟิกที่ปรับกับขวดและกระปุกได้ แล้วเทียบ Mockup ทุก SKU ในภาพรวมก่อนทำไฟล์ผลิต",
+        "en": "Define a shared hierarchy for logo, formula and key copy; differentiate variants with secondary colours and compare all container mockups before production artwork."
       },
       "considerations": {
-        "th": "ตรวจขนาด ความโค้งของภาชนะ สีจากปรู๊ฟ และการยึดเกาะของฉลากก่อนยืนยันแบบผลิต",
-        "en": "Check dimensions, curvature, colour proof and adhesion before approving production."
+        "th": "ทำปรู๊ฟบนวัสดุที่เสนอเทียบกับภาชนะจริง ตรวจสีภายใต้แสงเดียวกัน ตรวจความทึบของฉลาก ขอบตัด จุดต่อ และการติดบนผิวโค้ง ไม่รับประกันสีหรือกาวจนกว่าจะยืนยันตัวอย่าง",
+        "en": "Proof on the proposed stock and actual container; compare colour in consistent light and inspect opacity, cut edges, seams and curvature. Confirm samples before promising colour or adhesion."
       },
       "deliverable": {
-        "th": "ชุด Artwork แยกตามขนาด พร้อมข้อกำหนดวัสดุและแบบตรวจสำหรับอนุมัติ",
-        "en": "A size-specific artwork set, material specification and approval proof."
+        "th": "แม่แบบฉลากและ Artwork ราย SKU, ภาพ Mockup รวมไลน์, ตารางสเปกวัสดุ และรายการตรวจปรู๊ฟสำหรับอนุมัติ",
+        "en": "Label template, SKU artwork, range mockup, material specification table and proof approval checklist."
       },
       "detailImage": "./assets/images/portfolio/gallery/work-02.webp"
+    },
+    "mockBrand": {
+      "name": "NATURAL",
+      "logo": "./assets/images/portfolio/brand-mockups/natural.svg"
+    },
+    "summary": {
+      "th": "สร้างระบบฉลากหลาย SKU ให้สีและภาพลักษณ์สอดคล้องกัน",
+      "en": "A coordinated multi-SKU label system with consistent colour and identity"
     }
   },
   {
@@ -73,7 +107,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ทดสอบตำแหน่งติดบนผิวจริง",
       "en": "Test labels on the actual container"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "NATURAL",
+      "logo": "./assets/images/portfolio/brand-mockups/natural.svg"
+    },
+    "summary": {
+      "th": "ปรับฉลากให้สัมพันธ์กับขวดและกระปุกหลายทรง",
+      "en": "Adapt labels to different bottle and jar shapes"
+    },
+    "project": {
+      "brief": {
+        "th": "ภาชนะหลายรูปทรงทำให้พื้นที่ติด ความโค้ง และมุมมองฉลากไม่เหมือนกัน หากใช้ไฟล์เดียวกันทุกขนาดอาจเสียสัดส่วนหรือเกิดรอยย่น",
+        "en": "Different containers have distinct label areas, curvature and viewing angles; using one scaled file can distort the layout or cause wrinkles."
+      },
+      "approach": {
+        "th": "วัดพื้นที่ติดจริงและกำหนดไดไลน์แยกแต่ละทรง จัดตำแหน่งโลโก้ให้เห็นจากด้านหน้าและเผื่อพื้นที่รอยต่อให้เหมาะกับการติด",
+        "en": "Measure the actual label area, create separate dielines and align the logo for frontal viewing while allowing suitable seam clearance."
+      },
+      "considerations": {
+        "th": "ทดลองติดตัวอย่างบนภาชนะจริง ตรวจผิวโค้งซ้อน จุดยกขอบ รอยต่อ และการเสียดสีก่อนเลือกวัสดุขั้นสุดท้าย",
+        "en": "Trial labels on actual containers and inspect compound curvature, edge lift, seams and abrasion before final stock selection."
+      },
+      "deliverable": {
+        "th": "ไดไลน์ตามรูปทรงและไฟล์ฉลากแยกขนาด พร้อมตัวอย่างจัดวาง",
+        "en": "Shape-specific dielines, size-specific artwork and placement mockups."
+      }
+    }
   },
   {
     "id": "work-04",
@@ -95,21 +155,29 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "cover": "./assets/images/portfolio/gallery/work-04.webp",
     "project": {
       "brief": {
-        "th": "ขวดเครื่องดื่มในตู้แช่มีโอกาสเกิดหยดน้ำและถูกจับสัมผัสบ่อย จึงต้องคำนึงถึงทั้งภาพลักษณ์และความเหมาะสมของวัสดุ",
-        "en": "Chilled bottles can encounter condensation and frequent handling, making appearance and material suitability equally important."
+        "th": "ขวดน้ำผลไม้ในตู้แช่ต้องสื่อสารรสชาติได้ทันทีและยังอ่านข้อมูลได้เมื่อเกิดหยดน้ำ โจทย์ไม่ได้มีเพียงความสวย แต่รวมถึงการยึดเกาะหลังติดและการขนส่ง",
+        "en": "A chilled juice bottle needs instant flavour recognition and legible copy even with condensation; adhesion and transport matter alongside appearance."
       },
       "approach": {
-        "th": "ประเมินผิวขวด อุณหภูมิขณะติด และรูปแบบการจัดเก็บ ก่อนเลือกฟิล์ม กาว และการปกป้องผิวพิมพ์",
-        "en": "Evaluate the bottle surface, application temperature and storage conditions before selecting film, adhesive and print protection."
+        "th": "ใช้กราฟิกผลไม้และสีแยกรสชาติเป็นจุดนำสายตา จัดข้อมูลหลักในบริเวณที่ไม่บิดตามความโค้ง ประเมินฟิล์มและกาวจากวัสดุขวดกับอุณหภูมิขณะติดจริง",
+        "en": "Lead with fruit imagery and flavour colours, place essential copy in less distorted areas and evaluate film and adhesive against bottle material and application temperature."
       },
       "considerations": {
-        "th": "ทดลองติดบนขวดจริงและตรวจการยกขอบ การเสียดสี และความอ่านง่ายหลังสัมผัสความชื้นตามสภาพใช้งาน",
-        "en": "Test on the actual bottle and check edge lift, abrasion and legibility after representative moisture exposure."
+        "th": "ทดสอบบนขวดจริงก่อนผลิตจำนวนมาก ตรวจการยกขอบ การเสียดสี ความอ่านง่ายหลังแช่เย็น และการเปลี่ยนอุณหภูมิ โดยใช้ระยะเวลาที่สอดคล้องกับการใช้งานจริง",
+        "en": "Trial actual bottles before volume production and assess edge lift, rub resistance, legibility after chilling and temperature changes over a representative period."
       },
       "deliverable": {
-        "th": "แบบฉลากพร้อมสเปกวัสดุที่เสนอและแผนทดสอบก่อนสั่งผลิต",
-        "en": "Label artwork, proposed material specification and a pre-production test plan."
+        "th": "Artwork แยกรสชาติ, ข้อเสนอวัสดุและกาว, แบบตรวจ และแผนทดลองติดก่อนผลิต",
+        "en": "Flavour-specific artwork, proposed film and adhesive, approval proof and trial plan."
       }
+    },
+    "mockBrand": {
+      "name": "CITRUS",
+      "logo": "./assets/images/portfolio/brand-mockups/citrus.svg"
+    },
+    "summary": {
+      "th": "ฉลากเครื่องดื่มที่ออกแบบเผื่อหยดน้ำและการจับสัมผัส",
+      "en": "Beverage labels designed around condensation and handling"
     }
   },
   {
@@ -128,7 +196,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ภาพเครื่องพิมพ์ระหว่างผลิต",
       "en": "Printing equipment in a production scene"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "FORM",
+      "logo": "./assets/images/portfolio/brand-mockups/form.svg"
+    },
+    "summary": {
+      "th": "วางระบบฉลากสีให้พร้อมต่อยอดหลายสินค้า",
+      "en": "Plan a colour label system across products"
+    },
+    "project": {
+      "brief": {
+        "th": "สินค้าที่ทยอยเปิดตัวอาจต้องการฉลากหลายขนาดและหลายจำนวนโดยไม่สูญเสียเอกลักษณ์ของแบรนด์",
+        "en": "A phased product launch may need multiple label sizes and quantities without losing brand identity."
+      },
+      "approach": {
+        "th": "กำหนดชุดสีและองค์ประกอบกราฟิกหลัก จัดไฟล์แยกรายการและวางแผนหน้ากว้างวัสดุให้สัมพันธ์กับขนาดงาน",
+        "en": "Define a shared graphic and colour system, separate artwork by item and plan media width around label dimensions."
+      },
+      "considerations": {
+        "th": "ตรวจระบบสี ความละเอียด ระยะเผื่อตัด และความเข้ากันได้ระหว่างหมึกกับวัสดุที่เลือก",
+        "en": "Check colour settings, resolution, bleed and ink compatibility with the proposed substrate."
+      },
+      "deliverable": {
+        "th": "ชุดไฟล์พร้อมตรวจผลิตและตารางขนาด จำนวน และรูปแบบส่งมอบ",
+        "en": "Artwork set for production review and a table of sizes, quantities and delivery formats."
+      }
+    }
   },
   {
     "id": "work-06",
@@ -150,21 +244,29 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "cover": "./assets/images/portfolio/gallery/work-10.webp",
     "project": {
       "brief": {
-        "th": "แคมเปญที่ต้องการของแจกจดจำง่ายสามารถต่อยอดคาแรกเตอร์หลายท่าทางเป็นชุดเดียวกัน โดยแต่ละชิ้นต้องยังอ่านรูปทรงได้ชัด",
-        "en": "A campaign can turn a set of character poses into memorable giveaways, with each shape remaining recognisable."
+        "th": "กรณีสมมติเป็นแคมเปญที่ต้องการให้ลูกค้าเก็บสะสมสติกเกอร์หลายลาย คาแรกเตอร์ต้องคงบุคลิกเดิมเมื่อย่อขนาดและไม่เสียรายละเอียดจากแนวตัด",
+        "en": "A hypothetical campaign needs collectible stickers whose characters retain their personality at small sizes without losing details to cut contours."
       },
       "approach": {
-        "th": "กำหนดขนาดและขอบขาวให้สมดุล จัดกลุ่มลายตามชุด และเตรียมแนวตัดที่ไม่ทำให้รายละเอียดเล็กเสียรูป",
-        "en": "Balance size and white borders, group designs into sets and prepare cutting contours that protect small details."
+        "th": "กำหนดขนาดหลักและสัดส่วนของแต่ละลาย ปรับเส้นและขอบขาวให้เป็นระบบเดียวกัน จัดชุดตามธีมและวางแผนแยกไฟล์กราฟิกกับแนวไดคัทเพื่อลดความคลาดเคลื่อน",
+        "en": "Set base sizes and proportions, standardise strokes and white borders, group designs by theme and separate graphics from cut paths."
       },
       "considerations": {
-        "th": "ตรวจระยะขอบตัด จุดแหลม การลอกออกจากแผ่นรอง และความสม่ำเสมอของขนาดก่อนจัดชุด",
-        "en": "Check contour clearance, sharp points, release from the liner and size consistency before packing."
+        "th": "ตรวจจุดแหลม ส่วนคอด ระยะห่างแนวตัดและความง่ายในการลอก ทดลองชิ้นงานตัวอย่างก่อนยืนยันจำนวนต่อชุดและวิธีแพ็ก",
+        "en": "Inspect sharp points, narrow sections, cut clearance and ease of peeling; trial samples before confirming pack counts and format."
       },
       "deliverable": {
-        "th": "Artwork สำหรับพิมพ์และแนวไดคัทแยก พร้อมรายการลายในแต่ละชุด",
-        "en": "Print-ready artwork, separate cut paths and a design list for each set."
+        "th": "ไฟล์ Graphic และ Die-cut แยกชั้น, แผนจัดชุด, รายการลาย และเกณฑ์ตรวจขอบตัด",
+        "en": "Separate graphic and die-cut layers, pack plan, design list and contour inspection criteria."
       }
+    },
+    "mockBrand": {
+      "name": "POP PAW",
+      "logo": "./assets/images/portfolio/brand-mockups/pop-paw.svg"
+    },
+    "summary": {
+      "th": "พัฒนาคาแรกเตอร์ให้กลายเป็นชุดของสะสมสำหรับแคมเปญ",
+      "en": "Turn character artwork into collectible campaign stickers"
     }
   },
   {
@@ -183,7 +285,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "พิจารณาเส้นไดคัทก่อนผลิต",
       "en": "Check the cut contours before printing"
     },
-    "featured": true
+    "featured": true,
+    "mockBrand": {
+      "name": "WILD CLUB",
+      "logo": "./assets/images/portfolio/brand-mockups/wild-club.svg"
+    },
+    "summary": {
+      "th": "ชุดสติกเกอร์ไดคัทสำหรับกิจกรรมและของแจก",
+      "en": "Die-cut sticker collection for events and giveaways"
+    },
+    "project": {
+      "brief": {
+        "th": "ชุดลายสัตว์และกิจกรรมกลางแจ้งต้องมีภาษาภาพร่วมกัน แต่แต่ละชิ้นมีรูปทรงที่แตกต่างเพื่อให้สะสมได้",
+        "en": "An animal and outdoor-themed collection needs a common visual language with distinct collectible shapes."
+      },
+      "approach": {
+        "th": "ปรับขนาดสายตาและขอบขาวให้สมดุล จัดลำดับลายในชุดและกำหนดพื้นที่ตัดรอบรายละเอียดเล็ก",
+        "en": "Balance optical size and white borders, sequence the designs and define cut clearance around small details."
+      },
+      "considerations": {
+        "th": "ตรวจการยกขอบและความแข็งแรงของส่วนยื่น ทดลองลอกและติดตามพื้นผิวเป้าหมาย",
+        "en": "Inspect edge lift and protruding details; trial peeling and application on the intended surface."
+      },
+      "deliverable": {
+        "th": "ชุดลายและแนวตัดแยก พร้อมรายการตรวจชิ้นงาน",
+        "en": "Design collection and separate contours with a piece inspection list."
+      }
+    }
   },
   {
     "id": "work-08",
@@ -202,7 +330,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "en": "Illustrative inspection during cutting"
     },
     "featured": false,
-    "cover": "./assets/images/portfolio/gallery/work-10.webp"
+    "cover": "./assets/images/portfolio/gallery/work-10.webp",
+    "mockBrand": {
+      "name": "POP PAW",
+      "logo": "./assets/images/portfolio/brand-mockups/pop-paw.svg"
+    },
+    "summary": {
+      "th": "ควบคุมแนวตัดของสติกเกอร์คาแรกเตอร์",
+      "en": "Contour planning for character stickers"
+    },
+    "project": {
+      "brief": {
+        "th": "ภาพคาแรกเตอร์ที่มีหู หาง และส่วนโค้งเล็กทำให้ความแม่นยำของแนวตัดสำคัญต่อภาพรวมของงาน",
+        "en": "Characters with small ears, tails and curves make contour accuracy critical to the finished appearance."
+      },
+      "approach": {
+        "th": "ลดจุดซับซ้อนที่ไม่จำเป็นในแนวตัด รักษาระยะเผื่อกราฟิกและทดสอบการจัดวางบนแผ่นก่อนผลิต",
+        "en": "Simplify unnecessary contour complexity, maintain graphic clearance and test sheet imposition."
+      },
+      "considerations": {
+        "th": "ตรวจการเหลื่อมระหว่างพิมพ์กับตัด รอยบาก และการลอกโดยไม่ทำให้แผ่นรองเสียหาย",
+        "en": "Check print-to-cut registration, nicks and peeling without damaging the liner."
+      },
+      "deliverable": {
+        "th": "ไฟล์แนวตัดและแบบตรวจตัวอย่างก่อนอนุมัติ",
+        "en": "Cut-path artwork and a sample approval checklist."
+      }
+    }
   },
   {
     "id": "work-09",
@@ -220,7 +374,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ตรวจชิ้นงานก่อนบรรจุและส่งมอบ",
       "en": "Inspect pieces before packing"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "CITRUS",
+      "logo": "./assets/images/portfolio/brand-mockups/citrus.svg"
+    },
+    "summary": {
+      "th": "จัดระบบสติกเกอร์หลายลายก่อนบรรจุเป็นชุด",
+      "en": "Organise multiple sticker designs into packs"
+    },
+    "project": {
+      "brief": {
+        "th": "งานโปรโมชันหลายลายต้องรักษาจำนวนต่อชุดและความครบถ้วน เพื่อให้ผู้รับได้ชิ้นงานตามรูปแบบที่กำหนด",
+        "en": "Multi-design promotions need consistent pack quantities and complete sets."
+      },
+      "approach": {
+        "th": "จัดรหัสลายและรายการนับ กำหนดทิศทางจัดวางและวิธีแยกชุดหลังตัด ลดความซับซ้อนในการหยิบและตรวจ",
+        "en": "Assign design IDs and count lists, then plan layout and sorting after cutting to simplify inspection."
+      },
+      "considerations": {
+        "th": "ตรวจลายซ้ำ ลายขาด ขอบตัดและจำนวนก่อนปิดแพ็ก พร้อมกำหนดวิธีจัดการชิ้นงานไม่ผ่าน",
+        "en": "Check duplicate and missing designs, cut edges and counts before sealing; define handling for rejected pieces."
+      },
+      "deliverable": {
+        "th": "รายการลายต่อชุด รูปแบบแพ็ก และเกณฑ์ตรวจรับ",
+        "en": "Design-per-pack list, packaging format and acceptance criteria."
+      }
+    }
   },
   {
     "id": "work-10",
@@ -238,7 +418,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ตัวอย่างการใช้งานสติกเกอร์ตัดตามรูป",
       "en": "Illustrative contour-cut products"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "POP PAW",
+      "logo": "./assets/images/portfolio/brand-mockups/pop-paw.svg"
+    },
+    "summary": {
+      "th": "สติกเกอร์โปรโมชันที่อ่านภาพได้ชัดในขนาดเล็ก",
+      "en": "Promotional stickers that stay readable at small sizes"
+    },
+    "project": {
+      "brief": {
+        "th": "แคมเปญต้องการลายสนุกที่ใช้ได้กับของแจกและอุปกรณ์ส่วนตัว โดยไม่ให้รายละเอียดเล็กเกินกว่าจะพิมพ์และตัดได้",
+        "en": "A campaign needs playful designs for giveaways and personal items without details too small to print or cut."
+      },
+      "approach": {
+        "th": "ออกแบบ Silhouette ให้จดจำง่าย ลดเส้นย่อยและทดสอบการมองในขนาดจริง จัดกลุ่มลายตามธีม",
+        "en": "Design recognisable silhouettes, simplify minor lines, review at actual size and group by theme."
+      },
+      "considerations": {
+        "th": "ตรวจความชัดของสี ขอบขาว และระยะตัดในจุดโค้ง ทดลองใช้งานบนพื้นผิวที่กำหนด",
+        "en": "Check colour clarity, white borders and contour clearance at curves; trial on the intended surface."
+      },
+      "deliverable": {
+        "th": "ชุด Artwork พร้อมแนวตัดและแบบจัดวางแคมเปญ",
+        "en": "Artwork set, cut paths and campaign layout."
+      }
+    }
   },
   {
     "id": "work-11",
@@ -260,21 +466,29 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "cover": "./assets/images/portfolio/gallery/work-14.webp",
     "project": {
       "brief": {
-        "th": "พื้นที่กระจกเป็นจุดสื่อสารกับคนเดินผ่าน แต่ต้องรักษาความชัดของข้อความและความโปร่งของหน้าร้านตามความต้องการ",
-        "en": "Glazing can communicate with passers-by while preserving the desired visibility into the shop."
+        "th": "โจทย์สมมติคือคาเฟ่ที่ต้องการใช้กระจกเป็นพื้นที่สื่อสารกับคนเดินผ่าน ภาพเมนูต้องเห็นชัดจากระยะจริง แต่ไม่ปิดมุมมองภายในร้านเกินความจำเป็น",
+        "en": "A hypothetical café uses glazing to engage passers-by; menu imagery must be visible at the real viewing distance without unnecessarily blocking the interior."
       },
       "approach": {
-        "th": "สำรวจขนาดและแนวแบ่งบานกระจก จัดองค์ประกอบให้มองเห็นจากระยะจริง และพิจารณาฟิล์มตามความโปร่งแสงที่ต้องการ",
-        "en": "Survey dimensions and glass divisions, compose for the viewing distance and evaluate film for the desired transparency."
+        "th": "สำรวจขนาดบานกระจกและแนวกรอบ วางลำดับโลโก้ ภาพเครื่องดื่ม และข้อความตามทิศทางเดิน ทดลอง Overlay บนภาพหน้าร้านแล้วกำหนดโซนทึบและโปร่งก่อนเลือกฟิล์ม",
+        "en": "Survey panes and frames, prioritise logo, drinks and copy along pedestrian sightlines, then mock up the storefront and define opaque versus clear areas before selecting film."
       },
       "considerations": {
-        "th": "ตรวจพื้นผิว ทิศทางการติด แสงสะท้อน รอยต่อ และข้อจำกัดในการเข้าพื้นที่ก่อนกำหนดแผนติดตั้ง",
-        "en": "Review substrate, application side, reflections, seams and site access before planning installation."
+        "th": "ตรวจชนิดกระจก แสงสะท้อน ทิศทางติดตั้ง แนวแบ่งชิ้น และข้อจำกัดในการเข้าพื้นที่ ทดลองวัสดุและยืนยันวิธีลอกหรือบำรุงรักษาตามระยะใช้งาน",
+        "en": "Review glazing, reflections, application side, panel seams and access. Trial material and confirm removal or maintenance requirements for the intended lifespan."
       },
       "deliverable": {
-        "th": "แบบจัดวางบนภาพหน้าร้าน พร้อมขนาดแผ่นและแนวแบ่งชิ้นงานสำหรับประเมินการติดตั้ง",
-        "en": "A storefront layout with panel sizes and divisions for installation assessment."
+        "th": "แบบจำลองหน้าร้านพร้อมผังแบ่งบาน ขนาดผลิต ข้อเสนอฟิล์ม และรายการเตรียมพื้นที่ติดตั้ง",
+        "en": "Storefront mockup, pane layout, production dimensions, proposed film and site preparation checklist."
       }
+    },
+    "mockBrand": {
+      "name": "COFFEE SHOP",
+      "logo": "./assets/images/portfolio/brand-mockups/coffee-shop.svg"
+    },
+    "summary": {
+      "th": "ออกแบบกราฟิกกระจกให้สื่อสารแบรนด์และเมนูจากหน้าร้าน",
+      "en": "Window graphics that communicate the café brand and menu"
     }
   },
   {
@@ -293,7 +507,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ควรวัดพื้นที่จริงและกำหนดวิธีติดตั้ง",
       "en": "Measure the surface and plan installation"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "FORM",
+      "logo": "./assets/images/portfolio/brand-mockups/form.svg"
+    },
+    "summary": {
+      "th": "กราฟิกกระจกองค์กรที่ต่อเนื่องข้ามแนวแบ่งบาน",
+      "en": "Corporate window graphics across multiple panes"
+    },
+    "project": {
+      "brief": {
+        "th": "กราฟิกเส้นยาวข้ามกระจกหลายบานต้องรักษาความต่อเนื่องของเส้นและสีเมื่อมองจากทางเดิน",
+        "en": "Long graphics across several panes need visual continuity in line and colour from the walkway."
+      },
+      "approach": {
+        "th": "วัดบานและช่องกรอบทุกช่วง สร้างแบบรวมก่อนแบ่งชิ้น กำหนดจุดอ้างอิงสำหรับจัดระดับและแนวต่อ",
+        "en": "Measure panes and frame gaps, build a master layout, then split panels with alignment references."
+      },
+      "considerations": {
+        "th": "ตรวจทิศทางติด ความเรียบผิว รอยต่อและความคลาดเคลื่อนจากขนาดจริงก่อนผลิตแผ่นสุดท้าย",
+        "en": "Check application side, surface condition, seams and dimension tolerances before final panel production."
+      },
+      "deliverable": {
+        "th": "ผังภาพรวมและไฟล์แบ่งแผ่นพร้อมจุดอ้างอิงติดตั้ง",
+        "en": "Master visual, panel artwork and installation alignment references."
+      }
+    }
   },
   {
     "id": "work-13",
@@ -311,7 +551,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ออกแบบให้สัมพันธ์กับมุมมองและกระจก",
       "en": "Design for viewing angle and glass surface"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "FORM",
+      "logo": "./assets/images/portfolio/brand-mockups/form.svg"
+    },
+    "summary": {
+      "th": "ปรับภาพลักษณ์พื้นที่หน้าร้านด้วยกราฟิกสีแบรนด์",
+      "en": "Refresh a retail frontage with brand-colour graphics"
+    },
+    "project": {
+      "brief": {
+        "th": "พื้นที่ร้านต้องการภาพลักษณ์ที่สังเกตได้จากระยะไกล แต่ยังกลมกลืนกับสถาปัตยกรรมและทางเข้าร้าน",
+        "en": "A retail frontage needs recognisable graphics that still fit its architecture and entrance."
+      },
+      "approach": {
+        "th": "นำรูปทรงและสีแบรนด์มาจัดวางตามระดับสายตา เว้นพื้นที่ประตูและส่วนที่ต้องมองเห็นจากภายใน",
+        "en": "Place brand shapes and colours around eye level, leaving doors and necessary sightlines clear."
+      },
+      "considerations": {
+        "th": "พิจารณาแสงสะท้อน ความเข้มสีเมื่ออยู่บนกระจก และเงื่อนไขการดูแลรักษาพื้นผิว",
+        "en": "Consider reflections, perceived colour on glass and surface maintenance requirements."
+      },
+      "deliverable": {
+        "th": "ภาพจำลองหน้าร้าน แบบวัดพื้นที่ และตัวเลือกฟิล์มสำหรับประเมิน",
+        "en": "Frontage mockup, measurement plan and film options for evaluation."
+      }
+    }
   },
   {
     "id": "work-14",
@@ -329,7 +595,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ตรวจวัสดุและข้อจำกัดพื้นที่ติดตั้ง",
       "en": "Check material and site constraints"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "COFFEE SHOP",
+      "logo": "./assets/images/portfolio/brand-mockups/coffee-shop.svg"
+    },
+    "summary": {
+      "th": "กราฟิกเมนูขนาดใหญ่ที่อ่านง่ายจากระยะจริง",
+      "en": "Large-format menu graphics for real viewing distances"
+    },
+    "project": {
+      "brief": {
+        "th": "ภาพเครื่องดื่มขนาดใหญ่ต้องดึงสายตาโดยไม่ทำให้ข้อความหรือชื่อร้านหายไปในภาพ",
+        "en": "Large drink imagery must attract attention without overwhelming the shop name or essential copy."
+      },
+      "approach": {
+        "th": "จัดภาพหลักให้สัมพันธ์กับระยะมอง ปรับขนาดข้อความตามตำแหน่งบนกระจกและแบ่งไฟล์ตามพื้นที่ติดจริง",
+        "en": "Compose imagery for the viewing distance, scale copy to its glazing position and split artwork by actual application area."
+      },
+      "considerations": {
+        "th": "ตรวจความละเอียดที่ขนาดสำเร็จ ตำแหน่งแนวต่อ และความชัดเมื่อมองจากด้านนอกในสภาพแสงต่างกัน",
+        "en": "Check effective resolution at final size, seam positions and outdoor visibility under varying lighting."
+      },
+      "deliverable": {
+        "th": "แบบจัดวางเมนูบนพื้นที่จริงและไฟล์สำหรับแบ่งผลิต",
+        "en": "Menu placement mockup and panel-ready artwork."
+      }
+    }
   },
   {
     "id": "work-15",
@@ -347,7 +639,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "เลือกระบบหมึกและการปกป้องผิวให้เหมาะ",
       "en": "Select ink and protection for actual use"
     },
-    "featured": true
+    "featured": true,
+    "mockBrand": {
+      "name": "COFFEE SHOP",
+      "logo": "./assets/images/portfolio/brand-mockups/coffee-shop.svg"
+    },
+    "summary": {
+      "th": "กราฟิกสัญลักษณ์บนกระจกที่ไม่รบกวนบรรยากาศร้าน",
+      "en": "Minimal window symbols that preserve the café atmosphere"
+    },
+    "project": {
+      "brief": {
+        "th": "สัญลักษณ์เรียบง่ายบนกระจกต้องอ่านได้ชัดทั้งช่วงกลางวันและช่วงเปิดไฟร้าน โดยรักษาความโปร่งของพื้นที่",
+        "en": "A minimal glass symbol needs clear visibility in daylight and interior lighting while maintaining openness."
+      },
+      "approach": {
+        "th": "เลือกตำแหน่งและสัดส่วนสัญลักษณ์ตามระยะมอง ประเมินฟิล์มทึบหรือโปร่งแสงและวิธีทำขอบ",
+        "en": "Choose symbol placement and proportions for viewing distance; evaluate opaque or translucent film and edge treatment."
+      },
+      "considerations": {
+        "th": "ตรวจความเปรียบต่างกับฉากหลัง ทิศทางติดและวิธีทำความสะอาดกระจก",
+        "en": "Check background contrast, application side and cleaning method."
+      },
+      "deliverable": {
+        "th": "แบบวางสัญลักษณ์ ขนาดจริง และข้อเสนอวัสดุ",
+        "en": "Symbol placement artwork, actual dimensions and proposed material."
+      }
+    }
   },
   {
     "id": "work-16",
@@ -365,7 +683,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ภาพจำลองการตรวจผิวและรายละเอียด",
       "en": "Illustrative surface and detail inspection"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "NATURAL",
+      "logo": "./assets/images/portfolio/brand-mockups/natural.svg"
+    },
+    "summary": {
+      "th": "กำหนดเกณฑ์ตรวจสีและผิวฉลากก่อนส่งมอบ",
+      "en": "Define colour and surface inspection criteria for labels"
+    },
+    "project": {
+      "brief": {
+        "th": "ฉลากหลายชิ้นต้องสอดคล้องกับตัวอย่างที่ยืนยันร่วมกัน โดยเฉพาะสีแบรนด์และความเรียบร้อยของตัวพิมพ์",
+        "en": "A label batch needs consistency with an agreed reference, particularly brand colour and print finish."
+      },
+      "approach": {
+        "th": "กำหนดจุดตรวจบนแบบและตัวอย่างอ้างอิง แยกสิ่งที่ตรวจด้วยสายตาออกจากค่าที่ต้องวัด และตกลงวิธีสุ่มตรวจก่อนผลิต",
+        "en": "Define inspection points and references, distinguish visual checks from measurable tolerances and agree on sampling before production."
+      },
+      "considerations": {
+        "th": "ตรวจสีภายใต้แสงที่ตกลง ผิวพิมพ์ รอยขีดข่วน ขอบตัดและตำแหน่งกราฟิกตามเกณฑ์ที่ยืนยัน",
+        "en": "Check colour under agreed lighting, surface, scratches, cut edges and registration against agreed criteria."
+      },
+      "deliverable": {
+        "th": "รายการตรวจคุณภาพและตัวอย่างอ้างอิงสำหรับอนุมัติ",
+        "en": "Quality inspection checklist and approval reference sample."
+      }
+    }
   },
   {
     "id": "work-17",
@@ -387,21 +731,29 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "cover": "./assets/images/portfolio/gallery/work-17.webp",
     "project": {
       "brief": {
-        "th": "งานกราฟิกที่สวยบนหน้าจออาจมีรายละเอียดเกินข้อจำกัดการพิมพ์ จึงต้องจัดระบบไฟล์ให้ตรงกับขนาดจริงและวิธีตัด",
-        "en": "A screen-ready design can exceed print limitations, so its artwork needs to match actual dimensions and cutting requirements."
+        "th": "ภาพร่างฉลากเครื่องดื่มมีกราฟิกผลไม้และข้อความหลายระดับ แต่เมื่อเข้าสู่ขนาดจริงต้องรักษาความอ่านง่ายและความสม่ำเสมอระหว่างรสชาติ",
+        "en": "Beverage label concepts contain fruit graphics and several levels of copy; actual-size artwork must remain legible and consistent across flavours."
       },
       "approach": {
-        "th": "จัดระยะเผื่อตัดและพื้นที่ปลอดภัย ตรวจความละเอียด ฟอนต์ และระบบสีตามสเปกที่โรงพิมพ์กำหนด",
-        "en": "Set bleed and safe areas; review resolution, fonts and colour settings against the printer's specifications."
+        "th": "จัดแม่แบบ Artwork ตามไดไลน์จริง กำหนด Bleed และ Safe Area แยกแนวตัดออกจากกราฟิก ตรวจฟอนต์ ภาพ และสีตามข้อกำหนดโรงพิมพ์ พร้อมจัดชื่อไฟล์และ Revision ให้ติดตามได้",
+        "en": "Build artwork on actual dielines, set bleed and safe areas, separate contours from graphics, check fonts, imagery and colour requirements, and track file revisions."
       },
       "considerations": {
-        "th": "ตรวจข้อความ ขนาดจริง เส้นตัด สีที่ต้องควบคุม และเวอร์ชันไฟล์ด้วยแบบตรวจก่อนผลิต",
-        "en": "Review copy, actual dimensions, cut paths, critical colours and artwork version on an approval proof."
+        "th": "ตรวจข้อความที่ลูกค้าอนุมัติ ขนาดสำเร็จ ความละเอียดภาพ สีสำคัญ และการแสดงผลของเส้นตัด ตรวจแบบปรู๊ฟและบันทึกเวอร์ชันก่อนส่งผลิต",
+        "en": "Check approved copy, finished size, effective resolution, critical colours and cut paths; review proofs and record the approved revision before production."
       },
       "deliverable": {
-        "th": "ไฟล์พร้อมส่งตรวจผลิตพร้อมรายการจุดที่ต้องยืนยันก่อนพิมพ์",
-        "en": "Production artwork and a checklist of items requiring approval before printing."
+        "th": "ไฟล์ผลิตแยก SKU และแนวตัด, PDF ตรวจแบบ, รายการ Preflight และประวัติ Revision",
+        "en": "SKU production artwork and cut paths, approval PDF, preflight checklist and revision record."
       }
+    },
+    "mockBrand": {
+      "name": "CITRUS",
+      "logo": "./assets/images/portfolio/brand-mockups/citrus.svg"
+    },
+    "summary": {
+      "th": "พัฒนาไฟล์ฉลากเครื่องดื่มจากคอนเซปต์สู่สเปกผลิต",
+      "en": "Turn beverage label concepts into production-ready specifications"
     }
   },
   {
@@ -420,7 +772,33 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "เช็กวัสดุและหน้ากว้างให้เหมาะสม",
       "en": "Check media type and width"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "FORM",
+      "logo": "./assets/images/portfolio/brand-mockups/form.svg"
+    },
+    "summary": {
+      "th": "เปรียบเทียบวัสดุก่อนกำหนดสเปกผลิต",
+      "en": "Compare substrates before setting production specifications"
+    },
+    "project": {
+      "brief": {
+        "th": "สีและภาพเดียวกันอาจให้ผลต่างกันเมื่อพิมพ์บนกระดาษ ฟิล์มขาว หรือฟิล์มใส จึงต้องเลือกวัสดุตามการใช้งานไม่ใช่เพียงหน้าตา",
+        "en": "The same artwork can look different on paper, white film and clear film, so stock selection must reflect usage as well as appearance."
+      },
+      "approach": {
+        "th": "เปรียบเทียบผิวสัมผัส ความทึบ การติดบนพื้นผิว และหน้ากว้างที่ใช้ได้กับเครื่องพิมพ์ จัดตัวอย่างเล็กเพื่อเทียบก่อนตัดสินใจ",
+        "en": "Compare texture, opacity, adhesion and usable media width; prepare small samples before deciding."
+      },
+      "considerations": {
+        "th": "ตรวจข้อมูลผู้ผลิต ความเข้ากันได้ของหมึก กาว และการปกป้องผิว พร้อมทดลองใช้งานจริงตามเงื่อนไขที่กำหนด",
+        "en": "Check supplier specifications, ink, adhesive and protection compatibility; trial under representative conditions."
+      },
+      "deliverable": {
+        "th": "ตารางเปรียบเทียบวัสดุ ตัวอย่างพิมพ์ และสเปกที่เสนอ",
+        "en": "Material comparison, print samples and proposed specification."
+      }
+    }
   },
   {
     "id": "work-19",
@@ -442,22 +820,30 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "cover": "./assets/images/portfolio/gallery/work-20.webp",
     "project": {
       "brief": {
-        "th": "เมื่อสติกเกอร์แบรนด์เดียวกันต้องใช้หลายจุด การจัดรูปแบบส่งมอบและแยกจำนวนแต่ละรายการช่วยลดความสับสน",
-        "en": "When the same brand needs stickers for multiple uses, delivery formats and clear quantities help avoid mix-ups."
+        "th": "แบรนด์สมมติมีสติกเกอร์สำหรับติดสินค้า แพ็กของ และแจกส่งเสริมการขาย ลายเดียวกันอาจต้องส่งมอบทั้งแบบม้วน แบบแผ่น และชิ้นแยก โจทย์คือรักษาภาพลักษณ์พร้อมลดความสับสนในการหยิบใช้",
+        "en": "A hypothetical brand needs product, packing and promotional stickers delivered as rolls, sheets and individual pieces. The challenge is visual consistency and easy handling."
       },
       "approach": {
-        "th": "กำหนดขนาด รูปทรง จำนวน และวิธีใช้งานแต่ละรายการ จากนั้นวางแผนจัดวางและรูปแบบส่งมอบให้เหมาะกับการหยิบใช้",
-        "en": "Define size, shape, quantity and use for each item, then plan imposition and delivery formats around handling."
+        "th": "แยกรายการตามตำแหน่งใช้งาน ขนาด จำนวน และรูปแบบส่งมอบ วางกราฟิกหลักให้เหมือนกันและปรับแนวตัดหรือการจัดวางตามวิธีใช้งาน กำหนดรหัสชิ้นงานเพื่อควบคุมการผลิตและจัดชุด",
+        "en": "Separate items by application, size, quantity and delivery format. Keep the graphic system consistent while adapting contours and imposition, and assign item IDs for packing control."
       },
       "considerations": {
-        "th": "ตรวจแนวตัด สี ความครบถ้วน และป้ายระบุชุดก่อนส่งมอบตามรายการที่ตกลง",
-        "en": "Review cut alignment, colour, completeness and package identification against the agreed list."
+        "th": "ตรวจความตรงกันของลาย สี ขนาดและแนวตัด แยกจำนวนและป้ายระบุชุดตามรายการตรวจรับ พิจารณาทิศทางคลายม้วนหรือความสะดวกในการลอกตามวิธีติดจริง",
+        "en": "Review artwork, colour, size and contours; verify pack counts and identifiers against the acceptance list. Consider unwind direction or peeling convenience for actual use."
       },
       "deliverable": {
-        "th": "รายการชิ้นงานแยกตามรูปแบบและจำนวน พร้อมเกณฑ์ตรวจรับก่อนส่งมอบ",
-        "en": "An itemised format and quantity list with handover inspection criteria."
+        "th": "ตารางรายการและจำนวน, Artwork ตามรูปแบบส่งมอบ, แบบแพ็ก และ Checklist ตรวจรับ",
+        "en": "Item and quantity schedule, format-specific artwork, packing plan and acceptance checklist."
       },
       "detailImage": "./assets/images/portfolio/gallery/work-19.webp"
+    },
+    "mockBrand": {
+      "name": "FORM",
+      "logo": "./assets/images/portfolio/brand-mockups/form.svg"
+    },
+    "summary": {
+      "th": "วางระบบสติกเกอร์หลายรูปแบบให้จัดการง่ายตั้งแต่ผลิตถึงส่งมอบ",
+      "en": "Coordinate sticker formats from production to handover"
     }
   },
   {
@@ -476,6 +862,32 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "th": "ช่วยเลือกวิธีจัดงานให้เหมาะกับการใช้งาน",
       "en": "Choose a format for intended handling"
     },
-    "featured": false
+    "featured": false,
+    "mockBrand": {
+      "name": "FORM",
+      "logo": "./assets/images/portfolio/brand-mockups/form.svg"
+    },
+    "summary": {
+      "th": "เลือกสติกเกอร์แบบแผ่นหรือม้วนให้เข้ากับวิธีใช้งาน",
+      "en": "Choose sheet or roll stickers around the application workflow"
+    },
+    "project": {
+      "brief": {
+        "th": "วิธีติดสติกเกอร์ด้วยมือหรือผ่านอุปกรณ์มีผลต่อรูปแบบส่งมอบ การเลือกผิดอาจทำให้หยิบใช้ไม่สะดวกหรือเสียเวลาจัดงาน",
+        "en": "Hand application or equipment-assisted application affects delivery format; a poor choice can add handling time."
+      },
+      "approach": {
+        "th": "เทียบจำนวนต่อแผ่น ขนาดแกนม้วน ทิศทางคลาย และระยะห่างระหว่างดวงตามวิธีติดที่วางแผนไว้",
+        "en": "Compare pieces per sheet, core diameter, unwind direction and gaps against the planned application method."
+      },
+      "considerations": {
+        "th": "ทดลองลอกหรือป้อนม้วนกับอุปกรณ์จริงเมื่อมี ตรวจความเรียบร้อยแผ่นรองและการนับจำนวน",
+        "en": "Trial peeling or feeding with actual equipment where available, and inspect liner condition and counts."
+      },
+      "deliverable": {
+        "th": "ข้อเสนอรูปแบบส่งมอบและแบบจัดวางพร้อมรายการสเปก",
+        "en": "Proposed delivery format, imposition and specification list."
+      }
+    }
   }
 ];
