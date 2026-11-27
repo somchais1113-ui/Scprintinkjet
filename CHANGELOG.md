@@ -1,3 +1,7 @@
+## V2.1.66 — Asset integration completed
+
+- Installed 10 concept logos, 20 card/hero images and the bilingual project data in source and public-release. Every asset's Git blob SHA matches the prepared package. Existing low-resolution images retained; visual QA pending.
+
 # V2.1.66 — Ten concept projects integration
 
 - Supports the supplied 10-project portfolio via assets/images/portfolio/concept-10/concept-data.js; until the complete asset supplement is installed, the prior portfolio remains visible.
