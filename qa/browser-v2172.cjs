@@ -16,6 +16,11 @@ const url=p=>new URL(p,base.href.endsWith('/')?base.href:base.href+'/').href;
     if(viewport.width>560){await page.waitForSelector('.sc-reflection-layer .sc-reflection-card',{state:'attached'});assert.equal(await page.locator('.sc-reflection-card').count(),viewport.width>850?3:2);assert.equal(await page.locator('.sc-reflection-card a[href]').count(),0);}
     else assert.equal(await page.locator('.sc-reflection-card').count(),0);
     await page.waitForSelector('#scSupportBar',{state:'visible'});
+    await page.waitForSelector('#topContactBar',{state:'visible'});
+    await page.evaluate(()=>window.scrollTo(0,document.body.scrollHeight));
+    const topRect=await page.locator('#topContactBar').boundingBox();
+    assert(topRect&&Math.abs(topRect.y)<2,'Announcement should remain pinned');
+    await page.evaluate(()=>window.scrollTo(0,0));
     await page.goto(url('portfolio.html?lang=th&category=all'));
     await page.waitForSelector('.portfolio-gallery .sc-concept-cover img.sc-concept-photo');
     const covers=page.locator('.portfolio-gallery .sc-concept-cover img.sc-concept-photo');

@@ -1,0 +1,14 @@
+/* One top announcement on every public page. Static fallback before JS. */
+.sc-global-topbar-slot{display:block;width:100%;min-width:0}
+#topContactBar.sc-global-announcement{box-sizing:border-box;width:100%;min-width:0;display:block!important;background:#081e3d;color:#fff;margin:0!important;padding:env(safe-area-inset-top,0px) 0 0;border:0;font-family:'Be Vietnam Pro','Noto Sans Thai',system-ui,sans-serif}
+#topContactBar.sc-global-announcement .sc-topbar__inner{box-sizing:border-box;width:min(100%,1280px);max-width:1280px;margin-inline:auto;padding:9px max(20px,env(safe-area-inset-left,0px));min-height:36px;display:flex;align-items:center;justify-content:space-between;gap:8px 20px;flex-wrap:wrap}
+#topContactBar.sc-global-announcement .sc-topbar__benefits{display:flex;align-items:center;gap:9px;min-width:0;color:#eef4fa;font-size:12px;line-height:1.5;font-weight:400}
+#topContactBar.sc-global-announcement #topBenefitText{white-space:normal;overflow-wrap:anywhere}
+#topContactBar.sc-global-announcement .sc-topbar__signal{flex:0 0 6px;width:6px;height:6px;border-radius:50%;background:#ff6900}
+#topContactBar.sc-global-announcement [hidden]{display:none!important}
+html[data-sc-global-top="ready"] .sc-global-topbar-slot{height:var(--sc-global-top-h,36px)}
+html[data-sc-global-top="ready"] #topContactBar.sc-global-announcement{position:fixed!important;inset:0 0 auto!important;z-index:95}
+html[data-sc-global-top="ready"] [data-sc-global-header]{top:var(--sc-global-top-h,36px)!important}
+html[data-sc-global-top="ready"]{scroll-padding-top:calc(var(--sc-global-top-h,36px) + var(--sc-global-header-h,0px) + 12px)}
+@media(max-width:660px){#topContactBar.sc-global-announcement .sc-topbar__inner{padding:7px 12px;min-height:32px;gap:5px 10px}#topContactBar.sc-global-announcement .sc-topbar__benefits{font-size:10.5px;gap:6px;line-height:1.55}}
+@media print{.sc-global-topbar-slot,#topContactBar.sc-global-announcement{display:none!important;height:0!important}html[data-sc-global-top="ready"]{scroll-padding-top:0}html[data-sc-global-top="ready"] [data-sc-global-header]{top:auto!important}}
