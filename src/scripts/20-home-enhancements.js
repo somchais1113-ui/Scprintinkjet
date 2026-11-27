@@ -100,7 +100,7 @@
     function updatePause(){
       marquee.classList.toggle('is-paused',logosPaused);
       if(pause){
-        pause.textContent='';
+        pause.textContent=logosPaused?t().resumeLogos:t().pauseLogos;
         pause.setAttribute('aria-label',logosPaused?t().resumeLogos:t().pauseLogos);
         pause.setAttribute('title',logosPaused?t().resumeLogos:t().pauseLogos);
         pause.setAttribute('aria-pressed',String(logosPaused));
