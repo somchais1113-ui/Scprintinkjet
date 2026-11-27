@@ -45,6 +45,7 @@
     "START_HERE_V2.1.71.md",
     "START_HERE_V2.1.72.md",
     "START_HERE_V2.1.73.md",
+    "START_HERE_V2.1.74.md",
     "START_HERE_V2.1.8.md",
     "START_HERE_V2.1.9.md",
     "START_HERE_V2.1.md",
@@ -287,6 +288,7 @@
     "src/scripts/editorial-footer.js",
     "src/scripts/entry-cta.js",
     "src/scripts/footer-utility.js",
+    "src/scripts/global-topbar-v2174.js",
     "src/scripts/i18n.js",
     "src/scripts/knowledge-hero-v2170.js",
     "src/scripts/knowledge-hub.js",
@@ -379,6 +381,7 @@
     "src/styles/52-knowledge-hero-v2170.css",
     "src/styles/53-home-reflection-v2171.css",
     "src/styles/54-full-frame-v2173.css",
+    "src/styles/55-global-topbar-v2174.css",
     "standard-pricing.html"
   ]
 }

@@ -29,10 +29,16 @@ for(const p of projects){assert.equal(p.timeline.length,7);assert(p.timeline.eve
 const home=read('index.html'),knowledge=read('knowledge.html'),detail=read('portfolio-detail.html');
 for(const p of manifest.filter(x=>x.endsWith('.html'))){
  const html=read(p);
+ assert.equal((html.match(/id="topContactBar"/g)||[]).length,1,p+' announcement element');
+ assert.equal((html.match(/global-topbar-v2174\.js\?v=2\.1\.74/g)||[]).length,1,p+' announcement script');
+ assert.equal((html.match(/55-global-topbar-v2174\.css\?v=2\.1\.74/g)||[]).length,1,p+' announcement CSS');
  assert.equal((html.match(/support-bar\.js\?v=2\.1\.73/g)||[]).length,1,p+' support script');
  assert.equal((html.match(/26-support-bar\.css\?v=2\.1\.73/g)||[]).length,1,p+' support CSS');
 }
 assert(!home.includes('class="section contact-section"'));
+assert.equal(projects.find(p=>p.id==='elitecraft').title.th,"ยกระดับภาพลักษณ์สินค้า Home Fragrance");
+assert(!projects.find(p=>p.id==='elitecraft').title.en.includes('finishing'));
+assert(read('src/styles/55-global-topbar-v2174.css').includes('position:fixed!important'));
 assert(home.includes('id="contact" class="footer-consult"'));
 assert(read('src/scripts/main.js').includes("if(byId('contactMethods'))"));
 assert(projects.find(p=>p.id==='ecolabel').cover.endsWith('cover-study-v2173.svg'));

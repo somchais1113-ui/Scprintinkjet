@@ -1,3 +1,10 @@
+# V2.1.74 — Visual quality & global navigation (incomplete draft)
+
+- Shortened ELITECRAFT title in the base and deep data (TH/EN).
+- Added one shared fixed announcement bar to all 15 public pages, preserving existing home contact slots, language switching, safe-area spacing and sticky header offsets. The bottom support bar remains unchanged.
+- Image replacement NOT completed: new ELITECRAFT image was generated outside the repo, but binary transfer was unavailable; TECHMATE, ECOLABEL and CITRUS standalone new photography still pending. Existing images retained instead of substituting screenshots, collages or low-resolution enlargements. Existing six featured heroes are 768px wide; none should be described as native Full HD without replacement.
+- Added static topbar checks and a browser assertion. Browser and full filesystem build not executed here. Draft PR only; do not deploy as the completed visual release.
+
 # V2.1.73 — Full-frame covers & global contact bar
 
 - Project card photos fill their container without distortion on homepage, gallery and related projects. Six featured cards use existing wider brand visuals, CITRUS uses existing 1200×750 prepress photography, ECOLABEL uses a concept-only SVG material study with the existing mark and no certification claims. ELITECRAFT and TECHMATE still use low-resolution source photos; generated replacements could not be transferred in this session. Case hero assets unchanged.

@@ -831,8 +831,8 @@ window.SCWORK_CONCEPT_PROJECTS = [
       "logo": "./assets/images/portfolio/concept-10/elitecraft/logo.svg"
     },
     "title": {
-      "th": "ยกระดับภาพลักษณ์สินค้า Home Fragrance ด้วยเทคนิคพิมพ์พิเศษ",
-      "en": "Premium home-fragrance labels and finishing"
+      "th": "ยกระดับภาพลักษณ์สินค้า Home Fragrance",
+      "en": "Elevating the image of home fragrance products"
     },
     "summary": {
       "th": "วางแนวทางฉลากและกล่องพรีเมียมที่ใช้ฟอยล์และผิวสัมผัสอย่างมีจุดหมาย ไม่เพิ่มต้นทุนโดยไม่จำเป็น",
