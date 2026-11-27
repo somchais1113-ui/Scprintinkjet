@@ -67,11 +67,12 @@
   <script src="./src/scripts/site-runtime.js?v=2.1.3" defer></script>
   <script src="./data/extra-locales.js?v=2.1.1" defer></script>
   <script src="./src/scripts/i18n.js?v=scwork-1.4" defer></script>
-  <script src="./src/scripts/main.js?v=2.1.60" defer></script>
+  <script defer src="./data/portfolio-data.js"></script>
+  <script src="./src/scripts/main.js?v=2.1.62" defer></script>
   <script src="./src/scripts/motion.js?v=scwork-1.4" defer></script>
   <script src="./src/scripts/commerce-enhancements.js?v=2.1.15" defer></script>
   <script src="./data/client-logos.js?v=2.1.4" defer></script>
-  <script src="./src/scripts/20-home-enhancements.js?v=2.1.52" defer></script>
+  <script src="./src/scripts/20-home-enhancements.js?v=2.1.62" defer></script>
   <link rel="stylesheet" href="./src/styles/17-language-modal.css?v=2.1.1" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Sans+KR:wght@400;500;700&family=Noto+Sans+Myanmar:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" />
   <link rel="stylesheet" href="src/styles/18-cta-standard.css?v=2.1.20" />
@@ -95,7 +96,7 @@
   <script defer src="./src/scripts/editorial-footer.js?v=2.1.22"></script>
   <link rel="stylesheet" href="./src/styles/43-about-v2133.css?v=2.1.35">
   <script defer src="./src/scripts/about-page.js?v=2.1.35"></script>
-</head>
+<link rel="stylesheet" href="./src/styles/44-portfolio-clients-v2162.css?v=2.1.62"><script defer src="./src/scripts/portfolio-scroll-v2162.js?v=2.1.62"></script></head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="sc-topbar" id="topContactBar">
@@ -271,34 +272,23 @@
     </section>
 
 
-    <section class="sc-portfolio" id="portfolio" aria-labelledby="scPortfolioTitle">
-      <div class="container">
-        <header class="sc-portfolio__head">
-          <div><span class="eyebrow" id="scPortfolioEyebrow">PORTFOLIO / WORK TYPES</span><h2 id="scPortfolioTitle">ผลงาน</h2></div>
-          <p id="scPortfolioLead">สำรวจรูปแบบงานที่เรารับผลิต ก่อนส่งภาพผลงานจริงมาเพิ่มเติม</p>
-        </header>
-        <div class="sc-portfolio__grid">
-          <figure><img src="./assets/images/portfolio/portfolio-label-quality-process.webp" width="1200" height="800" loading="lazy" decoding="async" alt="เจ้าหน้าที่ลักษณะคนเอเชียตรวจฉลากสินค้าพร้อมภาพเครื่องพิมพ์และขวดที่ติดฉลาก"/><figcaption id="scPortfolioLabel1">ฉลากสินค้า</figcaption></figure>
-          <figure><img src="./assets/images/portfolio/portfolio-diecut-production-process.webp" width="1200" height="800" loading="lazy" decoding="async" alt="เจ้าหน้าที่ลักษณะคนเอเชียตรวจสติกเกอร์ไดคัทพร้อมภาพเครื่องตัดและชิ้นงาน"/><figcaption id="scPortfolioLabel2">สติกเกอร์ไดคัท</figcaption></figure>
-          <figure><img src="./assets/images/portfolio/portfolio-installation-process.webp" width="1200" height="800" loading="lazy" decoding="async" alt="เจ้าหน้าที่ลักษณะคนเอเชียติดตั้งสติกเกอร์หน้าร้านพร้อมภาพเครื่องพิมพ์และม้วนวัสดุ"/><figcaption id="scPortfolioLabel3">สติกเกอร์ขนาดใหญ่</figcaption></figure>
-        </div>
-        <div class="sc-portfolio__bottom">
-          <a class="sc-portfolio__view-all" id="scPortfolioViewAll" href="./portfolio.html?lang=th">ดูผลงานทั้งหมด <span aria-hidden="true">→</span></a>
-        </div>
-      </div>
-    </section>
-
+<section class="sc-portfolio" id="portfolio" aria-labelledby="scPortfolioTitle"><div class="container"><header class="sc-portfolio__head" data-sc-reveal><span class="eyebrow" id="scPortfolioEyebrow">OUR PORTFOLIO</span><h2 id="scPortfolioTitle">ผลงานการออกแบบและการผลิตที่เราภาคภูมิใจ</h2><p id="scPortfolioLead">จากแนวคิดสู่งานที่ผลิตและนำไปใช้งานได้จริง</p><a class="sc-portfolio__view-all" id="scPortfolioViewAll" href="./portfolio.html?lang=th">ดูผลงานทั้งหมด <span aria-hidden="true">→</span></a></header><div class="sc-portfolio__grid"><figure data-sc-reveal data-work="work-02"><a class="sc-portfolio__tile-link" href="./portfolio-detail.html?work=work-02&amp;lang=th"><div class="sc-work-top"><span>SCWORK / 01</span><span class="sc-work-arrow" aria-hidden="true">→</span></div><figcaption>ฉลากสินค้า</figcaption><img src="./assets/images/portfolio/portfolio-label-quality-process.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ภาพตัวอย่างฉลากสินค้า"><p class="sc-work-fit"></p></a></figure>
+<figure data-sc-reveal data-work="work-06"><a class="sc-portfolio__tile-link" href="./portfolio-detail.html?work=work-06&amp;lang=th"><div class="sc-work-top"><span>SCWORK / 02</span><span class="sc-work-arrow" aria-hidden="true">→</span></div><figcaption>สติกเกอร์ไดคัท</figcaption><img src="./assets/images/portfolio/portfolio-diecut-production-process.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ภาพตัวอย่างสติกเกอร์ไดคัท"><p class="sc-work-fit"></p></a></figure>
+<figure data-sc-reveal data-work="work-11"><a class="sc-portfolio__tile-link" href="./portfolio-detail.html?work=work-11&amp;lang=th"><div class="sc-work-top"><span>SCWORK / 03</span><span class="sc-work-arrow" aria-hidden="true">→</span></div><figcaption>สติกเกอร์ขนาดใหญ่</figcaption><img src="./assets/images/portfolio/portfolio-installation-process.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ภาพตัวอย่างสติกเกอร์ขนาดใหญ่"><p class="sc-work-fit"></p></a></figure>
+<figure data-sc-reveal data-work="work-04"><a class="sc-portfolio__tile-link" href="./portfolio-detail.html?work=work-04&amp;lang=th"><div class="sc-work-top"><span>SCWORK / 04</span><span class="sc-work-arrow" aria-hidden="true">→</span></div><figcaption>ฉลากเครื่องดื่มแช่เย็น</figcaption><img src="./assets/images/portfolio/gallery/work-04.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ภาพตัวอย่างฉลากเครื่องดื่มแช่เย็น"><p class="sc-work-fit"></p></a></figure>
+<figure data-sc-reveal data-work="work-17"><a class="sc-portfolio__tile-link" href="./portfolio-detail.html?work=work-17&amp;lang=th"><div class="sc-work-top"><span>SCWORK / 05</span><span class="sc-work-arrow" aria-hidden="true">→</span></div><figcaption>เตรียมไฟล์และตรวจ Artwork</figcaption><img src="./assets/images/portfolio/gallery/work-17.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ภาพตัวอย่างเตรียมไฟล์และตรวจ Artwork"><p class="sc-work-fit"></p></a></figure>
+<figure data-sc-reveal data-work="work-19"><a class="sc-portfolio__tile-link" href="./portfolio-detail.html?work=work-19&amp;lang=th"><div class="sc-work-top"><span>SCWORK / 06</span><span class="sc-work-arrow" aria-hidden="true">→</span></div><figcaption>ตรวจชิ้นงานก่อนส่งมอบ</figcaption><img src="./assets/images/portfolio/gallery/work-19.webp" width="1200" height="800" loading="lazy" decoding="async" alt="ภาพตัวอย่างตรวจชิ้นงานก่อนส่งมอบ"><p class="sc-work-fit"></p></a></figure></div><p class="sc-portfolio__notice" id="scPortfolioNotice">ภาพประกอบจำลองเพื่อสื่อประเภทงานและขั้นตอน ไม่ใช่ภาพผลงานลูกค้าจริง</p></div></section>
     <section class="section sc-client-credits" id="about" aria-labelledby="socialProofTitle">
       <div class="container">
         <div class="sc-client-credits__intro">
-          <h2 id="socialProofTitle">Clients we’ve worked with</h2>
-          <p id="socialProofDescription">Thank you for trusting SCWork with your sticker printing projects.</p>
+          <h2 id="socialProofTitle">ได้รับความไว้วางใจจาก</h2>
+          <p id="socialProofDescription" hidden></p>
         </div>
         <div class="sc-client-credits__logos" id="client-logos" hidden>
           <p class="sc-client-credits__preview-note" id="scClientLogoPreviewNote" hidden>Logo mockups for layout preview</p>
           <div class="sc-client-credits__marquee" id="scClientLogoMarquee">
-            <div class="sc-client-credits__track" id="scClientLogoTrack" dir="ltr"></div>
-          </div>
+            <div class="sc-client-credits__track" id="scClientLogoTrack" dir="ltr"></div><div class="sc-client-credits__track sc-client-credits__track--second" id="scClientLogoTrackSecond" dir="ltr"></div>
+          </div><button class="sc-client-credits__pause" type="button" id="scClientLogoPause" aria-pressed="false" hidden></button>
         </div>
       </div>
     </section>

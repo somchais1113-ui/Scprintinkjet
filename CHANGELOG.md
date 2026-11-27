@@ -1,3 +1,9 @@
+# V2.1.62 — Client motion and portfolio
+
+- Two opposing logo rows; original assets preserved.
+- Six staggered cards, navy photo overlay, dedicated scroll detail pages.
+- All 20 gallery entries preserved. No backend changes.
+
 # V2.1.56 — Branding banner and design refinement
 
 - Five homepage cinematic slides; branding first, all four originals preserved.

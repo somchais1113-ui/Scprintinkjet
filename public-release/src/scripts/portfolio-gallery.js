@@ -38,9 +38,9 @@
   function createCard(item,index){
     const l=language();const art=document.createElement('article');
     art.className='portfolio-card'+(item.featured?' portfolio-card--featured':'');
-    art.dataset.category=item.category;
-    const button=document.createElement('button');button.type='button';button.className='portfolio-card__open';
-    button.setAttribute('aria-label',`${item.title[l]} — ${locale[l].see}`);button.addEventListener('click',()=>openItem(item));
+    art.dataset.category=item.category;art.setAttribute('data-sc-reveal','');
+    const button=document.createElement('a');button.href=withLang('./portfolio-detail.html?work='+encodeURIComponent(item.id));button.className='portfolio-card__open';
+    button.setAttribute('aria-label',`${item.title[l]} — ${locale[l].see}`);
     const imageWrap=document.createElement('span');imageWrap.className='portfolio-card__media';
     const img=document.createElement('img');img.src=item.image;img.alt=item.title[l];img.loading=index<3?'eager':'lazy';img.decoding='async';img.addEventListener('error',()=>{if(!img.src.includes('placeholder.svg'))img.src='./assets/images/placeholder.svg';},{once:true});
     imageWrap.append(img);button.append(imageWrap);
@@ -49,7 +49,7 @@
     const title=document.createElement('h3');title.textContent=item.title[l];
     const fit=document.createElement('p');fit.className='portfolio-card__fit';fit.textContent=item.fit[l];
     const more=document.createElement('span');more.className='portfolio-card__more';more.textContent=locale[l].see;
-    const arrow=document.createElement('span');arrow.textContent='↗';arrow.setAttribute('aria-hidden','true');more.append(arrow);
+    const arrow=document.createElement('span');arrow.textContent='→';arrow.setAttribute('aria-hidden','true');more.append(arrow);
     body.append(kicker,title,fit,more);button.append(body);art.append(button);return art;
   }
   function paint(){
@@ -69,7 +69,7 @@
     }
     const matching=items.filter(x=>activeCategory==='all'||x.category===activeCategory);
     $('portfolioGallery').replaceChildren(...matching.map((x,i)=>createCard(x,i)));
-    setText('portfolioResults',d.show(matching.length));
+    setText('portfolioResults',d.show(matching.length));window.SCWORK_REVEAL?.();
     $('portfolioDialogClose').setAttribute('aria-label',d.close);
     updateAddress();
   }

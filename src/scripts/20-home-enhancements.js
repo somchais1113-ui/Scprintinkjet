@@ -3,8 +3,8 @@
   const isThai=() => document.documentElement.lang === 'th';
   const t = () => isThai() ? {
     socialEyebrow:'',
-    socialTitle:'ลูกค้าที่ร่วมงานกับเรา',
-    socialDescription:'ขอบคุณที่ไว้วางใจให้ SCWork ดูแลงานพิมพ์สติกเกอร์ของคุณ',
+    socialTitle:'ได้รับความไว้วางใจจาก',
+    socialDescription:'',
     socialNav:'ลูกค้าของเรา',
     previewLogos:'โลโก้ตัวอย่างสำหรับดูการจัดวาง',
     pauseLogos:'หยุดเลื่อนโลโก้',
@@ -30,8 +30,8 @@
     messenger:'Messenger'
   } : {
     socialEyebrow:'',
-    socialTitle:'Clients we’ve worked with',
-    socialDescription:'Thank you for trusting SCWork with your sticker printing projects.',
+    socialTitle:'Trusted by',
+    socialDescription:'',
     socialNav:'Clients',
     previewLogos:'Logo mockups for layout preview',
     pauseLogos:'Pause logo animation',
@@ -117,36 +117,9 @@
       pause.onclick=()=>{logosPaused=!logosPaused;updatePause();};
     }
     marquee.classList.toggle('has-loop',moves);
-    const groups=[];
-    // Equal-width strips include the final gap, so -50% lands exactly on the next strip.
-    const repeats=moves?Math.ceil(8/logos.length):1;
-    track.style.setProperty('--logo-duration',Math.max(64,repeats*logos.length*8.5)+'s');
-    function logoGroup(clone){
-      const group=document.createElement('div');
-      group.className=clone?'sc-client-credits__group sc-client-credits__group--clone':'sc-client-credits__group';
-      if(clone)group.setAttribute('aria-hidden','true');
-      for(let pass=0;pass<repeats;pass++){
-        for(const {name,src} of logos){
-          const chip=document.createElement('span'),img=document.createElement('img');
-          chip.className='sc-client-credits__logo'+(pass?' sc-client-credits__logo--repeat':'');
-          if(pass)chip.setAttribute('aria-hidden','true');
-          img.alt=clone||pass?'':name;
-          img.decoding='async';
-          img.addEventListener('error',()=>{
-            if(signature!==logoSignature||brokenLogoSources.has(src))return;
-            brokenLogoSources.add(src);
-            renderClientLogos();
-          },{once:true});
-          img.src=src;
-          chip.appendChild(img);
-          group.appendChild(chip);
-        }
-      }
-      return group;
-    }
-    if(logos.length)groups.push(logoGroup(false));
-    if(moves)groups.push(logoGroup(true));
-    track.replaceChildren(...groups);
+    const second=byId('scClientLogoTrackSecond');const rows=moves?[logos.filter((_,i)=>i%2===0),logos.filter((_,i)=>i%2===1)]:[logos,[]];
+    [track,second].forEach((row,index)=>{if(!row)return;const list=rows[index];row.hidden=!list.length;if(!list.length){row.replaceChildren();return;}const repeats=moves?Math.ceil(12/list.length):1;row.style.setProperty('--logo-duration',Math.max(45,repeats*list.length*3)+'s');function group(clone){const g=document.createElement('div');g.className='sc-client-credits__group'+(clone?' sc-client-credits__group--clone':'');if(clone)g.setAttribute('aria-hidden','true');for(let pass=0;pass<repeats;pass++)for(const {name,src} of list){const chip=document.createElement('span'),img=document.createElement('img');chip.className='sc-client-credits__logo'+(pass?' sc-client-credits__logo--repeat':'');if(pass)chip.setAttribute('aria-hidden','true');img.alt=clone||pass?'':name;img.decoding='async';img.addEventListener('error',()=>{if(signature!==logoSignature||brokenLogoSources.has(src))return;brokenLogoSources.add(src);renderClientLogos();},{once:true});img.src=src;chip.append(img);g.append(chip);}return g;}row.replaceChildren(...(moves?[group(false),group(true)]:[group(false)]));});if(pause)pause.hidden=!moves;
+
   }
 
   function renderStaticCopy(){
