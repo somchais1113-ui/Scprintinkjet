@@ -1,3 +1,11 @@
+# V2.1.67 — Portfolio experience refinement
+
+- Homepage now features the first six concept studies; all ten remain in the directory.
+- V3 Thai narrative retained for all 70 sections, with editorial English localization. Added headline, section navigation, rationale panels, identity palette, proposed techniques and deliverables, paragraph rhythm, reveal/hover motion. Continuous reversible timeline retained.
+- Removed circular client logo pause icon and extra spacing; unobtrusive text control retains access to pause/resume continuous animation. Other carousel controls unchanged.
+- Removed repeated long portfolio disclaimers; concise CONCEPT PROJECT / โครงการจำลอง label retained. ECOLABEL uses existing logo in place of image with unverified recycling wording. Original assets remain; no new photography.
+- Source and public-release mirrored. Browser visual QA still required before production merge.
+
 ## V2.1.66 — Asset integration completed
 
 - Installed 10 concept logos, 20 card/hero images and the bilingual project data in source and public-release. Every asset's Git blob SHA matches the prepared package. Existing low-resolution images retained; visual QA pending.
