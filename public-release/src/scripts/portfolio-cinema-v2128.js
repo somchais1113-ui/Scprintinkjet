@@ -10,16 +10,16 @@
   if(slides.length!==4||!prev||!next||!pause)return;
   const words={
     th:[
-      {label:'SCWORK / PRODUCT LABELS',title:'ฉลากสินค้าคุณภาพ พร้อมผลิต',text:'ตั้งแต่ตรวจไฟล์และเลือกวัสดุ ไปจนถึงพิมพ์และตรวจฉลากให้เหมาะกับบรรจุภัณฑ์'},
+      {label:'SCWORK / PRODUCT LABELS',title:'แนวคิดฉลากสำหรับแบรนด์',text:'ตั้งแต่ตรวจไฟล์และเลือกวัสดุ ไปจนถึงพิมพ์และตรวจฉลากให้เหมาะกับบรรจุภัณฑ์'},
       {label:'SCWORK / DIE-CUT STICKERS',title:'สติกเกอร์ไดคัท ตามรูปทรง',text:'สร้างชิ้นงานเฉพาะตัวด้วยการพิมพ์สี ตรวจแนวตัด และเก็บรายละเอียดก่อนส่งมอบ'},
       {label:'SCWORK / RETAIL GRAPHICS',title:'กราฟิกหน้าร้านและงานขนาดใหญ่',text:'เตรียมขนาด วัสดุ และงานติดตั้งให้เหมาะกับกระจก ผนัง หรือพื้นที่สื่อสารแบรนด์'},
-      {label:'SCWORK / PRINT & QC',title:'ใส่ใจคุณภาพในทุกขั้นตอน',text:'ตรวจสี งานพิมพ์ วัสดุ และความเรียบร้อยของชิ้นงาน เพื่อเตรียมพร้อมก่อนส่งมอบ'}
+      {label:'SCWORK / PRINT & QC',title:'วางแผนการผลิตและตรวจงาน',text:'ตรวจสี งานพิมพ์ วัสดุ และความเรียบร้อยของชิ้นงาน เพื่อเตรียมพร้อมก่อนส่งมอบ'}
     ],
     en:[
-      {label:'SCWORK / PRODUCT LABELS',title:'Labels ready for production',text:'Review artwork, select the right substrate, print and check labels for the intended package.'},
+      {label:'SCWORK / PRODUCT LABELS',title:'Product label project studies',text:'Review artwork, select the right substrate, print and check labels for the intended package.'},
       {label:'SCWORK / DIE-CUT STICKERS',title:'Custom-shaped die-cut stickers',text:'Printed shapes, cutting paths and finishing details tailored to each application.'},
       {label:'SCWORK / RETAIL GRAPHICS',title:'Retail & large-format graphics',text:'Plan dimensions, stock and installation for windows, walls and branded spaces.'},
-      {label:'SCWORK / PRINT & QC',title:'Quality at each production stage',text:'Check colour, printing, materials and finishing before the work is prepared for delivery.'}
+      {label:'SCWORK / PRINT & QC',title:'Production planning and review',text:'Check colour, printing, materials and finishing before the work is prepared for delivery.'}
     ]
   };
   const reduced=window.matchMedia?.('(prefers-reduced-motion: reduce)');
@@ -29,7 +29,7 @@
   function copy(){
     const th=lang()==='th',story=words[lang()][index];
     heading.textContent=story.title;intro.textContent=story.text;eyebrow.textContent=story.label;
-    crumb.textContent=th?'หน้าแรก / ผลงาน':'Home / Portfolio';cta.textContent=th?'ดูผลงานทั้งหมด':'Explore all work';
+    crumb.textContent=th?'หน้าแรก / ผลงาน':'Home / Portfolio';cta.textContent=th?'ดูกรณีตัวอย่าง':'Explore project studies';
     counter.querySelector('strong').textContent=String(index+1).padStart(2,'0');
     counter.setAttribute('aria-label',th?`สไลด์ ${index+1} จาก 4`:`Slide ${index+1} of 4`);
     dots.forEach((dot,i)=>{dot.classList.toggle('is-active',i===index);dot.setAttribute('aria-pressed',String(i===index));dot.setAttribute('aria-label',th?`สไลด์ ${i+1}`:`Slide ${i+1}`);});

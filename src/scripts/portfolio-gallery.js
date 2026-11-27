@@ -15,8 +15,8 @@
     en:{all:'All work',labels:'Product labels',diecut:'Die-cut stickers',retail:'Retail & large format',process:'Production process'}
   };
   const locale={
-    th:{home:'หน้าแรก',knowledge:'ความรู้งานพิมพ์',quote:'ปรึกษางาน',crumb:'หน้าแรก / ผลงาน',eyebrow:'SCWORK / DESIGN & PRODUCTION',title:'ตัวอย่างงานและกระบวนการผลิต',intro:'สำรวจประเภทงานที่เราสามารถช่วยวางแผนผลิต พร้อมตัวอย่างตั้งแต่การเตรียมไฟล์ ตรวจวัสดุ พิมพ์ ไดคัท ไปจนถึงการติดตั้ง',visual:'ภาพตัวอย่าง',browseEyebrow:'EXPLORE THE WORK',browse:'สำรวจรูปแบบงาน',browseLead:'เลือกหมวดเพื่อดูภาพตัวอย่าง จุดเด่น และงานที่เหมาะสม',show:n=>`แสดง ${n} จาก ${items.length} ภาพ`,fit:'เหมาะกับ',see:'ดูภาพและรายละเอียด',note:'ข้อควรพิจารณา',disclaimer:'',consult:'มีงานแบบนี้ที่อยากผลิต?',consultText:'แจ้งประเภทงาน ขนาด วัสดุ จำนวน และวิธีใช้งาน เพื่อให้ทีมงานช่วยพิจารณาสเปกและแนวทางผลิตก่อนเสนอราคา',consultCta:'ปรึกษางานของคุณ',footer:'ภาพตัวอย่าง ไม่ใช่หลักฐานผลงานลูกค้าหรือคำรับรองวัสดุ',dialogNotice:'ภาพประกอบใช้แสดงแนวคิดและขั้นตอน ไม่ใช่ภาพงานลูกค้าจริง',dialogQuote:'ปรึกษางานประเภทนี้',close:'ปิดภาพขยาย'},
-    en:{home:'Home',knowledge:'Print knowledge',quote:'Discuss a project',crumb:'Home / Portfolio',eyebrow:'SCWORK / DESIGN & PRODUCTION',title:'Work types & production process',intro:'Explore the sticker applications we can help plan—from artwork and material checks to printing, cutting, finishing and installation.',visual:'illustrations',browseEyebrow:'EXPLORE THE WORK',browse:'Explore the work',browseLead:'Browse applications and practical considerations by category',show:n=>`Showing ${n} of ${items.length} images`,fit:'Best suited for',see:'View image & details',note:'Production consideration',disclaimer:'',consult:'Thinking of a similar project?',consultText:'Share the application, size, material, quantity and site requirements to discuss feasible production specifications.',consultCta:'Discuss your project',footer:'Illustrative visuals, not documented client projects or material warranties',dialogNotice:'Illustrative scene, not a documented client order or team photograph',dialogQuote:'Discuss this type of work',close:'Close enlarged image'}
+    th:{home:'หน้าแรก',knowledge:'ความรู้งานพิมพ์',quote:'ปรึกษางาน',crumb:'หน้าแรก / ผลงาน',eyebrow:'SCWORK / DESIGN & PRODUCTION',title:'ตัวอย่างงานและกระบวนการผลิต',intro:'สำรวจประเภทงานที่เราสามารถช่วยวางแผนผลิต พร้อมตัวอย่างตั้งแต่การเตรียมไฟล์ ตรวจวัสดุ พิมพ์ ไดคัท ไปจนถึงการติดตั้ง',visual:'ภาพตัวอย่าง',browseEyebrow:'EXPLORE THE WORK',browse:'สำรวจกรณีตัวอย่าง',browseLead:'เลือกหมวดเพื่อดูโจทย์ แนวทางออกแบบ และข้อควรพิจารณาก่อนผลิต',show:n=>`แสดง ${n} จาก ${items.length} กรณีตัวอย่าง`,fit:'เหมาะกับ',see:'อ่านรายละเอียดโปรเจกต์',note:'ข้อควรพิจารณา',disclaimer:'',consult:'มีงานแบบนี้ที่อยากผลิต?',consultText:'แจ้งประเภทงาน ขนาด วัสดุ จำนวน และวิธีใช้งาน เพื่อให้ทีมงานช่วยพิจารณาสเปกและแนวทางผลิตก่อนเสนอราคา',consultCta:'ปรึกษางานของคุณ',footer:'ภาพตัวอย่าง ไม่ใช่หลักฐานผลงานลูกค้าหรือคำรับรองวัสดุ',dialogNotice:'ภาพประกอบใช้แสดงแนวคิดและขั้นตอน ไม่ใช่ภาพงานลูกค้าจริง',dialogQuote:'ปรึกษางานประเภทนี้',close:'ปิดภาพขยาย'},
+    en:{home:'Home',knowledge:'Print knowledge',quote:'Discuss a project',crumb:'Home / Portfolio',eyebrow:'SCWORK / DESIGN & PRODUCTION',title:'Work types & production process',intro:'Explore the sticker applications we can help plan—from artwork and material checks to printing, cutting, finishing and installation.',visual:'illustrations',browseEyebrow:'EXPLORE THE WORK',browse:'Explore project studies',browseLead:'Explore the brief, design approach and production considerations by category',show:n=>`Showing ${n} of ${items.length} examples`,fit:'Best suited for',see:'Read project study',note:'Production consideration',disclaimer:'',consult:'Thinking of a similar project?',consultText:'Share the application, size, material, quantity and site requirements to discuss feasible production specifications.',consultCta:'Discuss your project',footer:'Illustrative visuals, not documented client projects or material warranties',dialogNotice:'Illustrative scene, not a documented client order or team photograph',dialogQuote:'Discuss this type of work',close:'Close enlarged image'}
   };
   const th=()=>lang==='th';
   const language=()=>th()?'th':'en';
@@ -30,7 +30,7 @@
     setText('portfolioDialogFit',(l==='th'?'เหมาะกับ: ':'Best suited for: ')+item.fit[l]);
     setText('portfolioDialogNote',(l==='th'?'สิ่งที่ควรรู้: ':'Note: ')+item.note[l]);
     setText('portfolioDialogNotice',locale[l].dialogNotice);
-    const img=$('portfolioDialogImage');img.src=item.image;img.alt=item.title[l];
+    const img=$('portfolioDialogImage');img.src=item.cover||item.image;img.alt=item.title[l];
     const quote=$('portfolioDialogQuote');quote.textContent=locale[l].dialogQuote+' →';quote.href=withLang('./smart-quote.html?mode=help');
     if(!d.open)d.showModal();
     $('portfolioDialogClose').focus();
@@ -42,15 +42,15 @@
     const button=document.createElement('a');button.href=withLang('./portfolio-detail.html?work='+encodeURIComponent(item.id));button.className='portfolio-card__open';
     button.setAttribute('aria-label',`${item.title[l]} — ${locale[l].see}`);
     const imageWrap=document.createElement('span');imageWrap.className='portfolio-card__media';
-    const img=document.createElement('img');img.src=item.image;img.alt=item.title[l];img.loading=index<3?'eager':'lazy';img.decoding='async';img.addEventListener('error',()=>{if(!img.src.includes('placeholder.svg'))img.src='./assets/images/placeholder.svg';},{once:true});
-    imageWrap.append(img);button.append(imageWrap);
+    const img=document.createElement('img');img.src=item.cover||item.image;img.alt=item.title[l];img.loading=index<3?'eager':'lazy';img.decoding='async';img.addEventListener('error',()=>{if(!img.src.includes('placeholder.svg'))img.src='./assets/images/placeholder.svg';},{once:true});
+    imageWrap.append(img);const top=document.createElement('span');top.className='sc-gallery-project-top';const code=document.createElement('span');code.className='portfolio-card__category';code.textContent='SCWORK / '+item.id.slice(-2);top.append(code);if(item.mockBrand){const brand=document.createElement('span');brand.className='sc-mock-brand';const logo=document.createElement('img');logo.src=item.mockBrand.logo;logo.alt=item.mockBrand.name;logo.width=168;logo.height=48;const label=document.createElement('small');label.textContent='BRAND MOCKUP';brand.append(logo,label);top.append(brand);}button.append(top,imageWrap);
     const body=document.createElement('span');body.className='portfolio-card__body';
     const kicker=document.createElement('span');kicker.className='portfolio-card__category';kicker.textContent=`${String(index+1).padStart(2,'0')} / ${categories[l][item.category]}`;
     const title=document.createElement('h3');title.textContent=item.title[l];
     const fit=document.createElement('p');fit.className='portfolio-card__fit';fit.textContent=item.fit[l];
     const more=document.createElement('span');more.className='portfolio-card__more';more.textContent=locale[l].see;
     const arrow=document.createElement('span');arrow.textContent='→';arrow.setAttribute('aria-hidden','true');more.append(arrow);
-    body.append(kicker,title,fit,more);button.append(body);art.append(button);return art;
+    const summary=document.createElement('p');summary.className='sc-project-summary';summary.textContent=item.summary?.[l]||'';body.append(kicker,title,fit,summary,more);button.append(body);art.append(button);return art;
   }
   function paint(){
     const l=language(),d=locale[l];document.documentElement.lang=lang;
@@ -70,7 +70,7 @@
     const matching=items.filter(x=>activeCategory==='all'||x.category===activeCategory);
     $('portfolioGallery').replaceChildren(...matching.map((x,i)=>createCard(x,i)));
     setText('portfolioResults',d.show(matching.length));window.SCWORK_REVEAL?.();
-    $('portfolioDialogClose').setAttribute('aria-label',d.close);
+    $('portfolioDialogClose')?.setAttribute('aria-label',d.close);
     updateAddress();
   }
   $('portfolioDialogClose')?.addEventListener('click',()=>$('portfolioDialog')?.close());
