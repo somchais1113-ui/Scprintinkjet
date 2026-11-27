@@ -1,3 +1,10 @@
+# V2.1.70 — Cinematic Knowledge Hero
+
+- Replaces the split Knowledge banner with full-width five-slide editorial photography, navy gradient, left-aligned copy and orange directory CTA.
+- Reuses five distinct existing 1200×750 WebP knowledge images (original artwork plus four additional slides); no duplicate binaries or new image generation.
+- 7.4-second autoplay, 880ms crossfade, subtle zoom, manual arrows/dots, pause/resume, keyboard, touch swipe, focus/hover/visibility pause and reduced motion.
+- Thai/English copy follows existing locale changes. Directory search, filtering, all 15 articles and V2.1.69 cover hover retained. Other pages unchanged. Browser visual QA pending.
+
 # V2.1.69 — Typography & interaction refinement
 
 - Increased all case timeline headings by 18% and English eyebrow by 13.6%, preserving icons, content and scroll-linked rail.

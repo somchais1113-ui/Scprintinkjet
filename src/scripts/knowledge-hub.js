@@ -35,9 +35,7 @@
  function refresh(){
   const contentLang=['th','en'].includes(lang)?lang:'en',d=dict[contentLang];
   document.documentElement.lang=contentLang;
-  $('knowledgeTitle').textContent=d.title;$('knowledgeIntro').textContent=d.intro;
   $('knowledgeBack').textContent=d.back;$('knowledgeBack').href=`./index.html?lang=${encodeURIComponent(lang)}#blog`;
-  $('knowledgeFeatureLabel').textContent=d.feature;$('knowledgeFeatureText').textContent=d.featureText;
   $('knowledgeBrowseTitle').textContent=d.browse;
   $('knowledgeSearch').placeholder=d.search;$('knowledgeSearchLabel').textContent=d.searchLabel;
   $('knowledgeConsultTitle').textContent=d.consult;$('knowledgeConsultText').textContent=d.consultText;

@@ -18,9 +18,12 @@
   <script defer src="./data/site-data.js?v=2.1.28"></script>
   <script defer src="./data/extra-locales.js?v=2.1.1"></script>
   <script defer src="./src/scripts/i18n.js?v=2.1.23"></script>
-  <script defer src="./src/scripts/knowledge-hub.js?v=2.1.69"></script>
+  <script defer src="./src/scripts/knowledge-hub.js?v=2.1.70"></script>
   <script defer src="./src/scripts/language-modal.js?v=2.1.1"></script>
-<link rel="stylesheet" href="./src/styles/51-refinement-v2169.css?v=2.1.69"></head>
+<link rel="stylesheet" href="./src/styles/51-refinement-v2169.css?v=2.1.69">
+  <link rel="stylesheet" href="./src/styles/52-knowledge-hero-v2170.css?v=2.1.70">
+  <script defer src="./src/scripts/knowledge-hero-v2170.js?v=2.1.70"></script>
+</head>
 <body class="knowledge-page">
   <a class="skip" href="#knowledgeMain">ข้ามไปเนื้อหา</a>
   <header class="article-header knowledge-header">
@@ -29,15 +32,37 @@
       <div class="article-header__right"><div class="sc-locale sc-locale--compact" id="scLocale" data-language-launcher></div><a class="back-link" id="knowledgeBack" href="./index.html#blog">← กลับหน้าหลัก</a></div>
     </div>
   </header>
-  <main id="knowledgeMain" class="knowledge-shell">
-    <div class="knowledge-heading">
-      <p class="knowledge-overline" id="knowledgeEyebrow">SCWORK / PRINT KNOWLEDGE</p>
-      <div class="knowledge-heading__grid">
-        <h1 id="knowledgeTitle">ความรู้งานพิมพ์สติกเกอร์</h1>
-        <p id="knowledgeIntro">บทความแนะนำตั้งแต่เลือกวัสดุ เตรียมไฟล์ ไปจนถึงวางแผนการใช้งานจริง</p>
+  <main id="knowledgeMain">
+    <section id="knowledgeHero" class="sc-knowledge-hero" aria-roledescription="carousel" aria-label="ความรู้งานพิมพ์ 5 หัวข้อ">
+      <div class="sc-kh-media" aria-hidden="true">
+        <div class="sc-kh-slide is-active" data-kh-slide style="--kh-focus:68% 48%"><img src="./assets/images/knowledge/artwork-preflight.webp" width="1200" height="750" alt="" fetchpriority="high" loading="eager" decoding="async"></div>
+        <div class="sc-kh-slide" data-kh-slide style="--kh-focus:72% 50%"><img src="./assets/images/knowledge/sticker-material-guide.webp" width="1200" height="750" alt="" loading="lazy" decoding="async"></div>
+        <div class="sc-kh-slide" data-kh-slide style="--kh-focus:76% 45%"><img src="./assets/images/knowledge/photo-cold-bottle.webp" width="1200" height="750" alt="" loading="lazy" decoding="async"></div>
+        <div class="sc-kh-slide" data-kh-slide style="--kh-focus:75% 50%"><img src="./assets/images/knowledge/photo-sheet-roll.webp" width="1200" height="750" alt="" loading="lazy" decoding="async"></div>
+        <div class="sc-kh-slide" data-kh-slide style="--kh-focus:76% 50%"><img src="./assets/images/knowledge/photo-outdoor-window.webp" width="1200" height="750" alt="" loading="lazy" decoding="async"></div>
       </div>
-      <div class="knowledge-feature"><img src="./assets/images/knowledge/artwork-preflight.webp" alt="ตัวอย่างงานตรวจสีและเตรียมไฟล์พิมพ์" loading="eager"><div><span id="knowledgeFeatureLabel">เริ่มต้นอย่างมั่นใจ</span><p id="knowledgeFeatureText">เลือกอ่านหัวข้อที่สนใจ แล้วใช้ข้อมูลสำคัญไปเตรียมสเปกก่อนขอราคา</p></div></div>
-    </div>
+      <div class="sc-kh-shade" aria-hidden="true"></div>
+      <div class="knowledge-shell sc-kh-content">
+        <div class="sc-kh-copy" id="knowledgeHeroCopy">
+          <p class="sc-kh-crumb" id="knowledgeHeroCrumb">หน้าแรก / ความรู้งานพิมพ์</p>
+          <p class="sc-kh-eyebrow" id="knowledgeEyebrow">SCWORK / PRINT KNOWLEDGE</p>
+          <h1 id="knowledgeTitle">ความรู้งานพิมพ์สติกเกอร์</h1>
+          <p id="knowledgeIntro">เข้าใจวัสดุ การเตรียมไฟล์ และกระบวนการผลิต เพื่อเลือกแนวทางที่เหมาะกับงานของคุณ</p>
+          <a class="sc-kh-cta" id="knowledgeHeroCta" href="#knowledgeBrowseTitle">สำรวจบทความทั้งหมด <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="sc-kh-controls" id="knowledgeHeroControls" hidden>
+          <span class="sc-kh-counter" id="knowledgeHeroCounter"><strong>01</strong> / 05</span>
+          <div class="sc-kh-arrows">
+            <button type="button" id="knowledgeHeroPrev" aria-label="ภาพก่อนหน้า"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7"/></svg></button>
+            <button type="button" id="knowledgeHeroPause" aria-label="หยุดเล่นสไลด์" aria-pressed="false"><svg class="sc-kh-pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5v14M15 5v14"/></svg><svg class="sc-kh-play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg></button>
+            <button type="button" id="knowledgeHeroNext" aria-label="ภาพถัดไป"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+          </div>
+          <div class="sc-kh-dots" id="knowledgeHeroDots" role="group" aria-label="เลือกสไลด์"><button type="button" data-kh-dot="0" aria-label="สไลด์ 1" aria-pressed="true" class="is-active"><span></span></button><button type="button" data-kh-dot="1" aria-label="สไลด์ 2" aria-pressed="false"><span></span></button><button type="button" data-kh-dot="2" aria-label="สไลด์ 3" aria-pressed="false"><span></span></button><button type="button" data-kh-dot="3" aria-label="สไลด์ 4" aria-pressed="false"><span></span></button><button type="button" data-kh-dot="4" aria-label="สไลด์ 5" aria-pressed="false"><span></span></button></div>
+          <span class="sr-only" id="knowledgeHeroStatus" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+    <div class="knowledge-shell">
     <section class="knowledge-directory" aria-labelledby="knowledgeBrowseTitle">
       <div class="knowledge-directory__head"><h2 id="knowledgeBrowseTitle">สำรวจบทความทั้งหมด</h2><p id="knowledgeResultCount" role="status" aria-live="polite">15 บทความ</p></div>
       <div class="knowledge-controls">
@@ -48,6 +73,7 @@
       <p class="knowledge-empty" id="knowledgeEmpty" hidden>ไม่พบบทความที่ตรงกับคำค้นหา ลองเปลี่ยนคำหรือเลือกหมวดทั้งหมด</p>
     </section>
     <section class="knowledge-consult"><div><p class="knowledge-overline" id="knowledgeConsultEyebrow">LET'S MAKE IT WORK</p><h2 id="knowledgeConsultTitle">มีงานสติกเกอร์ที่อยากปรึกษา?</h2><p id="knowledgeConsultText">นำขนาด วัสดุ จำนวน และตัวอย่างงานมาปรึกษาเพื่อเลือกสเปกที่เหมาะสม</p></div><a id="knowledgeConsultButton" class="knowledge-button" href="./smart-quote.html?mode=help">ปรึกษาเรื่องสเปกงาน ↗</a></section>
+    </div>
   </main>
   <footer class="article-footer"><div class="article-shell"><span>© 2026 SCWork</span><span id="knowledgeFooterText">บทความเพื่อให้ความรู้ทั่วไป · ควรตรวจสอบสเปกวัสดุจริงก่อนผลิต</span></div></footer>
 </body>
