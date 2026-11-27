@@ -1,3 +1,9 @@
+# V2.1.68 — Brand-led editorial heroes
+
+- Increased project card logo size approximately 12.5%. Soft grayscale logo strip returns to colour on hover/focus/touch. No approved customer logos exist in source; clearly labelled concept identities replace sample placeholders until real assets are registered.
+- All 10 case heroes updated: six full-bleed photographic gradients, three native-size compact visuals, one ECOLABEL identity graphic. Three project-specific scope cards with links to case sections, editorial motion and responsive layout. No fabricated metrics.
+- Existing V3 case content, timeline, homepage six and gallery ten retained. Source and public-release mirrored. Visual QA pending.
+
 # V2.1.67 — Portfolio experience refinement
 
 - Homepage now features the first six concept studies; all ten remain in the directory.

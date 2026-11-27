@@ -94,9 +94,14 @@
     const track=byId('scClientLogoTrack'),logosArea=byId('client-logos'),marquee=byId('scClientLogoMarquee'),pause=byId('scClientLogoPause'),note=byId('scClientLogoPreviewNote');
     if(!track||!logosArea||!marquee)return;
     const actual=availableLogos(window.SCWORK_CLIENT_LOGOS,validLogo);
-    const logos=actual.length?actual:availableLogos(window.SCWORK_CLIENT_LOGO_MOCKUPS,validMockup);
+    const conceptLogos=(window.SCWORK_CONCEPT_PROJECTS||[]).map(item=>({name:item.mockBrand?.name,src:item.mockBrand?.logo}));
+    const validConcept=item=>validLogoName(item)&&/^\.\/assets\/images\/portfolio\/concept-10\/[a-z0-9-]+\/logo\.svg$/i.test(String(item.src||'').trim());
+    const logos=actual.length?actual:availableLogos(conceptLogos,validConcept);
     const isPreview=!actual.length&&logos.length>0;
-    if(note){note.hidden=!isPreview;note.textContent=t().previewLogos;}
+    const th=document.documentElement.lang==='th';
+    setText('socialProofTitle',actual.length?t().socialTitle:(th?'อัตลักษณ์จาก Concept Projects':'Identities from concept projects'));
+    if(note){note.hidden=!isPreview;note.textContent=th?'โลโก้จากโครงการจำลอง':'Concept project identities';}
+    const section=byId('about');if(section?.classList.contains('sc-client-credits'))section.hidden=!logos.length;
     function updatePause(){
       marquee.classList.toggle('is-paused',logosPaused);
       if(pause){
@@ -118,7 +123,7 @@
     }
     marquee.classList.toggle('has-loop',moves);
     const second=byId('scClientLogoTrackSecond');const rows=moves?[logos.filter((_,i)=>i%2===0),logos.filter((_,i)=>i%2===1)]:[logos,[]];
-    [track,second].forEach((row,index)=>{if(!row)return;const list=rows[index];row.hidden=!list.length;if(!list.length){row.replaceChildren();return;}const repeats=moves?Math.ceil(12/list.length):1;row.style.setProperty('--logo-duration',Math.max(45,repeats*list.length*3)+'s');function group(clone){const g=document.createElement('div');g.className='sc-client-credits__group'+(clone?' sc-client-credits__group--clone':'');if(clone)g.setAttribute('aria-hidden','true');for(let pass=0;pass<repeats;pass++)for(const {name,src} of list){const chip=document.createElement('span'),img=document.createElement('img');chip.className='sc-client-credits__logo'+(pass?' sc-client-credits__logo--repeat':'');if(pass)chip.setAttribute('aria-hidden','true');img.alt=clone||pass?'':name;img.decoding='async';img.addEventListener('error',()=>{if(signature!==logoSignature||brokenLogoSources.has(src))return;brokenLogoSources.add(src);renderClientLogos();},{once:true});img.src=src;chip.append(img);g.append(chip);}return g;}row.replaceChildren(...(moves?[group(false),group(true)]:[group(false)]));});if(pause)pause.hidden=!moves;
+    [track,second].forEach((row,index)=>{if(!row)return;const list=rows[index];row.hidden=!list.length;if(!list.length){row.replaceChildren();return;}const repeats=moves?Math.ceil(12/list.length):1;row.style.setProperty('--logo-duration',Math.max(45,repeats*list.length*3)+'s');function group(clone){const g=document.createElement('div');g.className='sc-client-credits__group'+(clone?' sc-client-credits__group--clone':'');if(clone)g.setAttribute('aria-hidden','true');for(let pass=0;pass<repeats;pass++)for(const {name,src} of list){const chip=document.createElement('span'),img=document.createElement('img');chip.className='sc-client-credits__logo'+(pass?' sc-client-credits__logo--repeat':'');if(pass)chip.setAttribute('aria-hidden','true');if(!clone&&!pass)chip.tabIndex=0;img.alt=clone||pass?'':name;img.decoding='async';img.addEventListener('error',()=>{if(signature!==logoSignature||brokenLogoSources.has(src))return;brokenLogoSources.add(src);renderClientLogos();},{once:true});img.src=src;chip.append(img);g.append(chip);}return g;}row.replaceChildren(...(moves?[group(false),group(true)]:[group(false)]));});if(pause)pause.hidden=!moves;
 
   }
 
