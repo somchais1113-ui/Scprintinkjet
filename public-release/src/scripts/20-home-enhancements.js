@@ -61,7 +61,7 @@
   const socialValue=(field)=>String(window.SCWORK_PUBLIC_CONTACT?.[field]||window.PROCLEANING_SITE?.contact?.[field]||'').trim();
   const safePhone=(raw)=>{const str=String(raw||'').trim();return /^[+\d() .-]{7,24}$/.test(str)&&str.replace(/\D/g,'').length>=8?str:'';};
   const safeUrl=(raw, rx)=>{const str=String(raw||'').trim();return rx.test(str)?str:'';};
-  const unavailableContactHref=() => location.pathname.endsWith('/') || location.pathname.endsWith('/index.html') ? '#contact' : './index.html#contact';
+  const unavailableContactHref=() => './smart-quote.html?mode=help&lang='+encodeURIComponent(document.documentElement.lang||'th');
   const byId=(id)=>document.getElementById(id);
   function setText(id, value){const el=byId(id);if(el && value!==undefined)el.textContent=String(value);}
   function setLink(id, value, href, fallback=unavailableContactHref()){

@@ -137,3 +137,10 @@ html[data-sc-support="ready"] .q-footer { padding-bottom: calc(22px + var(--sc-q
   .sc-helpbar { display: none !important; }
   html[data-sc-support="ready"] body { padding-bottom: 0; }
 }
+
+/* V2.1.73 global dock: preserve design and account for safe area and the quote dock. */
+html[data-sc-support="ready"]{scroll-padding-bottom:calc(var(--sc-support-h) + var(--sc-quote-dock-h) + 16px)}
+.sc-helpbar{z-index:90;border-radius:0 0 22px 22px}
+html[data-sc-support="ready"] :is(input,textarea,select,button,a):focus-visible{scroll-margin-bottom:calc(var(--sc-support-h) + var(--sc-quote-dock-h) + 12px)}
+@media(max-width:360px){.sc-helpbar__inner{grid-template-columns:40px minmax(0,1fr) auto;column-gap:6px}.sc-helpbar__bear{width:40px}.sc-helpbar__title{font-size:13px}.sc-helpbar__button{font-size:12px;padding-inline:7px}}
+@media print{html[data-sc-support="ready"]{scroll-padding-bottom:0}}
