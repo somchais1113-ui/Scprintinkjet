@@ -1,0 +1,23 @@
+
+/* Scoped homepage only: keep the approved Navy overlay, stagger and six real cards. */
+#portfolio.sc-portfolio{position:relative;isolation:isolate;overflow:hidden}
+#portfolio .sc-portfolio__grid:not(.sc-reflection-layer){position:relative;z-index:2}
+#portfolio .sc-portfolio__head{position:relative;z-index:2}
+#portfolio .sc-portfolio__grid.sc-reflection-layer{
+ position:absolute!important;inset:0!important;display:block!important;width:auto!important;max-width:none!important;
+ padding:0!important;margin:0!important;z-index:1;overflow:hidden;pointer-events:none;user-select:none;
+}
+#portfolio .sc-reflection-layer figure.sc-reflection-card{
+ position:absolute!important;left:var(--reflect-x)!important;top:var(--reflect-y)!important;
+ width:var(--reflect-width)!important;max-width:none!important;min-width:0!important;margin:0!important;
+ border:0!important;box-shadow:none!important;transform:none!important;translate:none!important;
+ opacity:.29!important;filter:blur(6px);transition:none!important;animation:none!important;
+ -webkit-mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.85) 26%,rgba(0,0,0,.28) 72%,transparent 100%);
+ mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.85) 26%,rgba(0,0,0,.28) 72%,transparent 100%);
+}
+#portfolio .sc-reflection-layer *{pointer-events:none!important;animation:none!important;transition:none!important}
+#portfolio .sc-reflection-layer figure img{transform:none!important}
+#portfolio .sc-reflection-layer .sc-work-arrow{background:#eef1f4;color:#08264f;transform:none!important}
+#about .sc-client-credits__logos{margin-top:clamp(15px,2vw,22px)}
+@media(max-width:850px){#portfolio .sc-reflection-layer figure.sc-reflection-card{filter:blur(5px);opacity:.25!important}}
+@media(max-width:560px){#portfolio .sc-portfolio__grid.sc-reflection-layer{display:none!important}}
