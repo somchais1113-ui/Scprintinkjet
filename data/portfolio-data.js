@@ -1,4 +1,4 @@
-/* SCWork V2.1.64 — 20 illustrative project studies and concept brand identities; not verified client work. */
+/* SCWork V2.1.65 — 20 illustrative case studies with technical methods and validation plans. */
 window.SCWORK_PORTFOLIO_ITEMS = [
   {
     "id": "work-01",
@@ -42,8 +42,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "Artwork แยก SKU และแบบจำลองบนภาชนะ พร้อมสเปกที่เสนอและจุดตรวจแบบ",
         "en": "SKU-specific artwork, container mockups, proposed specifications and proof checks."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "กำหนดไดไลน์จากพื้นที่ติดจริง ไม่ใช่เส้นรอบวงโดยประมาณ",
+          "ทำ Type Hierarchy สำหรับชื่อสูตรและข้อมูลสำคัญ",
+          "เปรียบเทียบ PP ขาวกับกระดาษผิวด้านบนภาชนะจริง"
+        ],
+        "en": [
+          "Build dielines from usable label area, not estimated circumference",
+          "Define type hierarchy for formula and essential copy",
+          "Compare white PP and matte paper on actual containers"
+        ]
+      },
+      "validation": {
+        "th": "ทดลองลอกและติดบนผิวที่สะอาด ตรวจรอยย่นและการอ่านเมื่อถือขวด",
+        "en": "Trial application on a clean surface; check wrinkles and legibility in hand."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-02.webp"
+    },
+    "service": "Packaging Design"
   },
   {
     "id": "work-02",
@@ -80,7 +98,25 @@ window.SCWORK_PORTFOLIO_ITEMS = [
         "th": "แม่แบบฉลากและ Artwork ราย SKU, ภาพ Mockup รวมไลน์, ตารางสเปกวัสดุ และรายการตรวจปรู๊ฟสำหรับอนุมัติ",
         "en": "Label template, SKU artwork, range mockup, material specification table and proof approval checklist."
       },
-      "detailImage": "./assets/images/portfolio/gallery/work-02.webp"
+      "detailImage": "./assets/images/portfolio/gallery/work-02.webp",
+      "techniques": {
+        "th": [
+          "สร้าง Master Artwork ที่ล็อกตำแหน่งโลโก้และกำหนดระบบสีแยก SKU",
+          "ใช้ตัวอย่างพิมพ์บนวัสดุจริงเทียบสีภายใต้แสงที่ตกลง ไม่เทียบจากจอเพียงอย่างเดียว",
+          "วาง Bleed, Safe Area และระยะรอยต่อโดยอิงไดไลน์ของแต่ละภาชนะ",
+          "บันทึกวัสดุ กาว และ Revision ที่อนุมัติแยกตาม SKU"
+        ],
+        "en": [
+          "Build a master artwork with locked logo placement and SKU colour rules",
+          "Compare physical proofs under agreed lighting, not screen colour alone",
+          "Set bleed, safe area and seam clearance against each container dieline",
+          "Record approved material, adhesive and revision per SKU"
+        ]
+      },
+      "validation": {
+        "th": "ทดสอบติดจริงบนขวดและกระปุก ตรวจแนวรอยต่อ ความทึบ สีเทียบตัวอย่าง และการสัมผัสตามเงื่อนไขใช้งาน ก่อนอนุมัติผลิต",
+        "en": "Apply samples to bottles and jars; inspect seams, opacity, colour against reference and representative handling before production approval."
+      }
     },
     "mockBrand": {
       "name": "NATURAL",
@@ -89,7 +125,8 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "summary": {
       "th": "สร้างระบบฉลากหลาย SKU ให้สีและภาพลักษณ์สอดคล้องกัน",
       "en": "A coordinated multi-SKU label system with consistent colour and identity"
-    }
+    },
+    "service": "Brand Identity & Packaging"
   },
   {
     "id": "work-03",
@@ -132,8 +169,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ไดไลน์ตามรูปทรงและไฟล์ฉลากแยกขนาด พร้อมตัวอย่างจัดวาง",
         "en": "Shape-specific dielines, size-specific artwork and placement mockups."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "วัดพื้นที่ติดในแต่ละทรงและสร้าง Dieline แยก",
+          "ทำ Paper Mockup เพื่อตรวจความโค้งและตำแหน่งรอยต่อ",
+          "ปรับขนาดกราฟิกโดยรักษาขนาดตัวอักษรขั้นต่ำตามข้อกำหนดจริง"
+        ],
+        "en": [
+          "Measure each label zone and create separate dielines",
+          "Use a paper mockup to check curvature and seam location",
+          "Adapt graphics while respecting actual minimum type requirements"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจขอบฉลากบริเวณส่วนโค้งซ้อนและความตรงของกราฟิกหลังติด",
+        "en": "Inspect edge behaviour at compound curves and graphic alignment after application."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-02.webp"
+    },
+    "service": "Packaging Adaptation"
   },
   {
     "id": "work-04",
@@ -169,7 +224,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "Artwork แยกรสชาติ, ข้อเสนอวัสดุและกาว, แบบตรวจ และแผนทดลองติดก่อนผลิต",
         "en": "Flavour-specific artwork, proposed film and adhesive, approval proof and trial plan."
-      }
+      },
+      "techniques": {
+        "th": [
+          "เลือก Film Facestock และกาวโดยอิงชนิดพลาสติกหรือแก้วของขวด",
+          "กำหนดอุณหภูมิขณะติดและระยะเวลารอให้กาวยึดเกาะตามข้อมูลผู้ผลิต",
+          "ทดสอบ Condensation และ Wet Rub ด้วยตัวอย่างจริง",
+          "พิจารณาผิวเคลือบหรือลามิเนตเมื่อมีความเสี่ยงจากการเสียดสี"
+        ],
+        "en": [
+          "Select film facestock and adhesive for the actual bottle substrate",
+          "Define application temperature and adhesive dwell from supplier specifications",
+          "Trial condensation and wet-rub exposure on actual samples",
+          "Evaluate protective coating or laminate if abrasion is a concern"
+        ]
+      },
+      "validation": {
+        "th": "แช่เย็นและนำออกให้เกิดหยดน้ำตามรอบใช้งานที่ตกลง ตรวจการยกขอบ การเลื่อนของฉลาก และการอ่านข้อมูล ไม่สรุปผลก่อนทดลอง",
+        "en": "Use representative chilling and condensation cycles; inspect edge lift, label movement and legibility. Do not claim performance before testing."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-01.webp"
     },
     "mockBrand": {
       "name": "CITRUS",
@@ -178,7 +252,8 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "summary": {
       "th": "ฉลากเครื่องดื่มที่ออกแบบเผื่อหยดน้ำและการจับสัมผัส",
       "en": "Beverage labels designed around condensation and handling"
-    }
+    },
+    "service": "Beverage Packaging"
   },
   {
     "id": "work-05",
@@ -221,8 +296,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ชุดไฟล์พร้อมตรวจผลิตและตารางขนาด จำนวน และรูปแบบส่งมอบ",
         "en": "Artwork set for production review and a table of sizes, quantities and delivery formats."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "ตรวจ Effective Resolution ที่ขนาดพิมพ์จริง",
+          "จัดวางตามหน้ากว้างวัสดุและระยะเผื่อเครื่อง",
+          "ใช้ ICC Profile และสเปกไฟล์ที่โรงพิมพ์กำหนด"
+        ],
+        "en": [
+          "Check effective resolution at final print size",
+          "Impose for usable media width and machine margins",
+          "Use the printer's specified ICC profile and file requirements"
+        ]
+      },
+      "validation": {
+        "th": "เทียบปรู๊ฟ ตรวจ Banding และความสม่ำเสมอของสีตามตัวอย่างที่ยืนยัน",
+        "en": "Compare proofs; inspect banding and colour consistency against the approved sample."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-18.webp"
+    },
+    "service": "Digital Print"
   },
   {
     "id": "work-06",
@@ -258,7 +351,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ไฟล์ Graphic และ Die-cut แยกชั้น, แผนจัดชุด, รายการลาย และเกณฑ์ตรวจขอบตัด",
         "en": "Separate graphic and die-cut layers, pack plan, design list and contour inspection criteria."
-      }
+      },
+      "techniques": {
+        "th": [
+          "วาง Silhouette และ Optical Size ของคาแรกเตอร์ก่อนทำแนวตัด",
+          "สร้าง Cut Path แบบ Vector แยกจาก Graphic Layer และตั้งชื่อ Spot/Layer ตามระบบเครื่อง",
+          "กำหนดขอบขาวและ Bleed ตามความคลาดเคลื่อนของเครื่องตัดจริง",
+          "จัด Imposition โดยเว้นระยะระหว่างชิ้นและตำแหน่ง Registration Mark"
+        ],
+        "en": [
+          "Define character silhouettes and optical size before cutting paths",
+          "Keep vector cut paths separate from graphics with printer-specific spot/layer names",
+          "Set white borders and bleed from actual cutter tolerances",
+          "Plan imposition, spacing and registration marks"
+        ]
+      },
+      "validation": {
+        "th": "ทำ Test Cut ตรวจส่วนยื่นเล็ก การเหลื่อมพิมพ์กับตัด การลอก และจำนวนลายต่อชุด ก่อนผลิตล็อตจริง",
+        "en": "Run a test cut; inspect narrow projections, print-to-cut registration, peeling and pack composition before volume production."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-08.webp"
     },
     "mockBrand": {
       "name": "POP PAW",
@@ -267,7 +379,8 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "summary": {
       "th": "พัฒนาคาแรกเตอร์ให้กลายเป็นชุดของสะสมสำหรับแคมเปญ",
       "en": "Turn character artwork into collectible campaign stickers"
-    }
+    },
+    "service": "Character Branding"
   },
   {
     "id": "work-07",
@@ -310,8 +423,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ชุดลายและแนวตัดแยก พร้อมรายการตรวจชิ้นงาน",
         "en": "Design collection and separate contours with a piece inspection list."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "กำหนดชุดสีและน้ำหนักเส้นที่สม่ำเสมอ",
+          "ทดสอบมองที่ขนาดสำเร็จเพื่อคัดรายละเอียดที่เล็กเกินไป",
+          "ปรับขอบตัดให้รอบรูปอย่างต่อเนื่อง"
+        ],
+        "en": [
+          "Set consistent palette and stroke weight",
+          "Review actual-size designs to remove overly small details",
+          "Smooth cut contours around each shape"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจตัวอย่างขอบตัดและการลอกตามพื้นผิวที่ตั้งใจใช้",
+        "en": "Inspect sample contours and peeling for the intended surface."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-10.webp"
+    },
+    "service": "Campaign Design"
   },
   {
     "id": "work-08",
@@ -355,8 +486,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ไฟล์แนวตัดและแบบตรวจตัวอย่างก่อนอนุมัติ",
         "en": "Cut-path artwork and a sample approval checklist."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "ใช้ Vector Contour แบบปิดและลดจุด Anchor ที่ไม่จำเป็น",
+          "กำหนดความลึกใบมีดและแรงตัดจากการทดสอบวัสดุ",
+          "ตรวจ Registration Mark ก่อนเดินงาน"
+        ],
+        "en": [
+          "Use closed vector contours with unnecessary anchors removed",
+          "Determine blade depth and pressure by material test",
+          "Check registration marks before cutting"
+        ]
+      },
+      "validation": {
+        "th": "ทดสอบแนวตัดไม่ให้บาดแผ่นรองเกินความต้องการและไม่กินกราฟิก",
+        "en": "Test that cuts do not unnecessarily damage the liner or intrude into graphics."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-08.webp"
+    },
+    "service": "Contour Cutting"
   },
   {
     "id": "work-09",
@@ -399,8 +548,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "รายการลายต่อชุด รูปแบบแพ็ก และเกณฑ์ตรวจรับ",
         "en": "Design-per-pack list, packaging format and acceptance criteria."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "ตั้งรหัส Artwork และรายการลายต่อแพ็ก",
+          "จัดกลุ่มบนแผ่นให้ตรวจนับสะดวก",
+          "แยกงานไม่ผ่านออกก่อนบรรจุ"
+        ],
+        "en": [
+          "Assign artwork IDs and a design-per-pack list",
+          "Group sheet layouts for easy counting",
+          "Separate rejects before packing"
+        ]
+      },
+      "validation": {
+        "th": "สุ่มตรวจจำนวนและความครบถ้วนตามรายการที่ตกลง",
+        "en": "Sample counts and completeness against the agreed list."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-01.webp"
+    },
+    "service": "Campaign Fulfilment"
   },
   {
     "id": "work-10",
@@ -443,8 +610,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ชุด Artwork พร้อมแนวตัดและแบบจัดวางแคมเปญ",
         "en": "Artwork set, cut paths and campaign layout."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "ลดรายละเอียดในขนาดเล็กโดยรักษาเอกลักษณ์",
+          "จัดกลุ่มสีและลายตามธีม",
+          "ทดสอบ White Border และ Contour ที่ขนาดจริง"
+        ],
+        "en": [
+          "Simplify small details without losing identity",
+          "Group colours and artwork by theme",
+          "Trial white borders and contours at actual size"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจการอ่านรูปทรงและความสมบูรณ์ของขอบหลังตัด",
+        "en": "Check shape readability and edge integrity after cutting."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-07.webp"
+    },
+    "service": "Promotional Design"
   },
   {
     "id": "work-11",
@@ -480,7 +665,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "แบบจำลองหน้าร้านพร้อมผังแบ่งบาน ขนาดผลิต ข้อเสนอฟิล์ม และรายการเตรียมพื้นที่ติดตั้ง",
         "en": "Storefront mockup, pane layout, production dimensions, proposed film and site preparation checklist."
-      }
+      },
+      "techniques": {
+        "th": [
+          "ทำ Site Survey วัดกระจกทุกบานและแนวกรอบจริง",
+          "สร้าง Photomontage ตามระยะมองและแยกโซนโปร่ง/ทึบ",
+          "จัดไฟล์ Large Format ตามขนาดสำเร็จและแนวแบ่ง Panel",
+          "เลือกชนิดฟิล์มและวิธีติดด้านในหรือด้านนอกตามสภาพกระจกและข้อกำหนดวัสดุ"
+        ],
+        "en": [
+          "Survey every pane and frame on site",
+          "Create a photomontage for sightlines and clear/opaque zones",
+          "Prepare large-format artwork at final dimensions with panel seams",
+          "Choose film and interior/exterior application based on glazing and material requirements"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจขนาด แนวต่อ การมองจากภายนอก และการเตรียมพื้นผิว พร้อมตกลงการบำรุงรักษาและวิธีลอกก่อนติดตั้ง",
+        "en": "Verify dimensions, seams, exterior visibility and surface preparation; agree maintenance and removal before installation."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-15.webp"
     },
     "mockBrand": {
       "name": "COFFEE SHOP",
@@ -489,7 +693,8 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "summary": {
       "th": "ออกแบบกราฟิกกระจกให้สื่อสารแบรนด์และเมนูจากหน้าร้าน",
       "en": "Window graphics that communicate the café brand and menu"
-    }
+    },
+    "service": "Retail Branding"
   },
   {
     "id": "work-12",
@@ -532,8 +737,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ผังภาพรวมและไฟล์แบ่งแผ่นพร้อมจุดอ้างอิงติดตั้ง",
         "en": "Master visual, panel artwork and installation alignment references."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "สร้าง Master Layout ก่อนแบ่ง Panel",
+          "บันทึกแนวกรอบและช่องว่างของกระจกในแบบ",
+          "กำหนดจุด Registration สำหรับจัดระดับหน้างาน"
+        ],
+        "en": [
+          "Create a master layout before splitting panels",
+          "Record frames and glass gaps in the drawing",
+          "Define alignment references for installation"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจความต่อเนื่องของลายข้ามบานและแนวรอยต่อจากระยะมองจริง",
+        "en": "Check continuity across panes and seams from the real viewing distance."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-13.webp"
+    },
+    "service": "Environmental Graphics"
   },
   {
     "id": "work-13",
@@ -576,8 +799,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ภาพจำลองหน้าร้าน แบบวัดพื้นที่ และตัวเลือกฟิล์มสำหรับประเมิน",
         "en": "Frontage mockup, measurement plan and film options for evaluation."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "นำสีและรูปทรงจาก Brand System มาสร้างกราฟิกหน้าร้าน",
+          "วางองค์ประกอบโดยไม่บังพื้นที่สัญจรและมุมมองจำเป็น",
+          "เทียบตัวอย่างสีบนกระจกในสภาพแสงจริง"
+        ],
+        "en": [
+          "Translate brand colours and forms into storefront graphics",
+          "Keep circulation and necessary sightlines clear",
+          "Compare colour samples on glass under actual lighting"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจความเปรียบต่างกับฉากหลังและขอบงานตามพื้นที่ติดตั้ง",
+        "en": "Check contrast against the background and edge finish on site."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-12.webp"
+    },
+    "service": "Retail Identity"
   },
   {
     "id": "work-14",
@@ -620,8 +861,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "แบบจัดวางเมนูบนพื้นที่จริงและไฟล์สำหรับแบ่งผลิต",
         "en": "Menu placement mockup and panel-ready artwork."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "คำนวณความละเอียดที่ขนาดสำเร็จตามระยะมอง",
+          "จัดข้อความไม่ให้ข้ามรอยต่อสำคัญ",
+          "วาง Panel Map พร้อมทิศทางติดตั้ง"
+        ],
+        "en": [
+          "Determine effective resolution for the viewing distance",
+          "Avoid placing critical copy across seams",
+          "Plan panel map and application orientation"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจภาพจากระยะมองจริงและความตรงของรอยต่อก่อนส่งงาน",
+        "en": "Review graphics at the intended viewing distance and verify seam alignment before delivery."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-15.webp"
+    },
+    "service": "Large Format"
   },
   {
     "id": "work-15",
@@ -664,8 +923,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "แบบวางสัญลักษณ์ ขนาดจริง และข้อเสนอวัสดุ",
         "en": "Symbol placement artwork, actual dimensions and proposed material."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "เปรียบเทียบความทึบและความโปร่งของฟิล์ม",
+          "ทดสอบสัญลักษณ์กับฉากหลังในสภาพแสงต่างกัน",
+          "กำหนดตำแหน่งและวิธีติดตามผิวกระจก"
+        ],
+        "en": [
+          "Compare opacity and transparency of film options",
+          "Trial the symbol against different lit backgrounds",
+          "Set placement and application method for the glazing"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจการอ่านจากภายนอกและผลของน้ำยาทำความสะอาดตามคำแนะนำวัสดุ",
+        "en": "Check external readability and cleaning compatibility per material guidance."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-14.webp"
+    },
+    "service": "Window Graphics"
   },
   {
     "id": "work-16",
@@ -708,8 +985,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "รายการตรวจคุณภาพและตัวอย่างอ้างอิงสำหรับอนุมัติ",
         "en": "Quality inspection checklist and approval reference sample."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "กำหนด Approved Master Sample และเงื่อนไขแสงตรวจสี",
+          "แยกเกณฑ์เชิงสายตาจากเกณฑ์ที่วัดได้ เช่น ขนาดและตำแหน่ง",
+          "กำหนดแผนสุ่มตรวจตามล็อตที่ตกลง"
+        ],
+        "en": [
+          "Define an approved master sample and colour viewing conditions",
+          "Separate visual criteria from measurable dimensions and registration",
+          "Agree on batch sampling plan"
+        ]
+      },
+      "validation": {
+        "th": "บันทึกผลตรวจและแยกชิ้นงานไม่ผ่านก่อนส่งมอบโดยไม่กล่าวอ้างผลที่ยังไม่ได้วัด",
+        "en": "Record inspection results and segregate rejects before delivery without claiming unmeasured outcomes."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-02.webp"
+    },
+    "service": "Print Quality Control"
   },
   {
     "id": "work-17",
@@ -745,7 +1040,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ไฟล์ผลิตแยก SKU และแนวตัด, PDF ตรวจแบบ, รายการ Preflight และประวัติ Revision",
         "en": "SKU production artwork and cut paths, approval PDF, preflight checklist and revision record."
-      }
+      },
+      "techniques": {
+        "th": [
+          "กำหนด Trim, Bleed และ Safe Area จากไดไลน์ที่ยืนยัน",
+          "ตรวจฟอนต์ฝังหรือ Outline ตามวิธีส่งไฟล์ที่ตกลง",
+          "ตรวจ Effective PPI, ICC และสี Spot/CMYK ตามสเปกงาน",
+          "แยก Cut Path เป็น Vector และควบคุมชื่อไฟล์กับ Revision"
+        ],
+        "en": [
+          "Set trim, bleed and safe area from approved dielines",
+          "Check font embedding or outlining according to delivery requirements",
+          "Review effective PPI, ICC and spot/CMYK requirements",
+          "Separate vector cut paths and control filenames and revisions"
+        ]
+      },
+      "validation": {
+        "th": "เปิด PDF ตรวจขนาดจริง ข้อความ สีและเส้นตัดในระบบตรวจไฟล์ พร้อมอนุมัติ Revision ก่อนผลิต",
+        "en": "Inspect the PDF at actual size, verify copy, colours and cut paths using preflight, and approve the revision before production."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-04.webp"
     },
     "mockBrand": {
       "name": "CITRUS",
@@ -754,7 +1068,8 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "summary": {
       "th": "พัฒนาไฟล์ฉลากเครื่องดื่มจากคอนเซปต์สู่สเปกผลิต",
       "en": "Turn beverage label concepts into production-ready specifications"
-    }
+    },
+    "service": "Artwork & Prepress"
   },
   {
     "id": "work-18",
@@ -797,8 +1112,26 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ตารางเปรียบเทียบวัสดุ ตัวอย่างพิมพ์ และสเปกที่เสนอ",
         "en": "Material comparison, print samples and proposed specification."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "เทียบ Facestock, กาว และ Liner เป็นชุดเดียวกัน",
+          "ตรวจความเข้ากันได้กับหมึกและวิธีปกป้องผิว",
+          "ทำตัวอย่างทดสอบบนพื้นผิวเป้าหมาย"
+        ],
+        "en": [
+          "Compare facestock, adhesive and liner as a system",
+          "Check compatibility with ink and surface protection",
+          "Create samples on the target substrate"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจการยึดเกาะและผิวพิมพ์ตามสภาพใช้งานจริงก่อนสรุปสเปก",
+        "en": "Check adhesion and print finish in representative conditions before final specification."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-05.webp"
+    },
+    "service": "Material Selection"
   },
   {
     "id": "work-19",
@@ -835,7 +1168,25 @@ window.SCWORK_PORTFOLIO_ITEMS = [
         "th": "ตารางรายการและจำนวน, Artwork ตามรูปแบบส่งมอบ, แบบแพ็ก และ Checklist ตรวจรับ",
         "en": "Item and quantity schedule, format-specific artwork, packing plan and acceptance checklist."
       },
-      "detailImage": "./assets/images/portfolio/gallery/work-19.webp"
+      "detailImage": "./assets/images/portfolio/gallery/work-19.webp",
+      "techniques": {
+        "th": [
+          "จัด SKU Matrix เชื่อม Artwork ขนาด จำนวน และรูปแบบส่งมอบ",
+          "กำหนดแนวไดคัทและระยะจัดวางแยกสำหรับแบบแผ่น ม้วน และชิ้นเดี่ยว",
+          "ตรวจ Core Size, Unwind Direction และ Gap เมื่อใช้กับเครื่องติด",
+          "ใช้รหัสแพ็กและรายการตรวจรับควบคุมการแยกชุด"
+        ],
+        "en": [
+          "Create a SKU matrix linking artwork, size, quantity and delivery format",
+          "Define distinct cut paths and imposition for sheets, rolls and individual pieces",
+          "Check core size, unwind direction and gap for applicator use",
+          "Use pack identifiers and acceptance lists to control sorting"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจความครบถ้วน สีเทียบตัวอย่าง ขนาดและแนวตัด พร้อมทดลองหยิบหรือป้อนม้วนตามวิธีใช้งานจริง",
+        "en": "Verify completeness, reference colour, size and contours; trial hand application or roll feeding according to actual use."
+      }
     },
     "mockBrand": {
       "name": "FORM",
@@ -844,7 +1195,8 @@ window.SCWORK_PORTFOLIO_ITEMS = [
     "summary": {
       "th": "วางระบบสติกเกอร์หลายรูปแบบให้จัดการง่ายตั้งแต่ผลิตถึงส่งมอบ",
       "en": "Coordinate sticker formats from production to handover"
-    }
+    },
+    "service": "Brand Production System"
   },
   {
     "id": "work-20",
@@ -887,7 +1239,25 @@ window.SCWORK_PORTFOLIO_ITEMS = [
       "deliverable": {
         "th": "ข้อเสนอรูปแบบส่งมอบและแบบจัดวางพร้อมรายการสเปก",
         "en": "Proposed delivery format, imposition and specification list."
-      }
-    }
+      },
+      "techniques": {
+        "th": [
+          "เปรียบเทียบ Sheet Layout กับ Roll Layout ตามปริมาณและวิธีหยิบใช้",
+          "กำหนดขนาดแกน ทิศทางม้วนและช่องว่างตามอุปกรณ์ที่ใช้จริง",
+          "วางแผนการนับและระบุชุดก่อนส่งมอบ"
+        ],
+        "en": [
+          "Compare sheet and roll layouts against quantity and handling",
+          "Set core, unwind and spacing for the actual equipment",
+          "Plan counting and pack identification before handover"
+        ]
+      },
+      "validation": {
+        "th": "ตรวจการลอกหรือป้อนตัวอย่าง และยืนยันรูปแบบส่งมอบร่วมกัน",
+        "en": "Trial sample peeling or feeding and agree on the delivery format."
+      },
+      "detailImage": "./assets/images/portfolio/gallery/work-19.webp"
+    },
+    "service": "Print Production Planning"
   }
 ];
