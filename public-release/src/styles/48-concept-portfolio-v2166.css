@@ -1,0 +1,31 @@
+
+/* V2.1.66 — concept collection; no changes to existing unrelated components. */
+#portfolio .sc-concept-grid .sc-mock-brand img,.portfolio-gallery .sc-concept-cover~.sc-mock-brand img{max-width:155px;height:38px}
+.sc-concept-cover{display:grid;place-items:center;overflow:hidden;aspect-ratio:1.55;background:#eef2f5;border-radius:12px;width:100%}
+#portfolio .sc-concept-grid .sc-concept-cover img,.portfolio-gallery .sc-concept-cover img,.sc-work-related-grid .sc-concept-cover img{display:block;width:min(100%,var(--image-native-width,100%));height:auto;max-height:100%;aspect-ratio:auto;object-fit:contain;border-radius:0;margin:auto}
+.sc-concept-label{display:inline-block;align-self:flex-start;font-size:9px;line-height:1.4;letter-spacing:.1em;font-weight:700;color:#62748a;margin-top:5px}
+.sc-gallery-project-description .sc-concept-label{display:block}
+#portfolio .sc-concept-grid figure:last-child{grid-column:2;top:0}
+.sc-concept-hero{background:#08264f;color:#fff;padding:clamp(40px,7vw,100px) 0}
+.sc-concept-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:clamp(24px,5vw,60px);align-items:center}
+.sc-concept-hero-text .sc-concept-label{color:#c7d7e8}
+.sc-concept-hero-text .sc-case-service{color:#ffad75;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin:14px 0}
+.sc-concept-hero-text h1{color:#fff;font-size:clamp(36px,5vw,66px);line-height:1.08;margin:0 0 14px}
+.sc-concept-hero-text h2{color:#fff;font-size:clamp(19px,2.3vw,29px);line-height:1.4;margin:0 0 14px}
+.sc-concept-hero-text>p{line-height:1.75;color:#e3eaf4}
+.sc-concept-hero-text>small{display:block;color:#c6d4e3;line-height:1.65}
+.sc-concept-hero-visual{display:grid;place-items:center;gap:12px;background:#163656;border-radius:18px;padding:clamp(12px,2.2vw,26px);margin:0;min-width:0}
+.sc-concept-hero-visual img{display:block;width:min(100%,var(--hero-native-width,100%));height:auto;border-radius:10px;object-fit:contain}
+.sc-concept-hero-visual figcaption{font-size:12px;color:#e8eef6;line-height:1.7}
+.sc-concept-identity{background:#f3f6f9;border-radius:14px;padding:24px;margin-top:24px}
+.sc-concept-logo-panel{display:grid;place-items:center;min-height:110px;background:#fff;border-radius:10px}
+.sc-concept-logo-panel .sc-mock-brand{max-width:260px}
+.sc-concept-logo-panel img{display:block;width:min(100%,260px);height:auto}
+.sc-concept-identity h3,.sc-concept-tech h3{margin:22px 0 12px;color:#08264f;font-size:19px}
+.sc-concept-swatches{display:flex;gap:12px;flex-wrap:wrap}
+.sc-concept-swatches span{display:grid;gap:7px;font-size:12px;color:#465f79}
+.sc-concept-swatches i{display:block;width:86px;height:52px;border-radius:6px;border:1px solid #dbe2ea}
+.sc-concept-tech{margin-top:24px}
+.sc-concept-disclosure{font-size:13px;color:#5c7087;line-height:1.7;margin-bottom:28px}
+@media(max-width:850px){#portfolio .sc-concept-grid figure:last-child{grid-column:auto} .sc-concept-hero-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.sc-concept-identity{padding:16px}.sc-concept-hero-text h1{font-size:38px}}

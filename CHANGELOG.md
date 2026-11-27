@@ -1,3 +1,10 @@
+# V2.1.66 — Ten concept projects integration
+
+- Supports the supplied 10-project portfolio via assets/images/portfolio/concept-10/concept-data.js; until the complete asset supplement is installed, the prior portfolio remains visible.
+- Ten-card brand-led grid, seven-stage reversible timeline, brand palette, proposed techniques and deliverables, Thai/English. Concept disclosures are explicit.
+- Original supplied images are not enlarged beyond native width in case-study hero; 07–10 are thumbnail-quality and require higher-resolution source before publication.
+- Existing pricing, admin, client logos and other sections unchanged. Source/public-release mirrored.
+
 # V2.1.65 — Brand-led portfolio and continuous case timeline
 
 - Moved existing brand logos to upper left; removed visible BRAND MOCKUP label from rendered cards and case hero. Display service category, illustrative brand name, project title, single cover and concise description; retain clear study disclosure.
