@@ -23,7 +23,7 @@
  function card(post,d){
   const item=document.createElement('article');item.className='knowledge-card';
   const cover=document.createElement('a');cover.className='knowledge-card__image';cover.href=url(post.id);cover.setAttribute('aria-label',post.title);
-  const img=document.createElement('img');img.src=post.image||'./assets/images/placeholder.svg';img.alt=post.title;img.loading='lazy';img.addEventListener('error',()=>{img.src='./assets/images/placeholder.svg';},{once:true});cover.append(img);
+  const img=document.createElement('img');img.src=post.image||'./assets/images/placeholder.svg';img.alt=post.title;img.loading='lazy';img.addEventListener('error',()=>{img.src='./assets/images/placeholder.svg';},{once:true});const overlay=text('span','knowledge-card__cover-title',post.title);overlay.setAttribute('aria-hidden','true');cover.append(img,overlay);
   const body=document.createElement('div');body.className='knowledge-card__body';
   body.append(text('p','knowledge-card__category',categoryLabel(post.category,d)));
   const h3=text('h3','','');const a=text('a','',post.title);a.href=url(post.id);h3.append(a);body.append(h3);
