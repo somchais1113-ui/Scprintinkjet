@@ -356,10 +356,24 @@
     window.PROCLEANING_SITE=activeSite;
     window.PROCLEANING_APPLY_SITE(activeSite,window.PROCLEANING_IMAGE_OVERRIDES||{});
     const thai=language==='th';
+    const conceptItems=window.SCWORK_CONCEPT_PROJECTS;
+    const conceptGrid=document.querySelector('#portfolio .sc-portfolio__grid');
+    if(Array.isArray(conceptItems)&&conceptItems.length===10&&conceptGrid&&!conceptGrid.classList.contains('sc-concept-grid')){
+      const make=(tag,cls,text)=>{const node=document.createElement(tag);if(cls)node.className=cls;if(text)node.textContent=text;return node;};
+      conceptGrid.replaceChildren(...conceptItems.map(item=>{
+        const figure=make('figure');figure.dataset.work=item.id;figure.setAttribute('data-sc-reveal','');
+        const a=make('a','sc-portfolio__tile-link');a.href='./portfolio-detail.html?work='+encodeURIComponent(item.id);
+        const top=make('div','sc-work-top'),brand=make('span','sc-mock-brand'),logo=make('img');logo.src=item.mockBrand.logo;logo.alt=item.mockBrand.name;logo.width=620;logo.height=144;brand.append(logo);
+        const arrow=make('span','sc-work-arrow','→');arrow.setAttribute('aria-hidden','true');top.append(brand,arrow);
+        const service=make('span','sc-project-service',item.service),caption=make('figcaption','',item.mockBrand.name),name=make('p','sc-project-name',item.title.th);
+        const visual=make('div','sc-concept-cover'),image=make('img','sc-concept-photo');image.src=item.cover;image.alt=item.title.th;image.loading='lazy';image.decoding='async';image.width=item.cardDimensions[0];image.height=item.cardDimensions[1];image.style.setProperty('--image-native-width',item.cardDimensions[0]+'px');visual.append(image);
+        const summary=make('p','sc-project-summary',item.summary.th),label=make('span','sc-concept-label','CONCEPT PROJECT');a.append(top,service,caption,name,visual,summary,label);figure.append(a);return figure;
+      }));conceptGrid.classList.add('sc-concept-grid');window.SCWORK_REVEAL?.();
+    }
     const portfolioCopy=thai?{title:'จากโจทย์ของแบรนด์ สู่แนวทางที่ผลิตได้จริง',lead:'สำรวจกรณีตัวอย่างการออกแบบและการผลิต ตั้งแต่แนวคิดไปจนถึงรายละเอียดก่อนลงมือทำ',notice:'กรณีตัวอย่างและภาพประกอบจำลอง ไม่ใช่ผลงานลูกค้าที่ได้รับการยืนยัน'}:{title:'From brand challenges to practical production',lead:'Explore illustrative design and print projects, from concept to production planning.',notice:'Illustrative project studies, not verified client work.'};
     for(const [id,value] of Object.entries({scPortfolioTitle:portfolioCopy.title,scPortfolioLead:portfolioCopy.lead,scPortfolioNotice:portfolioCopy.notice})){const el=byId(id);if(el)el.textContent=value;}
     const portfolioLink=byId('scPortfolioViewAll');if(portfolioLink){portfolioLink.href=`./portfolio.html?lang=${encodeURIComponent(language)}`;portfolioLink.firstChild.textContent=thai?'ดูผลงานทั้งหมด ':'View all work ';}
-    document.querySelectorAll('.sc-portfolio__grid figure[data-work]').forEach((figure,index)=>{const item=(window.SCWORK_PORTFOLIO_ITEMS||[]).find(x=>x.id===figure.dataset.work),a=figure.querySelector('a'),l=thai?'th':'en';if(!a||!item)return;const title=item.title[l];figure.querySelector('figcaption').textContent=item.mockBrand?.name||title;const projectName=figure.querySelector('.sc-project-name');if(projectName)projectName.textContent=title;const service=figure.querySelector('.sc-project-service');if(service)service.textContent=item.service||'';const summary=figure.querySelector('.sc-project-summary');if(summary)summary.textContent=item.summary?.[l]||'';a.href=`./portfolio-detail.html?work=${encodeURIComponent(item.id)}&lang=${encodeURIComponent(language)}`;a.setAttribute('aria-label',title);const image=a.querySelector(':scope > img');if(image){image.src=item.cover||item.image;image.alt=title;}});
+    document.querySelectorAll('.sc-portfolio__grid figure[data-work]').forEach((figure,index)=>{const item=(window.SCWORK_PORTFOLIO_ITEMS||[]).find(x=>x.id===figure.dataset.work),a=figure.querySelector('a'),l=thai?'th':'en';if(!a||!item)return;const title=item.title[l];figure.querySelector('figcaption').textContent=item.mockBrand?.name||title;const projectName=figure.querySelector('.sc-project-name');if(projectName)projectName.textContent=title;const service=figure.querySelector('.sc-project-service');if(service)service.textContent=item.service||'';const summary=figure.querySelector('.sc-project-summary');if(summary)summary.textContent=item.summary?.[l]||'';a.href=`./portfolio-detail.html?work=${encodeURIComponent(item.id)}&lang=${encodeURIComponent(language)}`;a.setAttribute('aria-label',title);const image=a.querySelector('.sc-concept-photo')||a.querySelector(':scope > img');if(image){image.src=item.cover||item.image;image.alt=title;}});
     renderServices();
     byId('teamGrid').innerHTML=(activeSite.team||[]).map((p,i)=>ui.teamCard(p,i)).join('');
     const featureGrid=byId('featureGrid');

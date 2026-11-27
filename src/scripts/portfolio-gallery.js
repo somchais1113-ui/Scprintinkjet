@@ -43,7 +43,7 @@
     button.setAttribute('aria-label',`${item.title[l]} — ${locale[l].see}`);
     const imageWrap=document.createElement('span');imageWrap.className='portfolio-card__media';
     const img=document.createElement('img');img.src=item.cover||item.image;img.alt=item.title[l];img.loading=index<3?'eager':'lazy';img.decoding='async';img.addEventListener('error',()=>{if(!img.src.includes('placeholder.svg'))img.src='./assets/images/placeholder.svg';},{once:true});
-    imageWrap.append(img);
+    if(item.cardDimensions){imageWrap.classList.add('sc-concept-cover');img.classList.add('sc-concept-photo');img.width=item.cardDimensions[0];img.height=item.cardDimensions[1];img.style.setProperty('--image-native-width',item.cardDimensions[0]+'px');}imageWrap.append(img);
     const top=document.createElement('span');top.className='sc-gallery-project-top';
     if(item.mockBrand){const brand=document.createElement('span');brand.className='sc-mock-brand';const mark=document.createElement('img');mark.src=item.mockBrand.logo;mark.alt=item.mockBrand.name;mark.width=168;mark.height=48;brand.append(mark);top.append(brand);}
     const arrow=document.createElement('span');arrow.className='sc-work-arrow';arrow.textContent='→';arrow.setAttribute('aria-hidden','true');top.append(arrow);
@@ -52,7 +52,7 @@
     const title=document.createElement('h3');title.textContent=item.mockBrand?.name||item.title[l];
     const name=document.createElement('span');name.className='sc-project-name';name.textContent=item.title[l];
     const desc=document.createElement('span');desc.className='sc-gallery-project-description';
-    const summary=document.createElement('span');summary.className='sc-project-summary';summary.textContent=item.summary?.[l]||item.fit[l];desc.append(summary);
+    const summary=document.createElement('span');summary.className='sc-project-summary';summary.textContent=item.summary?.[l]||item.fit[l];desc.append(summary);if(item.status==='concept_project'){const label=document.createElement('span');label.className='sc-concept-label';label.textContent='CONCEPT PROJECT';desc.append(label);}
     body.append(kicker,title,name);button.append(top,body,imageWrap,desc);art.append(button);return art;
   }
   function paint(){
