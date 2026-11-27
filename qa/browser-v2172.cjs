@@ -15,7 +15,18 @@ const url=p=>new URL(p,base.href.endsWith('/')?base.href:base.href+'/').href;
     assert.equal(await page.locator('#portfolio .sc-portfolio__grid:not(.sc-reflection-layer)>figure[data-work]').count(),6);
     if(viewport.width>560){await page.waitForSelector('.sc-reflection-layer .sc-reflection-card',{state:'attached'});assert.equal(await page.locator('.sc-reflection-card').count(),viewport.width>850?3:2);assert.equal(await page.locator('.sc-reflection-card a[href]').count(),0);}
     else assert.equal(await page.locator('.sc-reflection-card').count(),0);
+    await page.waitForSelector('#scSupportBar',{state:'visible'});
+    await page.goto(url('portfolio.html?lang=th&category=all'));
+    await page.waitForSelector('.portfolio-gallery .sc-concept-cover img.sc-concept-photo');
+    const covers=page.locator('.portfolio-gallery .sc-concept-cover img.sc-concept-photo');
+    assert.equal(await covers.count(),10);
+    for(const cover of await covers.all()){
+      const fills=await cover.evaluate(e=>{const a=e.getBoundingClientRect(),b=e.parentElement.getBoundingClientRect();return getComputedStyle(e).objectFit==='cover'&&Math.abs(a.width-b.width)<2&&Math.abs(a.height-b.height)<2;});
+      assert(fills,'Cover should fill its frame');
+    }
+    await page.waitForSelector('#scSupportBar',{state:'visible'});
     await page.goto(url('knowledge.html?lang=th'));await page.waitForSelector('.knowledge-card');
+    await page.waitForSelector('#scSupportBar',{state:'visible'});
     assert.equal(await page.locator('.knowledge-card').count(),15);
     await page.locator('#knowledgeHeroNext').click();assert.equal(await page.locator('#knowledgeHeroCounter strong').textContent(),'02');
     await page.locator('#knowledgeHeroPrev').click();assert.equal(await page.locator('#knowledgeHeroCounter strong').textContent(),'01');
@@ -24,6 +35,7 @@ const url=p=>new URL(p,base.href.endsWith('/')?base.href:base.href+'/').href;
     await page.locator('#knowledgeSearch').fill('zzzz-no-match');assert.equal(await page.locator('.knowledge-card').count(),0);
     await page.locator('#knowledgeSearch').fill('');assert.equal(await page.locator('.knowledge-card').count(),15);
     await page.goto(url('portfolio-detail.html?work=formline&lang=th'));await page.waitForSelector('[data-case-node]');
+    await page.waitForSelector('#scSupportBar',{state:'visible'});
     assert.equal(await page.locator('[data-case-node]').count(),7);assert.equal(await page.locator('.sc-hero-info').count(),3);
     const progress=()=>page.locator('[data-case-timeline]').evaluate(e=>parseFloat(e.style.getPropertyValue('--case-track-fill'))||0);
     await page.locator('[data-case-node]').last().scrollIntoViewIfNeeded();await page.waitForTimeout(150);const down=await progress();

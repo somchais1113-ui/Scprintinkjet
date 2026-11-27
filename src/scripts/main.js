@@ -215,7 +215,7 @@
       '#about':'#socialProofTitle',
       '#pricing':'#scBrandTitle',
       '#blog':'#blog-title',
-      '#contact':'#contact-title',
+      '#contact':'#contact',
       '#team':'#team-title'
     };
     return document.querySelector(map[hash]||hash);
@@ -392,7 +392,7 @@
       if(img.getAttribute('src')!==current)img.src=current;
     });
     const cn=activeSite.contact||{},labels=activeSite.labels||{};
-    byId('contactMethods').innerHTML=[ui.contactMethod('phone',labels.contactCall||'Call Us',cn.officePhone||cn.phone||cn.mobilePhone||''),ui.contactMethod('email',labels.contactEmail||'Email Now',cn.email||''),ui.contactMethod('contact',labels.contactAddress||'Address',cn.address||'')].join('');
+    if(byId('contactMethods'))byId('contactMethods').innerHTML=[ui.contactMethod('phone',labels.contactCall||'Call Us',cn.officePhone||cn.phone||cn.mobilePhone||''),ui.contactMethod('email',labels.contactEmail||'Email Now',cn.email||''),ui.contactMethod('contact',labels.contactAddress||'Address',cn.address||'')].join('');
     byId('year').textContent=new Date().getFullYear();
     fallbackImages();
     window.dispatchEvent(new Event('scwork-site-updated'));

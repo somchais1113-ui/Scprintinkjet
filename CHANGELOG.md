@@ -1,3 +1,9 @@
+# V2.1.73 — Full-frame covers & global contact bar
+
+- Project card photos fill their container without distortion on homepage, gallery and related projects. Six featured cards use existing wider brand visuals, CITRUS uses existing 1200×750 prepress photography, ECOLABEL uses a concept-only SVG material study with the existing mark and no certification claims. ELITECRAFT and TECHMATE still use low-resolution source photos; generated replacements could not be transferred in this session. Case hero assets unchanged.
+- Existing shared support bar now included on all 15 public HTML pages (including nested order-status landing), with script-relative URLs, localized fallback to Smart Quote, safe-area and existing quote dock spacing. No Admin changes.
+- Removed duplicate homepage contact section, retained footer consultation and #contact anchor, guarded optional DOM binding. Source/public-release mirrored. Real browser and full filesystem build pending.
+
 # V2.1.72 — Release stabilization
 
 - Replaced stale build entrypoint with an explicit, reviewed public file manifest from V2.1.71, atomic new-folder build, validated public status schema and no overwrite. No private/demo/admin files copied.

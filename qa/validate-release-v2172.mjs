@@ -27,6 +27,16 @@ assert.equal(projects.length,10);assert.equal(posts.length,15);assert.equal(proj
 assert.equal(new Set(projects.map(p=>p.id)).size,10);
 for(const p of projects){assert.equal(p.timeline.length,7);assert(p.timeline.every(s=>s.body.th&&s.body.en));for(const asset of [p.cover,p.hero,p.mockBrand.logo])assert(set.has(localPath('index.html',asset)),'Project asset missing: '+asset);}
 const home=read('index.html'),knowledge=read('knowledge.html'),detail=read('portfolio-detail.html');
+for(const p of manifest.filter(x=>x.endsWith('.html'))){
+ const html=read(p);
+ assert.equal((html.match(/support-bar\.js\?v=2\.1\.73/g)||[]).length,1,p+' support script');
+ assert.equal((html.match(/26-support-bar\.css\?v=2\.1\.73/g)||[]).length,1,p+' support CSS');
+}
+assert(!home.includes('class="section contact-section"'));
+assert(home.includes('id="contact" class="footer-consult"'));
+assert(read('src/scripts/main.js').includes("if(byId('contactMethods'))"));
+assert(projects.find(p=>p.id==='ecolabel').cover.endsWith('cover-study-v2173.svg'));
+assert(read('src/styles/54-full-frame-v2173.css').includes('object-fit:cover!important'));
 assert(read('src/scripts/main.js').includes('conceptItems.slice(0,6).map'));
 assert.equal((knowledge.match(/data-kh-slide/g)||[]).length,5);assert.equal((knowledge.match(/data-kh-dot=/g)||[]).length,5);
 assert(read('src/scripts/knowledge-hub.js').includes('knowledge-card__cover-title'));

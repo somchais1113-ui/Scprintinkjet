@@ -3,6 +3,8 @@
   'use strict';
   const doc=document;
   const root=doc.documentElement;
+  const base=new URL('../../',doc.currentScript.src);
+  const local=path=>new URL(path.replace(/^\.\//,''),base).href;
   const mount=()=>{
     if(doc.getElementById('scSupportBar'))return;
     const quotes=doc.querySelector('.q-mobile-bar');
@@ -18,7 +20,7 @@
     bar.id='scSupportBar';
     const inner=el('div','sc-helpbar__inner');
     const bear=el('img','sc-helpbar__bear');
-    bear.src='./assets/images/support/scwork-support-bear.webp';
+    bear.src=local('assets/images/support/scwork-support-bear.webp');
     bear.alt='';
     bear.width=300;bear.height=274;
     bear.decoding='async';
@@ -59,7 +61,7 @@
     };
     function first(field,preferPublic=false){
       const site=window.PROCLEANING_SITE?.contact, pub=window.SCWORK_PUBLIC_CONTACT;
-      const vals=preferPublic?[pub?.[field],site?.[field]]:[site?.[field],pub?.[field]];
+      const vals=[pub?.[field],site?.[field]];
       return vals.map(v=>String(v??'').trim()).find(Boolean)||'';
     }
     function safeHttps(raw,hosts){
@@ -75,7 +77,7 @@
     }
     function bindLink(node,href){
       node.href=href;
-      if(href.startsWith('https:')){node.target='_blank';node.rel='noopener noreferrer';}
+      if(href.startsWith('https:')&&new URL(href).origin!==location.origin){node.target='_blank';node.rel='noopener noreferrer';}
       else {node.removeAttribute('target');node.removeAttribute('rel');}
     }
     function close(restore=false){
@@ -127,7 +129,9 @@
       direct.hidden=links.length>1;
       toggle.hidden=links.length<2;
       const lang=/^[a-z]{2,3}(?:-[a-z]{2,8})?$/i.test(root.lang)?root.lang:'th';
-      const contact=doc.getElementById('contact')?'#contact':'./index.html?lang='+encodeURIComponent(lang)+'#contact';
+      const current=new URL(location.href);
+      const contact=current.pathname.endsWith('/smart-quote.html')&&current.searchParams.get('mode')==='help'?'#quoteForm':local('smart-quote.html?mode=help&lang='+encodeURIComponent(lang));
+      direct.setAttribute('data-quote-label-preserve','');
       bindLink(direct,links[0]?.[1]||contact);
       direct.textContent=links.length?t.contact:t.help;
       if(links.length===1)direct.setAttribute('aria-label',links[0][0]);
@@ -137,7 +141,7 @@
       const validQr=line&&/^\.\/assets\/images\/support\/[\w-]+\.(?:png|webp|svg)$/i.test(qrAsset);
       if(validQr){
         bindLink(qrLink,line);qrLink.setAttribute('aria-label',t.qr);
-        if(qr.getAttribute('src')!==qrAsset){qrLink.hidden=false;qr.src=qrAsset;}
+        if(qr.getAttribute('src')!==local(qrAsset)){qrLink.hidden=false;qr.src=local(qrAsset);}
       }else{
         qrLink.hidden=true;
         qr.removeAttribute('src');
@@ -158,6 +162,7 @@
     }
     window.addEventListener('resize',measure,{passive:true});
     window.addEventListener('scwork-site-updated',()=>{render();measure();});
+    window.addEventListener('scwork:locale-applied',()=>{render();measure();});
     if(typeof MutationObserver==='function')new MutationObserver(()=>{render();measure();}).observe(root,{attributes:true,attributeFilter:['lang']});
   };
   if(doc.readyState==='loading')doc.addEventListener('DOMContentLoaded',mount,{once:true});
