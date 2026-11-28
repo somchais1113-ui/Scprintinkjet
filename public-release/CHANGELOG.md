@@ -1,3 +1,8 @@
+# V2.1.74 — Approved project visuals
+
+- Imported four user-approved AI concept photographs for ELITECRAFT, TECHMATE, ECOLABEL and CITRUS. Native-resolution WebP heroes and 1200×750 cropped WebP covers, no enlargement. Existing logos, editorial hero overlay, slow zoom, scope cards and timelines retained.
+- Images remain design concepts, not confirmed client work. Source and public release synchronized.
+
 # V2.1.74 — Visual quality & global navigation (incomplete draft)
 
 - Shortened ELITECRAFT title in the base and deep data (TH/EN).

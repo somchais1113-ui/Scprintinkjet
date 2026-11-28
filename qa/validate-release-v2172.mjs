@@ -41,7 +41,12 @@ assert(!projects.find(p=>p.id==='elitecraft').title.en.includes('finishing'));
 assert(read('src/styles/55-global-topbar-v2174.css').includes('position:fixed!important'));
 assert(home.includes('id="contact" class="footer-consult"'));
 assert(read('src/scripts/main.js').includes("if(byId('contactMethods'))"));
-assert(projects.find(p=>p.id==='ecolabel').cover.endsWith('cover-study-v2173.svg'));
+for(const id of ['elitecraft','techmate','ecolabel','citrus']){
+ const p=projects.find(p=>p.id===id);assert(p&&!p.identityOnly,id);
+ assert(p.hero.endsWith('/hero-v2174.webp')&&p.cover.endsWith('/cover-v2174.webp'),id);
+ assert(p.heroDimensions[0]>=1600&&p.heroDimensions[1]>=900,id);
+ assert.equal(p.cardDimensions.join('x'),'1200x750');
+}
 assert(read('src/styles/54-full-frame-v2173.css').includes('object-fit:cover!important'));
 assert(read('src/scripts/main.js').includes('conceptItems.slice(0,6).map'));
 assert.equal((knowledge.match(/data-kh-slide/g)||[]).length,5);assert.equal((knowledge.match(/data-kh-dot=/g)||[]).length,5);

@@ -1,0 +1,72 @@
+name: Import approved project images
+on:
+  push:
+    branches: [develop]
+    paths:
+      - 'qa/project-image-input-v2174/*.png'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: scwork-project-image-import
+  cancel-in-progress: false
+jobs:
+  import:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check approved input batch
+        id: inputs
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          from pathlib import Path
+          p=Path('qa/project-image-input-v2174')
+          names=['ChatGPT Image Nov 28, 2026, 07_54_27 AM-1.png','ChatGPT Image Nov 28, 2026, 07_54_30 AM-2.png','ChatGPT Image Nov 28, 2026, 07_54_33 AM-3.png','ChatGPT Image Nov 28, 2026, 07_54_35 AM-4.png']
+          print('ready='+str(all((p/n).is_file() for n in names)).lower())
+          PY
+      - name: Convert and connect approved photographs
+        if: steps.inputs.outputs.ready == 'true'
+        run: |
+          python -m pip install Pillow==11.3.0
+          python qa/import-project-images-v2174.py
+          npm run check:release
+          npm run build:public
+          npm run check:release -- dist-public
+      - name: Run browser regression
+        if: steps.inputs.outputs.ready == 'true'
+        run: |
+          npm install --no-save --package-lock=false playwright@1.51.1
+          npx playwright install --with-deps chromium webkit
+          python3 -m http.server 8000 --bind 127.0.0.1 > /tmp/scwork-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill "$SERVER_PID" || true' EXIT
+          for i in $(seq 1 20); do curl -fsS http://127.0.0.1:8000/dist-public/index.html >/dev/null && break; sleep 1; done
+          npm run check:browser:release -- http://127.0.0.1:8000/dist-public/ chromium
+          npm run check:browser:release -- http://127.0.0.1:8000/dist-public/ webkit
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.inputs.outputs.ready == 'true'
+        with:
+          name: scwork-approved-image-browser-evidence
+          path: qa-evidence/
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Commit verified outputs to develop only
+        if: steps.inputs.outputs.ready == 'true'
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/images/portfolio/concept-10 public-release/assets/images/portfolio/concept-10 qa/public-manifest-v2172.json qa/validate-release-v2172.mjs qa/browser-release-v2174.cjs CHANGELOG.md public-release/CHANGELOG.md index.html portfolio.html portfolio-detail.html public-release/index.html public-release/portfolio.html public-release/portfolio-detail.html
+          if git diff --cached --quiet; then echo "Already imported"; exit 0; fi
+          git commit -m "feat: apply four approved project heroes and covers"
+          git push origin HEAD:refs/heads/develop
