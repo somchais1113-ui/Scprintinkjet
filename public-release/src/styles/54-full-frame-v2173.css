@@ -3,3 +3,6 @@
 #portfolio .sc-concept-grid .sc-concept-cover img.sc-concept-photo,.portfolio-gallery .sc-concept-cover img.sc-concept-photo,.sc-work-related-grid .sc-concept-cover img.sc-concept-photo{position:absolute;inset:0;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;min-width:0!important;margin:0!important;padding:0!important;aspect-ratio:auto!important;object-fit:cover!important;object-position:var(--cover-focus,50% 50%);border-radius:0!important;display:block}
 .portfolio-gallery .sc-concept-cover.sc-identity-only,.sc-work-related-grid .sc-concept-cover.sc-identity-only{background:#e8eee8}
 #contact.footer-consult{scroll-margin-top:100px}
+
+/* V2.1.74 cover sync: preserve right-side subject of shared full-resolution hero. */
+.sc-concept-cover img.sc-concept-photo[src$="/hero-v2174.webp"]{--cover-focus:100% 50%}
