@@ -321,3 +321,62 @@ body.sc-about-page:has(> #main) section.hero.hero--cinematic .sc-cinema__count s
 .sc-about-page #philosophy .ab-gallery-frame[data-ab-frame="0"]{object-fit:contain;object-position:35% center;}
 .sc-about-page #philosophy .ab-gallery-media{clip-path:polygon(18% 0,100% 0,100% 24%,85% 100%,0 100%,0 78%);}
 @media(max-width:700px){.sc-about-page #philosophy .ab-gallery-media{clip-path:polygon(11% 0,100% 0,100% 30%,88% 100%,0 100%,0 65%)}.sc-about-page #philosophy .ab-gallery-frame[data-ab-frame="0"]{object-fit:cover;object-position:48% center;}}
+
+
+/* V2.1.74 — Our Commitment: borderless white editorial section. */
+.sc-about-page #commitment{
+  position:relative;isolation:isolate;overflow:hidden;background:#fff;
+  padding-block:clamp(64px,8vw,112px);min-height:clamp(450px,38vw,540px);
+  display:grid;align-items:center;
+}
+.sc-about-page #commitment .ab-commit-media{
+  position:absolute;inset:0 0 0 24%;margin:0;z-index:-1;overflow:hidden;
+  border:0;border-radius:0;pointer-events:none;
+}
+.sc-about-page #commitment .ab-commit-media img{
+  width:100%;height:100%;object-fit:cover;object-position:65% 38%;
+  opacity:.34;filter:saturate(.65);
+}
+.sc-about-page #commitment .ab-commit-media::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.94) 12%,rgba(255,255,255,.65) 44%,rgba(255,255,255,.16) 78%,rgba(255,255,255,.54) 100%),
+  linear-gradient(180deg,#fff 0%,rgba(255,255,255,0) 24%,rgba(255,255,255,0) 76%,#fff 100%);
+}
+.sc-about-page #commitment .ab-commit{
+  display:grid;justify-items:center;text-align:center;
+  border:0;border-radius:0;box-shadow:none;background:transparent;
+}
+.sc-about-page #commitment .ab-commit-copy{
+  width:100%;max-width:850px;min-width:0;color:#303236;
+}
+.sc-about-page #commitment .ab-heading{
+  display:grid;justify-items:center;gap:9px;margin:0 0 25px;padding:0;border:0;
+}
+.sc-about-page #commitment .ab-heading::after{
+  content:"";width:42px;height:3px;background:#ff6900;margin-top:11px;
+}
+.sc-about-page #commitment .ab-index{color:#ff6900}
+.sc-about-page #commitment h2{
+  font-size:clamp(36px,4.6vw,64px);line-height:1.12;
+  letter-spacing:-.045em;font-weight:800;color:#24282c;overflow-wrap:anywhere;
+}
+.sc-about-page #commitment .ab-sub{
+  font-size:clamp(16px,1.5vw,20px);color:#575b60;margin:0;
+}
+.sc-about-page #commitment .ab-commit-copy>p{
+  font-size:clamp(16px,1.35vw,19px);line-height:1.9;
+  max-width:780px;margin:0 auto 14px;color:#383b40;text-wrap:pretty;
+}
+.sc-about-page #commitment .ab-commit-copy>p:last-child{margin-bottom:0}
+@media(max-width:700px){
+  .sc-about-page #commitment{min-height:0;padding-block:64px 70px}
+  .sc-about-page #commitment .ab-commit-media{inset:0}
+  .sc-about-page #commitment .ab-commit-media img{object-position:65% 40%;opacity:.23}
+  .sc-about-page #commitment .ab-commit-media::after{
+    background:linear-gradient(90deg,#fff9,#fff3 55%,#fff8),
+    linear-gradient(180deg,#fff,transparent 22%,transparent 75%,#fff);
+  }
+  .sc-about-page #commitment h2{font-size:clamp(32px,8vw,46px)}
+  .sc-about-page #commitment .ab-heading{margin-bottom:22px}
+  .sc-about-page #commitment .ab-commit-copy>p{font-size:16px;line-height:1.85}
+}

@@ -65,6 +65,18 @@ async function run(){
       await page.locator('#knowledgeSearch').fill('');
       assert.equal(await page.locator('.knowledge-card').count(),15);
      }
+     if(name==='about.html'){
+      const section=page.locator('#commitment');
+      const image=section.locator('.ab-commit-media img');
+      await section.scrollIntoViewIfNeeded();
+      await image.evaluate(img=>img.decode());
+      assert.equal(await section.locator('.ab-split,.ab-photo').count(),0);
+      assert(await section.evaluate(e=>{
+       const c=e.querySelector('.ab-commit-copy'),h=e.querySelector('h2'),m=e.querySelector('.ab-commit-media'),s=e.getBoundingClientRect(),b=c.getBoundingClientRect();
+       return getComputedStyle(e).backgroundColor==='rgb(255, 255, 255)'&&getComputedStyle(c).textAlign==='center'&&getComputedStyle(h).color==='rgb(36, 40, 44)'&&getComputedStyle(m).position==='absolute'&&Math.abs(s.left+s.width/2-b.left-b.width/2)<3&&b.left>=s.left&&b.right<=s.right&&b.bottom<=s.bottom;
+      }),'Commitment white centered layout');
+      await section.screenshot({path:out+'/'+viewport.width+'-about-commitment.png',animations:'disabled'});
+     }
      if(name.startsWith('case-')){
       await page.waitForFunction(()=>document.querySelectorAll('[data-case-node]').length===7);
       assert.equal(await page.locator('.sc-hero-info').count(),3);
