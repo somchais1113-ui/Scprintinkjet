@@ -31,7 +31,7 @@ for project,name in mapping.items():
    pending[path]=raw
    pending['public-release/'+path]=raw
    print(project,kind,im.size,len(raw),'bytes')
-  metadata[project]={'hero':f'./{base}/{project}/hero-v2174.webp','cover':f'./{base}/{project}/cover-v2174.webp','heroDimensions':[w,h],'cardDimensions':[1200,750]}
+  metadata[project]={'hero':f'./{base}/{project}/hero-v2174.webp','cover':f'./{base}/{project}/hero-v2174.webp','heroDimensions':[w,h],'cardDimensions':[w,h]}
 def put(path,s,mirror=False):
  raw=s.encode('utf-8')
  pending[path]=raw
@@ -43,7 +43,7 @@ def replace_once(s,old,new):
 p=base+'/deep-case-data-v2167.js'
 s=read(p)
 s=re.sub(r'// BEGIN APPROVED VISUALS V2174\n.*?// END APPROVED VISUALS V2174\n','',s,flags=re.S)
-insert='// BEGIN APPROVED VISUALS V2174\nconst approvedVisualsV2174='+json.dumps(metadata,ensure_ascii=False,separators=(',',':'))+';\nfor(const item of items){const v=approvedVisualsV2174[item.id];if(v){Object.assign(item,v);item.image=v.cover;item.identityOnly=false;item.assetNotes="ภาพจำลองที่สร้างด้วย AI เพื่อสื่อแนวคิด ไม่ใช่ภาพผลงานลูกค้าจริง โลโก้บนภาพอาจต่างจากเวกเตอร์ต้นแบบ";}}\n// END APPROVED VISUALS V2174\n'
+insert='// BEGIN APPROVED VISUALS V2174\nconst approvedVisualsV2174='+json.dumps(metadata,ensure_ascii=False,separators=(',',':'))+';\nfor(const item of items){const v=approvedVisualsV2174[item.id];if(v){Object.assign(item,v);item.cover=item.image=item.hero;item.cardDimensions=[...item.heroDimensions];item.identityOnly=false;item.assetNotes="ภาพจำลองที่สร้างด้วย AI เพื่อสื่อแนวคิด ไม่ใช่ภาพผลงานลูกค้าจริง โลโก้บนภาพอาจต่างจากเวกเตอร์ต้นแบบ";}}\n// END APPROVED VISUALS V2174\n'
 s=replace_once(s,'window.SCWORK_PORTFOLIO_ITEMS=items;',insert+'window.SCWORK_PORTFOLIO_ITEMS=items;')
 put(p,s,True)
 p='qa/public-manifest-v2172.json'
@@ -53,16 +53,18 @@ put(p,json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 for page in manifest['files']:
  if not page.endswith('.html'): continue
  s=read(page)
- updated=s.replace('deep-case-data-v2167.js?v=2.1.74','deep-case-data-v2167.js?v=2.1.74-assets1')
+ updated=re.sub(r'deep-case-data-v2167\.js\?v=2\.1\.74(?:-assets1|-cover-sync2)?(?![\w-])','deep-case-data-v2167.js?v=2.1.74-cover-sync2',s)
  if s!=updated: put(page,updated,True)
 p='qa/validate-release-v2172.mjs'
 s=read(p)
 old="assert(projects.find(p=>p.id==='ecolabel').cover.endsWith('cover-study-v2173.svg'));"
 new="""for(const id of ['elitecraft','techmate','ecolabel','citrus']){
  const p=projects.find(p=>p.id===id);assert(p&&!p.identityOnly,id);
- assert(p.hero.endsWith('/hero-v2174.webp')&&p.cover.endsWith('/cover-v2174.webp'),id);
+ assert(p.hero.endsWith('/hero-v2174.webp'),id);
+ assert.equal(p.cover,p.hero,id+' cover must use hero source');
+ assert.equal(p.image,p.hero,id+' fallback must use hero source');
  assert(p.heroDimensions[0]>=1600&&p.heroDimensions[1]>=900,id);
- assert.equal(p.cardDimensions.join('x'),'1200x750');
+ assert.equal(p.cardDimensions.join('x'),p.heroDimensions.join('x'));
 }"""
 if old in s: s=replace_once(s,old,new)
 elif new not in s: raise ValueError('Release test marker missing')

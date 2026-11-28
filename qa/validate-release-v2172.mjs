@@ -43,9 +43,11 @@ assert(home.includes('id="contact" class="footer-consult"'));
 assert(read('src/scripts/main.js').includes("if(byId('contactMethods'))"));
 for(const id of ['elitecraft','techmate','ecolabel','citrus']){
  const p=projects.find(p=>p.id===id);assert(p&&!p.identityOnly,id);
- assert(p.hero.endsWith('/hero-v2174.webp')&&p.cover.endsWith('/cover-v2174.webp'),id);
+ assert(p.hero.endsWith('/hero-v2174.webp'),id);
+ assert.equal(p.cover,p.hero,id+' cover must use hero source');
+ assert.equal(p.image,p.hero,id+' fallback must use hero source');
  assert(p.heroDimensions[0]>=1600&&p.heroDimensions[1]>=900,id);
- assert.equal(p.cardDimensions.join('x'),'1200x750');
+ assert.equal(p.cardDimensions.join('x'),p.heroDimensions.join('x'));
 }
 assert(read('src/styles/54-full-frame-v2173.css').includes('object-fit:cover!important'));
 assert(read('src/scripts/main.js').includes('conceptItems.slice(0,6).map'));

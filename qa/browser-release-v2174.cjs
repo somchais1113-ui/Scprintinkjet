@@ -39,6 +39,13 @@ async function run(){
      }
      if(name==='portfolio.html'){
       await page.waitForFunction(()=>document.querySelectorAll('.portfolio-gallery .sc-concept-cover img.sc-concept-photo').length===10);
+      for(const id of ['elitecraft','techmate','ecolabel','citrus']){
+       const cover=page.locator(`.portfolio-card__open[href*="work=${id}&"] .sc-concept-cover img.sc-concept-photo`);
+       assert.equal(await cover.count(),1,id+' card count');
+       await cover.scrollIntoViewIfNeeded();
+       await cover.evaluate(img=>img.decode());
+       assert(await cover.evaluate((img,id)=>img.currentSrc.endsWith('/'+id+'/hero-v2174.webp')&&img.naturalWidth>=1600&&img.naturalHeight>=900,id),id+' cover must use approved hero');
+      }
       for(const cover of await page.locator('.portfolio-gallery .sc-concept-cover img.sc-concept-photo').all()){
        await cover.scrollIntoViewIfNeeded();
        await cover.evaluate(img=>img.decode());
