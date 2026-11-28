@@ -63,7 +63,12 @@ async function run(){
       assert.equal(await page.locator('.sc-hero-info').count(),3);
       const image=page.locator('.sc-hero-media img');
       if(await image.count())await image.evaluate(img=>img.decode());
-      else assert.equal(name,'case-ecolabel','Unexpected missing hero photograph');
+      else assert.fail('Missing hero photograph: '+name);
+      if(['case-elitecraft','case-techmate','case-ecolabel','case-citrus'].includes(name)){
+       assert.equal(await image.count(),1);
+       assert.equal(await page.locator('.sc-case-hero68--photo').count(),1);
+       assert(await image.evaluate(e=>e.naturalWidth>=1600&&e.naturalHeight>=900&&e.src.endsWith('/hero-v2174.webp')&&getComputedStyle(e).objectFit==='cover'));
+      }
       if(name==='case-formline'){
        const progress=()=>page.locator('[data-case-timeline]').evaluate(e=>parseFloat(e.style.getPropertyValue('--case-track-fill'))||0);
        await page.locator('[data-case-node]').last().scrollIntoViewIfNeeded();
