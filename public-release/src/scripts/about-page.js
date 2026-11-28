@@ -95,7 +95,7 @@
     const sections=links.map(a=>document.querySelector(a.hash)).filter(Boolean);
     const io=new IntersectionObserver(entries=>{const active=entries.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];if(active)mark('#'+active.target.id)},{rootMargin:'-15% 0px -45% 0px',threshold:0});sections.forEach(s=>io.observe(s));
     const reveal=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('is-revealed');reveal.unobserve(e.target)}}),{threshold:.12});
-    document.querySelectorAll('.ab-intro-copy,.ab-leadership,.ab-feature,.ab-expertise-row,.ab-process li').forEach((el,i)=>{el.classList.add('ab-reveal');el.style.setProperty('--ab-delay',`${(i%3)*70}ms`);reveal.observe(el)});
+    document.querySelectorAll('.ab-intro-copy,.ab-leadership,.ab-feature,.ab-expertise-row,.ab-process li,.ab-commit-copy').forEach((el,i)=>{el.classList.add('ab-reveal');el.style.setProperty('--ab-delay',`${(i%3)*70}ms`);reveal.observe(el)});
   }
   const g=document.querySelector('.ab-gallery');if(!g)return;
   const frames=[...g.querySelectorAll('[data-ab-frame]')],dots=[...g.querySelectorAll('[data-ab-gallery-dot]')],pause=g.querySelector('.ab-gallery-pause'),count=g.querySelector('.ab-gallery-count strong');
